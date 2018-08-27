@@ -15,50 +15,62 @@ namespace Assignment1
 
 	class Assignment1Form : Form 						// Extends the Form class.
 	{
-		string myNameApparently;
-
-		public Assignment1Form(string str1, string str2)// Constructor that takes two string args.
+		private string yourName;						//
+		private Panel panel1;							// First Panel
+		private Panel panel2;							// Second Panel
+		private Label label1;							// First Panel's label
+		private ListBox listControls;					// First Panel's label
+        private Label label2;							// Second Panel's label
+        private TextBox textbox2;						// Second Panel's label
+        private Button button2;							// Second Panel's label
+		
+		public Assignment1Form(string formName, string yourName)// Constructor that takes two string args.
 		{
 			// Form setup
-			this.Text = str1; 							// Sets the title of the form to the first string.
-			this.myNameApparently = str2;				// Sets the second string to my name
+			this.Text = formName; 						// Sets the title of the form to the first string.
+			this.yourName = yourName;					// Sets the second string to my name
 			this.ClientSize = new Size(500,350);		// Form size
 			this.ShowIcon = false;						// Removes Icon on top left of form
+														// Centers form on screen when opened
+			this.StartPosition = FormStartPosition.CenterScreen;					
 			
 			// Added Controls
-			Panel panel1 = new Panel();					// Add the first panel
+			panel1 = new Panel();						// Add the first panel
 			this.Controls.Add(panel1);					// Add it directly to form
 			
-			Label label1 = new Label();					// Add the label to the first panel
+			label1 = new Label();						// Add the label to the first panel
 			panel1.Controls.Add(label1);				// Add it directly to panel 1
 			
-			ListBox listControls = new ListBox();		// Add the listbox to show all controls in form
+			listControls = new ListBox();				// Add the listbox to show all controls in form
 			panel1.Controls.Add(listControls);			// Add it directly to panel
 
-			Panel panel2 = new Panel();					// Add the second panel
+			panel2 = new Panel();						// Add the second panel
 			this.Controls.Add(panel2);					// Add it directly to form
 			
-			Label label2 = new Label();					// Add the label to the second panel
+			label2 = new Label();						// Add the label to the second panel
 			panel2.Controls.Add(label2);				// Add it directly to panel 2
 			
-			TextBox textbox2 = new TextBox();			// Add textbox to second panel
+			textbox2 = new TextBox();					// Add textbox to second panel
 			panel2.Controls.Add(textbox2);				// Add it directly to panel 2
 			
-			Button button2 = new Button();				// Add button to second panel
+			button2 = new Button();						// Add button to second panel
 			panel2.Controls.Add(button2);				// Add it directly to panel 2
 			
 			// First Panel Details
-			panel1.BackColor = Color.Chocolate;			// Color is closest I could find to bronze
+			panel1.BackColor = Color.LightSteelBlue;	// Darker color for bottom panel
 			panel1.Dock = DockStyle.Bottom;				// Docked to bottom of form
 			
 			// First Panel Label Details
-			label1.Text = myNameApparently;				// Set the label to second constructor arg
-			label1.BackColor = Color.White;				// Same color listbox
-			label1.ForeColor = Color.Black;			    // Easier to read block text on white
+			label1.Text = yourName;						// Set the label to second constructor arg
+			label1.BackColor = Color.LavenderBlush;			// Off white-blue
+			label1.ForeColor = Color.DeepPink;			    // Easier to read block text on white
 														// Center name in label			
 			label1.TextAlign = ContentAlignment.MiddleCenter;
 			
-			// First Panel ListBox (all controls in form) Details								
+			// First Panel ListBox (all controls in form) Details
+			listControls.BackColor = Color.LavenderBlush;	// Same as label1
+			listControls.ForeColor = Color.DeepPink;
+			
 				// Centering ListBox in panel														
 			listControls.Anchor = AnchorStyles.None;	// Make anchors none so it centers in panel when form is resized
 														// Account for panel size 
@@ -71,23 +83,23 @@ namespace Assignment1
 			FormControls(listControls, this, 0); 		// Call helper method to add to ListBox 
 														// Initally start list indentation at 0
 			// Second Panel Details
-			panel2.BackColor = Color.Blue;			    // Ravenclaw color
+			panel2.BackColor = Color.AliceBlue;		// Lighter color for larger panel2
 			panel2.Dock = DockStyle.Fill;				// Docked to fill form
 			
 			// Second Panel Label Details
 			label2.Text = "Comment: ";                  
-			label2.BackColor = Color.White;				// Same as label 1
-			label2.ForeColor = Color.Black;			    
+			label2.BackColor = Color.LavenderBlush;			// Same as label 1
+			label2.ForeColor = Color.DeepPink;			    
 			label2.Location = new Point(Top, Left);			
 			                                            // Center text in label
 			label2.TextAlign = ContentAlignment.MiddleCenter;																						
 
 			// Second Panel TextBox Details
 			textbox2.Text = "Type greeting here."; 
-			textbox2.BackColor = Color.Chocolate;	 	
-			textbox2.ForeColor = Color.Black;			
+			textbox2.BackColor = Color.LavenderBlush;	// Same as smaller panel1
+			textbox2.ForeColor = Color.Red;			
 														// Set of textbox to the size of label2
-			textbox2.Size = new Size(label2.Size.Width, label2.Size.Height);						
+			textbox2.Size = new Size(220, label2.Size.Height);						
 			                                            // Center text in textbox
 			textbox2.TextAlign = HorizontalAlignment.Center;
 														// Account for label size
@@ -95,12 +107,13 @@ namespace Assignment1
 			textbox2.Location = new Point(leftAlignTextbox, Top);
 														// Anchoring to left, right, and top
 														// Stays in place when form is resized
-			textbox2.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;	
+			textbox2.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;				
+			textbox2.Click += new EventHandler(textbox2_Click);
 
 			// Second Panel Button Details
 			button2.Text = "Click to display entered greeting.";
-			button2.BackColor = Color.White;	 		// Same as label 1
-			button2.ForeColor = Color.Black;
+			button2.BackColor = Color.LavenderBlush;	 	// Same as label 1
+			button2.ForeColor = Color.DeepPink;
 			button2.AutoSize = true;					// Get button to show all text
 			button2.AutoSizeMode = AutoSizeMode.GrowAndShrink;
 														// Center text in Button
@@ -114,6 +127,7 @@ namespace Assignment1
 														// Anchors button2 to textbox2 right edge during resized
 														// Also Anchors button2 on top of panel2
 			button2.Anchor = AnchorStyles.Right | AnchorStyles.Bottom;
+			button2.Click += new EventHandler(button2_Click);
 			
 		}
 		
@@ -132,5 +146,25 @@ namespace Assignment1
 				FormControls(listbox, child, indent + 4);
 			}
 		}
+		
+		// EventHandlers
+			// Textbox
+		private void textbox2_Click(object sender, EventArgs e) 
+		{
+			textbox2.Clear();							// Clears old text
+		}		
+		
+			// Button
+		private void button2_Click(object sender, EventArgs e) 
+		{
+			if (textbox2.Text == "Type greeting here.")
+				MessageBox.Show("You didn't enter anything");
+			else if (textbox2.Text != "")
+				MessageBox.Show(textbox2.Text);
+			else
+				MessageBox.Show("Try again.");
+		}
+		
+
 	}
 }
