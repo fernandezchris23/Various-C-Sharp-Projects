@@ -62,8 +62,8 @@ namespace Assignment1
 			
 			// First Panel Label Details
 			label1.Text = yourName;						// Set the label to second constructor arg
-			label1.BackColor = Color.LavenderBlush;		// Off white-blue
-			label1.ForeColor = Color.DeepPink;			// Easier to read block text on white
+			label1.BackColor = Color.LavenderBlush;		// Off pink
+			label1.ForeColor = Color.DeepPink;			// Easier to read dark pink text on off pink
 														// Center name in label			
 			label1.TextAlign = ContentAlignment.MiddleCenter;
 			
