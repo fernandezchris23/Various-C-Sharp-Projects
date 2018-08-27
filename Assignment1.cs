@@ -15,14 +15,14 @@ namespace Assignment1
 
 	class Assignment1Form : Form 						// Extends the Form class.
 	{
-		private string yourName;						//
+		private string yourName;						// Name from second arg of constructor
 		private Panel panel1;							// First Panel
 		private Panel panel2;							// Second Panel
 		private Label label1;							// First Panel's label
-		private ListBox listControls;					// First Panel's label
+		private ListBox listControls;					// First Panel's listbox
         private Label label2;							// Second Panel's label
-        private TextBox textbox2;						// Second Panel's label
-        private Button button2;							// Second Panel's label
+        private TextBox textbox2;						// Second Panel's textbox
+        private Button button2;							// Second Panel's button
 		
 		public Assignment1Form(string formName, string yourName)// Constructor that takes two string args.
 		{
@@ -42,7 +42,7 @@ namespace Assignment1
 			panel1.Controls.Add(label1);				// Add it directly to panel 1
 			
 			listControls = new ListBox();				// Add the listbox to show all controls in form
-			panel1.Controls.Add(listControls);			// Add it directly to panel
+			panel1.Controls.Add(listControls);			// Add it directly to panel 1
 
 			panel2 = new Panel();						// Add the second panel
 			this.Controls.Add(panel2);					// Add it directly to form
@@ -62,13 +62,13 @@ namespace Assignment1
 			
 			// First Panel Label Details
 			label1.Text = yourName;						// Set the label to second constructor arg
-			label1.BackColor = Color.LavenderBlush;			// Off white-blue
-			label1.ForeColor = Color.DeepPink;			    // Easier to read block text on white
+			label1.BackColor = Color.LavenderBlush;		// Off white-blue
+			label1.ForeColor = Color.DeepPink;			// Easier to read block text on white
 														// Center name in label			
 			label1.TextAlign = ContentAlignment.MiddleCenter;
 			
 			// First Panel ListBox (all controls in form) Details
-			listControls.BackColor = Color.LavenderBlush;	// Same as label1
+			listControls.BackColor = Color.LavenderBlush;// Same as label1
 			listControls.ForeColor = Color.DeepPink;
 			
 				// Centering ListBox in panel														
@@ -83,12 +83,12 @@ namespace Assignment1
 			FormControls(listControls, this, 0); 		// Call helper method to add to ListBox 
 														// Initally start list indentation at 0
 			// Second Panel Details
-			panel2.BackColor = Color.AliceBlue;		// Lighter color for larger panel2
+			panel2.BackColor = Color.AliceBlue;		    // Lighter color for larger panel2
 			panel2.Dock = DockStyle.Fill;				// Docked to fill form
 			
 			// Second Panel Label Details
 			label2.Text = "Comment: ";                  
-			label2.BackColor = Color.LavenderBlush;			// Same as label 1
+			label2.BackColor = Color.LavenderBlush;		// Same as label 1
 			label2.ForeColor = Color.DeepPink;			    
 			label2.Location = new Point(Top, Left);			
 			                                            // Center text in label
@@ -112,7 +112,7 @@ namespace Assignment1
 
 			// Second Panel Button Details
 			button2.Text = "Click to display entered greeting.";
-			button2.BackColor = Color.LavenderBlush;	 	// Same as label 1
+			button2.BackColor = Color.LavenderBlush;	// Same as label 1
 			button2.ForeColor = Color.DeepPink;
 			button2.AutoSize = true;					// Get button to show all text
 			button2.AutoSizeMode = AutoSizeMode.GrowAndShrink;
