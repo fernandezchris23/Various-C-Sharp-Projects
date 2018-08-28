@@ -66,7 +66,9 @@ namespace AssignmentForms
 
         private void ClickHandler(object sender, EventArgs e)
         {
-            MessageBox.Show(this.textBox.Text);
+            String msg = this.textBox.Text;
+            if(!String.IsNullOrEmpty(msg))
+                MessageBox.Show(msg);
         }
     }
 }
