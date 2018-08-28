@@ -12,6 +12,7 @@ namespace AssignmentForms
         private Panel panel;
         private Panel panel2;
         private TextBox textBox;
+	private ListView listView;
 
         public CustomForm(String title, String name)
         {
@@ -20,6 +21,7 @@ namespace AssignmentForms
             this.Size = new Size(WIDTH, HEIGHT);
             InitFirstPanel();
             InitSecondPanel();
+            ListControls();
         }
 
         private void InitFirstPanel()
@@ -27,6 +29,11 @@ namespace AssignmentForms
             Label label = new Label();
             label.Text = this.name;
             label.Left = (WIDTH / 2) - (label.Width / 2);
+
+            this.listView = new ListView();
+            this.listView.Name = "controls listview";
+            this.listView.Size = new Size(121, 97);
+
             this.panel = new Panel();
             this.panel.BackColor = Color.Blue;
             this.panel.Dock = DockStyle.Bottom;
@@ -62,6 +69,17 @@ namespace AssignmentForms
             this.panel2.Controls.Add(this.textBox);
             this.panel2.Controls.Add(button);
             this.Controls.Add(panel2);
+        }
+
+        private void ListControls()
+        {
+            foreach (Control control in this.Controls)
+            {
+                this.listView.Items.Add(new ListViewItem(control.Name));
+                foreach(Control control2 in control.Controls)
+                    this.listView.Items.Add(new ListViewItem(control2.Name));
+            }
+                
         }
 
         private void ClickHandler(object sender, EventArgs e)
