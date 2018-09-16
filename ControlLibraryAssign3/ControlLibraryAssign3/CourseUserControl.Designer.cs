@@ -52,7 +52,7 @@
             this.semesterLabel.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.semesterLabel.Location = new System.Drawing.Point(0, 30);
             this.semesterLabel.Name = "semesterLabel";
-            this.semesterLabel.Size = new System.Drawing.Size(327, 52);
+            this.semesterLabel.Size = new System.Drawing.Size(327, 36);
             this.semesterLabel.TabIndex = 0;
             this.semesterLabel.Text = "Fall 2018";
             this.semesterLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -65,7 +65,7 @@
             this.Controls.Add(this.semesterLabel);
             this.Controls.Add(this.courseNameLabel);
             this.Name = "CourseUserControl";
-            this.Size = new System.Drawing.Size(327, 82);
+            this.Size = new System.Drawing.Size(327, 66);
             this.ResumeLayout(false);
 
         }

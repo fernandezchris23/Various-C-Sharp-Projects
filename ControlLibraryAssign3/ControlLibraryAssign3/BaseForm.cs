@@ -16,7 +16,5 @@ namespace ControlLibraryAssign3
         {
             InitializeComponent();
         }
-
-
     }
 }
