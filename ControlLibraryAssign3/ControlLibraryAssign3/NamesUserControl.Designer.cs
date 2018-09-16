@@ -33,7 +33,7 @@
             // 
             // membersNameLabel
             // 
-            this.membersNameLabel.BackColor = System.Drawing.Color.LightCyan;
+            this.membersNameLabel.BackColor = System.Drawing.Color.Azure;
             this.membersNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.membersNameLabel.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.membersNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
