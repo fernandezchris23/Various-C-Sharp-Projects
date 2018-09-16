@@ -36,7 +36,7 @@
             // 
             this.courseNameLabel.Dock = System.Windows.Forms.DockStyle.Top;
             this.courseNameLabel.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.courseNameLabel.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.courseNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.courseNameLabel.Location = new System.Drawing.Point(0, 0);
             this.courseNameLabel.MinimumSize = new System.Drawing.Size(0, 30);
             this.courseNameLabel.Name = "courseNameLabel";
@@ -49,7 +49,7 @@
             // 
             this.semesterLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.semesterLabel.Font = new System.Drawing.Font("Cambria", 7.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.semesterLabel.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.semesterLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.semesterLabel.Location = new System.Drawing.Point(0, 30);
             this.semesterLabel.Name = "semesterLabel";
             this.semesterLabel.Size = new System.Drawing.Size(303, 23);

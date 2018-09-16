@@ -39,7 +39,7 @@
             this.dialogBaseFormPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dialogBaseFormPanel.Location = new System.Drawing.Point(0, 52);
             this.dialogBaseFormPanel.Name = "dialogBaseFormPanel";
-            this.dialogBaseFormPanel.Size = new System.Drawing.Size(827, 225);
+            this.dialogBaseFormPanel.Size = new System.Drawing.Size(836, 260);
             this.dialogBaseFormPanel.TabIndex = 2;
             // 
             // courseUserControl1
@@ -48,23 +48,23 @@
             this.courseUserControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.courseUserControl1.Location = new System.Drawing.Point(0, 0);
             this.courseUserControl1.Name = "courseUserControl1";
-            this.courseUserControl1.Size = new System.Drawing.Size(827, 52);
+            this.courseUserControl1.Size = new System.Drawing.Size(836, 52);
             this.courseUserControl1.TabIndex = 1;
             // 
             // namesUserControl1
             // 
             this.namesUserControl1.BackColor = System.Drawing.Color.LightGray;
             this.namesUserControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.namesUserControl1.Location = new System.Drawing.Point(0, 277);
+            this.namesUserControl1.Location = new System.Drawing.Point(0, 312);
             this.namesUserControl1.Name = "namesUserControl1";
-            this.namesUserControl1.Size = new System.Drawing.Size(827, 67);
+            this.namesUserControl1.Size = new System.Drawing.Size(836, 52);
             this.namesUserControl1.TabIndex = 0;
             // 
             // DialogBaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(827, 344);
+            this.ClientSize = new System.Drawing.Size(836, 364);
             this.Controls.Add(this.dialogBaseFormPanel);
             this.Controls.Add(this.courseUserControl1);
             this.Controls.Add(this.namesUserControl1);

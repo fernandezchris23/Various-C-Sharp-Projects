@@ -33,15 +33,16 @@
             // 
             // membersNameLabel
             // 
+            this.membersNameLabel.BackColor = System.Drawing.Color.LightCyan;
             this.membersNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.membersNameLabel.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.membersNameLabel.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.membersNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.membersNameLabel.Location = new System.Drawing.Point(0, 0);
             this.membersNameLabel.Name = "membersNameLabel";
-            this.membersNameLabel.Size = new System.Drawing.Size(844, 64);
+            this.membersNameLabel.Size = new System.Drawing.Size(843, 48);
             this.membersNameLabel.TabIndex = 0;
-            this.membersNameLabel.Text = "We\'re Okay:\nAlejandro Barnola, Walter Elwell, Christopher Fernandez, Alvaro Oroz" +
-    "co, Kayla Ortiz, and Vanesa Perez";
+            this.membersNameLabel.Text = "We\'re Okay:\nAlejandro Barnola, Walter Elwell, Christopher Fernandez, Alvaro Orozc" +
+    "o, Kayla Ortiz, and Vanesa Perez";
             this.membersNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // NamesUserControl
@@ -51,7 +52,7 @@
             this.BackColor = System.Drawing.Color.LightGray;
             this.Controls.Add(this.membersNameLabel);
             this.Name = "NamesUserControl";
-            this.Size = new System.Drawing.Size(844, 64);
+            this.Size = new System.Drawing.Size(843, 48);
             this.ResumeLayout(false);
 
         }
