@@ -16,5 +16,19 @@ namespace ControlLibraryAssign3
         {
             InitializeComponent();
         }
+
+        private void colorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult result = baseFormColorDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                BackColor = baseFormColorDialog.Color;
+            }
+        }
+
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

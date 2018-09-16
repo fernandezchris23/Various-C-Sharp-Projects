@@ -53,6 +53,12 @@
     <Compile Include="CourseUserControl.Designer.cs">
       <DependentUpon>CourseUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="DialogBaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogBaseForm.Designer.cs">
+      <DependentUpon>DialogBaseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="NamesUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -73,6 +79,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CourseUserControl.resx">
       <DependentUpon>CourseUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DialogBaseForm.resx">
+      <DependentUpon>DialogBaseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NamesUserControl.resx">
       <DependentUpon>NamesUserControl.cs</DependentUpon>
