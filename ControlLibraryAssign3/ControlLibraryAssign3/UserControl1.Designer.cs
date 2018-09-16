@@ -37,7 +37,7 @@
             this.groupNameLabel.BackColor = System.Drawing.Color.Transparent;
             this.groupNameLabel.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupNameLabel.Font = new System.Drawing.Font("Cambria", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupNameLabel.ForeColor = System.Drawing.Color.DeepPink;
+            this.groupNameLabel.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.groupNameLabel.Location = new System.Drawing.Point(0, 0);
             this.groupNameLabel.Name = "groupNameLabel";
             this.groupNameLabel.Size = new System.Drawing.Size(212, 50);
@@ -50,7 +50,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Cambria", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.DeepPink;
+            this.label2.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.label2.Location = new System.Drawing.Point(0, 50);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(212, 138);
@@ -63,7 +63,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LavenderBlush;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupNameLabel);
             this.Name = "UserControl1";
