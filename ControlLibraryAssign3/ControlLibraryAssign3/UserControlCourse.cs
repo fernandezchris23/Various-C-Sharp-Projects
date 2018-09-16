@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ControlLibraryAssign3
 {
-    public partial class UserControl1 : UserControl
+    public partial class UserControlCourse : UserControl
     {
-        public UserControl1()
+        public UserControlCourse()
         {
             InitializeComponent();
         }

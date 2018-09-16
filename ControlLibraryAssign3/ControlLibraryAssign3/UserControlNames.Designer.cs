@@ -1,6 +1,6 @@
 ﻿namespace ControlLibraryAssign3
 {
-    partial class UserControl1
+    partial class UserControlNames
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,45 +29,44 @@
         private void InitializeComponent()
         {
             this.groupNameLabel = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.memberNames = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // groupNameLabel
             // 
             this.groupNameLabel.BackColor = System.Drawing.Color.Transparent;
             this.groupNameLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupNameLabel.Font = new System.Drawing.Font("Cambria", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupNameLabel.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupNameLabel.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.groupNameLabel.Location = new System.Drawing.Point(0, 0);
             this.groupNameLabel.Name = "groupNameLabel";
-            this.groupNameLabel.Size = new System.Drawing.Size(212, 50);
+            this.groupNameLabel.Size = new System.Drawing.Size(213, 50);
             this.groupNameLabel.TabIndex = 0;
             this.groupNameLabel.Text = "Team 2: We\'re Okay";
             this.groupNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // memberNames
             // 
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("Cambria", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label2.Location = new System.Drawing.Point(0, 50);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(212, 138);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Alejandro Barnola\n Walter Elwell\n  Christopher Fernandez\n Alvaro Orozco\n Kayla Or" +
-    "tiz\n Vanesa Perez";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.memberNames.BackColor = System.Drawing.Color.Transparent;
+            this.memberNames.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memberNames.Font = new System.Drawing.Font("Cambria", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.memberNames.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.memberNames.Location = new System.Drawing.Point(0, 50);
+            this.memberNames.Name = "memberNames";
+            this.memberNames.Size = new System.Drawing.Size(213, 117);
+            this.memberNames.TabIndex = 0;
+            this.memberNames.Text = "Alejandro Barnola\nWalter Elwell\nChristopher Fernandez\nAlvaro Orozco\nKayla Ortiz\nV" +
+    "anesa Perez";
             // 
-            // UserControl1
+            // UserControlNames
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Controls.Add(this.label2);
+            this.BackColor = System.Drawing.Color.Gainsboro;
+            this.Controls.Add(this.memberNames);
             this.Controls.Add(this.groupNameLabel);
-            this.Name = "UserControl1";
-            this.Size = new System.Drawing.Size(212, 188);
+            this.Name = "UserControlNames";
+            this.Size = new System.Drawing.Size(213, 167);
             this.ResumeLayout(false);
 
         }
@@ -75,6 +74,6 @@
         #endregion
 
         private System.Windows.Forms.Label groupNameLabel;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label memberNames;
     }
 }
