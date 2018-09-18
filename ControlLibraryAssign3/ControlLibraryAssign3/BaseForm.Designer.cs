@@ -84,7 +84,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 366);
             this.ContextMenuStrip = this.baseFormsContextMenuStrip;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "BaseForm";
             this.Text = "BaseForm";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Base_MouseDown);

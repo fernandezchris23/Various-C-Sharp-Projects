@@ -17,7 +17,7 @@ namespace MainAndDialogForms
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             
-            Application.Run(new PrefDialog());
+            Application.Run(new MainForm());
         }
     }
 }

@@ -37,9 +37,9 @@
             // 
             this.dialogBaseFormPanel.BackColor = System.Drawing.Color.Transparent;
             this.dialogBaseFormPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dialogBaseFormPanel.Location = new System.Drawing.Point(0, 52);
+            this.dialogBaseFormPanel.Location = new System.Drawing.Point(0, 43);
             this.dialogBaseFormPanel.Name = "dialogBaseFormPanel";
-            this.dialogBaseFormPanel.Size = new System.Drawing.Size(836, 260);
+            this.dialogBaseFormPanel.Size = new System.Drawing.Size(836, 269);
             this.dialogBaseFormPanel.TabIndex = 2;
             // 
             // courseUserControl1
@@ -49,7 +49,7 @@
             this.courseUserControl1.Location = new System.Drawing.Point(0, 0);
             this.courseUserControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.courseUserControl1.Name = "courseUserControl1";
-            this.courseUserControl1.Size = new System.Drawing.Size(836, 52);
+            this.courseUserControl1.Size = new System.Drawing.Size(836, 43);
             this.courseUserControl1.TabIndex = 1;
             // 
             // namesUserControl1

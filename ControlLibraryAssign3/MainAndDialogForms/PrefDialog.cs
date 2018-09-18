@@ -97,6 +97,10 @@ namespace MainAndDialogForms
                     RectError.SetError(RectBox, "Must Enter Valid Integer Greater Than 0");
                 }
             }
+            else
+            {
+                RectError.SetError(RectBox, "Empty Text Box! Must Enter Valid Integer");
+            }
             if (!string.Equals(EllipText.Text, ""))
             {
                 if (int.TryParse(EllipText.Text, out textValue) && textValue > 0)
@@ -110,6 +114,10 @@ namespace MainAndDialogForms
                     EllipError.SetError(EllipText, "Must Enter Valid Integer Greater Than 0");
                 }
             }
+            else
+            {
+                EllipError.SetError(EllipText, "Empty Text Box! Must Enter Valid Integer");
+            }
             if (!string.Equals(RatioText.Text, ""))
             {
                 if (float.TryParse(RatioText.Text, out floattext) && floattext > 0)
@@ -122,6 +130,10 @@ namespace MainAndDialogForms
                 {
                     RatioError.SetError(RatioText, "Must Enter Valid Float Greater Than 0");
                 }
+            }
+            else
+            {
+                RatioError.SetError(RatioText, "Empty Text Box! Must Enter Valid Float");
             }
         }
 
