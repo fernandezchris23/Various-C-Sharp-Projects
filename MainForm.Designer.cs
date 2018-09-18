@@ -1,6 +1,6 @@
 ﻿namespace MainAndDialogForms
 {
-    partial class Ellipse
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,20 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // Ellipse
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Ellipse";
-            this.Text = "Ellipse";
-            this.Load += new System.EventHandler(this.Ellipse_Load);
-            this.SizeChanged += new System.EventHandler(this.Ellipse_SizeChanged);
-            this.ResumeLayout(false);
-
+            this.Text = "MainForm";
         }
 
         #endregion

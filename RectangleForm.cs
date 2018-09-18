@@ -12,48 +12,40 @@ using ControlLibraryAssign3;
 
 namespace MainAndDialogForms
 {
-    public partial class Ellipse : BaseForm
+    public partial class RectangleForm : BaseForm
     {
-        public Ellipse(int width, double multiple)
+        public RectangleForm(int height, double multiplier)
         {
-
-            this.width = width;
-            this.Height = (int)(width * multiple);
+            this.height = height;
+            this.width = (int)(height * multiplier);
 
             InitializeComponent();
 
             this.MouseDown += new MouseEventHandler(Base_MouseDown);
             this.MouseUp += new MouseEventHandler(Base_MouseUp);
             this.MouseMove += new MouseEventHandler(Base_MouseMove);
-
         }
 
         private int width;
         private int height;
 
-        private void Ellipse_Load(object sender, EventArgs e)
+        private void RectangleForm_Load(object sender, EventArgs e)
         {
-            SetEllipseRegion();
+            SetRectangleRegion();
         }
 
-        void SetEllipseRegion()
+        private void RectangleForm_StyleChanged(object sender, EventArgs e)
         {
+            SetRectangleRegion();
+        }
 
-            Rectangle rect = this.ClientRectangle;
-
+        void SetRectangleRegion()
+        {
             using (GraphicsPath path = new GraphicsPath())
             {
-                path.AddEllipse(rect);
+                path.AddRectangle(this.ClientRectangle);
                 this.Region = new Region(path);
             }
-
         }
-
-        private void Ellipse_SizeChanged(object sender, EventArgs e)
-        {
-            SetEllipseRegion();
-        }
-        
     }
-
 }

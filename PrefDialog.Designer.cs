@@ -1,6 +1,6 @@
 ﻿namespace MainAndDialogForms
 {
-    partial class Ellipse
+    partial class PrefDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.SuspendLayout();
             // 
-            // Ellipse
+            // PrefDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Ellipse";
-            this.Text = "Ellipse";
-            this.Load += new System.EventHandler(this.Ellipse_Load);
-            this.SizeChanged += new System.EventHandler(this.Ellipse_SizeChanged);
+            this.ClientSize = new System.Drawing.Size(649, 286);
+            this.Name = "PrefDialog";
+            this.Text = "PrefDialog";
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.ColorDialog colorDialog1;
     }
 }
