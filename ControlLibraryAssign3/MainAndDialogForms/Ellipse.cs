@@ -14,7 +14,7 @@ namespace MainAndDialogForms
 {
     public partial class Ellipse : BaseForm
     {
-        public Ellipse(int width, double multiple)
+        public Ellipse(int width, float multiple)
         {
 
             this.width = width;

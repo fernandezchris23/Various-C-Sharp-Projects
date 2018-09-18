@@ -72,6 +72,7 @@
     <Compile Include="RectangleForm.Designer.cs">
       <DependentUpon>RectangleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShapeInterface.cs" />
     <EmbeddedResource Include="Ellipse.resx">
       <DependentUpon>Ellipse.cs</DependentUpon>
     </EmbeddedResource>

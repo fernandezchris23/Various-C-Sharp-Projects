@@ -14,7 +14,7 @@ namespace MainAndDialogForms
 {
     public partial class RectangleForm : BaseForm
     {
-        public RectangleForm(int height, double multiplier)
+        public RectangleForm(int height, float multiplier)
         {
             this.height = height;
             this.width = (int)(height * multiplier);
