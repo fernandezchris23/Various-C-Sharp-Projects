@@ -28,17 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.okayButton = new System.Windows.Forms.Button();
             this.applyButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.HeightText = new System.Windows.Forms.TextBox();
+            this.RectBox = new System.Windows.Forms.TextBox();
             this.EllipText = new System.Windows.Forms.TextBox();
             this.RatioText = new System.Windows.Forms.TextBox();
             this.RectLabel = new System.Windows.Forms.Label();
             this.EllipLabel = new System.Windows.Forms.Label();
             this.RatioLabel = new System.Windows.Forms.Label();
+            this.RectError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.EllipError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.RatioError = new System.Windows.Forms.ErrorProvider(this.components);
             this.dialogBaseFormPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RectError)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EllipError)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatioError)).BeginInit();
             this.SuspendLayout();
             // 
             // dialogBaseFormPanel
@@ -49,7 +56,7 @@
             this.dialogBaseFormPanel.Controls.Add(this.RectLabel);
             this.dialogBaseFormPanel.Controls.Add(this.RatioText);
             this.dialogBaseFormPanel.Controls.Add(this.EllipText);
-            this.dialogBaseFormPanel.Controls.Add(this.HeightText);
+            this.dialogBaseFormPanel.Controls.Add(this.RectBox);
             this.dialogBaseFormPanel.Controls.Add(this.cancelButton);
             this.dialogBaseFormPanel.Controls.Add(this.applyButton);
             this.dialogBaseFormPanel.Controls.Add(this.okayButton);
@@ -88,14 +95,14 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
-            // HeightText
+            // RectBox
             // 
-            this.HeightText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.RectBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.HeightText.Location = new System.Drawing.Point(146, 18);
-            this.HeightText.Name = "HeightText";
-            this.HeightText.Size = new System.Drawing.Size(415, 20);
-            this.HeightText.TabIndex = 3;
+            this.RectBox.Location = new System.Drawing.Point(146, 18);
+            this.RectBox.Name = "RectBox";
+            this.RectBox.Size = new System.Drawing.Size(415, 20);
+            this.RectBox.TabIndex = 3;
             // 
             // EllipText
             // 
@@ -142,6 +149,18 @@
             this.RatioLabel.TabIndex = 8;
             this.RatioLabel.Text = "Height Width Ratio : ";
             // 
+            // RectError
+            // 
+            this.RectError.ContainerControl = this;
+            // 
+            // EllipError
+            // 
+            this.EllipError.ContainerControl = this;
+            // 
+            // RatioError
+            // 
+            this.RatioError.ContainerControl = this;
+            // 
             // PrefDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -153,6 +172,9 @@
             this.Load += new System.EventHandler(this.PrefDialog_Load);
             this.dialogBaseFormPanel.ResumeLayout(false);
             this.dialogBaseFormPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RectError)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EllipError)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatioError)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -165,9 +187,12 @@
         private System.Windows.Forms.Label RectLabel;
         private System.Windows.Forms.TextBox RatioText;
         private System.Windows.Forms.TextBox EllipText;
-        private System.Windows.Forms.TextBox HeightText;
+        private System.Windows.Forms.TextBox RectBox;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button applyButton;
         private System.Windows.Forms.Button okayButton;
+        private System.Windows.Forms.ErrorProvider RectError;
+        private System.Windows.Forms.ErrorProvider EllipError;
+        private System.Windows.Forms.ErrorProvider RatioError;
     }
 }
