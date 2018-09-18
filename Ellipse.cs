@@ -1,6 +1,6 @@
-using System;
-using System.Drawing;
-using System.Windows.Forms;
+    using System;
+    using System.Drawing;
+    using System.Windows.Forms;
 
 namespace Assignment3A
 {
@@ -15,23 +15,41 @@ namespace Assignment3A
 
             this.ClientSize = new Size(this.Width, this.Height);
             this.FormBorderStyle = FormBorderStyle.None;
+            this.BackColor = System.Drawing.Color.Red;
 
-            DrawEllipse();
+            SetEllipseRegion();
 
         }
 
+        void SetEllipseRegion()
+        {
+            Rectangle rectangle = this.ClientRectangle;
+
+            using (GraphicsPath path = new GraphicsPath())
+            {
+                path.AddEllipse(rectangle);
+                this.Region = new Region(path);
+            }
+        }
+
+        void LoadEllipse(object sender, EventArgs e)
+        {
+            SetEllipseRegion();
+        }
+
+        void EllipseSizeChanged(object sender, EventArgs e)
+        {
+            SetEllipseRegion();
+        }
+
+        /*  Not how the book does this, seemed interesting and fairly simple so I left it here
 		void DrawEllipse()
         {
             SolidBrush brush = new SolidBrush(Blue);
             Rectangle rectangle = this.ClientRectangle;
             Graphics formGraphics = this.CreateGraphics();
             formGraphics.FillEllpise(brush, rectangle);
-
         }
-
-        void LoadEllipse(object sender, EventArgs e)
-        {
-            DrawEllipse();
-        }
+        */
     }
 }
