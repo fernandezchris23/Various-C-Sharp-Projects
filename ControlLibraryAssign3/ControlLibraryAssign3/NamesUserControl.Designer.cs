@@ -34,7 +34,7 @@
             // 
             // membersNameLabel
             // 
-            membersNameLabel.BackColor = System.Drawing.Color.Azure;
+            membersNameLabel.BackColor = System.Drawing.Color.LightCyan;
             membersNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             membersNameLabel.Font = new System.Drawing.Font("Cambria", 10.5F, System.Drawing.FontStyle.Bold);
             membersNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
@@ -54,7 +54,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.Controls.Add(membersNameLabel);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "NamesUserControl";
             this.Size = new System.Drawing.Size(632, 50);
             this.ResumeLayout(false);

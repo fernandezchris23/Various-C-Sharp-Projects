@@ -58,10 +58,26 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PrefDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrefDialog.Designer.cs">
+      <DependentUpon>PrefDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RectangleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RectangleForm.Designer.cs">
+      <DependentUpon>RectangleForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Ellipse.resx">
       <DependentUpon>Ellipse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrefDialog.resx">
+      <DependentUpon>PrefDialog.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -71,7 +87,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RectangleForm.resx">
+      <DependentUpon>RectangleForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -90,6 +110,12 @@
       <Project>{5112156c-f87d-44eb-9982-5488eebca0be}</Project>
       <Name>ControlLibraryAssign3</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BackgroundImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BackgroundImage.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

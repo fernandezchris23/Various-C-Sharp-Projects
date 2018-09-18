@@ -17,7 +17,7 @@ namespace MainAndDialogForms
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             
-            Application.Run(new Ellipse(500, 0.5));
+            Application.Run(new PrefDialog());
         }
     }
 }
