@@ -30,5 +30,33 @@ namespace ControlLibraryAssign3
         {
             this.Close();
         }
+
+        public void Base_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+
+            downPoint = new Point(e.X, e.Y);
+
+        }
+
+        public void Base_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (downPoint == Point.Empty)
+                return;
+
+            Point location = new Point(this.Left + e.X - downPoint.Y,
+                    this.Top + e.Y - downPoint.Y);
+            this.Location = location;
+        }
+
+        public void Base_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left)
+                return;
+
+            downPoint = Point.Empty;
+        }
+
+        Point downPoint = Point.Empty;
     }
 }
