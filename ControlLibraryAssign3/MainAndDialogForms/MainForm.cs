@@ -45,5 +45,9 @@ namespace MainAndDialogForms
         {
 
         }
+
+        private int MainHeight;
+        private int MainWidth;
+        private int MainRatio;
     }
 }
