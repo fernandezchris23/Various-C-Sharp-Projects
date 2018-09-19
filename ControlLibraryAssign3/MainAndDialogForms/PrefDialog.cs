@@ -1,83 +1,59 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using ControlLibraryAssign3;
 
 namespace MainAndDialogForms
 {
     public partial class PrefDialog : DialogBaseForm, ShapeInterface
     {
+        private int RectHeight;
+        private int EllipWidth;
+        private float Ratio;
+        private MainForm mainForm;
+        
         public PrefDialog()
         {
             InitializeComponent();
             RectHeight = 0;
             Ratio = 0f;
             EllipWidth = 0;
-            
+            mainForm = null;
         }
 
+        public PrefDialog(MainForm mainForm)
+        {
+            InitializeComponent();
+            this.mainForm = mainForm;
+            RectHeight = 0;
+            Ratio = 0f;
+            EllipWidth = 0;
+        }
 
         private void PrefDialog_Load(object sender, EventArgs e)
         {
+        }
 
+        private void UpdateMainForm()
+        {
+            if (mainForm != null)
+                mainForm.SetVariables(this);
         }
 
         private void okayButton_Click(object sender, EventArgs e)
         {
             ValidateTextBoxes(sender, e);
+            UpdateMainForm();
             this.Close();
         }
 
         private void applyButton_Click(object sender, EventArgs e)
         {
             ValidateTextBoxes(sender, e);
+            UpdateMainForm();
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        public int rectHeight
-        {
-            get
-            {
-                return RectHeight;
-            }
-            set
-            {
-                RectHeight = value;
-            }
-        }
-
-        public int ellipseWidth
-        {
-            get
-            {
-                return EllipWidth;
-            }
-            set
-            {
-                EllipWidth = value;
-            }
-        }
-
-        public float shapeRatio
-        {
-            get
-            {
-                return Ratio;
-            }
-            set
-            {
-                Ratio = (float)value;
-            }
         }
 
         public void ValidateTextBoxes(object sender, EventArgs e)
@@ -137,10 +113,29 @@ namespace MainAndDialogForms
             }
         }
 
-        private int RectHeight;
-        private int EllipWidth;
-        private float Ratio;
+        public MainForm MainForm
+        {
+            get { return mainForm; }
+            set { mainForm = value;  }
+        }
 
+        public int rectHeight
+        {
+            get { return RectHeight; }
+            set { RectHeight = value; }
+        }
+
+        public int ellipseWidth
+        {
+            get { return EllipWidth; }
+            set { EllipWidth = value; }
+        }
+
+        public float shapeRatio
+        {
+            get { return Ratio; }
+            set { Ratio = (float)value; }
+        }
 
     }
 }
