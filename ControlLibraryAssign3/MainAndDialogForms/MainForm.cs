@@ -51,6 +51,7 @@ namespace MainAndDialogForms
             if(ellipWidth != 0 && ratio != 0)
             {
                 Ellipse ellipse = new Ellipse(ellipWidth, ratio);
+                ellipse.MdiParent = this;
                 ellipse.Show();
                 ellipseStack.Push(ellipse);
                 this.closeEllipticToolStripMenuItem.Enabled = true;
@@ -62,6 +63,7 @@ namespace MainAndDialogForms
             if (rectHeight != 0 && ratio != 0)
             {
                 RectangleForm rectangleForm = new RectangleForm(rectHeight, ratio);
+                rectangleForm.MdiParent = this;
                 rectangleForm.Show();
                 rectangleFormStack.Push(rectangleForm);
                 this.closeRectangularToolStripMenuItem.Enabled = true;
