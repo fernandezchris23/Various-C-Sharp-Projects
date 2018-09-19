@@ -16,5 +16,34 @@ namespace MainAndDialogForms
         {
             InitializeComponent();
         }
+
+        private void allRectanglesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void allEllipsesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ellipseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rectangleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void modalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void modelessToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
