@@ -44,7 +44,7 @@ namespace ControlLibraryAssign3
             if (downPoint == Point.Empty)
                 return;
 
-            Point location = new Point(this.Left + e.X - downPoint.Y,
+            Point location = new Point(this.Left + e.X - downPoint.X,
                     this.Top + e.Y - downPoint.Y);
             this.Location = location;
         }
