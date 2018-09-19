@@ -50,7 +50,7 @@
             // 
             // dialogBaseFormPanel
             // 
-            this.dialogBaseFormPanel.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.dialogBaseFormPanel.BackColor = System.Drawing.Color.CadetBlue;
             this.dialogBaseFormPanel.Controls.Add(this.RatioLabel);
             this.dialogBaseFormPanel.Controls.Add(this.EllipLabel);
             this.dialogBaseFormPanel.Controls.Add(this.RectLabel);
@@ -60,23 +60,23 @@
             this.dialogBaseFormPanel.Controls.Add(this.cancelButton);
             this.dialogBaseFormPanel.Controls.Add(this.applyButton);
             this.dialogBaseFormPanel.Controls.Add(this.okayButton);
-            this.dialogBaseFormPanel.Size = new System.Drawing.Size(649, 195);
+            this.dialogBaseFormPanel.Size = new System.Drawing.Size(649, 204);
             // 
             // okayButton
             // 
             this.okayButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.okayButton.Location = new System.Drawing.Point(120, 150);
+            this.okayButton.Location = new System.Drawing.Point(120, 159);
             this.okayButton.Name = "okayButton";
             this.okayButton.Size = new System.Drawing.Size(70, 25);
             this.okayButton.TabIndex = 0;
-            this.okayButton.Text = "Okay";
+            this.okayButton.Text = "OK";
             this.okayButton.UseVisualStyleBackColor = true;
             this.okayButton.Click += new System.EventHandler(this.okayButton_Click);
             // 
             // applyButton
             // 
             this.applyButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.applyButton.Location = new System.Drawing.Point(290, 150);
+            this.applyButton.Location = new System.Drawing.Point(290, 159);
             this.applyButton.Name = "applyButton";
             this.applyButton.Size = new System.Drawing.Size(70, 25);
             this.applyButton.TabIndex = 1;
@@ -87,7 +87,7 @@
             // cancelButton
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelButton.Location = new System.Drawing.Point(460, 150);
+            this.cancelButton.Location = new System.Drawing.Point(460, 159);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(70, 25);
             this.cancelButton.TabIndex = 2;
@@ -125,27 +125,30 @@
             // RectLabel
             // 
             this.RectLabel.AutoSize = true;
-            this.RectLabel.Location = new System.Drawing.Point(41, 21);
+            this.RectLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RectLabel.Location = new System.Drawing.Point(29, 18);
             this.RectLabel.Name = "RectLabel";
-            this.RectLabel.Size = new System.Drawing.Size(99, 13);
+            this.RectLabel.Size = new System.Drawing.Size(111, 15);
             this.RectLabel.TabIndex = 6;
             this.RectLabel.Text = "Rectangle Height : ";
             // 
             // EllipLabel
             // 
             this.EllipLabel.AutoSize = true;
-            this.EllipLabel.Location = new System.Drawing.Point(63, 62);
+            this.EllipLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EllipLabel.Location = new System.Drawing.Point(53, 59);
             this.EllipLabel.Name = "EllipLabel";
-            this.EllipLabel.Size = new System.Drawing.Size(77, 13);
+            this.EllipLabel.Size = new System.Drawing.Size(87, 15);
             this.EllipLabel.TabIndex = 7;
             this.EllipLabel.Text = "Ellipse Width : ";
             // 
             // RatioLabel
             // 
             this.RatioLabel.AutoSize = true;
-            this.RatioLabel.Location = new System.Drawing.Point(34, 103);
+            this.RatioLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RatioLabel.Location = new System.Drawing.Point(22, 101);
             this.RatioLabel.Name = "RatioLabel";
-            this.RatioLabel.Size = new System.Drawing.Size(106, 13);
+            this.RatioLabel.Size = new System.Drawing.Size(118, 15);
             this.RatioLabel.TabIndex = 8;
             this.RatioLabel.Text = "Height Width Ratio : ";
             // 
@@ -168,8 +171,7 @@
             this.BackgroundImage = global::MainAndDialogForms.Properties.Resources.BackgroundImage1;
             this.ClientSize = new System.Drawing.Size(649, 299);
             this.Name = "PrefDialog";
-            this.Text = "PrefDialog";
-            this.Load += new System.EventHandler(this.PrefDialog_Load);
+            this.Text = "Preferences";
             this.dialogBaseFormPanel.ResumeLayout(false);
             this.dialogBaseFormPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RectError)).EndInit();
