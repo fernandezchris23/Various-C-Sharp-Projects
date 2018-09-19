@@ -19,31 +19,28 @@ namespace MainAndDialogForms
             RectHeight = 0;
             Ratio = 0f;
             EllipWidth = 0;
-            
         }
 
-
-        private void PrefDialog_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        //OK Button Handler
         private void okayButton_Click(object sender, EventArgs e)
         {
             ValidateTextBoxes(sender, e);
             this.Close();
         }
 
+        //Apply Button Handler
         private void applyButton_Click(object sender, EventArgs e)
         {
             ValidateTextBoxes(sender, e);
         }
 
+        //Cancel Button Handler
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        //Rectangle Height Variable From Interface
         public int rectHeight
         {
             get
@@ -56,6 +53,7 @@ namespace MainAndDialogForms
             }
         }
 
+        //Ellipse Width Variable From Interface
         public int ellipseWidth
         {
             get
@@ -68,6 +66,7 @@ namespace MainAndDialogForms
             }
         }
 
+        //Ratio Variable From Interface
         public float shapeRatio
         {
             get
@@ -80,15 +79,19 @@ namespace MainAndDialogForms
             }
         }
 
+        //Validation of TextBoxes
         public void ValidateTextBoxes(object sender, EventArgs e)
         {
-            int textValue;
-            float floattext;
+            int textValue; //Dummy Variable for integers
+            float floattext; //Dummy Variable for floats
+
+            //First test for all textboxes is whether it is empty
             if (!string.Equals(RectBox.Text, ""))
             {
+                //Attempt a parse, if failure, inform user of error
                 if (int.TryParse(RectBox.Text, out textValue) && textValue > 0)
                 {
-                    RectError.Clear();
+                    RectError.Clear(); //Get rid of any previous error notification
                     RectHeight = textValue;
                     rectHeight = RectHeight;
                 }
@@ -99,8 +102,9 @@ namespace MainAndDialogForms
             }
             else
             {
-                RectError.SetError(RectBox, "Empty Text Box! Must Enter Valid Integer");
+                RectError.SetError(RectBox, "Empty Text Box! Must Enter Valid Integer. Value Will Reamain Unchanged");
             }
+
             if (!string.Equals(EllipText.Text, ""))
             {
                 if (int.TryParse(EllipText.Text, out textValue) && textValue > 0)
@@ -116,8 +120,9 @@ namespace MainAndDialogForms
             }
             else
             {
-                EllipError.SetError(EllipText, "Empty Text Box! Must Enter Valid Integer");
+                EllipError.SetError(EllipText, "Empty Text Box! Must Enter Valid Integer. Value Will Reamain Unchanged");
             }
+
             if (!string.Equals(RatioText.Text, ""))
             {
                 if (float.TryParse(RatioText.Text, out floattext) && floattext > 0)
@@ -133,14 +138,12 @@ namespace MainAndDialogForms
             }
             else
             {
-                RatioError.SetError(RatioText, "Empty Text Box! Must Enter Valid Float");
+                RatioError.SetError(RatioText, "Empty Text Box! Must Enter Valid Float. Value Will Reamain Unchanged");
             }
         }
 
         private int RectHeight;
         private int EllipWidth;
         private float Ratio;
-
-
     }
 }

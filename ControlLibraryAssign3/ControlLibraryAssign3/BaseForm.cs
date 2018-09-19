@@ -17,6 +17,7 @@ namespace ControlLibraryAssign3
             InitializeComponent();
         }
 
+        //Color Dialog Context Menu Handler
         private void colorsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult result = baseFormColorDialog.ShowDialog();
@@ -26,11 +27,13 @@ namespace ControlLibraryAssign3
             }
         }
 
+        //Close Context Menu Handler
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        //Mouse Down Handler for Movement of Shape
         public void Base_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left) return;
@@ -39,6 +42,7 @@ namespace ControlLibraryAssign3
 
         }
 
+        //Mouse Move Handler for Movement of Shape
         public void Base_MouseMove(object sender, MouseEventArgs e)
         {
             if (downPoint == Point.Empty)
@@ -49,6 +53,7 @@ namespace ControlLibraryAssign3
             this.Location = location;
         }
 
+        //Mouse Up Handler for Movement of Shape
         public void Base_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left)
@@ -57,6 +62,6 @@ namespace ControlLibraryAssign3
             downPoint = Point.Empty;
         }
 
-        Point downPoint = Point.Empty;
+        Point downPoint = Point.Empty; //Point used for monitoring location of shape while moving
     }
 }
