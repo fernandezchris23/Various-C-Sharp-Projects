@@ -15,6 +15,7 @@ namespace MainAndDialogForms
 
             InitializeComponent();
 
+            this.ClientSize = new Size(width, height);
             this.MouseDown += new MouseEventHandler(Base_MouseDown);
             this.MouseUp += new MouseEventHandler(Base_MouseUp);
             this.MouseMove += new MouseEventHandler(Base_MouseMove);
