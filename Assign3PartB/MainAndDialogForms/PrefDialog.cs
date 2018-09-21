@@ -5,17 +5,42 @@ namespace MainAndDialogForms
 {
     public partial class PrefDialog : DialogBaseForm, ShapeInterface
     {
-        private int RectHeight;
-        private int EllipWidth;
+        private int rectHeight;
+        private int ellipWidth;
         private float Ratio;
         private MainForm mainForm;
-        
+
+       // Properties
+        public int RectHeight
+        {
+            get { return rectHeight; }
+            set { rectHeight = value; }
+        }
+
+        public int EllipseWidth
+        {
+            get { return ellipWidth; }
+            set { ellipWidth = value; }
+        }
+
+        public float ShapeRatio
+        {
+            get { return Ratio; }
+            set { Ratio = (float)value; }
+        }
+
+        public MainForm MainForm
+        {
+            get { return mainForm; }
+            set { mainForm = value; }
+        }
+
         public PrefDialog()
         {
             InitializeComponent();
-            RectHeight = 0;
+            rectHeight = 0;
             Ratio = 0f;
-            EllipWidth = 0;
+            ellipWidth = 0;
             mainForm = null;
         }
 
@@ -23,9 +48,9 @@ namespace MainAndDialogForms
         {
             InitializeComponent();
             this.mainForm = mainForm;
-            RectHeight = 0;
+            rectHeight = 0;
             Ratio = 0f;
-            EllipWidth = 0;
+            ellipWidth = 0;
         }
 
         private void PrefDialog_Load(object sender, EventArgs e)
@@ -65,8 +90,8 @@ namespace MainAndDialogForms
                 if (int.TryParse(RectBox.Text, out textValue) && textValue > 0)
                 {
                     RectError.Clear();
-                    RectHeight = textValue;
-                    rectHeight = RectHeight;
+                    rectHeight = textValue;
+                    RectHeight = rectHeight;
                 }
                 else
                 {
@@ -82,8 +107,8 @@ namespace MainAndDialogForms
                 if (int.TryParse(EllipText.Text, out textValue) && textValue > 0)
                 {
                     EllipError.Clear();
-                    EllipWidth = textValue;
-                    ellipseWidth = EllipWidth;
+                    ellipWidth = textValue;
+                    EllipseWidth = ellipWidth;
                 }
                 else
                 {
@@ -100,7 +125,7 @@ namespace MainAndDialogForms
                 {
                     RatioError.Clear();
                     Ratio = floattext;
-                    shapeRatio = Ratio;
+                    ShapeRatio = Ratio;
                 }
                 else
                 {
@@ -111,30 +136,6 @@ namespace MainAndDialogForms
             {
                 RatioError.SetError(RatioText, "Empty Text Box! Must Enter Valid Float");
             }
-        }
-
-        public MainForm MainForm
-        {
-            get { return mainForm; }
-            set { mainForm = value;  }
-        }
-
-        public int rectHeight
-        {
-            get { return RectHeight; }
-            set { RectHeight = value; }
-        }
-
-        public int ellipseWidth
-        {
-            get { return EllipWidth; }
-            set { EllipWidth = value; }
-        }
-
-        public float shapeRatio
-        {
-            get { return Ratio; }
-            set { Ratio = (float)value; }
         }
 
     }
