@@ -8,11 +8,6 @@ namespace MainAndDialogForms
 {
     public partial class RectangleForm : BaseForm
     {
-
-        private int width;
-        private int height;
-
-
         public RectangleForm(int height, float multiplier)
         {
             this.height = height;
@@ -25,6 +20,9 @@ namespace MainAndDialogForms
             this.MouseUp += new MouseEventHandler(Base_MouseUp);
             this.MouseMove += new MouseEventHandler(Base_MouseMove);
         }
+
+        private int width;
+        private int height;
 
         private void RectangleForm_Load(object sender, EventArgs e)
         {

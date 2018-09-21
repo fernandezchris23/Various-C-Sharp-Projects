@@ -40,9 +40,9 @@ namespace MainAndDialogForms
         {
             if(prefDialog != null)
             {
-                rectHeight = prefDialog.RectHeight;
-                ellipWidth = prefDialog.EllipseWidth;
-                ratio = prefDialog.ShapeRatio;
+                rectHeight = prefDialog.rectHeight;
+                ellipWidth = prefDialog.ellipseWidth;
+                ratio = prefDialog.shapeRatio;
             }
         }
 

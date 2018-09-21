@@ -8,10 +8,9 @@ namespace MainAndDialogForms
 {
     interface ShapeInterface
     {
-        int EllipseWidth { get; set; }
+        int ellipseWidth { get; set; }
+        int rectHeight { get; set; }
 
-        int RectHeight { get; set; }
-
-        float ShapeRatio { get; set; }
+        float shapeRatio { get; set; }
     }
 }
