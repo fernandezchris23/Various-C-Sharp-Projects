@@ -88,9 +88,11 @@
             // 
             this.fileMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.closeChildToolStripMenuItem});
+            this.fileMenuItem.MergeAction = System.Windows.Forms.MergeAction.MatchOnly;
             this.fileMenuItem.Name = "fileMenuItem";
             this.fileMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileMenuItem.Text = "File";
+            this.fileMenuItem.Visible = false;
             // 
             // closeChildToolStripMenuItem
             // 
@@ -102,14 +104,16 @@
             // 
             this.prefMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.colorsToolStripMenuItem1});
+            this.prefMenuItem.MergeAction = System.Windows.Forms.MergeAction.MatchOnly;
             this.prefMenuItem.Name = "prefMenuItem";
             this.prefMenuItem.Size = new System.Drawing.Size(80, 20);
             this.prefMenuItem.Text = "Preferences";
+            this.prefMenuItem.Visible = false;
             // 
             // colorsToolStripMenuItem1
             // 
             this.colorsToolStripMenuItem1.Name = "colorsToolStripMenuItem1";
-            this.colorsToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.colorsToolStripMenuItem1.Size = new System.Drawing.Size(108, 22);
             this.colorsToolStripMenuItem1.Text = "Colors";
             // 
             // menuStrip
@@ -123,6 +127,7 @@
             this.menuStrip.Size = new System.Drawing.Size(600, 24);
             this.menuStrip.TabIndex = 1;
             this.menuStrip.Text = "menuStrip1";
+            this.menuStrip.Visible = false;
             // 
             // BaseForm
             // 

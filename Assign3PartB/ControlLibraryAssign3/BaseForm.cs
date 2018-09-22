@@ -39,16 +39,15 @@ namespace ControlLibraryAssign3
             if (e.Button != MouseButtons.Left) return;
 
             downOffset = new Size(e.X, e.Y);
-
         }
 
         //Mouse Move Handler for Movement of Shape
         public void Base_MouseMove(object sender, MouseEventArgs e)
         {
-            if (downOffset == Size.Empty)
+            if (downOffset == Size.Empty) //If there was no down, then don't try to move
                 return;
 
-            this.Location = Cursor.Position - downOffset;
+            this.Location = MdiParent.PointToClient(Cursor.Position) - downOffset; //Takes cursor position and subtracts offset to move form smoothly
         }
 
         //Mouse Up Handler for Movement of Shape
