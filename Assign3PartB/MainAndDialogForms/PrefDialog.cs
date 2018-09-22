@@ -35,11 +35,17 @@ namespace MainAndDialogForms
             rectHeightLocal = 0;
             RatioLocal = 0f;
             ellipWidthLocal = 0;
+
+            createHelpInfo();
         }
 
         private void okayButton_Click(object sender, EventArgs e)
         {
             ValidateTextBoxes(sender, e);
+            if(!this.Modal)
+            {
+                applyBttnClick(this, EventArgs.Empty);
+            }
             this.Close();
         }
 
@@ -111,5 +117,34 @@ namespace MainAndDialogForms
             }
         }
 
+        private void createHelpInfo()
+        {
+            helpProvider.SetShowHelp(RectBox, true);
+            helpProvider.SetHelpString(RectBox, "This box will hold the height of the rectangle as a positive, non-zero integer.");
+
+            helpProvider.SetShowHelp(EllipText, true);
+            helpProvider.SetHelpString(EllipText, "This box will hold the width of the ellipse as a positive, non-zero integer.");
+
+            helpProvider.SetShowHelp(RatioText, true);
+            helpProvider.SetHelpString(RatioText, "This box will hold the ratio used for calculating the width of the rectangle and the width of the ellipse.");
+
+            helpProvider.SetShowHelp(okayButton, true);
+            helpProvider.SetHelpString(okayButton, "Saves the values entered and closes the dialog.");
+
+            helpProvider.SetShowHelp(applyButton, true);
+            helpProvider.SetHelpString(applyButton, "Saves the values entered. Only available to modeless dialogs.");
+
+            helpProvider.SetShowHelp(cancelButton, true);
+            helpProvider.SetHelpString(cancelButton, "Closes the dialog without saving the values.");
+        }
+
+        private void PrefDialog_Load(object sender, EventArgs e)
+        {
+            if (this.Modal)
+            {
+                applyButton.Enabled = false;
+                applyButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            }
+        }
     }
 }
