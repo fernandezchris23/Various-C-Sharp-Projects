@@ -13,5 +13,7 @@ namespace MainAndDialogForms
         int RectHeight { get; set; }
 
         float ShapeRatio { get; set; }
+
+        event EventHandler applyBttnClick;
     }
 }

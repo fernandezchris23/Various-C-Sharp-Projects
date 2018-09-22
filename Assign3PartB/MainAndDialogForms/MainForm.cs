@@ -7,9 +7,9 @@ namespace MainAndDialogForms
     public partial class MainForm : Form
     {
         private PrefDialog prefDialog;
-        private int rectHeight;
-        private int ellipWidth;
-        private float ratio;
+        private int rectHeightLocal;
+        private int ellipWidthLocal;
+        private float ratioLocal;
         private Stack<Ellipse> ellipseStack;
         private Stack<RectangleForm> rectangleFormStack;
 
@@ -32,25 +32,29 @@ namespace MainAndDialogForms
 
         private void openPreferencesModelesslyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            prefDialog = new PrefDialog(this);
+            prefDialog = new PrefDialog();
+            prefDialog.applyBttnClick += new EventHandler(prefDlgApplyClick);
             prefDialog.Show();
         }
 
-        public void SetVariables(PrefDialog prefDialog)
+        public void SetVariables(PrefDialog prefDlg)
         {
-            if(prefDialog != null)
-            {
-                rectHeight = prefDialog.RectHeight;
-                ellipWidth = prefDialog.EllipseWidth;
-                ratio = prefDialog.ShapeRatio;
-            }
+            rectHeightLocal = prefDlg.RectHeight;
+            ellipWidthLocal = prefDlg.EllipseWidth;
+            ratioLocal = prefDlg.ShapeRatio;
+        }
+
+        private void prefDlgApplyClick(object sender, EventArgs e)
+        {
+            PrefDialog applyPrefDlg = sender as PrefDialog;
+            SetVariables(applyPrefDlg);
         }
 
         private void openEllipticToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(ellipWidth != 0 && ratio != 0)
+            if(ellipWidthLocal != 0 && ratioLocal != 0)
             {
-                Ellipse ellipse = new Ellipse(ellipWidth, ratio);
+                Ellipse ellipse = new Ellipse(ellipWidthLocal, ratioLocal);
                 ellipse.MdiParent = this;
                 ellipse.Show();
                 ellipseStack.Push(ellipse);
@@ -60,9 +64,9 @@ namespace MainAndDialogForms
 
         private void openRectangularToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (rectHeight != 0 && ratio != 0)
+            if (rectHeightLocal != 0 && ratioLocal != 0)
             {
-                RectangleForm rectangleForm = new RectangleForm(rectHeight, ratio);
+                RectangleForm rectangleForm = new RectangleForm(rectHeightLocal, ratioLocal);
                 rectangleForm.MdiParent = this;
                 rectangleForm.Show();
                 rectangleFormStack.Push(rectangleForm);

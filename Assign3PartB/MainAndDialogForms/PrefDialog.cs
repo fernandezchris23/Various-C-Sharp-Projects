@@ -5,71 +5,48 @@ namespace MainAndDialogForms
 {
     public partial class PrefDialog : DialogBaseForm, ShapeInterface
     {
-        private int rectHeight;
-        private int ellipWidth;
-        private float Ratio;
-        private MainForm mainForm;
+        private int rectHeightLocal;
+        private int ellipWidthLocal;
+        private float RatioLocal;
+        public event EventHandler applyBttnClick;
 
-       // Properties
+       //Interface Properties
         public int RectHeight
         {
-            get { return rectHeight; }
-            set { rectHeight = value; }
+            get { return rectHeightLocal; }
+            set { rectHeightLocal = value; }
         }
 
         public int EllipseWidth
         {
-            get { return ellipWidth; }
-            set { ellipWidth = value; }
+            get { return ellipWidthLocal; }
+            set { ellipWidthLocal = value; }
         }
 
         public float ShapeRatio
         {
-            get { return Ratio; }
-            set { Ratio = (float)value; }
-        }
-
-        public MainForm MainForm
-        {
-            get { return mainForm; }
-            set { mainForm = value; }
+            get { return RatioLocal; }
+            set { RatioLocal = (float)value; }
         }
 
         public PrefDialog()
         {
             InitializeComponent();
-            rectHeight = 0;
-            Ratio = 0f;
-            ellipWidth = 0;
-            mainForm = null;
-        }
-
-        public PrefDialog(MainForm mainForm)
-        {
-            InitializeComponent();
-            this.mainForm = mainForm;
-            rectHeight = 0;
-            Ratio = 0f;
-            ellipWidth = 0;
-        }
-
-        private void UpdateMainForm()
-        {
-            if (mainForm != null)
-                mainForm.SetVariables(this);
+            rectHeightLocal = 0;
+            RatioLocal = 0f;
+            ellipWidthLocal = 0;
         }
 
         private void okayButton_Click(object sender, EventArgs e)
         {
             ValidateTextBoxes(sender, e);
-            UpdateMainForm();
             this.Close();
         }
 
         private void applyButton_Click(object sender, EventArgs e)
         {
             ValidateTextBoxes(sender, e);
-            UpdateMainForm();
+            applyBttnClick(this, EventArgs.Empty);
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -86,8 +63,8 @@ namespace MainAndDialogForms
                 if (int.TryParse(RectBox.Text, out textValue) && textValue > 0)
                 {
                     RectError.Clear();
-                    rectHeight = textValue;
-                    RectHeight = rectHeight;
+                    rectHeightLocal = textValue;
+                    RectHeight = rectHeightLocal;
                 }
                 else
                 {
@@ -96,15 +73,15 @@ namespace MainAndDialogForms
             }
             else
             {
-                RectError.SetError(RectBox, "Empty Text Box! Must Enter Valid Integer");
+                RectError.SetError(RectBox, "Empty Text Box! Must Enter Valid Integer Greater Than 0");
             }
             if (!string.Equals(EllipText.Text, ""))
             {
                 if (int.TryParse(EllipText.Text, out textValue) && textValue > 0)
                 {
                     EllipError.Clear();
-                    ellipWidth = textValue;
-                    EllipseWidth = ellipWidth;
+                    ellipWidthLocal = textValue;
+                    EllipseWidth = ellipWidthLocal;
                 }
                 else
                 {
@@ -113,15 +90,15 @@ namespace MainAndDialogForms
             }
             else
             {
-                EllipError.SetError(EllipText, "Empty Text Box! Must Enter Valid Integer");
+                EllipError.SetError(EllipText, "Empty Text Box! Must Enter Valid Integer Greater Than 0");
             }
             if (!string.Equals(RatioText.Text, ""))
             {
                 if (float.TryParse(RatioText.Text, out floattext) && floattext > 0)
                 {
                     RatioError.Clear();
-                    Ratio = floattext;
-                    ShapeRatio = Ratio;
+                    RatioLocal = floattext;
+                    ShapeRatio = RatioLocal;
                 }
                 else
                 {
@@ -130,7 +107,7 @@ namespace MainAndDialogForms
             }
             else
             {
-                RatioError.SetError(RatioText, "Empty Text Box! Must Enter Valid Float");
+                RatioError.SetError(RatioText, "Empty Text Box! Must Enter Valid Float Greater Than 0");
             }
         }
 

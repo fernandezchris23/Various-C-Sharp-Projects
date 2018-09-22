@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutDialog.Designer.cs">
+      <DependentUpon>AboutDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ellipse.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +85,9 @@
       <DependentUpon>RectangleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ShapeInterface.cs" />
+    <EmbeddedResource Include="AboutDialog.resx">
+      <DependentUpon>AboutDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ellipse.resx">
       <DependentUpon>Ellipse.cs</DependentUpon>
     </EmbeddedResource>
