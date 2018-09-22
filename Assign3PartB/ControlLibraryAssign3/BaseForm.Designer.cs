@@ -99,6 +99,7 @@
             this.closeChildToolStripMenuItem.Name = "closeChildToolStripMenuItem";
             this.closeChildToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.closeChildToolStripMenuItem.Text = "Close Child";
+            this.closeChildToolStripMenuItem.Click += new System.EventHandler(this.closeChildToolStripMenuItem_Click);
             // 
             // prefMenuItem
             // 

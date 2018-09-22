@@ -53,10 +53,6 @@ namespace MainAndDialogForms
             ellipWidth = 0;
         }
 
-        private void PrefDialog_Load(object sender, EventArgs e)
-        {
-        }
-
         private void UpdateMainForm()
         {
             if (mainForm != null)

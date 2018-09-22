@@ -60,5 +60,10 @@ namespace ControlLibraryAssign3
         }
 
         Size downOffset; //Offset used for moving
+
+        private void closeChildToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
