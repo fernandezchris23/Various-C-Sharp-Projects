@@ -38,19 +38,17 @@ namespace ControlLibraryAssign3
         {
             if (e.Button != MouseButtons.Left) return;
 
-            downPoint = new Point(e.X, e.Y);
+            downOffset = new Size(e.X, e.Y);
 
         }
 
         //Mouse Move Handler for Movement of Shape
         public void Base_MouseMove(object sender, MouseEventArgs e)
         {
-            if (downPoint == Point.Empty)
+            if (downOffset == Size.Empty)
                 return;
 
-            Point location = new Point(this.Left + e.X - downPoint.Y,
-                    this.Top + e.Y - downPoint.Y);
-            this.Location = location;
+            this.Location = Cursor.Position - downOffset;
         }
 
         //Mouse Up Handler for Movement of Shape
@@ -59,9 +57,9 @@ namespace ControlLibraryAssign3
             if (e.Button != MouseButtons.Left)
                 return;
 
-            downPoint = Point.Empty;
+            downOffset = Size.Empty;
         }
 
-        Point downPoint = Point.Empty; //Point used for monitoring location of shape while moving
+        Size downOffset; //Offset used for moving
     }
 }

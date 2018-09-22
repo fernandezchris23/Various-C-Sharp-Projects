@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace MainAndDialogForms
 {
-    // chris' branch
     interface ShapeInterface
     {
         int EllipseWidth { get; set; }
