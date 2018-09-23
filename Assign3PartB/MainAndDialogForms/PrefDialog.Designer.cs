@@ -73,8 +73,8 @@
             // 
             // okayButton
             // 
-            this.okayButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.okayButton.Location = new System.Drawing.Point(120, 156);
+            this.okayButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.okayButton.Location = new System.Drawing.Point(396, 156);
             this.okayButton.Name = "okayButton";
             this.okayButton.Size = new System.Drawing.Size(70, 25);
             this.okayButton.TabIndex = 0;
@@ -85,8 +85,8 @@
             // 
             // applyButton
             // 
-            this.applyButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.applyButton.Location = new System.Drawing.Point(288, 156);
+            this.applyButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.applyButton.Location = new System.Drawing.Point(472, 156);
             this.applyButton.Name = "applyButton";
             this.applyButton.Size = new System.Drawing.Size(70, 25);
             this.applyButton.TabIndex = 1;
@@ -98,7 +98,7 @@
             // cancelButton
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelButton.Location = new System.Drawing.Point(456, 156);
+            this.cancelButton.Location = new System.Drawing.Point(548, 156);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(70, 25);
             this.cancelButton.TabIndex = 2;
