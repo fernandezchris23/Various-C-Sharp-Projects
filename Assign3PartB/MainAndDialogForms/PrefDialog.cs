@@ -5,75 +5,54 @@ namespace MainAndDialogForms
 {
     public partial class PrefDialog : DialogBaseForm, ShapeInterface
     {
-        private int rectHeight;
-        private int ellipWidth;
-        private float Ratio;
-        private MainForm mainForm;
+        private int rectHeightLocal;
+        private int ellipWidthLocal;
+        private float RatioLocal;
+        public event EventHandler applyBttnClick;
 
-       // Properties
+       //Interface Properties
         public int RectHeight
         {
-            get { return rectHeight; }
-            set { rectHeight = value; }
+            get { return rectHeightLocal; }
+            set { rectHeightLocal = value; }
         }
 
         public int EllipseWidth
         {
-            get { return ellipWidth; }
-            set { ellipWidth = value; }
+            get { return ellipWidthLocal; }
+            set { ellipWidthLocal = value; }
         }
 
         public float ShapeRatio
         {
-            get { return Ratio; }
-            set { Ratio = (float)value; }
-        }
-
-        public MainForm MainForm
-        {
-            get { return mainForm; }
-            set { mainForm = value; }
+            get { return RatioLocal; }
+            set { RatioLocal = (float)value; }
         }
 
         public PrefDialog()
         {
             InitializeComponent();
-            rectHeight = 0;
-            Ratio = 0f;
-            ellipWidth = 0;
-            mainForm = null;
-        }
+            rectHeightLocal = 0;
+            RatioLocal = 0f;
+            ellipWidthLocal = 0;
 
-        public PrefDialog(MainForm mainForm)
-        {
-            InitializeComponent();
-            this.mainForm = mainForm;
-            rectHeight = 0;
-            Ratio = 0f;
-            ellipWidth = 0;
-        }
-
-        private void PrefDialog_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void UpdateMainForm()
-        {
-            if (mainForm != null)
-                mainForm.SetVariables(this);
+            createHelpInfo();
         }
 
         private void okayButton_Click(object sender, EventArgs e)
         {
             ValidateTextBoxes(sender, e);
-            UpdateMainForm();
+            if(!this.Modal)
+            {
+                applyBttnClick(this, EventArgs.Empty);
+            }
             this.Close();
         }
 
         private void applyButton_Click(object sender, EventArgs e)
         {
             ValidateTextBoxes(sender, e);
-            UpdateMainForm();
+            applyBttnClick(this, EventArgs.Empty);
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -90,8 +69,8 @@ namespace MainAndDialogForms
                 if (int.TryParse(RectBox.Text, out textValue) && textValue > 0)
                 {
                     RectError.Clear();
-                    rectHeight = textValue;
-                    RectHeight = rectHeight;
+                    rectHeightLocal = textValue;
+                    RectHeight = rectHeightLocal;
                 }
                 else
                 {
@@ -100,15 +79,15 @@ namespace MainAndDialogForms
             }
             else
             {
-                RectError.SetError(RectBox, "Empty Text Box! Must Enter Valid Integer");
+                RectError.SetError(RectBox, "Empty Text Box! Must Enter Valid Integer Greater Than 0");
             }
             if (!string.Equals(EllipText.Text, ""))
             {
                 if (int.TryParse(EllipText.Text, out textValue) && textValue > 0)
                 {
                     EllipError.Clear();
-                    ellipWidth = textValue;
-                    EllipseWidth = ellipWidth;
+                    ellipWidthLocal = textValue;
+                    EllipseWidth = ellipWidthLocal;
                 }
                 else
                 {
@@ -117,15 +96,15 @@ namespace MainAndDialogForms
             }
             else
             {
-                EllipError.SetError(EllipText, "Empty Text Box! Must Enter Valid Integer");
+                EllipError.SetError(EllipText, "Empty Text Box! Must Enter Valid Integer Greater Than 0");
             }
             if (!string.Equals(RatioText.Text, ""))
             {
                 if (float.TryParse(RatioText.Text, out floattext) && floattext > 0)
                 {
                     RatioError.Clear();
-                    Ratio = floattext;
-                    ShapeRatio = Ratio;
+                    RatioLocal = floattext;
+                    ShapeRatio = RatioLocal;
                 }
                 else
                 {
@@ -134,9 +113,38 @@ namespace MainAndDialogForms
             }
             else
             {
-                RatioError.SetError(RatioText, "Empty Text Box! Must Enter Valid Float");
+                RatioError.SetError(RatioText, "Empty Text Box! Must Enter Valid Float Greater Than 0");
             }
         }
 
+        private void createHelpInfo()
+        {
+            helpProvider.SetShowHelp(RectBox, true);
+            helpProvider.SetHelpString(RectBox, "This box will hold the height of the rectangle as a positive, non-zero integer.");
+
+            helpProvider.SetShowHelp(EllipText, true);
+            helpProvider.SetHelpString(EllipText, "This box will hold the width of the ellipse as a positive, non-zero integer.");
+
+            helpProvider.SetShowHelp(RatioText, true);
+            helpProvider.SetHelpString(RatioText, "This box will hold the ratio used for calculating the width of the rectangle and the width of the ellipse.");
+
+            helpProvider.SetShowHelp(okayButton, true);
+            helpProvider.SetHelpString(okayButton, "Saves the values entered and closes the dialog.");
+
+            helpProvider.SetShowHelp(applyButton, true);
+            helpProvider.SetHelpString(applyButton, "Saves the values entered. Only available to modeless dialogs.");
+
+            helpProvider.SetShowHelp(cancelButton, true);
+            helpProvider.SetHelpString(cancelButton, "Closes the dialog without saving the values.");
+        }
+
+        private void PrefDialog_Load(object sender, EventArgs e)
+        {
+            if (this.Modal)
+            {
+                applyButton.Enabled = false;
+                applyButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            }
+        }
     }
 }

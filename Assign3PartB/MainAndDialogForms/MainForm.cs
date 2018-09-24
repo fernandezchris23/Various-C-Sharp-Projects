@@ -7,11 +7,13 @@ namespace MainAndDialogForms
     public partial class MainForm : Form
     {
         private PrefDialog prefDialog;
-        private int rectHeight;
-        private int ellipWidth;
-        private float ratio;
+        private int rectHeightLocal;
+        private int ellipWidthLocal;
+        private float ratioLocal;
         private Stack<Ellipse> ellipseStack;
         private Stack<RectangleForm> rectangleFormStack;
+        private bool prefDlgModelessClsd;
+        private bool formIsClosing;
 
         public MainForm()
         {
@@ -20,6 +22,9 @@ namespace MainAndDialogForms
             this.closeRectangularToolStripMenuItem.Enabled = false;
             ellipseStack = new Stack<Ellipse>();
             rectangleFormStack = new Stack<RectangleForm>();
+
+            prefDlgModelessClsd = true; //Initially it is closed
+            formIsClosing = false; //Used to prevent exception in deactivation
         }
 
         private void openPreferencesModallyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -32,25 +37,35 @@ namespace MainAndDialogForms
 
         private void openPreferencesModelesslyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            prefDialog = new PrefDialog(this);
-            prefDialog.Show();
+            if(prefDlgModelessClsd)
+            {
+                prefDialog = new PrefDialog();
+                prefDialog.applyBttnClick += new EventHandler(prefDlgApplyClick);
+                prefDialog.FormClosed += (s, arg) => prefDlgModelessClsd = true;
+                prefDialog.Show();
+                prefDlgModelessClsd = false;
+            } 
         }
 
-        public void SetVariables(PrefDialog prefDialog)
+        public void SetVariables(PrefDialog prefDlg)
         {
-            if(prefDialog != null)
-            {
-                rectHeight = prefDialog.RectHeight;
-                ellipWidth = prefDialog.EllipseWidth;
-                ratio = prefDialog.ShapeRatio;
-            }
+            rectHeightLocal = prefDlg.RectHeight;
+            ellipWidthLocal = prefDlg.EllipseWidth;
+            ratioLocal = prefDlg.ShapeRatio;
+        }
+
+        private void prefDlgApplyClick(object sender, EventArgs e)
+        {
+            PrefDialog applyPrefDlg = sender as PrefDialog;
+            SetVariables(applyPrefDlg);
         }
 
         private void openEllipticToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(ellipWidth != 0 && ratio != 0)
+            if(ellipWidthLocal != 0 && ratioLocal != 0)
             {
-                Ellipse ellipse = new Ellipse(ellipWidth, ratio);
+                Ellipse ellipse = new Ellipse(ellipWidthLocal, ratioLocal);
+                ellipse.MdiParent = this;
                 ellipse.Show();
                 ellipseStack.Push(ellipse);
                 this.closeEllipticToolStripMenuItem.Enabled = true;
@@ -59,9 +74,10 @@ namespace MainAndDialogForms
 
         private void openRectangularToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (rectHeight != 0 && ratio != 0)
+            if (rectHeightLocal != 0 && ratioLocal != 0)
             {
-                RectangleForm rectangleForm = new RectangleForm(rectHeight, ratio);
+                RectangleForm rectangleForm = new RectangleForm(rectHeightLocal, ratioLocal);
+                rectangleForm.MdiParent = this;
                 rectangleForm.Show();
                 rectangleFormStack.Push(rectangleForm);
                 this.closeRectangularToolStripMenuItem.Enabled = true;
@@ -95,12 +111,26 @@ namespace MainAndDialogForms
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            formIsClosing = true;
             e.Cancel = ExitPrompt();
         }
 
         private Boolean ExitPrompt()
         {
             return MessageBox.Show("Exit", "Are you sure you want to exit?", MessageBoxButtons.YesNo) == DialogResult.No;
+        }
+
+        private void MainForm_Activated(object sender, EventArgs e)
+        {
+            this.Opacity = 1;
+        }
+
+        private void MainForm_Deactivate(object sender, EventArgs e)
+        {
+            if(!formIsClosing)
+            {
+                this.Opacity = 0.5;
+            }
         }
     }
 }

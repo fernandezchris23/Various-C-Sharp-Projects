@@ -14,23 +14,16 @@ namespace MainAndDialogForms
 {
     public partial class Ellipse : BaseForm
     {
+        private int widthLocal;
+        private int heightLocal;
+
         public Ellipse(int width, float multiple)
         {
-
-            this.width = width;
-            this.height = (int)(width * multiple);
+            this.widthLocal = width;
+            this.heightLocal = (int)(widthLocal * multiple);
 
             InitializeComponent();
-
-            this.ClientSize = new Size(width, height);
-            this.MouseDown += new MouseEventHandler(Base_MouseDown);
-            this.MouseUp += new MouseEventHandler(Base_MouseUp);
-            this.MouseMove += new MouseEventHandler(Base_MouseMove);
-            
         }
-
-        private int width;
-        private int height;
 
         private void Ellipse_Load(object sender, EventArgs e)
         {
@@ -39,22 +32,11 @@ namespace MainAndDialogForms
 
         void SetEllipseRegion()
         {
-
-            Rectangle rect = this.ClientRectangle;
-
             using (GraphicsPath path = new GraphicsPath())
             {
-                path.AddEllipse(rect);
+                path.AddEllipse(new RectangleF(0,0, heightLocal, widthLocal));
                 this.Region = new Region(path);
             }
-
         }
-
-        private void Ellipse_SizeChanged(object sender, EventArgs e)
-        {
-            SetEllipseRegion();
-        }
-        
     }
-
 }

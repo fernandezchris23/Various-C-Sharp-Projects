@@ -39,8 +39,8 @@
             this.Name = "Ellipse";
             this.Text = "Ellipse";
             this.Load += new System.EventHandler(this.Ellipse_Load);
-            this.SizeChanged += new System.EventHandler(this.Ellipse_SizeChanged);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

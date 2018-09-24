@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutDialog.Designer.cs">
+      <DependentUpon>AboutDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ellipse.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,6 +63,12 @@
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OathDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OathDialog.Designer.cs">
+      <DependentUpon>OathDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="PrefDialog.cs">
       <SubType>Form</SubType>
@@ -73,11 +85,17 @@
       <DependentUpon>RectangleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ShapeInterface.cs" />
+    <EmbeddedResource Include="AboutDialog.resx">
+      <DependentUpon>AboutDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ellipse.resx">
       <DependentUpon>Ellipse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OathDialog.resx">
+      <DependentUpon>OathDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrefDialog.resx">
       <DependentUpon>PrefDialog.cs</DependentUpon>
@@ -118,8 +136,9 @@
   <ItemGroup>
     <None Include="BackgroundImage.png" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <None Include="Resources\bgImage.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

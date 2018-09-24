@@ -53,19 +53,19 @@
             this.openPreferencesModallyToolStripMenuItem,
             this.openPreferencesModelesslyToolStripMenuItem});
             this.preferencesContextMenuStrip.Name = "preferencesContextMenuStrip";
-            this.preferencesContextMenuStrip.Size = new System.Drawing.Size(277, 52);
+            this.preferencesContextMenuStrip.Size = new System.Drawing.Size(233, 48);
             // 
             // openPreferencesModallyToolStripMenuItem
             // 
             this.openPreferencesModallyToolStripMenuItem.Name = "openPreferencesModallyToolStripMenuItem";
-            this.openPreferencesModallyToolStripMenuItem.Size = new System.Drawing.Size(276, 24);
+            this.openPreferencesModallyToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
             this.openPreferencesModallyToolStripMenuItem.Text = "Open Preferences Modally";
             this.openPreferencesModallyToolStripMenuItem.Click += new System.EventHandler(this.openPreferencesModallyToolStripMenuItem_Click);
             // 
             // openPreferencesModelesslyToolStripMenuItem
             // 
             this.openPreferencesModelesslyToolStripMenuItem.Name = "openPreferencesModelesslyToolStripMenuItem";
-            this.openPreferencesModelesslyToolStripMenuItem.Size = new System.Drawing.Size(276, 24);
+            this.openPreferencesModelesslyToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
             this.openPreferencesModelesslyToolStripMenuItem.Text = "Open Preferences Modelessly ";
             this.openPreferencesModelesslyToolStripMenuItem.Click += new System.EventHandler(this.openPreferencesModelesslyToolStripMenuItem_Click);
             // 
@@ -77,7 +77,8 @@
             this.preferencesToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip.Size = new System.Drawing.Size(600, 24);
             this.menuStrip.TabIndex = 1;
             this.menuStrip.Text = "menuStrip";
             // 
@@ -90,41 +91,41 @@
             this.closeRectangularToolStripMenuItem,
             this.closeToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // openEllipticToolStripMenuItem
             // 
             this.openEllipticToolStripMenuItem.Name = "openEllipticToolStripMenuItem";
-            this.openEllipticToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
+            this.openEllipticToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.openEllipticToolStripMenuItem.Text = "Open Elliptic";
             this.openEllipticToolStripMenuItem.Click += new System.EventHandler(this.openEllipticToolStripMenuItem_Click);
             // 
             // openRectangularToolStripMenuItem
             // 
             this.openRectangularToolStripMenuItem.Name = "openRectangularToolStripMenuItem";
-            this.openRectangularToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
+            this.openRectangularToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.openRectangularToolStripMenuItem.Text = "Open Rectangular";
             this.openRectangularToolStripMenuItem.Click += new System.EventHandler(this.openRectangularToolStripMenuItem_Click);
             // 
             // closeEllipticToolStripMenuItem
             // 
             this.closeEllipticToolStripMenuItem.Name = "closeEllipticToolStripMenuItem";
-            this.closeEllipticToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
+            this.closeEllipticToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.closeEllipticToolStripMenuItem.Text = "Close Elliptic";
             this.closeEllipticToolStripMenuItem.Click += new System.EventHandler(this.closeEllipticToolStripMenuItem_Click);
             // 
             // closeRectangularToolStripMenuItem
             // 
             this.closeRectangularToolStripMenuItem.Name = "closeRectangularToolStripMenuItem";
-            this.closeRectangularToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
+            this.closeRectangularToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.closeRectangularToolStripMenuItem.Text = "Close Rectangular";
             this.closeRectangularToolStripMenuItem.Click += new System.EventHandler(this.closeRectangularToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -134,33 +135,37 @@
             this.openPreferencesModallyToolStripMenuItem1,
             this.openPreferencesModelesslyToolStripMenuItem1});
             this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
-            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(97, 24);
+            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
             this.preferencesToolStripMenuItem.Text = "Preferences";
             // 
             // openPreferencesModallyToolStripMenuItem1
             // 
             this.openPreferencesModallyToolStripMenuItem1.Name = "openPreferencesModallyToolStripMenuItem1";
-            this.openPreferencesModallyToolStripMenuItem1.Size = new System.Drawing.Size(282, 26);
+            this.openPreferencesModallyToolStripMenuItem1.Size = new System.Drawing.Size(232, 22);
             this.openPreferencesModallyToolStripMenuItem1.Text = "Open Preferences Modally ";
             this.openPreferencesModallyToolStripMenuItem1.Click += new System.EventHandler(this.openPreferencesModallyToolStripMenuItem_Click);
             // 
             // openPreferencesModelesslyToolStripMenuItem1
             // 
             this.openPreferencesModelesslyToolStripMenuItem1.Name = "openPreferencesModelesslyToolStripMenuItem1";
-            this.openPreferencesModelesslyToolStripMenuItem1.Size = new System.Drawing.Size(282, 26);
+            this.openPreferencesModelesslyToolStripMenuItem1.Size = new System.Drawing.Size(232, 22);
             this.openPreferencesModelesslyToolStripMenuItem1.Text = "Open Preferences Modelessly ";
             this.openPreferencesModelesslyToolStripMenuItem1.Click += new System.EventHandler(this.openPreferencesModelesslyToolStripMenuItem_Click);
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.ContextMenuStrip = this.preferencesContextMenuStrip;
             this.Controls.Add(this.menuStrip);
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "MainForm";
+            this.Activated += new System.EventHandler(this.MainForm_Activated);
+            this.Deactivate += new System.EventHandler(this.MainForm_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.preferencesContextMenuStrip.ResumeLayout(false);
             this.menuStrip.ResumeLayout(false);

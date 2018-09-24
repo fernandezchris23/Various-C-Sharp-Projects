@@ -17,7 +17,7 @@ namespace ControlLibraryAssign3
             InitializeComponent();
         }
 
-        // Color Dialog Context Menu Handler
+        //Color Dialog Context Menu Handler
         private void colorsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult result = baseFormColorDialog.ShowDialog();
@@ -27,41 +27,43 @@ namespace ControlLibraryAssign3
             }
         }
 
-        // Close Context Menu Handler
+        //Close Context Menu Handler
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        // Mouse Down Handler for Movement of Shape
+        //Mouse Down Handler for Movement of Shape
         public void Base_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left) return;
 
-            downPoint = new Point(e.X, e.Y);
-
+            downOffset = new Size(e.X, e.Y);
         }
 
-        // Mouse Move Handler for Movement of Shape
+        //Mouse Move Handler for Movement of Shape
         public void Base_MouseMove(object sender, MouseEventArgs e)
         {
-            if (downPoint == Point.Empty)
+            if (downOffset == Size.Empty) //If there was no down, then don't try to move
                 return;
 
-            Point location = new Point(this.Left + e.X - downPoint.X,
-                    this.Top + e.Y - downPoint.Y);
-            this.Location = location;
+            this.Location = MdiParent.PointToClient(Cursor.Position) - downOffset; //Takes cursor position and subtracts offset to move form smoothly
         }
 
-        // Mouse Up Handler for Movement of Shape
+        //Mouse Up Handler for Movement of Shape
         public void Base_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left)
                 return;
 
-            downPoint = Point.Empty;
+            downOffset = Size.Empty;
         }
 
-        Point downPoint = Point.Empty; //Point used for monitoring location of shape while moving
+        Size downOffset; //Offset used for moving
+
+        private void closeChildToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

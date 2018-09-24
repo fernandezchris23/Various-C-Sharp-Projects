@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace MainAndDialogForms
 {
-    // chris' branch
     interface ShapeInterface
     {
         int EllipseWidth { get; set; }
@@ -14,5 +13,7 @@ namespace MainAndDialogForms
         int RectHeight { get; set; }
 
         float ShapeRatio { get; set; }
+
+        event EventHandler applyBttnClick;
     }
 }
