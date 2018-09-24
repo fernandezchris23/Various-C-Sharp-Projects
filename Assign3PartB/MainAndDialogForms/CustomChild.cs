@@ -25,8 +25,6 @@ namespace MainAndDialogForms
             InitializeComponent();
         }
 
-
-
         private void CustomChild_Load(object sender, EventArgs e)
         {
             SetRectangleRegion();
@@ -63,11 +61,10 @@ namespace MainAndDialogForms
         {
             using (GraphicsPath path = new GraphicsPath())
             {
-                Rectangle rect = this.ClientRectangle;
-
-                Point top = new Point(rect.X + widthLocal / 2, rect.Y);
-                Point right = new Point(rect.X + widthLocal, rect.Y + heightLocal);
-                Point left = new Point(rect.X, rect.Y + heightLocal);
+               
+                Point top = new Point(0 + widthLocal / 2, 0);
+                Point right = new Point(0 + widthLocal, 0 + heightLocal);
+                Point left = new Point(0, 0 + heightLocal);
 
                 Point[] polyPoints = 
                 {

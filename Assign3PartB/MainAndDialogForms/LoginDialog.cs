@@ -13,12 +13,13 @@ namespace MainAndDialogForms
     public partial class LoginDialog : Form
     {
 
+
         public LoginDialog()
         {
             InitializeComponent();
         }
-
-        // Saving the login dialog screen for future use or not into boolean in user setting
+        
+        // Saving the login dialog screen for future use or not into boolean into SkipDialog user setting
         private void skipDialogCheckbox_CheckedChanged(object sender, EventArgs e)
         {
             if (skipDialogCheckbox.Checked == true)
