@@ -43,7 +43,7 @@
             this.openPreferencesModallyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.openPreferencesModelesslyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showLoginScreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetLoginScreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.preferencesContextMenuStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -158,17 +158,17 @@
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.showLoginScreenToolStripMenuItem});
+            this.resetLoginScreenToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
             this.settingsToolStripMenuItem.Text = "Settings";
             // 
-            // showLoginScreenToolStripMenuItem
+            // resetLoginScreenToolStripMenuItem
             // 
-            this.showLoginScreenToolStripMenuItem.Name = "showLoginScreenToolStripMenuItem";
-            this.showLoginScreenToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.showLoginScreenToolStripMenuItem.Text = "Show Login Screen";
-            this.showLoginScreenToolStripMenuItem.Click += new System.EventHandler(this.showLoginScreenToolStripMenuItem_Click);
+            this.resetLoginScreenToolStripMenuItem.Name = "resetLoginScreenToolStripMenuItem";
+            this.resetLoginScreenToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.resetLoginScreenToolStripMenuItem.Text = "Reset Login Screen";
+            this.resetLoginScreenToolStripMenuItem.Click += new System.EventHandler(this.resetLoginScreenToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -209,6 +209,6 @@
         private System.Windows.Forms.ToolStripMenuItem openPreferencesModallyToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem openPreferencesModelesslyToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem showLoginScreenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem resetLoginScreenToolStripMenuItem;
     }
 }

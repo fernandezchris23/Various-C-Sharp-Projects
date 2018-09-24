@@ -25,7 +25,7 @@ namespace MainAndDialogForms
                 if (loginDialog.ShowDialog() != DialogResult.No) // if user selects yes then open application 
                     Application.Run(new MainForm());
             }
-            // if user setting is true then don't show login dialog
+            // if user setting is true (it means they didn't want to see dialog again) then just run
             else
             {
                 Application.Run(new MainForm());

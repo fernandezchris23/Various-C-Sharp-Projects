@@ -139,7 +139,7 @@ namespace MainAndDialogForms
             }
         }
 
-        private void showLoginScreenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void resetLoginScreenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowLogin = false; 
             Properties.Settings.Default.Save();
