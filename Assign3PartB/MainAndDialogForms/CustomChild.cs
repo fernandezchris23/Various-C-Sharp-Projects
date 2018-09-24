@@ -31,13 +31,14 @@ namespace MainAndDialogForms
         {
             SetRectangleRegion();
             SetEllipseRegion();
+            SetPolygonRegion();
         }
 
         private void CustomChild_StyleChanged(object sender, EventArgs e)
         {
             SetRectangleRegion();
             SetEllipseRegion();
-            SetPolygonegion();
+            SetPolygonRegion();
         }
 
         void SetEllipseRegion()
@@ -58,7 +59,7 @@ namespace MainAndDialogForms
                 this.Region = new Region(path);
             }
         }
-        void SetPolygonegion()
+        void SetPolygonRegion()
         {
             using (GraphicsPath path = new GraphicsPath())
             {
