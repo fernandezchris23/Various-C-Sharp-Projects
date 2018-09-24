@@ -52,6 +52,12 @@
     <Compile Include="AboutDialog.Designer.cs">
       <DependentUpon>AboutDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomChild.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomChild.Designer.cs">
+      <DependentUpon>CustomChild.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ellipse.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,9 @@
     <Compile Include="ShapeInterface.cs" />
     <EmbeddedResource Include="AboutDialog.resx">
       <DependentUpon>AboutDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomChild.resx">
+      <DependentUpon>CustomChild.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ellipse.resx">
       <DependentUpon>Ellipse.cs</DependentUpon>
