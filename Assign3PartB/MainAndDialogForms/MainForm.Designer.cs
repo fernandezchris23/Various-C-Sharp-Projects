@@ -42,8 +42,9 @@
             this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openPreferencesModallyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.openPreferencesModelesslyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.resetLoginScreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openCustomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeCustomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetLoginScreenToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.preferencesContextMenuStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -76,8 +77,7 @@
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.preferencesToolStripMenuItem,
-            this.settingsToolStripMenuItem});
+            this.preferencesToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
@@ -90,8 +90,10 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openEllipticToolStripMenuItem,
             this.openRectangularToolStripMenuItem,
+            this.openCustomToolStripMenuItem,
             this.closeEllipticToolStripMenuItem,
             this.closeRectangularToolStripMenuItem,
+            this.closeCustomToolStripMenuItem,
             this.closeToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
@@ -100,35 +102,35 @@
             // openEllipticToolStripMenuItem
             // 
             this.openEllipticToolStripMenuItem.Name = "openEllipticToolStripMenuItem";
-            this.openEllipticToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
+            this.openEllipticToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.openEllipticToolStripMenuItem.Text = "Open Elliptic";
             this.openEllipticToolStripMenuItem.Click += new System.EventHandler(this.openEllipticToolStripMenuItem_Click);
             // 
             // openRectangularToolStripMenuItem
             // 
             this.openRectangularToolStripMenuItem.Name = "openRectangularToolStripMenuItem";
-            this.openRectangularToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
+            this.openRectangularToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.openRectangularToolStripMenuItem.Text = "Open Rectangular";
             this.openRectangularToolStripMenuItem.Click += new System.EventHandler(this.openRectangularToolStripMenuItem_Click);
             // 
             // closeEllipticToolStripMenuItem
             // 
             this.closeEllipticToolStripMenuItem.Name = "closeEllipticToolStripMenuItem";
-            this.closeEllipticToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
+            this.closeEllipticToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.closeEllipticToolStripMenuItem.Text = "Close Elliptic";
             this.closeEllipticToolStripMenuItem.Click += new System.EventHandler(this.closeEllipticToolStripMenuItem_Click);
             // 
             // closeRectangularToolStripMenuItem
             // 
             this.closeRectangularToolStripMenuItem.Name = "closeRectangularToolStripMenuItem";
-            this.closeRectangularToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
+            this.closeRectangularToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.closeRectangularToolStripMenuItem.Text = "Close Rectangular";
             this.closeRectangularToolStripMenuItem.Click += new System.EventHandler(this.closeRectangularToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -136,7 +138,8 @@
             // 
             this.preferencesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openPreferencesModallyToolStripMenuItem1,
-            this.openPreferencesModelesslyToolStripMenuItem1});
+            this.openPreferencesModelesslyToolStripMenuItem1,
+            this.resetLoginScreenToolStripMenuItem1});
             this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
             this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(97, 24);
             this.preferencesToolStripMenuItem.Text = "Preferences";
@@ -155,20 +158,25 @@
             this.openPreferencesModelesslyToolStripMenuItem1.Text = "Open Preferences Modelessly ";
             this.openPreferencesModelesslyToolStripMenuItem1.Click += new System.EventHandler(this.openPreferencesModelesslyToolStripMenuItem_Click);
             // 
-            // settingsToolStripMenuItem
+            // openCustomToolStripMenuItem
             // 
-            this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.resetLoginScreenToolStripMenuItem});
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
-            this.settingsToolStripMenuItem.Text = "Settings";
+            this.openCustomToolStripMenuItem.Name = "openCustomToolStripMenuItem";
+            this.openCustomToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.openCustomToolStripMenuItem.Text = "Open Custom";
+            this.openCustomToolStripMenuItem.Click += new System.EventHandler(this.openCustomToolStripMenuItem_Click);
             // 
-            // resetLoginScreenToolStripMenuItem
+            // closeCustomToolStripMenuItem
             // 
-            this.resetLoginScreenToolStripMenuItem.Name = "resetLoginScreenToolStripMenuItem";
-            this.resetLoginScreenToolStripMenuItem.Size = new System.Drawing.Size(209, 26);
-            this.resetLoginScreenToolStripMenuItem.Text = "Reset Login Screen";
-            this.resetLoginScreenToolStripMenuItem.Click += new System.EventHandler(this.resetLoginScreenToolStripMenuItem_Click);
+            this.closeCustomToolStripMenuItem.Name = "closeCustomToolStripMenuItem";
+            this.closeCustomToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.closeCustomToolStripMenuItem.Text = "Close Custom";
+            // 
+            // resetLoginScreenToolStripMenuItem1
+            // 
+            this.resetLoginScreenToolStripMenuItem1.Name = "resetLoginScreenToolStripMenuItem1";
+            this.resetLoginScreenToolStripMenuItem1.Size = new System.Drawing.Size(282, 26);
+            this.resetLoginScreenToolStripMenuItem1.Text = "Reset Login Screen";
+            this.resetLoginScreenToolStripMenuItem1.Click += new System.EventHandler(this.resetLoginScreenToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -210,7 +218,8 @@
         private System.Windows.Forms.ToolStripMenuItem preferencesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openPreferencesModallyToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem openPreferencesModelesslyToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem resetLoginScreenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openCustomToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem closeCustomToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem resetLoginScreenToolStripMenuItem1;
     }
 }

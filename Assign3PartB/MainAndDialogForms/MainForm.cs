@@ -12,6 +12,7 @@ namespace MainAndDialogForms
         private float ratioLocal;
         private Stack<Ellipse> ellipseStack;
         private Stack<RectangleForm> rectangleFormStack;
+        private Stack<CustomChild> customChildStack;
         private bool prefDlgModelessClsd;
         private bool formIsClosing;
 
@@ -26,8 +27,11 @@ namespace MainAndDialogForms
             InitializeComponent();
             this.closeEllipticToolStripMenuItem.Enabled = false;
             this.closeRectangularToolStripMenuItem.Enabled = false;
+            this.closeCustomToolStripMenuItem.Enabled = false;
+
             ellipseStack = new Stack<Ellipse>();
             rectangleFormStack = new Stack<RectangleForm>();
+            customChildStack = new Stack<CustomChild>();
 
             prefDlgModelessClsd = true; //Initially it is closed
             formIsClosing = false; //Used to prevent exception in deactivation
@@ -90,6 +94,18 @@ namespace MainAndDialogForms
             }
         }
 
+        private void openCustomToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ellipWidthLocal != 0 && ratioLocal != 0 && rectHeightLocal != 0)
+            {
+                CustomChild custom = new CustomChild(ellipWidthLocal, ratioLocal);
+                custom.MdiParent = this;
+                custom.Show();
+                customChildStack.Push(custom);
+                this.closeCustomToolStripMenuItem.Enabled = true;
+            }
+        }
+
         private void closeEllipticToolStripMenuItem_Click(object sender, EventArgs e)
         {
             while(ellipseStack.Count > 0)
@@ -111,7 +127,6 @@ namespace MainAndDialogForms
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!ExitPrompt())
                 this.Close();
         }
 
@@ -141,17 +156,18 @@ namespace MainAndDialogForms
 
         private void resetLoginScreenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ShowLogin = false; 
+            ShowLogin = false;                                      // if reset is clicked then, user wants to show dialog again
             Properties.Settings.Default.Save();
         }
 
-        // try to change the setting menu to not show
+        // try to change the reset login dialog menu to not be enabled when login dialog is set to show
         private void MainForm_Load(object sender, EventArgs e)
         {
-            if (ShowLogin == true) // if skipping is wanted
-                settingsToolStripMenuItem.Visible = true; // don't show item if the 
-            else // if skipping is not wanted  
-                settingsToolStripMenuItem.Visible = false;
+            if (ShowLogin == true)                                  // if skipping is wanted
+                resetLoginScreenToolStripMenuItem1.Enabled = true;  // enable item if the login dialog is skipped in the future
+            else                                                    // if skipping is not wanted  
+                resetLoginScreenToolStripMenuItem1.Enabled = false;
         }
+
     }
 }
