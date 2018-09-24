@@ -16,8 +16,19 @@ namespace MainAndDialogForms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            
-            Application.Run(new MainForm());
+
+            if (Properties.Settings.Default.SkipDialog == false)
+            {
+                LoginDialog loginDialog = new LoginDialog();
+
+                if (loginDialog.ShowDialog() != DialogResult.No)
+                    Application.Run(new MainForm());
+            }
+            else
+            {
+                Application.Run(new MainForm());
+            }
+
         }
     }
 }
