@@ -32,27 +32,29 @@ namespace MainAndDialogForms
         public PrefDialog()
         {
             InitializeComponent();
-            rectHeightLocal = 0;
-            RatioLocal = 0f;
-            ellipWidthLocal = 0;
 
             createHelpInfo();
         }
 
         private void okayButton_Click(object sender, EventArgs e)
         {
-            ValidateTextBoxes(sender, e);
-            if(!this.Modal)
+            if(ValidateTextBoxes(sender, e))
             {
-                applyBttnClick(this, EventArgs.Empty);
-            }
-            this.Close();
+                if(!this.Modal)
+                {
+                    applyBttnClick(this, EventArgs.Empty);
+                }
+                this.Close();
+            }            
         }
 
         private void applyButton_Click(object sender, EventArgs e)
         {
-            ValidateTextBoxes(sender, e);
-            applyBttnClick(this, EventArgs.Empty);
+            if(ValidateTextBoxes(sender, e))
+            {
+                applyBttnClick(this, EventArgs.Empty);
+            }
+            
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -60,7 +62,7 @@ namespace MainAndDialogForms
             this.Close();
         }
 
-        public void ValidateTextBoxes(object sender, EventArgs e)
+        public bool ValidateTextBoxes(object sender, EventArgs e)
         {
             int textValue;
             float floattext;
@@ -68,53 +70,60 @@ namespace MainAndDialogForms
             {
                 if (int.TryParse(RectBox.Text, out textValue) && textValue > 0)
                 {
-                    RectError.Clear();
                     rectHeightLocal = textValue;
                     RectHeight = rectHeightLocal;
                 }
                 else
                 {
-                    RectError.SetError(RectBox, "Must Enter Valid Integer Greater Than 0");
+                    errorProvider.SetError(cancelButton, "Must Enter Valid Integer Greater Than 0 For Rectangle Height and Ellipse Width\n" +
+                        "and a valid float greater than 0 for ratio");
+                    return false;
                 }
             }
             else
             {
-                RectError.SetError(RectBox, "Empty Text Box! Must Enter Valid Integer Greater Than 0");
+                errorProvider.SetError(cancelButton, "Empty Text Box! Must Enter a Valid Value!");
+                return false;
             }
             if (!string.Equals(EllipText.Text, ""))
             {
                 if (int.TryParse(EllipText.Text, out textValue) && textValue > 0)
                 {
-                    EllipError.Clear();
                     ellipWidthLocal = textValue;
                     EllipseWidth = ellipWidthLocal;
                 }
                 else
                 {
-                    EllipError.SetError(EllipText, "Must Enter Valid Integer Greater Than 0");
+                    errorProvider.SetError(cancelButton, "Must Enter Valid Integer Greater Than 0 For Rectangle Height and Ellipse Width\n" +
+                        "and a valid float greater than 0 for ratio");
+                    return false;
                 }
             }
             else
             {
-                EllipError.SetError(EllipText, "Empty Text Box! Must Enter Valid Integer Greater Than 0");
+                errorProvider.SetError(cancelButton, "Empty Text Box! Must Enter a Valid Value!");
+                return false;
             }
             if (!string.Equals(RatioText.Text, ""))
             {
                 if (float.TryParse(RatioText.Text, out floattext) && floattext > 0)
                 {
-                    RatioError.Clear();
                     RatioLocal = floattext;
                     ShapeRatio = RatioLocal;
                 }
                 else
                 {
-                    RatioError.SetError(RatioText, "Must Enter Valid Float Greater Than 0");
+                    errorProvider.SetError(cancelButton, "Must Enter Valid Integer Greater Than 0 For Rectangle Height and Ellipse Width\n" +
+                        "and a valid float greater than 0 for ratio");
+                    return false;
                 }
             }
             else
             {
-                RatioError.SetError(RatioText, "Empty Text Box! Must Enter Valid Float Greater Than 0");
+                errorProvider.SetError(cancelButton, "Empty Text Box! Must Enter a Valid Value!");
+                return false;
             }
+            return true;
         }
 
         private void createHelpInfo()
@@ -140,6 +149,14 @@ namespace MainAndDialogForms
 
         private void PrefDialog_Load(object sender, EventArgs e)
         {
+            rectHeightLocal = RectHeight;
+            RatioLocal = ShapeRatio;
+            ellipWidthLocal = EllipseWidth;
+
+            RectBox.Text = rectHeightLocal.ToString();
+            EllipText.Text = ellipWidthLocal.ToString();
+            RatioText.Text = RatioLocal.ToString();
+
             if (this.Modal)
             {
                 applyButton.Enabled = false;
