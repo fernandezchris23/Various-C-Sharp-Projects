@@ -24,11 +24,6 @@ namespace MainAndDialogForms
             SetRectangleRegion();
         }
 
-        private void RectangleForm_StyleChanged(object sender, EventArgs e)
-        {
-            SetRectangleRegion();
-        }
-
         void SetRectangleRegion()
         {
             using (GraphicsPath path = new GraphicsPath())

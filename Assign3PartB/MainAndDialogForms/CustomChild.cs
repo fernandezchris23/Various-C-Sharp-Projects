@@ -27,46 +27,23 @@ namespace MainAndDialogForms
 
         private void CustomChild_Load(object sender, EventArgs e)
         {
-            SetRectangleRegion();
-            SetEllipseRegion();
-            SetPolygonRegion();
+            SetCustomRegion();
         }
 
         private void CustomChild_StyleChanged(object sender, EventArgs e)
         {
-            SetRectangleRegion();
-            SetEllipseRegion();
-            SetPolygonRegion();
+
         }
 
-        void SetEllipseRegion()
+        void SetCustomRegion()
         {
             using (GraphicsPath path = new GraphicsPath())
             {
-                path.AddEllipse(new RectangleF(0, 0, heightLocal, widthLocal));
-                this.Region = new Region(path);
-            }
-        }
-
-
-        void SetRectangleRegion()
-        {
-            using (GraphicsPath path = new GraphicsPath())
-            {
-                path.AddRectangle(new RectangleF(0, 0, widthLocal, heightLocal));
-                this.Region = new Region(path);
-            }
-        }
-        void SetPolygonRegion()
-        {
-            using (GraphicsPath path = new GraphicsPath())
-            {
-               
                 Point top = new Point(0 + widthLocal / 2, 0);
                 Point right = new Point(0 + widthLocal, 0 + heightLocal);
                 Point left = new Point(0, 0 + heightLocal);
 
-                Point[] polyPoints = 
+                Point[] polyPoints =
                 {
                     top,
                     left,
@@ -74,8 +51,11 @@ namespace MainAndDialogForms
                 };
 
                 path.AddPolygon(polyPoints);
+                path.AddEllipse(new RectangleF(0, 0, heightLocal, widthLocal));
+                path.AddRectangle(new RectangleF(0, 0, widthLocal, heightLocal));
                 this.Region = new Region(path);
             }
         }
+
     }
 }

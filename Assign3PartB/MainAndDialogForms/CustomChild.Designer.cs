@@ -39,7 +39,6 @@
             this.Name = "CustomChild";
             this.Text = "CustomChild";
             this.Load += new System.EventHandler(this.CustomChild_Load);
-            this.StyleChanged += new System.EventHandler(this.CustomChild_StyleChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 
