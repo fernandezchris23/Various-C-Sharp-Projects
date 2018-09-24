@@ -39,9 +39,6 @@
             this.RectLabel = new System.Windows.Forms.Label();
             this.EllipLabel = new System.Windows.Forms.Label();
             this.RatioLabel = new System.Windows.Forms.Label();
-            this.RectError = new System.Windows.Forms.ErrorProvider(this.components);
-            this.EllipError = new System.Windows.Forms.ErrorProvider(this.components);
-            this.RatioError = new System.Windows.Forms.ErrorProvider(this.components);
             this.toolTipRect = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipEllp = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipRatio = new System.Windows.Forms.ToolTip(this.components);
@@ -49,10 +46,9 @@
             this.toolTipApply = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipCancel = new System.Windows.Forms.ToolTip(this.components);
             this.helpProvider = new System.Windows.Forms.HelpProvider();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.dialogBaseFormPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RectError)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EllipError)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatioError)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // dialogBaseFormPanel
@@ -68,7 +64,7 @@
             this.dialogBaseFormPanel.Controls.Add(this.cancelButton);
             this.dialogBaseFormPanel.Controls.Add(this.applyButton);
             this.dialogBaseFormPanel.Controls.Add(this.okayButton);
-            this.dialogBaseFormPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dialogBaseFormPanel.Margin = new System.Windows.Forms.Padding(4);
             this.dialogBaseFormPanel.Size = new System.Drawing.Size(649, 204);
             // 
             // okayButton
@@ -170,17 +166,9 @@
             this.RatioLabel.TabIndex = 8;
             this.RatioLabel.Text = "Height Width Ratio : ";
             // 
-            // RectError
+            // errorProvider
             // 
-            this.RectError.ContainerControl = this;
-            // 
-            // EllipError
-            // 
-            this.EllipError.ContainerControl = this;
-            // 
-            // RatioError
-            // 
-            this.RatioError.ContainerControl = this;
+            this.errorProvider.ContainerControl = this;
             // 
             // PrefDialog
             // 
@@ -189,7 +177,7 @@
             this.BackgroundImage = global::MainAndDialogForms.Properties.Resources.BackgroundImage1;
             this.ClientSize = new System.Drawing.Size(649, 299);
             this.HelpButton = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PrefDialog";
@@ -199,9 +187,7 @@
             this.Load += new System.EventHandler(this.PrefDialog_Load);
             this.dialogBaseFormPanel.ResumeLayout(false);
             this.dialogBaseFormPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RectError)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EllipError)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RatioError)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -218,9 +204,6 @@
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button applyButton;
         private System.Windows.Forms.Button okayButton;
-        private System.Windows.Forms.ErrorProvider RectError;
-        private System.Windows.Forms.ErrorProvider EllipError;
-        private System.Windows.Forms.ErrorProvider RatioError;
         private System.Windows.Forms.ToolTip toolTipRect;
         private System.Windows.Forms.ToolTip toolTipRatio;
         private System.Windows.Forms.ToolTip toolTipEllp;
@@ -228,5 +211,6 @@
         private System.Windows.Forms.ToolTip toolTipApply;
         private System.Windows.Forms.ToolTip toolTipOK;
         private System.Windows.Forms.HelpProvider helpProvider;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

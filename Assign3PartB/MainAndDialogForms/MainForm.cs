@@ -26,16 +26,27 @@ namespace MainAndDialogForms
             InitializeComponent();
             this.closeEllipticToolStripMenuItem.Enabled = false;
             this.closeRectangularToolStripMenuItem.Enabled = false;
+            this.openEllipticToolStripMenuItem.Enabled = false;
+            this.openRectangularToolStripMenuItem.Enabled = false;
             ellipseStack = new Stack<Ellipse>();
             rectangleFormStack = new Stack<RectangleForm>();
 
             prefDlgModelessClsd = true; //Initially it is closed
             formIsClosing = false; //Used to prevent exception in deactivation
+
+            ellipWidthLocal = 0;
+            rectHeightLocal = 0;
+            ratioLocal = 0;
         }
 
         private void openPreferencesModallyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             prefDialog = new PrefDialog();
+
+            prefDialog.RectHeight = rectHeightLocal;
+            prefDialog.EllipseWidth = ellipWidthLocal;
+            prefDialog.ShapeRatio = ratioLocal;
+
             prefDialog.ShowDialog();
 
             SetVariables(prefDialog);
@@ -46,6 +57,11 @@ namespace MainAndDialogForms
             if(prefDlgModelessClsd)
             {
                 prefDialog = new PrefDialog();
+
+                prefDialog.RectHeight = rectHeightLocal;
+                prefDialog.EllipseWidth = ellipWidthLocal;
+                prefDialog.ShapeRatio = ratioLocal;
+
                 prefDialog.applyBttnClick += new EventHandler(prefDlgApplyClick);
                 prefDialog.FormClosed += (s, arg) => prefDlgModelessClsd = true;
                 prefDialog.Show();
@@ -64,6 +80,8 @@ namespace MainAndDialogForms
         {
             PrefDialog applyPrefDlg = sender as PrefDialog;
             SetVariables(applyPrefDlg);
+            this.openRectangularToolStripMenuItem.Enabled = true;
+            this.openEllipticToolStripMenuItem.Enabled = true;
         }
 
         private void openEllipticToolStripMenuItem_Click(object sender, EventArgs e)
@@ -111,8 +129,7 @@ namespace MainAndDialogForms
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!ExitPrompt())
-                this.Close();
+            this.Close();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
