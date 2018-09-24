@@ -35,8 +35,8 @@
             // dialogBaseFormPanel
             // 
             this.dialogBaseFormPanel.Controls.Add(this.assignDescrip);
-            this.dialogBaseFormPanel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.dialogBaseFormPanel.Size = new System.Drawing.Size(1037, 224);
+            this.dialogBaseFormPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dialogBaseFormPanel.Size = new System.Drawing.Size(778, 182);
             // 
             // assignDescrip
             // 
@@ -46,10 +46,9 @@
             this.assignDescrip.AutoSize = true;
             this.assignDescrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.assignDescrip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.assignDescrip.Location = new System.Drawing.Point(4, 69);
-            this.assignDescrip.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.assignDescrip.Location = new System.Drawing.Point(3, 56);
             this.assignDescrip.Name = "assignDescrip";
-            this.assignDescrip.Size = new System.Drawing.Size(981, 87);
+            this.assignDescrip.Size = new System.Drawing.Size(770, 72);
             this.assignDescrip.TabIndex = 0;
             this.assignDescrip.Text = "Assignment 4 is an extension of assignment 3 and is adding various dialogs and a " +
     "control\nto the project as well as converting the Main form into an MDI parent an" +
@@ -58,12 +57,12 @@
             // 
             // AboutDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MainAndDialogForms.Properties.Resources.bgImage;
-            this.ClientSize = new System.Drawing.Size(1037, 341);
+            this.ClientSize = new System.Drawing.Size(778, 277);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AboutDialog";
