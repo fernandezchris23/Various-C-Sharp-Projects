@@ -144,5 +144,14 @@ namespace MainAndDialogForms
             ShowLogin = false; 
             Properties.Settings.Default.Save();
         }
+
+        // try to change the setting menu to not show
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            if (ShowLogin == true) // if skipping is wanted
+                settingsToolStripMenuItem.Visible = true; // don't show item if the 
+            else // if skipping is not wanted  
+                settingsToolStripMenuItem.Visible = false;
+        }
     }
 }

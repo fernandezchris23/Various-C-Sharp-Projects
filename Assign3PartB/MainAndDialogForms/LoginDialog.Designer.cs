@@ -70,9 +70,9 @@
             this.warningLabel.AutoSize = true;
             this.warningLabel.Location = new System.Drawing.Point(7, 27);
             this.warningLabel.Name = "warningLabel";
-            this.warningLabel.Size = new System.Drawing.Size(332, 17);
+            this.warningLabel.Size = new System.Drawing.Size(341, 17);
             this.warningLabel.TabIndex = 2;
-            this.warningLabel.Text = "Are you sure you want to contine with out program?";
+            this.warningLabel.Text = "Are you sure you want to continue with our program?";
             // 
             // LoginDialog
             // 
