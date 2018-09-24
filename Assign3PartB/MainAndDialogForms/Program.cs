@@ -17,13 +17,15 @@ namespace MainAndDialogForms
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            // if user setting is false then show login dialog
             if (Properties.Settings.Default.SkipDialog == false)
             {
                 LoginDialog loginDialog = new LoginDialog();
 
-                if (loginDialog.ShowDialog() != DialogResult.No)
+                if (loginDialog.ShowDialog() != DialogResult.No) // if user selects yes then open application 
                     Application.Run(new MainForm());
             }
+            // if user setting is true then don't show login dialog
             else
             {
                 Application.Run(new MainForm());

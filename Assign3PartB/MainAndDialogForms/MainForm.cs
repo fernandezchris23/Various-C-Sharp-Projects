@@ -15,6 +15,12 @@ namespace MainAndDialogForms
         private bool prefDlgModelessClsd;
         private bool formIsClosing;
 
+        public bool ShowLogin
+        {
+            get { return Properties.Settings.Default.SkipDialog; }
+            set { Properties.Settings.Default.SkipDialog = (value); }
+        }
+
         public MainForm()
         {
             InitializeComponent();
@@ -131,6 +137,12 @@ namespace MainAndDialogForms
             {
                 this.Opacity = 0.5;
             }
+        }
+
+        private void showLoginScreenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowLogin = false; 
+            Properties.Settings.Default.Save();
         }
     }
 }

@@ -44,7 +44,6 @@
             this.skipDialogCheckbox.Text = "Skip this screen in the future.";
             this.skipDialogCheckbox.UseVisualStyleBackColor = true;
             this.skipDialogCheckbox.CheckedChanged += new System.EventHandler(this.skipDialogCheckbox_CheckedChanged);
-            this.skipDialogCheckbox.Click += new System.EventHandler(this.skipDialogCheckbox_Click);
             // 
             // yesBttn
             // 
