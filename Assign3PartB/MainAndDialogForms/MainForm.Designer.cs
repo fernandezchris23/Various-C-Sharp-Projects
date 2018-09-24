@@ -166,7 +166,7 @@
             // resetLoginScreenToolStripMenuItem
             // 
             this.resetLoginScreenToolStripMenuItem.Name = "resetLoginScreenToolStripMenuItem";
-            this.resetLoginScreenToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.resetLoginScreenToolStripMenuItem.Size = new System.Drawing.Size(209, 26);
             this.resetLoginScreenToolStripMenuItem.Text = "Reset Login Screen";
             this.resetLoginScreenToolStripMenuItem.Click += new System.EventHandler(this.resetLoginScreenToolStripMenuItem_Click);
             // 
@@ -181,6 +181,7 @@
             this.MainMenuStrip = this.menuStrip;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
             this.Activated += new System.EventHandler(this.MainForm_Activated);
             this.Deactivate += new System.EventHandler(this.MainForm_Deactivate);
