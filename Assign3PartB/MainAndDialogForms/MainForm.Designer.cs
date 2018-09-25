@@ -40,6 +40,7 @@
             this.closeEllipticToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeRectangularToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeCustomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.closeAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openPreferencesModallyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,7 +48,6 @@
             this.resetLoginScreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusBarLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.closeAllOpenShapesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.preferencesContextMenuStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -98,7 +98,7 @@
             this.closeEllipticToolStripMenuItem,
             this.closeRectangularToolStripMenuItem,
             this.closeCustomToolStripMenuItem,
-            this.closeAllOpenShapesToolStripMenuItem,
+            this.closeAllToolStripMenuItem,
             this.closeToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
@@ -154,6 +154,15 @@
             this.closeCustomToolStripMenuItem.Size = new System.Drawing.Size(326, 26);
             this.closeCustomToolStripMenuItem.Text = "Close Custom";
             this.closeCustomToolStripMenuItem.Click += new System.EventHandler(this.closeCustomToolStripMenuItem_Click);
+            // 
+            // closeAllToolStripMenuItem
+            // 
+            this.closeAllToolStripMenuItem.Name = "closeAllToolStripMenuItem";
+            this.closeAllToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.F4)));
+            this.closeAllToolStripMenuItem.Size = new System.Drawing.Size(326, 26);
+            this.closeAllToolStripMenuItem.Text = "Close All Open Shapes";
+            this.closeAllToolStripMenuItem.Click += new System.EventHandler(this.closeAllToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
@@ -215,14 +224,6 @@
             this.statusBarLabel.Size = new System.Drawing.Size(50, 20);
             this.statusBarLabel.Text = "Ready";
             // 
-            // closeAllOpenShapesToolStripMenuItem
-            // 
-            this.closeAllOpenShapesToolStripMenuItem.Name = "closeAllOpenShapesToolStripMenuItem";
-            this.closeAllOpenShapesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.F4)));
-            this.closeAllOpenShapesToolStripMenuItem.Size = new System.Drawing.Size(326, 26);
-            this.closeAllOpenShapesToolStripMenuItem.Text = "Close All Open Shapes";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -271,6 +272,6 @@
         private System.Windows.Forms.ToolStripMenuItem resetLoginScreenToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel statusBarLabel;
-        private System.Windows.Forms.ToolStripMenuItem closeAllOpenShapesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem closeAllToolStripMenuItem;
     }
 }

@@ -29,6 +29,7 @@ namespace MainAndDialogForms
             this.closeEllipticToolStripMenuItem.Enabled = false;
             this.closeRectangularToolStripMenuItem.Enabled = false;
             this.closeCustomToolStripMenuItem.Enabled = false;
+            this.closeAllToolStripMenuItem.Enabled = false;
 
             this.openEllipticToolStripMenuItem.Enabled = false;
             this.openRectangularToolStripMenuItem.Enabled = false;
@@ -61,6 +62,7 @@ namespace MainAndDialogForms
             this.openRectangularToolStripMenuItem.Enabled = true; 
             this.openEllipticToolStripMenuItem.Enabled = true;
             this.openCustomToolStripMenuItem.Enabled = true;
+            this.closeAllToolStripMenuItem.Enabled = true;
         }
 
         private void openPreferencesModelesslyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -94,6 +96,7 @@ namespace MainAndDialogForms
             this.openRectangularToolStripMenuItem.Enabled = true;
             this.openEllipticToolStripMenuItem.Enabled = true;
             this.openCustomToolStripMenuItem.Enabled = true;
+            this.closeAllToolStripMenuItem.Enabled = true;
         }
 
         private void openEllipticToolStripMenuItem_Click(object sender, EventArgs e)
@@ -105,6 +108,7 @@ namespace MainAndDialogForms
                 ellipse.Show();
                 ellipseStack.Push(ellipse);
                 this.closeEllipticToolStripMenuItem.Enabled = true;
+                this.closeAllToolStripMenuItem.Enabled = true;
             }
         }
 
@@ -117,6 +121,7 @@ namespace MainAndDialogForms
                 rectangleForm.Show();
                 rectangleFormStack.Push(rectangleForm);
                 this.closeRectangularToolStripMenuItem.Enabled = true;
+                this.closeAllToolStripMenuItem.Enabled = true;
             }
         }
 
@@ -129,6 +134,7 @@ namespace MainAndDialogForms
                 customChild.Show();
                 customChildStack.Push(customChild);
                 this.closeCustomToolStripMenuItem.Enabled = true;
+                this.closeAllToolStripMenuItem.Enabled = true;
             }
         }
 
@@ -159,6 +165,18 @@ namespace MainAndDialogForms
 
             if (customChildStack.Count == 0)
                 this.closeCustomToolStripMenuItem.Enabled = false;
+        }
+
+        private void closeAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (Form mdiChildForm in MdiChildren)
+            {
+                mdiChildForm.Close();
+            }
+            this.closeEllipticToolStripMenuItem.Enabled = false;
+            this.closeRectangularToolStripMenuItem.Enabled = false;
+            this.closeCustomToolStripMenuItem.Enabled = false;
+            this.closeAllToolStripMenuItem.Enabled = false;
         }
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -204,6 +222,5 @@ namespace MainAndDialogForms
             else // if skipping is not wanted  
                 resetLoginScreenToolStripMenuItem.Enabled = false; // if login dialog shows then don't enable menu item
         }
-
     }
 }
