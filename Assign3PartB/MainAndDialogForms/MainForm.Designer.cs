@@ -209,6 +209,7 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.BackColor = System.Drawing.SystemColors.Control;
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusBarLabel});
@@ -221,8 +222,10 @@
             // statusBarLabel
             // 
             this.statusBarLabel.Name = "statusBarLabel";
-            this.statusBarLabel.Size = new System.Drawing.Size(50, 20);
+            this.statusBarLabel.Size = new System.Drawing.Size(746, 20);
+            this.statusBarLabel.Spring = true;
             this.statusBarLabel.Text = "Ready";
+            this.statusBarLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MainForm
             // 
