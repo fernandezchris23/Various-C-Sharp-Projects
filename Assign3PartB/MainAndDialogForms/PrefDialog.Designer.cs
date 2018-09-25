@@ -151,23 +151,23 @@
             // 
             this.RectLabel.AutoSize = true;
             this.RectLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RectLabel.Location = new System.Drawing.Point(39, 23);
+            this.RectLabel.Location = new System.Drawing.Point(28, 22);
             this.RectLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.RectLabel.Name = "RectLabel";
-            this.RectLabel.Size = new System.Drawing.Size(132, 18);
+            this.RectLabel.Size = new System.Drawing.Size(143, 36);
             this.RectLabel.TabIndex = 6;
-            this.RectLabel.Text = "Rectangle Height : ";
+            this.RectLabel.Text = "Rectangle Height / \r\n       Custom Width : ";
             // 
             // EllipLabel
             // 
             this.EllipLabel.AutoSize = true;
             this.EllipLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EllipLabel.Location = new System.Drawing.Point(9, 73);
+            this.EllipLabel.Location = new System.Drawing.Point(66, 74);
             this.EllipLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.EllipLabel.Name = "EllipLabel";
-            this.EllipLabel.Size = new System.Drawing.Size(162, 18);
+            this.EllipLabel.Size = new System.Drawing.Size(105, 18);
             this.EllipLabel.TabIndex = 7;
-            this.EllipLabel.Text = "Ellipse/Custom Width : ";
+            this.EllipLabel.Text = "Ellipse Width : ";
             // 
             // RatioLabel
             // 

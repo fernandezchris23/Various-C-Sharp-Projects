@@ -106,14 +106,14 @@ namespace MainAndDialogForms
 
             if (!string.Equals(RectBox.Text, ""))
             {
-                if (int.TryParse(RectBox.Text, out int textValue) && (textValue > 0 && textValue < 1000))
+                if (int.TryParse(RectBox.Text, out int textValue) && (textValue > 20 && textValue < 100))
                 {
                     rectHeightLocal = textValue;
                     RectHeight = rectHeightLocal;
                 }
                 else
                 {
-                    errorProvider.SetError(RectBox, "Must Enter Valid Integer Greater Than 0 and Less Than 1000 For Rectangle Height");
+                    errorProvider.SetError(RectBox, "Must Enter Valid Integer Greater Than 20 and Less Than 100 For Rectangle Height and Custom Width");
                     e.Cancel = true;
                 }
             }
@@ -129,14 +129,14 @@ namespace MainAndDialogForms
 
             if (!string.Equals(EllipText.Text, ""))
             {
-                if (int.TryParse(EllipText.Text, out int textValue) && (textValue > 0 && textValue < 1000))
+                if (int.TryParse(EllipText.Text, out int textValue) && (textValue > 20 && textValue < 100))
                 {
                     ellipWidthLocal = textValue;
                     EllipseWidth = ellipWidthLocal;
                 }
                 else
                 {
-                    errorProvider.SetError(EllipText, "Must Enter Valid Integer Greater Than 0 and Less Than 1000 for Ellipse and Custom Width");
+                    errorProvider.SetError(EllipText, "Must Enter Valid Integer Greater Than 20 and Less Than 100 for Ellipse");
                     e.Cancel = true;
                 }
             }

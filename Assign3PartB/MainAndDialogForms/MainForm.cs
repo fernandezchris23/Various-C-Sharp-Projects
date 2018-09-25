@@ -131,7 +131,8 @@ namespace MainAndDialogForms
         {
             if (ellipWidthLocal != 0 && ratioLocal != 0)
             {
-                CustomChild customChild = new CustomChild(ellipWidthLocal, ratioLocal);
+                //
+                CustomChild customChild = new CustomChild(rectHeightLocal, ratioLocal);
                 customChild.MdiParent = this;
                 customChild.Show();
                 customChildStack.Push(customChild);
