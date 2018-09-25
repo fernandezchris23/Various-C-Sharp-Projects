@@ -162,13 +162,13 @@ namespace MainAndDialogForms
             Properties.Settings.Default.Save();
         }
 
-        // try to change the setting menu to not show
+        // try to change the reset login dialog menu item to be enabled if the user Skips the Login Dialog
         private void MainForm_Load(object sender, EventArgs e)
         {
             if (ShowLogin == true) // if skipping is wanted
-                settingsToolStripMenuItem.Visible = true; // don't show item if the 
+                resetLoginScreenToolStripMenuItem.Enabled = true; // enable item if the user skips
             else // if skipping is not wanted  
-                settingsToolStripMenuItem.Visible = false;
+                resetLoginScreenToolStripMenuItem.Enabled = false; // if login dialog shows then don't enable menu item
         }
     }
 }
