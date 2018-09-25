@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace MainAndDialogForms
@@ -221,6 +222,26 @@ namespace MainAndDialogForms
                 resetLoginScreenToolStripMenuItem.Enabled = true; // enable item if the user skips
             else // if skipping is not wanted  
                 resetLoginScreenToolStripMenuItem.Enabled = false; // if login dialog shows then don't enable menu item
+        }
+
+        private void MainForm_MdiChildActivate(object sender, EventArgs e)
+        {
+            foreach (Form mdiChildForm in MdiChildren)
+            {
+
+                if (ActiveMdiChild is Ellipse)
+                {
+                    statusLabel.Text = "Ellipse" + ActiveMdiChild.BackColor.ToString();
+                }
+                else if (ActiveMdiChild is RectangleForm)
+                {
+                    statusLabel.Text = "Rectangle" + ActiveMdiChild.BackColor.ToString();
+                }
+                else if (ActiveMdiChild is CustomChild)
+                {
+                    statusLabel.Text = "Custom" + ActiveMdiChild.BackColor.ToString();
+                }
+            }
         }
     }
 }
