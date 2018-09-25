@@ -71,6 +71,7 @@ namespace MainAndDialogForms
             if(prefDlgModelessClsd)
             {
                 prefDialog = new PrefDialog();
+                prefDialog.Owner = this;        // the main form is the owner of the preference dialog
 
                 prefDialog.RectHeight = rectHeightLocal;
                 prefDialog.EllipseWidth = ellipWidthLocal;
@@ -178,6 +179,9 @@ namespace MainAndDialogForms
             this.closeRectangularToolStripMenuItem.Enabled = false;
             this.closeCustomToolStripMenuItem.Enabled = false;
             this.closeAllToolStripMenuItem.Enabled = false;
+
+            statusLabel.Text = "Ready";
+            statusStrip.BackColor = System.Drawing.SystemColors.Control; // reset status strip color after all children close
         }
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -232,16 +236,20 @@ namespace MainAndDialogForms
                 if (ActiveMdiChild is Ellipse)
                 {
                     statusLabel.Text = "Ellipse" + ActiveMdiChild.BackColor.ToString();
+                    statusStrip.BackColor = ActiveMdiChild.BackColor;
                 }
                 else if (ActiveMdiChild is RectangleForm)
                 {
                     statusLabel.Text = "Rectangle" + ActiveMdiChild.BackColor.ToString();
+                    statusStrip.BackColor = ActiveMdiChild.BackColor;
                 }
                 else if (ActiveMdiChild is CustomChild)
                 {
                     statusLabel.Text = "Custom" + ActiveMdiChild.BackColor.ToString();
+                    statusStrip.BackColor = ActiveMdiChild.BackColor;
                 }
             }
         }
+
     }
 }

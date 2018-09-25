@@ -46,11 +46,11 @@
             this.openPreferencesModallyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.openPreferencesModelesslyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.resetLoginScreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.preferencesContextMenuStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
+            this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // preferencesContextMenuStrip
@@ -207,17 +207,17 @@
             this.resetLoginScreenToolStripMenuItem.Text = "Reset Login Screen";
             this.resetLoginScreenToolStripMenuItem.Click += new System.EventHandler(this.resetLoginScreenToolStripMenuItem_Click);
             // 
-            // statusStrip1
+            // statusStrip
             // 
-            this.statusStrip1.BackColor = System.Drawing.SystemColors.Control;
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusStrip.BackColor = System.Drawing.SystemColors.Control;
+            this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 425);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(800, 25);
-            this.statusStrip1.TabIndex = 3;
-            this.statusStrip1.Text = "statusStrip1";
+            this.statusStrip.Location = new System.Drawing.Point(0, 425);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(800, 25);
+            this.statusStrip.TabIndex = 3;
+            this.statusStrip.Text = "statusStrip1";
             // 
             // statusLabel
             // 
@@ -231,7 +231,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ContextMenuStrip = this.preferencesContextMenuStrip;
-            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
@@ -247,8 +247,8 @@
             this.preferencesContextMenuStrip.ResumeLayout(false);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -272,7 +272,7 @@
         private System.Windows.Forms.ToolStripMenuItem openCustomToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeCustomToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem resetLoginScreenToolStripMenuItem;
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripMenuItem closeAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel statusLabel;
     }
