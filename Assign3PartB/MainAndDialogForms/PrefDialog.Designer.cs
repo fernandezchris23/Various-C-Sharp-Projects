@@ -119,6 +119,7 @@
             this.RectBox.TabIndex = 3;
             this.toolTipRect.SetToolTip(this.RectBox, "Height of Rectangle must be a positive integer greater than 0\r\n(ex: 1, 2, 3, 4, 5" +
         "...)");
+            this.RectBox.Validating += new System.ComponentModel.CancelEventHandler(this.RectBox_Validating);
             // 
             // EllipText
             // 
@@ -131,6 +132,7 @@
             this.EllipText.TabIndex = 4;
             this.toolTipEllp.SetToolTip(this.EllipText, "Width of Ellipse must be a positive integer greater than 0\r\n(ex: 1, 2, 3, 4, 5..." +
         ")");
+            this.EllipText.Validating += new System.ComponentModel.CancelEventHandler(this.EllipText_Validating);
             // 
             // RatioText
             // 
@@ -143,6 +145,7 @@
             this.RatioText.TabIndex = 5;
             this.toolTipRatio.SetToolTip(this.RatioText, "Ratio must be a positive floating point number greater than 0\r\n(ex: 0.5, 1.0, 2.5" +
         ", 3.75, 3.141526...)");
+            this.RatioText.Validating += new System.ComponentModel.CancelEventHandler(this.RatioText_Validating);
             // 
             // RectLabel
             // 

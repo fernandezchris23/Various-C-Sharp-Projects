@@ -1,5 +1,6 @@
 ﻿using System;
 using ControlLibraryAssign3;
+using System.Windows.Forms;
 
 namespace MainAndDialogForms
 {
@@ -38,23 +39,20 @@ namespace MainAndDialogForms
 
         private void okayButton_Click(object sender, EventArgs e)
         {
-            if(ValidateTextBoxes(sender, e))
+            if(this.ValidateChildren())
             {
-                if(!this.Modal)
+                if (!this.Modal)
                 {
                     applyBttnClick(this, EventArgs.Empty);
                 }
                 this.Close();
+                
             }            
         }
 
         private void applyButton_Click(object sender, EventArgs e)
         {
-            if(ValidateTextBoxes(sender, e))
-            {
-                applyBttnClick(this, EventArgs.Empty);
-            }
-            
+                applyBttnClick(this, EventArgs.Empty);   
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -62,69 +60,6 @@ namespace MainAndDialogForms
             this.Close();
         }
 
-        public bool ValidateTextBoxes(object sender, EventArgs e)
-        {
-            int textValue;
-            float floattext;
-            if (!string.Equals(RectBox.Text, ""))
-            {
-                if (int.TryParse(RectBox.Text, out textValue) && textValue > 0)
-                {
-                    rectHeightLocal = textValue;
-                    RectHeight = rectHeightLocal;
-                }
-                else
-                {
-                    errorProvider.SetError(cancelButton, "Must Enter Valid Integer Greater Than 0 For Rectangle Height and Ellipse Width\n" +
-                        "and a valid float greater than 0 for ratio");
-                    return false;
-                }
-            }
-            else
-            {
-                errorProvider.SetError(cancelButton, "Empty Text Box! Must Enter a Valid Value!");
-                return false;
-            }
-            if (!string.Equals(EllipText.Text, ""))
-            {
-                if (int.TryParse(EllipText.Text, out textValue) && textValue > 0)
-                {
-                    ellipWidthLocal = textValue;
-                    EllipseWidth = ellipWidthLocal;
-                }
-                else
-                {
-                    errorProvider.SetError(cancelButton, "Must Enter Valid Integer Greater Than 0 For Rectangle Height and Ellipse Width\n" +
-                        "and a valid float greater than 0 for ratio");
-                    return false;
-                }
-            }
-            else
-            {
-                errorProvider.SetError(cancelButton, "Empty Text Box! Must Enter a Valid Value!");
-                return false;
-            }
-            if (!string.Equals(RatioText.Text, ""))
-            {
-                if (float.TryParse(RatioText.Text, out floattext) && floattext > 0)
-                {
-                    RatioLocal = floattext;
-                    ShapeRatio = RatioLocal;
-                }
-                else
-                {
-                    errorProvider.SetError(cancelButton, "Must Enter Valid Integer Greater Than 0 For Rectangle Height and Ellipse Width\n" +
-                        "and a valid float greater than 0 for ratio");
-                    return false;
-                }
-            }
-            else
-            {
-                errorProvider.SetError(cancelButton, "Empty Text Box! Must Enter a Valid Value!");
-                return false;
-            }
-            return true;
-        }
 
         private void createHelpInfo()
         {
@@ -161,6 +96,74 @@ namespace MainAndDialogForms
             {
                 applyButton.Enabled = false;
                 applyButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            }
+        }
+
+        private void RectBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+            if (!string.Equals(RectBox.Text, ""))
+            {
+                if (int.TryParse(RectBox.Text, out int textValue) && (textValue > 0 && textValue < 1000))
+                {
+                    rectHeightLocal = textValue;
+                    RectHeight = rectHeightLocal;
+                }
+                else
+                {
+                    errorProvider.SetError(cancelButton, "Must Enter Valid Integer Greater Than 0 and Less Than 1000 For Rectangle Height");
+                    e.Cancel = true;
+                }
+            }
+            else
+            {
+                errorProvider.SetError(cancelButton, "Empty Text Box! Must Enter a Valid Value!");
+                e.Cancel = true;
+            }
+        }
+
+        private void EllipText_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+            if (!string.Equals(EllipText.Text, ""))
+            {
+                if (int.TryParse(EllipText.Text, out int textValue) && (textValue > 0 && textValue < 1000))
+                {
+                    ellipWidthLocal = textValue;
+                    EllipseWidth = ellipWidthLocal;
+                }
+                else
+                {
+                    errorProvider.SetError(cancelButton, "Must Enter Valid Integer Greater Than 0 and Less Than 1000 for Ellipse and Custom Width");
+                    e.Cancel = true;
+                }
+            }
+            else
+            {
+                errorProvider.SetError(cancelButton, "Empty Text Box! Must Enter a Valid Value!");
+                e.Cancel = true;
+            }
+        }
+
+        private void RatioText_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!string.Equals(RatioText.Text, ""))
+            {
+                if (float.TryParse(RatioText.Text, out float floattext) && (floattext > 0 && floattext < 10))
+                {
+                    RatioLocal = floattext;
+                    ShapeRatio = RatioLocal;
+                }
+                else
+                {
+                    errorProvider.SetError(cancelButton, "Must Enter Valid Float Greater Than 0 and Less Than 10 for Ratio");
+                    e.Cancel = true;
+                }
+            }
+            else
+            {
+                errorProvider.SetError(cancelButton, "Empty Text Box! Must Enter a Valid Value!");
+                e.Cancel = true;
             }
         }
     }
