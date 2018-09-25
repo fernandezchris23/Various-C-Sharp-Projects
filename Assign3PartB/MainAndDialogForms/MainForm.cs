@@ -57,6 +57,9 @@ namespace MainAndDialogForms
             prefDialog.ShowDialog();
 
             SetVariables(prefDialog);
+            this.openRectangularToolStripMenuItem.Enabled = true; 
+            this.openEllipticToolStripMenuItem.Enabled = true;
+            this.openCustomToolStripMenuItem.Enabled = true;
         }
 
         private void openPreferencesModelesslyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -89,6 +92,7 @@ namespace MainAndDialogForms
             SetVariables(applyPrefDlg);
             this.openRectangularToolStripMenuItem.Enabled = true;
             this.openEllipticToolStripMenuItem.Enabled = true;
+            this.openCustomToolStripMenuItem.Enabled = true;
         }
 
         private void openEllipticToolStripMenuItem_Click(object sender, EventArgs e)
