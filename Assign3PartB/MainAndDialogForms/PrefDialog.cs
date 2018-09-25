@@ -39,14 +39,16 @@ namespace MainAndDialogForms
 
         private void okayButton_Click(object sender, EventArgs e)
         {
-            if(this.ValidateChildren())
+            if (!this.ValidateChildren())
+                DialogResult = DialogResult.None;
+            else if (this.ValidateChildren())
             {
                 if (!this.Modal)
                 {
                     applyBttnClick(this, EventArgs.Empty);
                 }
                 this.Close();
-                
+
             }            
         }
 
