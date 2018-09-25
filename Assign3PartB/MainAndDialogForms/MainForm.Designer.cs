@@ -45,8 +45,11 @@
             this.openPreferencesModallyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.openPreferencesModelesslyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.resetLoginScreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.statusBarLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.preferencesContextMenuStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // preferencesContextMenuStrip
@@ -116,7 +119,7 @@
             // openCustomToolStripMenuItem
             // 
             this.openCustomToolStripMenuItem.Name = "openCustomToolStripMenuItem";
-            this.openCustomToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.openCustomToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
             this.openCustomToolStripMenuItem.Text = "Open Custom";
             this.openCustomToolStripMenuItem.Click += new System.EventHandler(this.openCustomToolStripMenuItem_Click);
             // 
@@ -137,7 +140,7 @@
             // closeCustomToolStripMenuItem
             // 
             this.closeCustomToolStripMenuItem.Name = "closeCustomToolStripMenuItem";
-            this.closeCustomToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.closeCustomToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
             this.closeCustomToolStripMenuItem.Text = "Close Custom";
             this.closeCustomToolStripMenuItem.Click += new System.EventHandler(this.closeCustomToolStripMenuItem_Click);
             // 
@@ -179,12 +182,30 @@
             this.resetLoginScreenToolStripMenuItem.Text = "Reset Login Screen";
             this.resetLoginScreenToolStripMenuItem.Click += new System.EventHandler(this.resetLoginScreenToolStripMenuItem_Click);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusBarLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 425);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(800, 25);
+            this.statusStrip1.TabIndex = 3;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // statusBarLabel
+            // 
+            this.statusBarLabel.Name = "statusBarLabel";
+            this.statusBarLabel.Size = new System.Drawing.Size(151, 20);
+            this.statusBarLabel.Text = "toolStripStatusLabel1";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ContextMenuStrip = this.preferencesContextMenuStrip;
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
@@ -199,6 +220,8 @@
             this.preferencesContextMenuStrip.ResumeLayout(false);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,5 +245,7 @@
         private System.Windows.Forms.ToolStripMenuItem openCustomToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeCustomToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem resetLoginScreenToolStripMenuItem;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel statusBarLabel;
     }
 }

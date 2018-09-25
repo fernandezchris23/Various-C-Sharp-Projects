@@ -199,7 +199,6 @@
             this.Name = "PrefDialog";
             this.helpProvider.SetShowHelp(this, true);
             this.Text = "Preferences";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.PrefDialog_Load);
             this.dialogBaseFormPanel.ResumeLayout(false);
             this.dialogBaseFormPanel.PerformLayout();

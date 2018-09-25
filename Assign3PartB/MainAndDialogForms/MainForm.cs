@@ -49,6 +49,7 @@ namespace MainAndDialogForms
         private void openPreferencesModallyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             prefDialog = new PrefDialog();
+            prefDialog.Owner = this;        // the main form is the owner of the preference dialog             
 
             prefDialog.RectHeight = rectHeightLocal;
             prefDialog.EllipseWidth = ellipWidthLocal;
