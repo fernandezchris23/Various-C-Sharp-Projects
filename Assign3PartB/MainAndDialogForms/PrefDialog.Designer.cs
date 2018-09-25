@@ -64,15 +64,16 @@
             this.dialogBaseFormPanel.Controls.Add(this.cancelButton);
             this.dialogBaseFormPanel.Controls.Add(this.applyButton);
             this.dialogBaseFormPanel.Controls.Add(this.okayButton);
-            this.dialogBaseFormPanel.Margin = new System.Windows.Forms.Padding(4);
-            this.dialogBaseFormPanel.Size = new System.Drawing.Size(649, 204);
+            this.dialogBaseFormPanel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dialogBaseFormPanel.Size = new System.Drawing.Size(865, 251);
             // 
             // okayButton
             // 
             this.okayButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.okayButton.Location = new System.Drawing.Point(396, 156);
+            this.okayButton.Location = new System.Drawing.Point(529, 193);
+            this.okayButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.okayButton.Name = "okayButton";
-            this.okayButton.Size = new System.Drawing.Size(70, 25);
+            this.okayButton.Size = new System.Drawing.Size(93, 31);
             this.okayButton.TabIndex = 0;
             this.okayButton.Text = "OK";
             this.toolTipOK.SetToolTip(this.okayButton, "Click to apply changes and close Preferences");
@@ -82,9 +83,10 @@
             // applyButton
             // 
             this.applyButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.applyButton.Location = new System.Drawing.Point(472, 156);
+            this.applyButton.Location = new System.Drawing.Point(631, 193);
+            this.applyButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.applyButton.Name = "applyButton";
-            this.applyButton.Size = new System.Drawing.Size(70, 25);
+            this.applyButton.Size = new System.Drawing.Size(93, 31);
             this.applyButton.TabIndex = 1;
             this.applyButton.Text = "Apply";
             this.toolTipApply.SetToolTip(this.applyButton, "Click to apply changes");
@@ -94,9 +96,10 @@
             // cancelButton
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelButton.Location = new System.Drawing.Point(548, 156);
+            this.cancelButton.Location = new System.Drawing.Point(732, 193);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(70, 25);
+            this.cancelButton.Size = new System.Drawing.Size(93, 31);
             this.cancelButton.TabIndex = 2;
             this.cancelButton.Text = "Cancel";
             this.toolTipCancel.SetToolTip(this.cancelButton, "Click to close Preferences");
@@ -107,9 +110,10 @@
             // 
             this.RectBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.RectBox.Location = new System.Drawing.Point(146, 18);
+            this.RectBox.Location = new System.Drawing.Point(195, 22);
+            this.RectBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.RectBox.Name = "RectBox";
-            this.RectBox.Size = new System.Drawing.Size(411, 20);
+            this.RectBox.Size = new System.Drawing.Size(548, 22);
             this.RectBox.TabIndex = 3;
             this.toolTipRect.SetToolTip(this.RectBox, "Height of Rectangle must be a positive integer greater than 0\r\n(ex: 1, 2, 3, 4, 5" +
         "...)");
@@ -118,9 +122,10 @@
             // 
             this.EllipText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.EllipText.Location = new System.Drawing.Point(146, 59);
+            this.EllipText.Location = new System.Drawing.Point(195, 73);
+            this.EllipText.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.EllipText.Name = "EllipText";
-            this.EllipText.Size = new System.Drawing.Size(411, 20);
+            this.EllipText.Size = new System.Drawing.Size(548, 22);
             this.EllipText.TabIndex = 4;
             this.toolTipEllp.SetToolTip(this.EllipText, "Width of Ellipse must be a positive integer greater than 0\r\n(ex: 1, 2, 3, 4, 5..." +
         ")");
@@ -129,9 +134,10 @@
             // 
             this.RatioText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.RatioText.Location = new System.Drawing.Point(146, 100);
+            this.RatioText.Location = new System.Drawing.Point(195, 123);
+            this.RatioText.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.RatioText.Name = "RatioText";
-            this.RatioText.Size = new System.Drawing.Size(411, 20);
+            this.RatioText.Size = new System.Drawing.Size(548, 22);
             this.RatioText.TabIndex = 5;
             this.toolTipRatio.SetToolTip(this.RatioText, "Ratio must be a positive floating point number greater than 0\r\n(ex: 0.5, 1.0, 2.5" +
         ", 3.75, 3.141526...)");
@@ -140,9 +146,10 @@
             // 
             this.RectLabel.AutoSize = true;
             this.RectLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RectLabel.Location = new System.Drawing.Point(29, 19);
+            this.RectLabel.Location = new System.Drawing.Point(39, 23);
+            this.RectLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.RectLabel.Name = "RectLabel";
-            this.RectLabel.Size = new System.Drawing.Size(111, 15);
+            this.RectLabel.Size = new System.Drawing.Size(132, 18);
             this.RectLabel.TabIndex = 6;
             this.RectLabel.Text = "Rectangle Height : ";
             // 
@@ -150,19 +157,21 @@
             // 
             this.EllipLabel.AutoSize = true;
             this.EllipLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EllipLabel.Location = new System.Drawing.Point(53, 60);
+            this.EllipLabel.Location = new System.Drawing.Point(9, 73);
+            this.EllipLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.EllipLabel.Name = "EllipLabel";
-            this.EllipLabel.Size = new System.Drawing.Size(87, 15);
+            this.EllipLabel.Size = new System.Drawing.Size(162, 18);
             this.EllipLabel.TabIndex = 7;
-            this.EllipLabel.Text = "Ellipse Width : ";
+            this.EllipLabel.Text = "Ellipse/Custom Width : ";
             // 
             // RatioLabel
             // 
             this.RatioLabel.AutoSize = true;
             this.RatioLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RatioLabel.Location = new System.Drawing.Point(22, 101);
+            this.RatioLabel.Location = new System.Drawing.Point(28, 124);
+            this.RatioLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.RatioLabel.Name = "RatioLabel";
-            this.RatioLabel.Size = new System.Drawing.Size(118, 15);
+            this.RatioLabel.Size = new System.Drawing.Size(143, 18);
             this.RatioLabel.TabIndex = 8;
             this.RatioLabel.Text = "Height Width Ratio : ";
             // 
@@ -172,12 +181,12 @@
             // 
             // PrefDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MainAndDialogForms.Properties.Resources.BackgroundImage1;
-            this.ClientSize = new System.Drawing.Size(649, 299);
+            this.ClientSize = new System.Drawing.Size(865, 368);
             this.HelpButton = true;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PrefDialog";

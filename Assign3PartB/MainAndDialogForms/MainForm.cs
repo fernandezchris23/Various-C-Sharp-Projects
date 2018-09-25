@@ -136,7 +136,7 @@ namespace MainAndDialogForms
             while(ellipseStack.Count > 0)
                 ellipseStack.Pop().Close();
             
-            if(ellipseStack.Count == 0)
+            if (ellipseStack.Count == 0)
                 this.closeEllipticToolStripMenuItem.Enabled = false;
 
         }
