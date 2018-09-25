@@ -64,14 +64,15 @@
             this.dialogBaseFormPanel.Controls.Add(this.cancelButton);
             this.dialogBaseFormPanel.Controls.Add(this.applyButton);
             this.dialogBaseFormPanel.Controls.Add(this.okayButton);
-            this.dialogBaseFormPanel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dialogBaseFormPanel.Margin = new System.Windows.Forms.Padding(5);
             this.dialogBaseFormPanel.Size = new System.Drawing.Size(865, 251);
             // 
             // okayButton
             // 
             this.okayButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.okayButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.okayButton.Location = new System.Drawing.Point(529, 193);
-            this.okayButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.okayButton.Margin = new System.Windows.Forms.Padding(4);
             this.okayButton.Name = "okayButton";
             this.okayButton.Size = new System.Drawing.Size(93, 31);
             this.okayButton.TabIndex = 0;
@@ -84,7 +85,7 @@
             // 
             this.applyButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.applyButton.Location = new System.Drawing.Point(631, 193);
-            this.applyButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.applyButton.Margin = new System.Windows.Forms.Padding(4);
             this.applyButton.Name = "applyButton";
             this.applyButton.Size = new System.Drawing.Size(93, 31);
             this.applyButton.TabIndex = 1;
@@ -96,8 +97,9 @@
             // cancelButton
             // 
             this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.Location = new System.Drawing.Point(732, 193);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(4);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(93, 31);
             this.cancelButton.TabIndex = 2;
@@ -111,7 +113,7 @@
             this.RectBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.RectBox.Location = new System.Drawing.Point(195, 22);
-            this.RectBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RectBox.Margin = new System.Windows.Forms.Padding(4);
             this.RectBox.Name = "RectBox";
             this.RectBox.Size = new System.Drawing.Size(548, 22);
             this.RectBox.TabIndex = 3;
@@ -123,7 +125,7 @@
             this.EllipText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.EllipText.Location = new System.Drawing.Point(195, 73);
-            this.EllipText.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.EllipText.Margin = new System.Windows.Forms.Padding(4);
             this.EllipText.Name = "EllipText";
             this.EllipText.Size = new System.Drawing.Size(548, 22);
             this.EllipText.TabIndex = 4;
@@ -135,7 +137,7 @@
             this.RatioText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.RatioText.Location = new System.Drawing.Point(195, 123);
-            this.RatioText.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RatioText.Margin = new System.Windows.Forms.Padding(4);
             this.RatioText.Name = "RatioText";
             this.RatioText.Size = new System.Drawing.Size(548, 22);
             this.RatioText.TabIndex = 5;
@@ -181,12 +183,14 @@
             // 
             // PrefDialog
             // 
+            this.AcceptButton = this.okayButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::MainAndDialogForms.Properties.Resources.BackgroundImage1;
+            this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(865, 368);
             this.HelpButton = true;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PrefDialog";
