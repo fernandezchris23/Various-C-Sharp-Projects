@@ -39,9 +39,9 @@ namespace MainAndDialogForms
 
         private void okayButton_Click(object sender, EventArgs e)
         {
-            if (!this.ValidateChildren())
-                DialogResult = DialogResult.None;
-            else if (this.ValidateChildren())
+            if (!this.ValidateChildren()) // validates modal preference dialog
+                DialogResult = DialogResult.None;  
+            else if (this.ValidateChildren()) // validates modeless preference dialog
             {
                 if (!this.Modal)
                 {
@@ -113,13 +113,13 @@ namespace MainAndDialogForms
                 }
                 else
                 {
-                    errorProvider.SetError(cancelButton, "Must Enter Valid Integer Greater Than 0 and Less Than 1000 For Rectangle Height");
+                    errorProvider.SetError(RectBox, "Must Enter Valid Integer Greater Than 0 and Less Than 1000 For Rectangle Height");
                     e.Cancel = true;
                 }
             }
             else
             {
-                errorProvider.SetError(cancelButton, "Empty Text Box! Must Enter a Valid Value!");
+                errorProvider.SetError(RectBox, "Empty Text Box! Must Enter a Valid Value!");
                 e.Cancel = true;
             }
         }
@@ -136,13 +136,13 @@ namespace MainAndDialogForms
                 }
                 else
                 {
-                    errorProvider.SetError(cancelButton, "Must Enter Valid Integer Greater Than 0 and Less Than 1000 for Ellipse and Custom Width");
+                    errorProvider.SetError(EllipText, "Must Enter Valid Integer Greater Than 0 and Less Than 1000 for Ellipse and Custom Width");
                     e.Cancel = true;
                 }
             }
             else
             {
-                errorProvider.SetError(cancelButton, "Empty Text Box! Must Enter a Valid Value!");
+                errorProvider.SetError(EllipText, "Empty Text Box! Must Enter a Valid Value!");
                 e.Cancel = true;
             }
         }
@@ -158,13 +158,13 @@ namespace MainAndDialogForms
                 }
                 else
                 {
-                    errorProvider.SetError(cancelButton, "Must Enter Valid Float Greater Than 0 and Less Than 10 for Ratio");
+                    errorProvider.SetError(RatioText, "Must Enter Valid Float Greater Than 0 and Less Than 10 for Ratio");
                     e.Cancel = true;
                 }
             }
             else
             {
-                errorProvider.SetError(cancelButton, "Empty Text Box! Must Enter a Valid Value!");
+                errorProvider.SetError(RatioText, "Empty Text Box! Must Enter a Valid Value!");
                 e.Cancel = true;
             }
         }
