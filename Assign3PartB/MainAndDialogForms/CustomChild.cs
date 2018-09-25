@@ -51,7 +51,7 @@ namespace MainAndDialogForms
                 };
 
                 path.AddPolygon(polyPoints);
-                path.AddEllipse(new RectangleF(0, 0, heightLocal, widthLocal));
+                path.AddEllipse(new RectangleF(0, 0, widthLocal, heightLocal));
                 path.AddRectangle(new RectangleF(0, 0, widthLocal, heightLocal));
                 this.Region = new Region(path);
             }
