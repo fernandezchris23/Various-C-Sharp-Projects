@@ -12,6 +12,8 @@ namespace ControlLibraryAssign3
 {
     public partial class BaseForm : Form
     {
+        Point downPoint = Point.Empty;
+
         public BaseForm()
         {
             InitializeComponent();
@@ -38,28 +40,26 @@ namespace ControlLibraryAssign3
         {
             if (e.Button != MouseButtons.Left) return;
 
-            downOffset = new Size(e.X, e.Y);
+            downPoint = new Point(e.X, e.Y);
         }
 
         // Mouse Move Handler for Movement of Shape
         public void Base_MouseMove(object sender, MouseEventArgs e)
         {
-            if (downOffset == Size.Empty) // If there was no down, then don't try to move
-                return;
-
-            this.Location = MdiParent.PointToClient(Cursor.Position) - downOffset; // Takes cursor position and subtracts offset to move form smoothly
+            if (downPoint == Point.Empty) return;
+            Point location =
+            new Point(
+            this.Left + e.X - downPoint.X,
+            this.Top + e.Y - downPoint.Y);
+            this.Location = location;
         }
 
         // Mouse Up Handler for Movement of Shape
         public void Base_MouseUp(object sender, MouseEventArgs e)
         {
-            if (e.Button != MouseButtons.Left)
-                return;
-
-            downOffset = Size.Empty;
+            if (e.Button != MouseButtons.Left) return;
+            downPoint = Point.Empty;
         }
-
-        Size downOffset; // Offset used for moving
 
         private void closeChildToolStripMenuItem_Click(object sender, EventArgs e)
         {
