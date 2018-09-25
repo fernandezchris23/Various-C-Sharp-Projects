@@ -116,8 +116,9 @@
             // openCustomToolStripMenuItem
             // 
             this.openCustomToolStripMenuItem.Name = "openCustomToolStripMenuItem";
-            this.openCustomToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
+            this.openCustomToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.openCustomToolStripMenuItem.Text = "Open Custom";
+            this.openCustomToolStripMenuItem.Click += new System.EventHandler(this.openCustomToolStripMenuItem_Click);
             // 
             // closeEllipticToolStripMenuItem
             // 
@@ -136,8 +137,9 @@
             // closeCustomToolStripMenuItem
             // 
             this.closeCustomToolStripMenuItem.Name = "closeCustomToolStripMenuItem";
-            this.closeCustomToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
+            this.closeCustomToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.closeCustomToolStripMenuItem.Text = "Close Custom";
+            this.closeCustomToolStripMenuItem.Click += new System.EventHandler(this.closeCustomToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 

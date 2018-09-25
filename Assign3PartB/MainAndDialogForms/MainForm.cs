@@ -12,6 +12,8 @@ namespace MainAndDialogForms
         private float ratioLocal;
         private Stack<Ellipse> ellipseStack;
         private Stack<RectangleForm> rectangleFormStack;
+        private Stack<CustomChild> customChildStack;
+
         private bool prefDlgModelessClsd;
         private bool formIsClosing;
 
@@ -26,10 +28,15 @@ namespace MainAndDialogForms
             InitializeComponent();
             this.closeEllipticToolStripMenuItem.Enabled = false;
             this.closeRectangularToolStripMenuItem.Enabled = false;
+            this.closeCustomToolStripMenuItem.Enabled = false;
+
             this.openEllipticToolStripMenuItem.Enabled = false;
             this.openRectangularToolStripMenuItem.Enabled = false;
+            this.openCustomToolStripMenuItem.Enabled = false;
+
             ellipseStack = new Stack<Ellipse>();
             rectangleFormStack = new Stack<RectangleForm>();
+            customChildStack = new Stack<CustomChild>();
 
             prefDlgModelessClsd = true; //Initially it is closed
             formIsClosing = false; //Used to prevent exception in deactivation
@@ -108,6 +115,18 @@ namespace MainAndDialogForms
             }
         }
 
+        private void openCustomToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ellipWidthLocal != 0 && ratioLocal != 0)
+            {
+                CustomChild customChild = new CustomChild(ellipWidthLocal, ratioLocal);
+                customChild.MdiParent = this;
+                customChild.Show();
+                customChildStack.Push(customChild);
+                this.closeCustomToolStripMenuItem.Enabled = true;
+            }
+        }
+
         private void closeEllipticToolStripMenuItem_Click(object sender, EventArgs e)
         {
             while(ellipseStack.Count > 0)
@@ -125,6 +144,16 @@ namespace MainAndDialogForms
 
             if (rectangleFormStack.Count == 0)
                 this.closeRectangularToolStripMenuItem.Enabled = false;
+        }
+
+
+        private void closeCustomToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            while (customChildStack.Count > 0)
+                customChildStack.Pop().Close();
+
+            if (customChildStack.Count == 0)
+                this.closeCustomToolStripMenuItem.Enabled = false;
         }
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -170,5 +199,6 @@ namespace MainAndDialogForms
             else // if skipping is not wanted  
                 resetLoginScreenToolStripMenuItem.Enabled = false; // if login dialog shows then don't enable menu item
         }
+
     }
 }
