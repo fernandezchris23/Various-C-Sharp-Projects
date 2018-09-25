@@ -230,10 +230,10 @@ namespace MainAndDialogForms
 
         private void MainForm_MdiChildActivate(object sender, EventArgs e)
         {
-            foreach (Form mdiChildForm in MdiChildren)
+            foreach (Form mdiChildForm in MdiChildren) // if each child in the container 
             {
 
-                if (ActiveMdiChild is Ellipse)
+                if (ActiveMdiChild is Ellipse) // if the child is currently active, just change as for the rest below
                 {
                     statusLabel.Text = "Ellipse" + ActiveMdiChild.BackColor.ToString();
                     statusStrip.BackColor = ActiveMdiChild.BackColor;
