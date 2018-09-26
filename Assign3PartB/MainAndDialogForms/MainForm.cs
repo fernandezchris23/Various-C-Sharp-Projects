@@ -11,6 +11,7 @@ namespace MainAndDialogForms
     {
         private PrefDialog prefDialog;
         private OathDialog oathDialog;
+        private AboutDialog aboutDialog;
         private int rectHeightLocal;
         private int ellipWidthLocal;
         private float ratioLocal;
@@ -317,12 +318,8 @@ namespace MainAndDialogForms
             oathDialog = new OathDialog();
             oathDialog.Owner = this;        // the main form is the owner of the oath dialog  
             
-            int xOfMain = this.Location.X;
-            int yOfMain = this.Location.Y;
-            int widthOfMain = this.Width;
-
             oathDialog.StartPosition = FormStartPosition.Manual;
-            oathDialog.Location = new Point(xOfMain + widthOfMain, yOfMain);
+            oathDialog.Location = new Point( this.Right, this.Top);
 
             oathDialog.ShowDialog();        // open modally
 
