@@ -43,6 +43,7 @@ namespace MainAndDialogForms
             ellipseStack = new Stack<Ellipse>();
             rectangleFormStack = new Stack<RectangleForm>();
             customChildStack = new Stack<CustomChild>();
+            aboutDialog = new AboutDialog();
 
             prefDlgModelessClsd = true; //Initially it is closed
             formIsClosing = false; //Used to prevent exception in deactivation
@@ -327,7 +328,15 @@ namespace MainAndDialogForms
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (aboutDialog.IsDisposed)
+                aboutDialog = new AboutDialog();
 
+            if (!aboutDialog.Visible)
+            {
+                aboutDialog.Show();
+                aboutDialog.Location = new Point(this.Left, this.Bottom);
+                aboutDialog.Owner = this;
+            }
         }
     }
 }
