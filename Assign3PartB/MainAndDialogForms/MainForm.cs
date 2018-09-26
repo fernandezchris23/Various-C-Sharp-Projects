@@ -107,6 +107,8 @@ namespace MainAndDialogForms
             {
                 Ellipse ellipse = new Ellipse(ellipWidthLocal, ratioLocal);
                 ellipse.MdiParent = this;
+                EventHandler childChanged = new EventHandler(childChangeHandler);
+                ellipse.BackColorChanged += childChanged;
                 ellipse.Show();
                 ellipseStack.Push(ellipse);
                 this.closeEllipticToolStripMenuItem.Enabled = true;
@@ -120,6 +122,8 @@ namespace MainAndDialogForms
             {
                 RectangleForm rectangleForm = new RectangleForm(rectHeightLocal, ratioLocal);
                 rectangleForm.MdiParent = this;
+                EventHandler childChanged = new EventHandler(childChangeHandler);
+                rectangleForm.BackColorChanged += childChanged;
                 rectangleForm.Show();
                 rectangleFormStack.Push(rectangleForm);
                 this.closeRectangularToolStripMenuItem.Enabled = true;
@@ -134,6 +138,8 @@ namespace MainAndDialogForms
                 //
                 CustomChild customChild = new CustomChild(rectHeightLocal, ratioLocal);
                 customChild.MdiParent = this;
+                EventHandler childChanged = new EventHandler(childChangeHandler);
+                customChild.BackColorChanged += childChanged;
                 customChild.Show();
                 customChildStack.Push(customChild);
                 this.closeCustomToolStripMenuItem.Enabled = true;
@@ -233,7 +239,6 @@ namespace MainAndDialogForms
         {
             foreach (Form mdiChildForm in MdiChildren)  // for each child in the container 
             {
-                
                 if (ActiveMdiChild is Ellipse)          // if the child is currently active, make status take child info, same for rest below
                 {
                     statusLabel.Text = "Ellipse" + ActiveMdiChild.BackColor.ToString();
@@ -250,6 +255,11 @@ namespace MainAndDialogForms
                     statusStrip.BackColor = ActiveMdiChild.BackColor;
                 }
             }
+        }
+
+        private void childChangeHandler(object sender, EventArgs e)
+        {
+            MainForm_MdiChildActivate(sender, e);
         }
 
     }
