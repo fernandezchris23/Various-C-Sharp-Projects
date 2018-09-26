@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Collections;
+using ControlLibraryAssign3;
 
 namespace MainAndDialogForms
 {
@@ -107,6 +109,8 @@ namespace MainAndDialogForms
             {
                 Ellipse ellipse = new Ellipse(ellipWidthLocal, ratioLocal);
                 ellipse.MdiParent = this;
+                EventHandler childChanged = new EventHandler(childChangeHandler);
+                ellipse.BackColorChanged += childChanged;
                 ellipse.Show();
                 ellipseStack.Push(ellipse);
                 this.closeEllipticToolStripMenuItem.Enabled = true;
@@ -120,6 +124,8 @@ namespace MainAndDialogForms
             {
                 RectangleForm rectangleForm = new RectangleForm(rectHeightLocal, ratioLocal);
                 rectangleForm.MdiParent = this;
+                EventHandler childChanged = new EventHandler(childChangeHandler);
+                rectangleForm.BackColorChanged += childChanged;
                 rectangleForm.Show();
                 rectangleFormStack.Push(rectangleForm);
                 this.closeRectangularToolStripMenuItem.Enabled = true;
@@ -134,6 +140,8 @@ namespace MainAndDialogForms
                 //
                 CustomChild customChild = new CustomChild(rectHeightLocal, ratioLocal);
                 customChild.MdiParent = this;
+                EventHandler childChanged = new EventHandler(childChangeHandler);
+                customChild.BackColorChanged += childChanged;
                 customChild.Show();
                 customChildStack.Push(customChild);
                 this.closeCustomToolStripMenuItem.Enabled = true;
@@ -143,12 +151,47 @@ namespace MainAndDialogForms
 
         private void closeEllipticToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            while(ellipseStack.Count > 0)
+            while (ellipseStack.Count > 0)
                 ellipseStack.Pop().Close();
-            
-            if (ellipseStack.Count == 0)
-                this.closeEllipticToolStripMenuItem.Enabled = false;
 
+            if (EllipsesIsClear())
+                this.closeEllipticToolStripMenuItem.Enabled = false;
+        }
+
+        private Boolean EllipsesIsClear()
+        {
+            int count = 0;
+            foreach (Ellipse ellipse in ellipseStack)
+                if (ellipse.IsDisposed)
+                    ++count;
+
+            if (count == ellipseStack.Count) return true;
+
+            return false;
+        }
+
+        private Boolean RectanglesIsClear()
+        {
+            int count = 0;
+            foreach (RectangleForm rectangle in rectangleFormStack)
+                if (rectangle.IsDisposed)
+                    ++count;
+
+            if (count == rectangleFormStack.Count) return true;
+
+            return false;
+        }
+
+        private Boolean CustomChildIsClear()
+        {
+            int count = 0;
+            foreach (CustomChild customChild in customChildStack)
+                if (customChild.IsDisposed)
+                    ++count;
+
+            if (count == customChildStack.Count) return true;
+
+            return false;
         }
 
         private void closeRectangularToolStripMenuItem_Click(object sender, EventArgs e)
@@ -156,7 +199,7 @@ namespace MainAndDialogForms
             while (rectangleFormStack.Count > 0)
                 rectangleFormStack.Pop().Close();
 
-            if (rectangleFormStack.Count == 0)
+            if (RectanglesIsClear())
                 this.closeRectangularToolStripMenuItem.Enabled = false;
         }
 
@@ -233,7 +276,6 @@ namespace MainAndDialogForms
         {
             foreach (Form mdiChildForm in MdiChildren)  // for each child in the container 
             {
-                
                 if (ActiveMdiChild is Ellipse)          // if the child is currently active, make status take child info, same for rest below
                 {
                     statusLabel.Text = "Ellipse" + ActiveMdiChild.BackColor.ToString();
@@ -252,5 +294,19 @@ namespace MainAndDialogForms
             }
         }
 
+        private void childChangeHandler(object sender, EventArgs e)
+        {
+            MainForm_MdiChildActivate(sender, e);
+        }
+
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (RectanglesIsClear())
+                this.closeRectangularToolStripMenuItem.Enabled = false;
+            if (EllipsesIsClear())
+                this.closeEllipticToolStripMenuItem.Enabled = false;
+            if (CustomChildIsClear())
+                this.closeCustomToolStripMenuItem.Enabled = false;
+        }
     }
 }

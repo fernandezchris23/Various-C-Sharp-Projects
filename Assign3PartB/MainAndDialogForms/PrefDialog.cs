@@ -54,7 +54,7 @@ namespace MainAndDialogForms
 
         private void applyButton_Click(object sender, EventArgs e)
         {
-                applyBttnClick(this, EventArgs.Empty);   
+            applyBttnClick(this, EventArgs.Empty);   
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
