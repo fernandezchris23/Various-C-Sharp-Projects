@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PrefDialog));
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.okayButton = new System.Windows.Forms.Button();
             this.applyButton = new System.Windows.Forms.Button();
@@ -193,6 +194,7 @@
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(865, 368);
             this.HelpButton = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
