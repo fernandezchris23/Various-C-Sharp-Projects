@@ -281,17 +281,17 @@ namespace MainAndDialogForms
             {
                 if (ActiveMdiChild is Ellipse)          // if the child is currently active, make status take child info, same for rest below
                 {
-                    statusLabel.Text = "Ellipse" + ActiveMdiChild.BackColor.ToString();
+                    statusLabel.Text = "Ellipse " + ActiveMdiChild.BackColor.ToString();
                     statusStrip.BackColor = ActiveMdiChild.BackColor;
                 }
                 else if (ActiveMdiChild is RectangleForm)
                 {
-                    statusLabel.Text = "Rectangle" + ActiveMdiChild.BackColor.ToString();
+                    statusLabel.Text = "Rectangle " + ActiveMdiChild.BackColor.ToString();
                     statusStrip.BackColor = ActiveMdiChild.BackColor;
                 }
                 else if (ActiveMdiChild is CustomChild)
                 {
-                    statusLabel.Text = "Custom" + ActiveMdiChild.BackColor.ToString();
+                    statusLabel.Text = "Custom " + ActiveMdiChild.BackColor.ToString();
                     statusStrip.BackColor = ActiveMdiChild.BackColor;
                 }
             }
