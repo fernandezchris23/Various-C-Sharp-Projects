@@ -313,7 +313,14 @@ namespace MainAndDialogForms
         private void oathToolStripMenuItem_Click(object sender, EventArgs e)
         {
             oathDialog = new OathDialog();
-            oathDialog.Owner = this;        // the main form is the owner of the oath dialog             
+            oathDialog.Owner = this;        // the main form is the owner of the oath dialog  
+            
+            int xOfMain = this.Location.X;
+            int yOfMain = this.Location.Y;
+            int widthOfMain = this.Width;
+
+            oathDialog.StartPosition = FormStartPosition.Manual;
+            oathDialog.Location = new Point(xOfMain + widthOfMain, yOfMain);
 
             oathDialog.ShowDialog();        // open modally
 
