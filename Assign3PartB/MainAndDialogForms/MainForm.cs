@@ -308,6 +308,8 @@ namespace MainAndDialogForms
                 this.closeEllipticToolStripMenuItem.Enabled = false;
             if (CustomChildIsClear())
                 this.closeCustomToolStripMenuItem.Enabled = false;
+            if (RectanglesIsClear() && EllipsesIsClear() && CustomChildIsClear())
+                this.closeAllToolStripMenuItem.Enabled = false;
         }
 
         private void oathToolStripMenuItem_Click(object sender, EventArgs e)
