@@ -108,7 +108,7 @@
             // 
             this.openEllipticToolStripMenuItem.Name = "openEllipticToolStripMenuItem";
             this.openEllipticToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.E)));
-            this.openEllipticToolStripMenuItem.Size = new System.Drawing.Size(326, 26);
+            this.openEllipticToolStripMenuItem.Size = new System.Drawing.Size(290, 26);
             this.openEllipticToolStripMenuItem.Text = "Open Elliptic";
             this.openEllipticToolStripMenuItem.Click += new System.EventHandler(this.openEllipticToolStripMenuItem_Click);
             // 
@@ -116,7 +116,7 @@
             // 
             this.openRectangularToolStripMenuItem.Name = "openRectangularToolStripMenuItem";
             this.openRectangularToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.R)));
-            this.openRectangularToolStripMenuItem.Size = new System.Drawing.Size(326, 26);
+            this.openRectangularToolStripMenuItem.Size = new System.Drawing.Size(290, 26);
             this.openRectangularToolStripMenuItem.Text = "Open Rectangular";
             this.openRectangularToolStripMenuItem.Click += new System.EventHandler(this.openRectangularToolStripMenuItem_Click);
             // 
@@ -124,7 +124,7 @@
             // 
             this.openCustomToolStripMenuItem.Name = "openCustomToolStripMenuItem";
             this.openCustomToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.C)));
-            this.openCustomToolStripMenuItem.Size = new System.Drawing.Size(326, 26);
+            this.openCustomToolStripMenuItem.Size = new System.Drawing.Size(290, 26);
             this.openCustomToolStripMenuItem.Text = "Open Custom";
             this.openCustomToolStripMenuItem.Click += new System.EventHandler(this.openCustomToolStripMenuItem_Click);
             // 
@@ -133,7 +133,7 @@
             this.closeEllipticToolStripMenuItem.Name = "closeEllipticToolStripMenuItem";
             this.closeEllipticToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.E)));
-            this.closeEllipticToolStripMenuItem.Size = new System.Drawing.Size(326, 26);
+            this.closeEllipticToolStripMenuItem.Size = new System.Drawing.Size(290, 26);
             this.closeEllipticToolStripMenuItem.Text = "Close Elliptic";
             this.closeEllipticToolStripMenuItem.Click += new System.EventHandler(this.closeEllipticToolStripMenuItem_Click);
             // 
@@ -142,7 +142,7 @@
             this.closeRectangularToolStripMenuItem.Name = "closeRectangularToolStripMenuItem";
             this.closeRectangularToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.R)));
-            this.closeRectangularToolStripMenuItem.Size = new System.Drawing.Size(326, 26);
+            this.closeRectangularToolStripMenuItem.Size = new System.Drawing.Size(290, 26);
             this.closeRectangularToolStripMenuItem.Text = "Close Rectangular";
             this.closeRectangularToolStripMenuItem.Click += new System.EventHandler(this.closeRectangularToolStripMenuItem_Click);
             // 
@@ -151,7 +151,7 @@
             this.closeCustomToolStripMenuItem.Name = "closeCustomToolStripMenuItem";
             this.closeCustomToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.C)));
-            this.closeCustomToolStripMenuItem.Size = new System.Drawing.Size(326, 26);
+            this.closeCustomToolStripMenuItem.Size = new System.Drawing.Size(290, 26);
             this.closeCustomToolStripMenuItem.Text = "Close Custom";
             this.closeCustomToolStripMenuItem.Click += new System.EventHandler(this.closeCustomToolStripMenuItem_Click);
             // 
@@ -160,15 +160,15 @@
             this.closeAllToolStripMenuItem.Name = "closeAllToolStripMenuItem";
             this.closeAllToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.F4)));
-            this.closeAllToolStripMenuItem.Size = new System.Drawing.Size(326, 26);
-            this.closeAllToolStripMenuItem.Text = "Close All Open Shapes";
+            this.closeAllToolStripMenuItem.Size = new System.Drawing.Size(290, 26);
+            this.closeAllToolStripMenuItem.Text = "Close All";
             this.closeAllToolStripMenuItem.Click += new System.EventHandler(this.closeAllToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
             this.closeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(326, 26);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(290, 26);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
