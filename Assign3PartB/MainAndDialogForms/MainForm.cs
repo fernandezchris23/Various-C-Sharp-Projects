@@ -233,7 +233,7 @@ namespace MainAndDialogForms
         {
             foreach (Form mdiChildForm in MdiChildren) // if each child in the container 
             {
-
+                
                 if (ActiveMdiChild is Ellipse) // if the child is currently active, just change as for the rest below
                 {
                     statusLabel.Text = "Ellipse" + ActiveMdiChild.BackColor.ToString();

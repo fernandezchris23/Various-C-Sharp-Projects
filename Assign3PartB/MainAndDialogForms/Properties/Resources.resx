@@ -130,4 +130,7 @@
   <data name="bgImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bgImage.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="initialIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\initialIcon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
