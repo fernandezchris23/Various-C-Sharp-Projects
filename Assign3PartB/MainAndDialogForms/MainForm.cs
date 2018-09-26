@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Collections;
+using ControlLibraryAssign3;
 
 namespace MainAndDialogForms
 {
@@ -11,9 +13,9 @@ namespace MainAndDialogForms
         private int rectHeightLocal;
         private int ellipWidthLocal;
         private float ratioLocal;
-        private Stack<Ellipse> ellipseStack;
         private Stack<RectangleForm> rectangleFormStack;
         private Stack<CustomChild> customChildStack;
+        private Stack<Ellipse> ellipseStack;
 
         private bool prefDlgModelessClsd;
         private bool formIsClosing;
@@ -46,6 +48,7 @@ namespace MainAndDialogForms
             ellipWidthLocal = 0;
             rectHeightLocal = 0;
             ratioLocal = 0;
+
         }
 
         private void openPreferencesModallyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -143,12 +146,47 @@ namespace MainAndDialogForms
 
         private void closeEllipticToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            while(ellipseStack.Count > 0)
+            while (ellipseStack.Count > 0)
                 ellipseStack.Pop().Close();
-            
-            if (ellipseStack.Count == 0)
-                this.closeEllipticToolStripMenuItem.Enabled = false;
 
+            if (EllipsesIsClear())
+                this.closeEllipticToolStripMenuItem.Enabled = false;
+        }
+
+        private Boolean EllipsesIsClear()
+        {
+            int count = 0;
+            foreach(Ellipse ellipse in ellipseStack)
+                if (ellipse.IsDisposed)
+                    ++count;
+
+            if (count == ellipseStack.Count) return true;
+
+            return false;
+        }
+
+        private Boolean RectanglesIsClear()
+        {
+            int count = 0;
+            foreach (RectangleForm rectangle in rectangleFormStack)
+                if (rectangle.IsDisposed)
+                    ++count;
+
+            if (count == rectangleFormStack.Count) return true;
+
+            return false;
+        }
+
+        private Boolean CustomChildIsClear()
+        {
+            int count = 0;
+            foreach (CustomChild customChild in customChildStack)
+                if (customChild.IsDisposed)
+                    ++count;
+
+            if (count == customChildStack.Count) return true;
+
+            return false;
         }
 
         private void closeRectangularToolStripMenuItem_Click(object sender, EventArgs e)
@@ -156,10 +194,9 @@ namespace MainAndDialogForms
             while (rectangleFormStack.Count > 0)
                 rectangleFormStack.Pop().Close();
 
-            if (rectangleFormStack.Count == 0)
+            if (RectanglesIsClear())
                 this.closeRectangularToolStripMenuItem.Enabled = false;
         }
-
 
         private void closeCustomToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -252,5 +289,14 @@ namespace MainAndDialogForms
             }
         }
 
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (RectanglesIsClear())
+                this.closeRectangularToolStripMenuItem.Enabled = false;
+            if (EllipsesIsClear())
+                this.closeEllipticToolStripMenuItem.Enabled = false;
+            if (CustomChildIsClear())
+                this.closeCustomToolStripMenuItem.Enabled = false;
+        }
     }
 }
