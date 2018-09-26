@@ -66,13 +66,14 @@ namespace MainAndDialogForms
         private void createHelpInfo()
         {
             helpProvider.SetShowHelp(RectBox, true);
-            helpProvider.SetHelpString(RectBox, "This box will hold the height of the rectangle as a positive, non-zero integer.");
+            helpProvider.SetHelpString(RectBox, "This box will hold the height of the rectangle and width of the custom shape as a positive, non-zero integer.");
 
             helpProvider.SetShowHelp(EllipText, true);
             helpProvider.SetHelpString(EllipText, "This box will hold the width of the ellipse as a positive, non-zero integer.");
 
             helpProvider.SetShowHelp(RatioText, true);
-            helpProvider.SetHelpString(RatioText, "This box will hold the ratio used for calculating the width of the rectangle and the width of the ellipse.");
+            helpProvider.SetHelpString(RatioText, "This box will hold the ratio used for calculating the width of the rectangle, the height of the custom shape" + 
+                " and the height of the ellipse.");
 
             helpProvider.SetShowHelp(okayButton, true);
             helpProvider.SetHelpString(okayButton, "Saves the values entered and closes the dialog.");
