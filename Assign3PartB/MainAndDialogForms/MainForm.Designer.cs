@@ -61,19 +61,19 @@
             this.openPreferencesModallyToolStripMenuItem,
             this.openPreferencesModelesslyToolStripMenuItem});
             this.preferencesContextMenuStrip.Name = "preferencesContextMenuStrip";
-            this.preferencesContextMenuStrip.Size = new System.Drawing.Size(233, 48);
+            this.preferencesContextMenuStrip.Size = new System.Drawing.Size(277, 52);
             // 
             // openPreferencesModallyToolStripMenuItem
             // 
             this.openPreferencesModallyToolStripMenuItem.Name = "openPreferencesModallyToolStripMenuItem";
-            this.openPreferencesModallyToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.openPreferencesModallyToolStripMenuItem.Size = new System.Drawing.Size(276, 24);
             this.openPreferencesModallyToolStripMenuItem.Text = "Open Preferences Modally";
             this.openPreferencesModallyToolStripMenuItem.Click += new System.EventHandler(this.openPreferencesModallyToolStripMenuItem_Click);
             // 
             // openPreferencesModelesslyToolStripMenuItem
             // 
             this.openPreferencesModelesslyToolStripMenuItem.Name = "openPreferencesModelesslyToolStripMenuItem";
-            this.openPreferencesModelesslyToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.openPreferencesModelesslyToolStripMenuItem.Size = new System.Drawing.Size(276, 24);
             this.openPreferencesModelesslyToolStripMenuItem.Text = "Open Preferences Modelessly ";
             this.openPreferencesModelesslyToolStripMenuItem.Click += new System.EventHandler(this.openPreferencesModelesslyToolStripMenuItem_Click);
             // 
@@ -85,8 +85,8 @@
             this.preferencesToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip.Size = new System.Drawing.Size(600, 24);
+            this.menuStrip.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip.Size = new System.Drawing.Size(800, 28);
             this.menuStrip.TabIndex = 1;
             this.menuStrip.Text = "menuStrip";
             // 
@@ -102,7 +102,7 @@
             this.closeAllToolStripMenuItem,
             this.closeToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
             this.fileToolStripMenuItem.Text = "&File";
             this.fileToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
             // 
@@ -110,7 +110,7 @@
             // 
             this.openEllipticToolStripMenuItem.Name = "openEllipticToolStripMenuItem";
             this.openEllipticToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.E)));
-            this.openEllipticToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.openEllipticToolStripMenuItem.Size = new System.Drawing.Size(290, 26);
             this.openEllipticToolStripMenuItem.Text = "Open Elliptic";
             this.openEllipticToolStripMenuItem.Click += new System.EventHandler(this.openEllipticToolStripMenuItem_Click);
             // 
@@ -118,7 +118,7 @@
             // 
             this.openRectangularToolStripMenuItem.Name = "openRectangularToolStripMenuItem";
             this.openRectangularToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.R)));
-            this.openRectangularToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.openRectangularToolStripMenuItem.Size = new System.Drawing.Size(290, 26);
             this.openRectangularToolStripMenuItem.Text = "Open Rectangular";
             this.openRectangularToolStripMenuItem.Click += new System.EventHandler(this.openRectangularToolStripMenuItem_Click);
             // 
@@ -126,7 +126,7 @@
             // 
             this.openCustomToolStripMenuItem.Name = "openCustomToolStripMenuItem";
             this.openCustomToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.C)));
-            this.openCustomToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.openCustomToolStripMenuItem.Size = new System.Drawing.Size(290, 26);
             this.openCustomToolStripMenuItem.Text = "Open Custom";
             this.openCustomToolStripMenuItem.Click += new System.EventHandler(this.openCustomToolStripMenuItem_Click);
             // 
@@ -135,7 +135,7 @@
             this.closeEllipticToolStripMenuItem.Name = "closeEllipticToolStripMenuItem";
             this.closeEllipticToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.E)));
-            this.closeEllipticToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.closeEllipticToolStripMenuItem.Size = new System.Drawing.Size(290, 26);
             this.closeEllipticToolStripMenuItem.Text = "Close Elliptic";
             this.closeEllipticToolStripMenuItem.Click += new System.EventHandler(this.closeEllipticToolStripMenuItem_Click);
             // 
@@ -144,7 +144,7 @@
             this.closeRectangularToolStripMenuItem.Name = "closeRectangularToolStripMenuItem";
             this.closeRectangularToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.R)));
-            this.closeRectangularToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.closeRectangularToolStripMenuItem.Size = new System.Drawing.Size(290, 26);
             this.closeRectangularToolStripMenuItem.Text = "Close Rectangular";
             this.closeRectangularToolStripMenuItem.Click += new System.EventHandler(this.closeRectangularToolStripMenuItem_Click);
             // 
@@ -153,7 +153,7 @@
             this.closeCustomToolStripMenuItem.Name = "closeCustomToolStripMenuItem";
             this.closeCustomToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.C)));
-            this.closeCustomToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.closeCustomToolStripMenuItem.Size = new System.Drawing.Size(290, 26);
             this.closeCustomToolStripMenuItem.Text = "Close Custom";
             this.closeCustomToolStripMenuItem.Click += new System.EventHandler(this.closeCustomToolStripMenuItem_Click);
             // 
@@ -162,7 +162,7 @@
             this.closeAllToolStripMenuItem.Name = "closeAllToolStripMenuItem";
             this.closeAllToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.F4)));
-            this.closeAllToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.closeAllToolStripMenuItem.Size = new System.Drawing.Size(290, 26);
             this.closeAllToolStripMenuItem.Text = "Close All";
             this.closeAllToolStripMenuItem.Click += new System.EventHandler(this.closeAllToolStripMenuItem_Click);
             // 
@@ -170,7 +170,7 @@
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
             this.closeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(290, 26);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -181,14 +181,14 @@
             this.openPreferencesModelesslyToolStripMenuItem1,
             this.resetLoginScreenToolStripMenuItem});
             this.preferencesToolStripMenuItem.Name = "preferencesToolStripMenuItem";
-            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.preferencesToolStripMenuItem.Size = new System.Drawing.Size(97, 24);
             this.preferencesToolStripMenuItem.Text = "Preferences";
             // 
             // openPreferencesModallyToolStripMenuItem1
             // 
             this.openPreferencesModallyToolStripMenuItem1.Name = "openPreferencesModallyToolStripMenuItem1";
             this.openPreferencesModallyToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openPreferencesModallyToolStripMenuItem1.Size = new System.Drawing.Size(307, 22);
+            this.openPreferencesModallyToolStripMenuItem1.Size = new System.Drawing.Size(375, 26);
             this.openPreferencesModallyToolStripMenuItem1.Text = "Open Preferences Modally ";
             this.openPreferencesModallyToolStripMenuItem1.Click += new System.EventHandler(this.openPreferencesModallyToolStripMenuItem_Click);
             // 
@@ -197,7 +197,7 @@
             this.openPreferencesModelesslyToolStripMenuItem1.Name = "openPreferencesModelesslyToolStripMenuItem1";
             this.openPreferencesModelesslyToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.O)));
-            this.openPreferencesModelesslyToolStripMenuItem1.Size = new System.Drawing.Size(307, 22);
+            this.openPreferencesModelesslyToolStripMenuItem1.Size = new System.Drawing.Size(375, 26);
             this.openPreferencesModelesslyToolStripMenuItem1.Text = "Open Preferences Modelessly ";
             this.openPreferencesModelesslyToolStripMenuItem1.Click += new System.EventHandler(this.openPreferencesModelesslyToolStripMenuItem_Click);
             // 
@@ -205,7 +205,7 @@
             // 
             this.resetLoginScreenToolStripMenuItem.Name = "resetLoginScreenToolStripMenuItem";
             this.resetLoginScreenToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.F5)));
-            this.resetLoginScreenToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
+            this.resetLoginScreenToolStripMenuItem.Size = new System.Drawing.Size(375, 26);
             this.resetLoginScreenToolStripMenuItem.Text = "Reset Login Screen";
             this.resetLoginScreenToolStripMenuItem.Click += new System.EventHandler(this.resetLoginScreenToolStripMenuItem_Click);
             // 
@@ -215,31 +215,31 @@
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 344);
+            this.statusStrip.Location = new System.Drawing.Point(0, 425);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
-            this.statusStrip.Size = new System.Drawing.Size(600, 22);
+            this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 13, 0);
+            this.statusStrip.Size = new System.Drawing.Size(800, 25);
             this.statusStrip.TabIndex = 3;
             this.statusStrip.Text = "statusStrip1";
             // 
             // statusLabel
             // 
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(39, 17);
+            this.statusLabel.Size = new System.Drawing.Size(50, 20);
             this.statusLabel.Text = "Ready";
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.ContextMenuStrip = this.preferencesContextMenuStrip;
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
