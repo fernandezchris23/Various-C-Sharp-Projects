@@ -10,6 +10,7 @@ namespace MainAndDialogForms
     public partial class MainForm : Form
     {
         private PrefDialog prefDialog;
+        private OathDialog oathDialog;
         private int rectHeightLocal;
         private int ellipWidthLocal;
         private float ratioLocal;
@@ -307,6 +308,20 @@ namespace MainAndDialogForms
                 this.closeEllipticToolStripMenuItem.Enabled = false;
             if (CustomChildIsClear())
                 this.closeCustomToolStripMenuItem.Enabled = false;
+        }
+
+        private void oathToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            oathDialog = new OathDialog();
+            oathDialog.Owner = this;        // the main form is the owner of the oath dialog             
+
+            oathDialog.ShowDialog();        // open modally
+
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
