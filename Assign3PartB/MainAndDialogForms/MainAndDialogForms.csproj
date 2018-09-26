@@ -162,5 +162,11 @@
   <ItemGroup>
     <None Include="Resources\bgImage.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bobomb.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bobombIcon.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
