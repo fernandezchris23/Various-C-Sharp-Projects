@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ControlLibrary;
 
 namespace SDI_Text_Editor
 {
@@ -19,20 +20,12 @@ namespace SDI_Text_Editor
         
         public PrefDialog()
         {
-            InitializeComponent();
-            RectHeight = 0;
-            Ratio = 0f;
-            EllipWidth = 0;
-            mainForm = null;
+            
         }
 
         public PrefDialog(MainForm mainForm)
         {
-            InitializeComponent();
-            this.mainForm = mainForm;
-            RectHeight = 0;
-            Ratio = 0f;
-            EllipWidth = 0;
+            
         }
 
         private void PrefDialog_Load(object sender, EventArgs e)
@@ -41,7 +34,7 @@ namespace SDI_Text_Editor
 
         private void okayButton_Click(object sender, EventArgs e)
         {            
-            this.Close();
+            
         }
 
         private void applyButton_Click(object sender, EventArgs e)
@@ -51,7 +44,7 @@ namespace SDI_Text_Editor
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            
         }
     }
 }

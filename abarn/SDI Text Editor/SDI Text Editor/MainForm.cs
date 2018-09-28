@@ -37,7 +37,7 @@ namespace SDI_Text_Editor
 
         }
 
-        private void toolStripButton1_Click_1(object sender, EventArgs e)
+        private void preferencesButton_Click(object sender, EventArgs e)
         {
 
         }

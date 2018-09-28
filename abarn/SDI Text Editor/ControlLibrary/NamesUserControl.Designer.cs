@@ -1,4 +1,4 @@
-﻿namespace SDI_Text_Editor
+﻿namespace ControlLibrary
 {
     partial class NamesUserControl
     {

@@ -1,4 +1,4 @@
-﻿namespace SDI_Text_Editor
+﻿namespace ControlLibrary
 {
     partial class DialogBaseForm
     {
@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.dialogBaseFormPanel = new System.Windows.Forms.Panel();
-            this.courseUserControl1 = new SDI_Text_Editor.CourseUserControl();
-            this.namesUserControl1 = new SDI_Text_Editor.NamesUserControl();
+            this.courseUserControl1 = new ControlLibrary.CourseUserControl();
+            this.namesUserControl1 = new ControlLibrary.NamesUserControl();
             this.SuspendLayout();
             // 
             // dialogBaseFormPanel

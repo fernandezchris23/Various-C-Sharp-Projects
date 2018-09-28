@@ -1,4 +1,4 @@
-﻿namespace SDI_Text_Editor
+﻿namespace ControlLibraryAssign3
 {
     partial class UserControlCourse
     {

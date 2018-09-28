@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SDI_Text_Editor
+namespace ControlLibrary
 {
     public partial class DialogBaseForm : Form
     {

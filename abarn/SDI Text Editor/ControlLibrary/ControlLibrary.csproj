@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{82424492-7F70-4553-AB15-1B9B66CBA46F}</ProjectGuid>
+    <ProjectGuid>{5112156C-F87D-44EB-9982-5488EEBCA0BE}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>ControlLibraryAssign3</RootNamespace>
-    <AssemblyName>ControlLibraryAssign3</AssemblyName>
+    <RootNamespace>ControlLibrary</RootNamespace>
+    <AssemblyName>ControlLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -65,29 +65,11 @@
     <Compile Include="NamesUserControl.Designer.cs">
       <DependentUpon>NamesUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="OathUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="OathUserControl.Designer.cs">
-      <DependentUpon>OathUserControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="UserControlCourse.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControlCourse.Designer.cs">
-      <DependentUpon>UserControlCourse.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControlNames.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControlNames.Designer.cs">
-      <DependentUpon>UserControlNames.cs</DependentUpon>
     </Compile>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
@@ -104,18 +86,9 @@
     <EmbeddedResource Include="NamesUserControl.resx">
       <DependentUpon>NamesUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OathUserControl.resx">
-      <DependentUpon>OathUserControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControlCourse.resx">
-      <DependentUpon>UserControlCourse.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControlNames.resx">
-      <DependentUpon>UserControlNames.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
