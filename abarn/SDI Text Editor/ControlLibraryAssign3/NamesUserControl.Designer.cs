@@ -46,7 +46,6 @@
             membersNameLabel.Text = "We\'re Okay:\nAlejandro Barnola, Walter Elwell, Christopher Fernandez, Alvaro Orozc" +
     "o, Kayla Ortiz, and Vanesa Perez";
             membersNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            membersNameLabel.Click += new System.EventHandler(this.membersNameLabel_Click);
             // 
             // NamesUserControl
             // 
