@@ -89,8 +89,8 @@ namespace SDI_Text_Editor
             Stream stream = File.OpenWrite(filename);
             
             //Instantiate binary formatter, then serialize (save) provided TextProperties
-            BinaryFormatter binF = new BinaryFormatter();
-            binF.Serialize(stream, properties);
+            BinaryFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(stream, properties);
 
             //Clean up
             stream.Flush();
@@ -105,13 +105,13 @@ namespace SDI_Text_Editor
             FileStream stream = File.Open(filename, FileMode.Open);
 
             //Instantiate binary formatter
-            BinaryFormatter binF = new BinaryFormatter();
+            BinaryFormatter formatter = new BinaryFormatter();
             
             //Create object by deserializing (opening) the file from filestream.
-            object obj = binF.Deserialize(stream);
+            object obj = formatter.Deserialize(stream);
 
             //Cast object to TextProperties class
-            TextProperties properties = (TextProperties)obj;
+            textProperties = (TextProperties)obj;
 
             //Clean up
             stream.Flush();
