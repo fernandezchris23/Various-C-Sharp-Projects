@@ -12,98 +12,108 @@ namespace SDI_Text_Editor
 
         TextProperties textProperties;
 
+        //Default constructor
         public EditorForm()
         {
+            //Create default text properties
             textProperties = new TextProperties();
             InitializeComponent();
+            
+            //Update the editor box since default text properties aren't 
+            //the same as winforms default text (Times new roman, 12pt)
             UpdateEditorBox();
         }
 
-        private void toolStripDropDownButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripButton2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripButton3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        //Toolstrip Preferences button creates a new Preferences Dialog
         private void preferencesButton_Click(object sender, EventArgs e)
         {
+            //Pass the current text properties to prefsDialog
             PrefsDialog prefsDialog = new PrefsDialog(this, textProperties);
             prefsDialog.Show();
         }
 
+        //Update values that can be changed from the preferences menu
         public void UpdateValues(TextProperties properties)
         {
             this.textProperties.textColor = properties.textColor;
             this.textProperties.textFont = properties.textFont;
-            this.textProperties.bgColor = properties.bgColor;
+            this.textProperties.backColor = properties.backColor;
 
+            //Update the text box in Editor form to reflect the changes
             UpdateEditorBox();
         }
         
-        //Update the actual text editor
+        //Update the text box in the editor form to reflect preferences menu changes
         public void UpdateEditorBox()
         {
             this.textEditorBox.ForeColor = textProperties.textColor;
             this.textEditorBox.Font = textProperties.textFont;
-            this.textEditorBox.BackColor = textProperties.bgColor;
+            this.textEditorBox.BackColor = textProperties.backColor;
         }
+
+        //Save a file. Shows the saveFileDialog, and saves to the inputted filename
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //First save any and all changes to the file's text.
             textProperties.fileText = this.textEditorBox.Text;
 
+            //If user doesn't click OK on saveFileDialog, don't do anything
             if (this.saveFileDialog.ShowDialog(this) != DialogResult.OK)
                 return;
 
+            //Else, save to the inputted filename
             string filename = this.saveFileDialog.FileName;
             SaveToFile(textProperties, filename);
         }
 
+        //Open a file. Shows openFileDialog, and opens the inputted filename
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //If user doesn't click OK on openFileDialog, don't do anything
             if (this.openFileDialog.ShowDialog(this) != DialogResult.OK)
                 return;
 
+            //Else, get filename from openFileDialog, and open the file
             string filename = this.openFileDialog.FileName;
             OpenFile(filename);
+
+            //Update the text box in editor form to the file we just opened
             this.textEditorBox.Text = textProperties.fileText;
             UpdateEditorBox();
         }
 
+        //Save a file using binaryFormatter
         public void SaveToFile(TextProperties properties, String filename)
         {
+            //IO file stream to provide to the binary formatter
             Stream stream = File.OpenWrite(filename);
-
+            
+            //Instantiate binary formatter, then serialize (save) provided TextProperties
             BinaryFormatter binF = new BinaryFormatter();
-
             binF.Serialize(stream, properties);
+
+            //Clean up
             stream.Flush();
             stream.Close();
             stream.Dispose();
         }
 
+        //Open a file using binaryFormatter
         public void OpenFile(String filename)
         {
-            BinaryFormatter binF = new BinaryFormatter();
-
+            //IO file stream to provide to the binary formatter
             FileStream stream = File.Open(filename, FileMode.Open);
 
+            //Instantiate binary formatter
+            BinaryFormatter binF = new BinaryFormatter();
+            
+            //Create object by deserializing (opening) the file from filestream.
             object obj = binF.Deserialize(stream);
+
+            //Cast object to TextProperties class
             TextProperties properties = (TextProperties)obj;
 
+            //Clean up
             stream.Flush();
             stream.Close();
             stream.Dispose();

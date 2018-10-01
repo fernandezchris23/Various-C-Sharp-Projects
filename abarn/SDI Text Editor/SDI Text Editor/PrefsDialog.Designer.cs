@@ -130,7 +130,7 @@
             this.changeBackColorButton.TabIndex = 10;
             this.changeBackColorButton.Text = "Change...";
             this.changeBackColorButton.UseVisualStyleBackColor = true;
-            this.changeBackColorButton.Click += new System.EventHandler(this.changeBackColorButton_Click);
+            this.changeBackColorButton.Click += new System.EventHandler(this.changeBackgroundColorButton_Click);
             // 
             // PrefsDialog
             // 
