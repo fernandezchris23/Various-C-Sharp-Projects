@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ControlLibrary
 {
-    public partial class CourseUserControl : UserControl
+    public partial class OathUserControl : UserControl
     {
-        public CourseUserControl()
+        public OathUserControl()
         {
             InitializeComponent();
         }
