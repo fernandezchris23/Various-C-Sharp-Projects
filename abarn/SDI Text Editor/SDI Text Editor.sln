@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlLibraryAssign3", "ControlLibraryAssign3.csproj", "{5112156C-F87D-44EB-9982-5488EEBCA0BE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDI Text Editor", "SDI Text Editor\SDI Text Editor.csproj", "{3F4B739B-71C4-4645-973B-705DBFEA010A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlLibrary", "ControlLibrary\ControlLibrary.csproj", "{5112156C-F87D-44EB-9982-5488EEBCA0BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,6 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F4B739B-71C4-4645-973B-705DBFEA010A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F4B739B-71C4-4645-973B-705DBFEA010A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F4B739B-71C4-4645-973B-705DBFEA010A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F4B739B-71C4-4645-973B-705DBFEA010A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5112156C-F87D-44EB-9982-5488EEBCA0BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5112156C-F87D-44EB-9982-5488EEBCA0BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5112156C-F87D-44EB-9982-5488EEBCA0BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -20,6 +26,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {F7A7890E-C8DD-4FCB-A9D3-BE4BCE8E7931}
+		SolutionGuid = {6B4DEA96-9EA0-44E1-9782-D21AF9C4AF74}
 	EndGlobalSection
 EndGlobal

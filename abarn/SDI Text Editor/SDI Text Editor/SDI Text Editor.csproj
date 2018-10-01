@@ -84,11 +84,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ControlLibraryAssign3\ControlLibrary.csproj">
-      <Project>{5112156c-f87d-44eb-9982-5488eebca0be}</Project>
-      <Name>ControlLibrary</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

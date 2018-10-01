@@ -11,7 +11,7 @@ using ControlLibrary;
 
 namespace SDI_Text_Editor
 {
-    public partial class PrefDialog : DialogBaseForm
+    public partial class PrefDialog : Form
     {   
         private int RectHeight;
         private int EllipWidth;
