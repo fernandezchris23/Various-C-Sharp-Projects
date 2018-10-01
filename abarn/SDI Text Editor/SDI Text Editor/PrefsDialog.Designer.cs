@@ -34,9 +34,7 @@
             this.currentFontLabel = new System.Windows.Forms.Label();
             this.fontDialog = new System.Windows.Forms.FontDialog();
             this.currentFontTextBox = new System.Windows.Forms.TextBox();
-            this.currentColorTextBox = new System.Windows.Forms.TextBox();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.backColorBox = new System.Windows.Forms.TextBox();
             this.changeBackColorButton = new System.Windows.Forms.Button();
@@ -48,8 +46,6 @@
             this.dialogBaseFormPanel.Controls.Add(this.changeBackColorButton);
             this.dialogBaseFormPanel.Controls.Add(this.backColorBox);
             this.dialogBaseFormPanel.Controls.Add(this.label2);
-            this.dialogBaseFormPanel.Controls.Add(this.label1);
-            this.dialogBaseFormPanel.Controls.Add(this.currentColorTextBox);
             this.dialogBaseFormPanel.Controls.Add(this.currentFontTextBox);
             this.dialogBaseFormPanel.Controls.Add(this.currentFontLabel);
             this.dialogBaseFormPanel.Controls.Add(this.okayButton);
@@ -89,7 +85,7 @@
             // currentFontLabel
             // 
             this.currentFontLabel.AutoSize = true;
-            this.currentFontLabel.Location = new System.Drawing.Point(55, 39);
+            this.currentFontLabel.Location = new System.Drawing.Point(55, 64);
             this.currentFontLabel.Name = "currentFontLabel";
             this.currentFontLabel.Size = new System.Drawing.Size(87, 17);
             this.currentFontLabel.TabIndex = 3;
@@ -101,29 +97,12 @@
             // 
             // currentFontTextBox
             // 
-            this.currentFontTextBox.Location = new System.Drawing.Point(166, 26);
+            this.currentFontTextBox.Location = new System.Drawing.Point(165, 50);
             this.currentFontTextBox.Multiline = true;
             this.currentFontTextBox.Name = "currentFontTextBox";
             this.currentFontTextBox.ReadOnly = true;
             this.currentFontTextBox.Size = new System.Drawing.Size(174, 44);
             this.currentFontTextBox.TabIndex = 4;
-            // 
-            // currentColorTextBox
-            // 
-            this.currentColorTextBox.Location = new System.Drawing.Point(167, 86);
-            this.currentColorTextBox.Name = "currentColorTextBox";
-            this.currentColorTextBox.ReadOnly = true;
-            this.currentColorTextBox.Size = new System.Drawing.Size(173, 22);
-            this.currentColorTextBox.TabIndex = 5;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 89);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(124, 17);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Current Font Color";
             // 
             // label2
             // 
@@ -174,9 +153,7 @@
         private System.Windows.Forms.Button changeFontButton;
         private System.Windows.Forms.FontDialog fontDialog;
         private System.Windows.Forms.TextBox currentFontTextBox;
-        private System.Windows.Forms.TextBox currentColorTextBox;
         private System.Windows.Forms.ColorDialog colorDialog;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button changeBackColorButton;
         private System.Windows.Forms.TextBox backColorBox;
         private System.Windows.Forms.Label label2;

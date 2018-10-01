@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ControlLibraryAssign3;
 
@@ -28,12 +21,21 @@ namespace SDI_Text_Editor
             UpdateCurrentFontBox(properties);
         }
 
+        public void UpdateCurrentProperties(TextProperties newProperties)
+        {
+            this.properties.textFont = newProperties.textFont;
+            this.properties.textColor = newProperties.textColor;
+            this.properties.bgColor = newProperties.bgColor;
+        }
+
         public void UpdateCurrentFontBox(TextProperties newProperties)
         {
+            this.currentFontTextBox.Font = newProperties.textFont;
             this.currentFontTextBox.Text = newProperties.textFont.Name + ", " +
                 newProperties.textFont.Size;
             this.currentFontTextBox.ForeColor = newProperties.textColor;
         }
+
 
         public void UpdateBackColorTextBox(TextProperties newProperties)
         {
@@ -43,7 +45,7 @@ namespace SDI_Text_Editor
         private void okayButton_Click(object sender, EventArgs e)
         {
             //TO DO: Validate info
-            parentForm.UpdateValues(this);
+            parentForm.UpdateValues(this.properties);
             this.Close();
         }
 
