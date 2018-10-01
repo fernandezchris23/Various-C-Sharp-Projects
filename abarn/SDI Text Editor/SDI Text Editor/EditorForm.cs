@@ -10,10 +10,14 @@ using System.Windows.Forms;
 
 namespace SDI_Text_Editor
 {
-    public partial class MainForm : Form
+    public partial class EditorForm : Form
     {
-        public MainForm()
+
+        TextProperties textProperties;
+
+        public EditorForm()
         {
+            textProperties = new TextProperties();
             InitializeComponent();
         }
 
@@ -39,7 +43,20 @@ namespace SDI_Text_Editor
 
         private void preferencesButton_Click(object sender, EventArgs e)
         {
+            PrefsDialog prefsDialog = new PrefsDialog(this, textProperties);
+            prefsDialog.Show();
+        }
 
+        public void UpdateValues(PrefsDialog prefsDialog)
+        {
+            this.textProperties.textColor = prefsDialog.TextProperties.textColor;
+            this.textProperties.textFont = prefsDialog.TextProperties.textFont;
+            this.textEditorBox.BackColor = prefsDialog.TextProperties.bgColor;
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            textProperties.fileText = this.textEditorBox.Text;
         }
     }
 }

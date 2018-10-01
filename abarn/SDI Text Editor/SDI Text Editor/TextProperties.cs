@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace SDI_Text_Editor
 {
-    class PropertiesHandlerClass
+    public class TextProperties
     {
         public string fileText { get; set; }
         public string fileTitle { get; set; }
@@ -16,6 +16,13 @@ namespace SDI_Text_Editor
         public Font textFont { get; set; }
         public Point formLoc { get; set; }
         public Size formSize { get; set; }
+
+        public TextProperties()
+        {
+            textColor = Color.Black;
+            bgColor = Color.White;
+            textFont = new Font("Times New Roman", 12.0f);
+        }
 
     }
 }
