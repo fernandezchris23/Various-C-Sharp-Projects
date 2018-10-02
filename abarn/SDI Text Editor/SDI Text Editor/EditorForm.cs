@@ -9,8 +9,8 @@ namespace SDI_Text_Editor
 {
     public partial class EditorForm : Form
     {
-
-        TextProperties textProperties;
+        private TextProperties textProperties;
+        private PrefsDialog prefDialog;
 
         //Default constructor
         public EditorForm()
@@ -21,30 +21,31 @@ namespace SDI_Text_Editor
             
             //Update the editor box since default text properties aren't 
             //the same as winforms default text (Times new roman, 12pt)
-            UpdateEditorBox();
+            updateEditorBox();
         }
 
         //Toolstrip Preferences button creates a new Preferences Dialog
         private void preferencesButton_Click(object sender, EventArgs e)
         {
             //Pass the current text properties to prefsDialog
-            PrefsDialog prefsDialog = new PrefsDialog(this, textProperties);
-            prefsDialog.Show();
+            prefDialog = new PrefsDialog(textProperties);
+            prefDialog.applyBttnClick += new EventHandler(updateValues);
+            prefDialog.Show();
         }
 
         //Update values that can be changed from the preferences menu
-        public void UpdateValues(TextProperties properties)
+        public void updateValues(object sender, EventArgs e)
         {
-            this.textProperties.textColor = properties.textColor;
-            this.textProperties.textFont = properties.textFont;
-            this.textProperties.backColor = properties.backColor;
+            this.textProperties.textColor = textProperties.textColor;
+            this.textProperties.textFont = textProperties.textFont;
+            this.textProperties.backColor = textProperties.backColor;
 
             //Update the text box in Editor form to reflect the changes
-            UpdateEditorBox();
+            updateEditorBox();
         }
         
         //Update the text box in the editor form to reflect preferences menu changes
-        public void UpdateEditorBox()
+        public void updateEditorBox()
         {
             this.textEditorBox.ForeColor = textProperties.textColor;
             this.textEditorBox.Font = textProperties.textFont;
@@ -79,7 +80,7 @@ namespace SDI_Text_Editor
 
             //Update the text box in editor form to the file we just opened
             this.textEditorBox.Text = textProperties.fileText;
-            UpdateEditorBox();
+            updateEditorBox();
         }
 
         //Save a file using binaryFormatter

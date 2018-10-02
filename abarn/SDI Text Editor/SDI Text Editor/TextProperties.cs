@@ -20,13 +20,5 @@ namespace SDI_Text_Editor
             backColor = Color.White;
             textFont = new Font("Times New Roman", 12.0f);
         }
-
-        //public void GetObjectData(SerializationInfo info, StreamingContext context)
-        //{
-        //    // Use the AddValue method to specify serialized values.
-        //    info.AddValue("props", myProperty_value, typeof(string));
-
-        //}
-
     }
 }
