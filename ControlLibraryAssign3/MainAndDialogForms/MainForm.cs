@@ -75,6 +75,7 @@ namespace MainAndDialogForms
             
             if(ellipseStack.Count == 0)
                 this.closeEllipticToolStripMenuItem.Enabled = false;
+
         }
 
         private void closeRectangularToolStripMenuItem_Click(object sender, EventArgs e)

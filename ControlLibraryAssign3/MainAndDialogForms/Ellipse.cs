@@ -14,7 +14,7 @@ namespace MainAndDialogForms
 {
     public partial class Ellipse : BaseForm
     {
-        public Ellipse(int width, float multiple)
+        public Ellipse(int width, float multiple)   
         {
 
             this.width = width;
@@ -22,11 +22,13 @@ namespace MainAndDialogForms
 
             InitializeComponent();
 
-            this.ClientSize = new Size(width, height);
+            this.ClientSize = new Size(this.width, this.height);
             this.MouseDown += new MouseEventHandler(Base_MouseDown);
             this.MouseUp += new MouseEventHandler(Base_MouseUp);
             this.MouseMove += new MouseEventHandler(Base_MouseMove);
-            
+            this.BackColor = Color.PaleVioletRed;
+
+
         }
 
         private int width;
@@ -41,12 +43,13 @@ namespace MainAndDialogForms
         {
 
             Rectangle rect = this.ClientRectangle;
-
+            
             using (GraphicsPath path = new GraphicsPath())
             {
                 path.AddEllipse(rect);
                 this.Region = new Region(path);
             }
+            
 
         }
 

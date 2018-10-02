@@ -32,12 +32,14 @@
             // 
             // Ellipse
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Name = "Ellipse";
             this.Text = "Ellipse";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.Ellipse_Load);
             this.SizeChanged += new System.EventHandler(this.Ellipse_SizeChanged);
             this.ResumeLayout(false);
