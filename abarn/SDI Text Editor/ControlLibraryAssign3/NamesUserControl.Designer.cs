@@ -39,24 +39,23 @@
             membersNameLabel.Font = new System.Drawing.Font("Cambria", 10.5F, System.Drawing.FontStyle.Bold);
             membersNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             membersNameLabel.Location = new System.Drawing.Point(0, 0);
-            membersNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             membersNameLabel.Name = "membersNameLabel";
-            membersNameLabel.Size = new System.Drawing.Size(632, 50);
+            membersNameLabel.Size = new System.Drawing.Size(843, 62);
             membersNameLabel.TabIndex = 0;
-            membersNameLabel.Text = "We\'re Okay:\nAlejandro Barnola, Walter Elwell, Christopher Fernandez, Alvaro Orozc" +
-    "o, Kayla Ortiz, and Vanesa Perez";
+            membersNameLabel.Text = "We\'re Okay:\r\nAlejandro Barnola, Walter Elwell, Christopher Fernandez, Alvaro Oroz" +
+    "co, and Vanesa Perez";
             membersNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             membersNameLabel.Click += new System.EventHandler(this.membersNameLabel_Click);
             // 
             // NamesUserControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
             this.Controls.Add(membersNameLabel);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "NamesUserControl";
-            this.Size = new System.Drawing.Size(632, 50);
+            this.Size = new System.Drawing.Size(843, 62);
             this.ResumeLayout(false);
 
         }
