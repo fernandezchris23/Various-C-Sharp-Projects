@@ -1,4 +1,4 @@
-﻿namespace ControlLibrary
+﻿namespace ControlLibraryAssign3
 {
     partial class CourseUserControl
     {

@@ -1,4 +1,4 @@
-﻿namespace ControlLibrary
+﻿namespace ControlLibraryAssign3
 {
     partial class DialogBaseForm
     {
@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.dialogBaseFormPanel = new System.Windows.Forms.Panel();
-            this.courseUserControl1 = new ControlLibrary.CourseUserControl();
-            this.namesUserControl1 = new ControlLibrary.NamesUserControl();
+            this.courseUserControl1 = new ControlLibraryAssign3.CourseUserControl();
+            this.namesUserControl1 = new ControlLibraryAssign3.NamesUserControl();
             this.SuspendLayout();
             // 
             // dialogBaseFormPanel

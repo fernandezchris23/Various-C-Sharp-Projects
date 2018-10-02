@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ControlLibrary
+namespace ControlLibraryAssign3
 {
     public partial class DialogBaseForm : Form
     {

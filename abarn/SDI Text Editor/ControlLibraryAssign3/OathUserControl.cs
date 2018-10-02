@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ControlLibraryAssign3
+namespace ControlLibrary
 {
-    public partial class NamesUserControl: UserControl
+    public partial class OathUserControl : UserControl
     {
-        public NamesUserControl()
+        public OathUserControl()
         {
             InitializeComponent();
-        }
-
-        private void membersNameLabel_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
