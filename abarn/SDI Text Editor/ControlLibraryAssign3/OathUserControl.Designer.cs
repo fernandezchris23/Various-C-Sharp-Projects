@@ -37,20 +37,23 @@
             this.OathLabel.Font = new System.Drawing.Font("Cambria", 6.9F, System.Drawing.FontStyle.Bold);
             this.OathLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.OathLabel.Location = new System.Drawing.Point(0, 0);
+            this.OathLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.OathLabel.Name = "OathLabel";
-            this.OathLabel.Size = new System.Drawing.Size(523, 59);
+            this.OathLabel.Size = new System.Drawing.Size(697, 73);
             this.OathLabel.TabIndex = 0;
             this.OathLabel.Text = "I understand that this is a group project.\r\n\r\nIt is in my best interest to partic" +
     "ipate in writing the homework and study all the code from the homework.\r\n";
+            this.OathLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // OathUserControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.OathLabel);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "OathUserControl";
-            this.Size = new System.Drawing.Size(523, 59);
+            this.Size = new System.Drawing.Size(697, 73);
             this.ResumeLayout(false);
 
         }

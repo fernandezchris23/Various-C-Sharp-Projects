@@ -52,6 +52,12 @@
     <Compile Include="EditorForm.Designer.cs">
       <DependentUpon>EditorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="OathDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OathDialog.Designer.cs">
+      <DependentUpon>OathDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="PrefsDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +69,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="EditorForm.resx">
       <DependentUpon>EditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OathDialog.resx">
+      <DependentUpon>OathDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrefsDialog.resx">
       <DependentUpon>PrefsDialog.cs</DependentUpon>
