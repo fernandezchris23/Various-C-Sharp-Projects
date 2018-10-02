@@ -18,6 +18,7 @@ namespace MainAndDialogForms
         private Stack<Ellipse> ellipseStack;
         private Stack<RectangleForm> rectangleFormStack;
         private Stack<CustomChild> customChildStack;
+        private AboutDialog aboutDialog;
 
         private bool prefDlgModelessClsd;
         private bool formIsClosing;
@@ -195,6 +196,20 @@ namespace MainAndDialogForms
             if (count == customChildStack.Count) return true;
 
             return false;
+        }
+
+        private void AboutForm()
+        {
+            if (aboutDialog.IsDisposed)
+                aboutDialog = new AboutDialog();
+
+            if (!aboutDialog.Visible)
+            {
+                aboutDialog.Show();
+                aboutDialog.Location = new Point(this.Left, this.Bottom);
+                aboutDialog.Owner = this;
+            }
+
         }
 
         private void closeRectangularToolStripMenuItem_Click(object sender, EventArgs e)
