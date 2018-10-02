@@ -11,14 +11,18 @@ namespace SDI_Text_Editor
     {
         private TextProperties textProperties;
         private PrefsDialog prefDialog;
+        private bool fileIsSaved;
 
         //Default constructor
         public EditorForm()
         {
             //Create default text properties
             textProperties = new TextProperties();
+            fileIsSaved = false;
+
             InitializeComponent();
-            
+
+            this.CenterToScreen();
             //Update the editor box since default text properties aren't 
             //the same as winforms default text (Times new roman, 12pt)
             updateEditorBox();
@@ -36,6 +40,13 @@ namespace SDI_Text_Editor
         //Update values that can be changed from the preferences menu
         public void updateValues(object sender, EventArgs e)
         {
+            //If any value is different, the file is not saved
+            if (this.textProperties.textColor != textProperties.textColor &&
+                 this.textProperties.textFont != textProperties.textFont &&
+                 this.textProperties.backColor != textProperties.backColor
+                )
+                fileIsSaved = false;
+
             this.textProperties.textColor = textProperties.textColor;
             this.textProperties.textFont = textProperties.textFont;
             this.textProperties.backColor = textProperties.backColor;
@@ -64,6 +75,11 @@ namespace SDI_Text_Editor
 
             //Else, save to the inputted filename
             string filename = this.saveFileDialog.FileName;
+            this.Text = Path.GetFileNameWithoutExtension(this.saveFileDialog.FileName);
+            textProperties.fileTitle = this.Text; //Saves name of file to properties class
+            textProperties.formLoc = this.DesktopLocation;
+            fileIsSaved = true;
+
             SaveToFile(textProperties, filename);
         }
 
@@ -80,6 +96,10 @@ namespace SDI_Text_Editor
 
             //Update the text box in editor form to the file we just opened
             this.textEditorBox.Text = textProperties.fileText;
+            this.Text = textProperties.fileTitle; //Changes title of form to file name
+            this.DesktopLocation = textProperties.formLoc;
+            fileIsSaved = true; //File that was just opened is already up to date
+
             updateEditorBox();
         }
 
@@ -144,5 +164,25 @@ namespace SDI_Text_Editor
         {
             this.Close();
         }
+
+        private void EditorForm_Move(object sender, EventArgs e)
+        {
+            fileIsSaved = false; //If location of form changed, then the properties isn't up to date and needs to be saved
+        }
+
+        private void textEditorBox_TextChanged(object sender, EventArgs e)
+        {
+            fileIsSaved = false;
+        }
+
+        private void EditorForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(!fileIsSaved)
+            {
+
+            }
+        }
+
+        
     }
 }
