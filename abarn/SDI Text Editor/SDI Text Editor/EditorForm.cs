@@ -12,6 +12,7 @@ namespace SDI_Text_Editor
         private TextProperties textProperties;
         private PrefsDialog prefDialog;
         private bool fileIsSaved;
+        private bool formIsClosing;
 
         //Default constructor
         public EditorForm()
@@ -179,9 +180,16 @@ namespace SDI_Text_Editor
         {
             if(!fileIsSaved)
             {
-
+                    formIsClosing = true;
+                    e.Cancel = ExitPrompt();
             }
         }
+
+        private Boolean ExitPrompt()
+        {
+            return MessageBox.Show("Are you sure you want to exit without saving?","Your work was not saved.", MessageBoxButtons.YesNo) == DialogResult.No;
+        }
+
 
         private void oathToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -193,5 +201,17 @@ namespace SDI_Text_Editor
 
         }
 
+        private void EditorForm_Activated(object sender, EventArgs e)
+        {
+            this.Opacity = 1;
+        }
+
+        private void EditorForm_Deactivate(object sender, EventArgs e)
+        {
+            if (!formIsClosing)
+            {
+                this.Opacity = 0.5;
+            }
+        }
     }
 }
