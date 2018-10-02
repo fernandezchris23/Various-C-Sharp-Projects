@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditorForm));
             this.textEditorBox = new System.Windows.Forms.TextBox();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.uniqueTextEditorToolStrip = new System.Windows.Forms.ToolStrip();
             this.fileToolStripDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,30 +50,29 @@
             this.pasteToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.helpToolStripDropDownButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.oathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip1.SuspendLayout();
+            this.uniqueTextEditorToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // textEditorBox
             // 
-            this.textEditorBox.Location = new System.Drawing.Point(12, 33);
+            this.textEditorBox.Location = new System.Drawing.Point(12, 87);
             this.textEditorBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textEditorBox.Multiline = true;
             this.textEditorBox.Name = "textEditorBox";
-            this.textEditorBox.Size = new System.Drawing.Size(776, 390);
+            this.textEditorBox.Size = new System.Drawing.Size(776, 336);
             this.textEditorBox.TabIndex = 0;
             this.textEditorBox.TextChanged += new System.EventHandler(this.textEditorBox_TextChanged);
             // 
-            // toolStrip1
+            // uniqueTextEditorToolStrip
             // 
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.uniqueTextEditorToolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.uniqueTextEditorToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripDropDownButton,
             this.editToolStripDropDownButton,
             this.helpToolStripDropDownButton,
@@ -87,13 +86,12 @@
             this.copyToolStripButton,
             this.pasteToolStripButton,
             this.toolStripSeparator1,
-            this.helpToolStripButton,
-            this.toolStripButton1});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(805, 27);
-            this.toolStrip1.TabIndex = 1;
-            this.toolStrip1.Text = "toolStrip1";
+            this.helpToolStripButton});
+            this.uniqueTextEditorToolStrip.Location = new System.Drawing.Point(0, 0);
+            this.uniqueTextEditorToolStrip.Name = "uniqueTextEditorToolStrip";
+            this.uniqueTextEditorToolStrip.Size = new System.Drawing.Size(805, 27);
+            this.uniqueTextEditorToolStrip.TabIndex = 1;
+            this.uniqueTextEditorToolStrip.Text = "uniqueTextEditorToolStrip";
             // 
             // fileToolStripDropDownButton
             // 
@@ -258,15 +256,6 @@
             this.helpToolStripButton.Size = new System.Drawing.Size(24, 24);
             this.helpToolStripButton.Text = "He&lp";
             // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(24, 24);
-            this.toolStripButton1.Text = "&New";
-            // 
             // openFileDialog
             // 
             this.openFileDialog.FileName = "openFileDialog";
@@ -310,15 +299,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(805, 454);
             this.Controls.Add(this.statusStrip);
-            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.uniqueTextEditorToolStrip);
             this.Controls.Add(this.textEditorBox);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "EditorForm";
             this.Text = "Untitled";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EditorForm_FormClosing);
             this.Move += new System.EventHandler(this.EditorForm_Move);
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.uniqueTextEditorToolStrip.ResumeLayout(false);
+            this.uniqueTextEditorToolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -327,7 +316,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox textEditorBox;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStrip uniqueTextEditorToolStrip;
         private System.Windows.Forms.ToolStripDropDownButton fileToolStripDropDownButton;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
@@ -350,7 +339,6 @@
         private System.Windows.Forms.ToolStripButton pasteToolStripButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton helpToolStripButton;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripDropDownButton helpToolStripDropDownButton;
         private System.Windows.Forms.ToolStripMenuItem oathToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
