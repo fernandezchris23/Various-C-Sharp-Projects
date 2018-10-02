@@ -119,5 +119,30 @@ namespace SDI_Text_Editor
             stream.Close();
             stream.Dispose();
         }
+
+        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int lengthOfSelection = textEditorBox.SelectionLength;
+
+            //Save data to clipboard and then change text in textbox to everything minus the selection
+            Clipboard.SetData(DataFormats.Text, textEditorBox.SelectedText);
+            textEditorBox.Text = textEditorBox.Text.Remove(textEditorBox.SelectionStart, lengthOfSelection);
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetData(DataFormats.Text, textEditorBox.SelectedText);
+        }
+
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Changes text in textbox to the text after inserting what was in the clipboard at the current cursor location
+            textEditorBox.Text = textEditorBox.Text.Insert(textEditorBox.SelectionStart, Clipboard.GetData(DataFormats.Text).ToString());
+        }
+
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

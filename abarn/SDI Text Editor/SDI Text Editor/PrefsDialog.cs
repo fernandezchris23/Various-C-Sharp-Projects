@@ -36,7 +36,6 @@ namespace SDI_Text_Editor
         //Update the current font box
         public void UpdateCurrentFontBox(TextProperties newProperties)
         {
-            this.currentFontTextBox.Font = newProperties.textFont;
             //Font's ToString() method returns a very long string. So just take name/size
             this.currentFontTextBox.Text = newProperties.textFont.Name + ", " +
                 newProperties.textFont.Size;

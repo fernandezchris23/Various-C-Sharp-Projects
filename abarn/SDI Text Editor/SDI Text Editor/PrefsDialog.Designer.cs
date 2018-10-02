@@ -135,6 +135,7 @@
             // backColorBox
             // 
             this.backColorBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.backColorBox.Enabled = false;
             this.backColorBox.Location = new System.Drawing.Point(124, 81);
             this.backColorBox.Margin = new System.Windows.Forms.Padding(2);
             this.backColorBox.Multiline = true;
@@ -177,6 +178,7 @@
             this.BackColor = System.Drawing.Color.LightBlue;
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(492, 293);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
