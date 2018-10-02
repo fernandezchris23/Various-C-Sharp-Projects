@@ -183,5 +183,14 @@ namespace SDI_Text_Editor
             }
         }
 
+        private void oathToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

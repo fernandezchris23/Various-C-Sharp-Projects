@@ -73,8 +73,8 @@
             this.uniqueTextEditorToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripDropDownButton,
             this.editToolStripDropDownButton,
-            this.preferencesButton,
             this.helpToolStripDropDownButton,
+            this.preferencesButton,
             this.openToolStripButton,
             this.saveToolStripButton,
             this.toolStripSeparator,
@@ -84,6 +84,7 @@
             this.toolStripSeparator1,
             this.helpToolStripButton});
             this.uniqueTextEditorToolStrip.Location = new System.Drawing.Point(0, 0);
+            this.uniqueTextEditorToolStrip.MinimumSize = new System.Drawing.Size(0, 0);
             this.uniqueTextEditorToolStrip.Name = "uniqueTextEditorToolStrip";
             this.uniqueTextEditorToolStrip.Size = new System.Drawing.Size(805, 27);
             this.uniqueTextEditorToolStrip.TabIndex = 1;
@@ -238,6 +239,7 @@
             this.helpToolStripButton.Name = "helpToolStripButton";
             this.helpToolStripButton.Size = new System.Drawing.Size(24, 24);
             this.helpToolStripButton.Text = "He&lp";
+            this.helpToolStripButton.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // openFileDialog
             // 
@@ -267,14 +269,18 @@
             // oathToolStripMenuItem
             // 
             this.oathToolStripMenuItem.Name = "oathToolStripMenuItem";
+            this.oathToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.O)));
             this.oathToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.oathToolStripMenuItem.Text = "Oath";
+            this.oathToolStripMenuItem.Click += new System.EventHandler(this.oathToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.H)));
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // EditorForm
             // 
