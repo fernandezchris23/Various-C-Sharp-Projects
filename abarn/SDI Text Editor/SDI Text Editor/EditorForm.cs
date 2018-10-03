@@ -32,7 +32,7 @@ namespace SDI_Text_Editor
             //the same as winforms default text (Times new roman, 12pt)
             updateEditorBox();
         }
-
+        
         //Toolstrip Preferences button creates a new Preferences Dialog
         private void preferencesButton_Click(object sender, EventArgs e)
         {
