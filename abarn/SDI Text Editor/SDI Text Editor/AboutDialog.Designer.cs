@@ -28,12 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.descriptionLabel = new System.Windows.Forms.Label();
+            this.dialogBaseFormPanel.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // dialogBaseFormPanel
+            // 
+            this.dialogBaseFormPanel.Controls.Add(this.descriptionLabel);
+            this.dialogBaseFormPanel.Size = new System.Drawing.Size(802, 184);
+            // 
+            // descriptionLabel
+            // 
+            this.descriptionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.descriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descriptionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
+            this.descriptionLabel.Location = new System.Drawing.Point(0, 0);
+            this.descriptionLabel.Name = "descriptionLabel";
+            this.descriptionLabel.Size = new System.Drawing.Size(802, 184);
+            this.descriptionLabel.TabIndex = 0;
+            this.descriptionLabel.Text = "This assignment  ";
+            this.descriptionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // AboutDialog
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(802, 301);
+            this.Name = "AboutDialog";
             this.Text = "AboutDialog";
+            this.dialogBaseFormPanel.ResumeLayout(false);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Label descriptionLabel;
     }
 }
