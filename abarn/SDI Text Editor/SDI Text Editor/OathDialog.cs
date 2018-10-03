@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace SDI_Text_Editor
 {
-    public partial class OathDialog : BaseForm
+    public partial class OathDialog : DialogBaseForm
     {
         public OathDialog()
         {

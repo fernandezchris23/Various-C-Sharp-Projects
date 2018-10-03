@@ -18,7 +18,6 @@ namespace MainAndDialogForms
         private Stack<Ellipse> ellipseStack;
         private Stack<RectangleForm> rectangleFormStack;
         private Stack<CustomChild> customChildStack;
-        private AboutDialog aboutDialog;
 
         private bool prefDlgModelessClsd;
         private bool formIsClosing;
