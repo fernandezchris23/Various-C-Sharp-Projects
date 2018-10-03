@@ -285,7 +285,7 @@
             // 
             this.oathToolStripMenuItem.Name = "oathToolStripMenuItem";
             this.oathToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.O)));
-            this.oathToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.oathToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
             this.oathToolStripMenuItem.Text = "Oath";
             this.oathToolStripMenuItem.Click += new System.EventHandler(this.oathToolStripMenuItem_Click);
             // 
@@ -293,14 +293,14 @@
             // 
             this.aboutDialogToolStripMenuItem.Name = "aboutDialogToolStripMenuItem";
             this.aboutDialogToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.A)));
-            this.aboutDialogToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.aboutDialogToolStripMenuItem.Size = new System.Drawing.Size(173, 26);
             this.aboutDialogToolStripMenuItem.Text = "About";
             this.aboutDialogToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem1
             // 
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(173, 26);
             this.helpToolStripMenuItem1.Text = "Help";
             // 
             // EditorForm
@@ -315,7 +315,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "EditorForm";
-            this.Text = "Untitled";
+            this.Text = "Unique Text Editor";
             this.Activated += new System.EventHandler(this.EditorForm_Activated);
             this.Deactivate += new System.EventHandler(this.EditorForm_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EditorForm_FormClosing);
