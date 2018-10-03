@@ -101,16 +101,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\BackgroundForDialogs.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\flowers.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\63986016-cyan-wallpapers.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\images.jpg" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
