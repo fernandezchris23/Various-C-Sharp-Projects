@@ -117,4 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="descriptionLabel.Text" xml:space="preserve">
+    <value>This assignment  is a unique Single Document Interface (SDI) application that implements a text editor. This editor allows a user to change the background and the text color. 
+It also provides basic text editing features, such as cut, copy and paste, simple help features, standard toolstrip buttons and shortcut keys for quick use.
+</value>
+  </data>
 </root>

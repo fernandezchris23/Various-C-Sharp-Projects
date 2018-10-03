@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutDialog));
             this.descriptionLabel = new System.Windows.Forms.Label();
             this.dialogBaseFormPanel.SuspendLayout();
             this.SuspendLayout();
@@ -46,7 +47,7 @@
             this.descriptionLabel.Name = "descriptionLabel";
             this.descriptionLabel.Size = new System.Drawing.Size(802, 184);
             this.descriptionLabel.TabIndex = 0;
-            this.descriptionLabel.Text = "This assignment  ";
+            this.descriptionLabel.Text = resources.GetString("descriptionLabel.Text");
             this.descriptionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // AboutDialog
