@@ -13,7 +13,7 @@ namespace SDI_Text_Editor
         private TextProperties textProperties;
         private PrefsDialog prefDialog;
         private OathDialog oathDialog;
-        //private AboutDialog aboutDialog;
+        private AboutDialog aboutDialog;
         private bool fileIsSaved;
         private bool formIsClosing;
 
@@ -23,6 +23,7 @@ namespace SDI_Text_Editor
             //Create default text properties
             textProperties = new TextProperties();
             fileIsSaved = false;
+            aboutDialog = new AboutDialog();
 
             InitializeComponent();
 
@@ -207,7 +208,15 @@ namespace SDI_Text_Editor
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (aboutDialog.IsDisposed)
+                aboutDialog = new AboutDialog();
 
+            if (!aboutDialog.Visible)
+            {
+                aboutDialog.Show();
+                aboutDialog.Location = new Point(this.Left, this.Bottom);
+                aboutDialog.Owner = this;
+            }
         }
 
         private void EditorForm_Activated(object sender, EventArgs e)
