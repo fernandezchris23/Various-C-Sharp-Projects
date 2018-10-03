@@ -55,7 +55,8 @@
             this.openPropertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpDialogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutDialogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.uniqueTextEditorToolStrip.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -156,7 +157,7 @@
             this.helpToolStripButton.Name = "helpToolStripButton";
             this.helpToolStripButton.Size = new System.Drawing.Size(24, 24);
             this.helpToolStripButton.Text = "He&lp";
-            this.helpToolStripButton.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
+            this.helpToolStripButton.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // openFileDialog
             // 
@@ -274,7 +275,8 @@
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.oathToolStripMenuItem,
-            this.helpDialogToolStripMenuItem});
+            this.aboutDialogToolStripMenuItem,
+            this.helpToolStripMenuItem1});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
             this.helpToolStripMenuItem.Text = "Help";
@@ -283,17 +285,23 @@
             // 
             this.oathToolStripMenuItem.Name = "oathToolStripMenuItem";
             this.oathToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.O)));
-            this.oathToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
+            this.oathToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.oathToolStripMenuItem.Text = "Oath";
             this.oathToolStripMenuItem.Click += new System.EventHandler(this.oathToolStripMenuItem_Click);
             // 
-            // helpDialogToolStripMenuItem
+            // aboutDialogToolStripMenuItem
             // 
-            this.helpDialogToolStripMenuItem.Name = "helpDialogToolStripMenuItem";
-            this.helpDialogToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.H)));
-            this.helpDialogToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
-            this.helpDialogToolStripMenuItem.Text = "Help";
-            this.helpDialogToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
+            this.aboutDialogToolStripMenuItem.Name = "aboutDialogToolStripMenuItem";
+            this.aboutDialogToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.A)));
+            this.aboutDialogToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.aboutDialogToolStripMenuItem.Text = "About";
+            this.aboutDialogToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem1
+            // 
+            this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
+            this.helpToolStripMenuItem1.Text = "Help";
             // 
             // EditorForm
             // 
@@ -348,8 +356,9 @@
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem oathToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem helpDialogToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutDialogToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openPropertiesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem1;
     }
 }
 

@@ -4,6 +4,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization.Formatters;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace SDI_Text_Editor
 {
@@ -11,6 +12,8 @@ namespace SDI_Text_Editor
     {
         private TextProperties textProperties;
         private PrefsDialog prefDialog;
+        private OathDialog oathDialog;
+        //private AboutDialog aboutDialog;
         private bool fileIsSaved;
         private bool formIsClosing;
 
@@ -193,10 +196,16 @@ namespace SDI_Text_Editor
 
         private void oathToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            oathDialog = new OathDialog();
+            oathDialog.Owner = this;        // the main form is the owner of the oath dialog  
 
+            oathDialog.StartPosition = FormStartPosition.Manual;
+            oathDialog.Location = new Point(this.Right, this.Top);
+
+            oathDialog.ShowDialog();        // open modally
         }
 
-        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
