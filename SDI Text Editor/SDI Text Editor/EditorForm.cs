@@ -4,7 +4,6 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization.Formatters;
 using System.Windows.Forms;
-using System.Drawing;
 
 namespace SDI_Text_Editor
 {
@@ -12,10 +11,7 @@ namespace SDI_Text_Editor
     {
         private TextProperties textProperties;
         private PrefsDialog prefDialog;
-        private OathDialog oathDialog;
-        private AboutDialog aboutDialog;
         private bool fileIsSaved;
-        private bool formIsClosing;
 
         public const string RECENT_FILENAMES = "recentFiles.txt"; //Name of file to store list of recent files
 
@@ -24,8 +20,9 @@ namespace SDI_Text_Editor
         {
             //Create default text properties
             textProperties = new TextProperties();
+
+            //Initializers
             fileIsSaved = false;
-            aboutDialog = new AboutDialog();
 
             InitializeComponent();
 
@@ -37,7 +34,7 @@ namespace SDI_Text_Editor
             //the same as winforms default text (Times new roman, 12pt)
             updateEditorBox();
         }
-        
+
         //Toolstrip Preferences button creates a new Preferences Dialog
         private void preferencesButton_Click(object sender, EventArgs e)
         {
@@ -190,57 +187,14 @@ namespace SDI_Text_Editor
         private void textEditorBox_TextChanged(object sender, EventArgs e)
         {
             fileIsSaved = false;
+
         }
 
         private void EditorForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if(!fileIsSaved)
             {
-                    formIsClosing = true;
-                    e.Cancel = ExitPrompt();
-            }
-        }
 
-        private Boolean ExitPrompt()
-        {
-            return MessageBox.Show("Are you sure you want to exit without saving?","Your work was not saved.", MessageBoxButtons.YesNo) == DialogResult.No;
-        }
-
-
-        private void oathToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            oathDialog = new OathDialog();
-            oathDialog.Owner = this;        // the main form is the owner of the oath dialog  
-
-            oathDialog.StartPosition = FormStartPosition.Manual;
-            oathDialog.Location = new Point(this.Right, this.Top);
-
-            oathDialog.ShowDialog();        // open modally
-        }
-
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (aboutDialog.IsDisposed)
-                aboutDialog = new AboutDialog();
-
-            if (!aboutDialog.Visible)
-            {
-                aboutDialog.Show();
-                aboutDialog.Location = new Point(this.Left, this.Bottom);
-                aboutDialog.Owner = this;
-            }
-        }
-
-        private void EditorForm_Activated(object sender, EventArgs e)
-        {
-            this.Opacity = 1;
-        }
-
-        private void EditorForm_Deactivate(object sender, EventArgs e)
-        {
-            if (!formIsClosing)
-            {
-                this.Opacity = 0.5;
             }
         }
 
@@ -256,7 +210,7 @@ namespace SDI_Text_Editor
 
         private void readRecentList()
         {
-            if (!File.Exists(RECENT_FILENAMES))
+            if(!File.Exists(RECENT_FILENAMES))
             {
                 File.Create(RECENT_FILENAMES).Close();
             }
@@ -265,11 +219,9 @@ namespace SDI_Text_Editor
             string lineOfFile;
             int numLinesInFile = 0;
 
-            try
-            {
+            try {
                 openRecentStream = new StreamReader(RECENT_FILENAMES);
-            }
-            catch (FileNotFoundException e)
+            } catch (FileNotFoundException e)
             {
                 Console.WriteLine("File: " + RECENT_FILENAMES + " was not found. Please Create the file.");
                 return;
@@ -291,19 +243,19 @@ namespace SDI_Text_Editor
             {
                 openRecentToolStripMenuItem.DropDownItems.Clear();
             }
-
+            
 
             //Moves the reading point of the stream such that the last ten entries are the only ones being added
             //10 was a good number in Chris' opinion to end at, else the list might get too long
-            if (numLinesInFile > 10)
+            if(numLinesInFile > 10)
             {
-                for (int counter = 0; counter < numLinesInFile - 10; counter++)
+                for(int counter = 0; counter < numLinesInFile - 10; counter++)
                 {
                     openRecentStream.ReadLine();
                 }
             }
 
-            while ((lineOfFile = openRecentStream.ReadLine()) != null)
+            while((lineOfFile = openRecentStream.ReadLine()) != null)
             {
                 ToolStripMenuItem newItem = new ToolStripMenuItem(lineOfFile);
                 newItem.Click += new EventHandler(openRecentClickHandler);

@@ -36,7 +36,8 @@
             // dialogBaseFormPanel
             // 
             this.dialogBaseFormPanel.Controls.Add(this.descriptionLabel);
-            this.dialogBaseFormPanel.Size = new System.Drawing.Size(802, 184);
+            this.dialogBaseFormPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dialogBaseFormPanel.Size = new System.Drawing.Size(602, 171);
             // 
             // descriptionLabel
             // 
@@ -44,19 +45,24 @@
             this.descriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.descriptionLabel.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.descriptionLabel.Location = new System.Drawing.Point(0, 0);
+            this.descriptionLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.descriptionLabel.MinimumSize = new System.Drawing.Size(602, 171);
             this.descriptionLabel.Name = "descriptionLabel";
-            this.descriptionLabel.Size = new System.Drawing.Size(802, 184);
+            this.descriptionLabel.Size = new System.Drawing.Size(602, 171);
             this.descriptionLabel.TabIndex = 0;
             this.descriptionLabel.Text = resources.GetString("descriptionLabel.Text");
             this.descriptionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // AboutDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::SDI_Text_Editor.Properties.Resources.smiles;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(802, 301);
+            this.ClientSize = new System.Drawing.Size(602, 266);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(618, 305);
             this.Name = "AboutDialog";
             this.Text = "AboutDialog";
             this.dialogBaseFormPanel.ResumeLayout(false);
