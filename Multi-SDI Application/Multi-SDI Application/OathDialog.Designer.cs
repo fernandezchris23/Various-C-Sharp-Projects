@@ -28,12 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OathDialog));
+            this.oathUserControl1 = new ControlLibrary.OathUserControl();
+            this.dialogBaseFormPanel.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // dialogBaseFormPanel
+            // 
+            this.dialogBaseFormPanel.Controls.Add(this.oathUserControl1);
+            this.dialogBaseFormPanel.Size = new System.Drawing.Size(711, 222);
+            // 
+            // oathUserControl1
+            // 
+            this.oathUserControl1.BackColor = System.Drawing.Color.Transparent;
+            this.oathUserControl1.Location = new System.Drawing.Point(26, 31);
+            this.oathUserControl1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.oathUserControl1.Name = "oathUserControl1";
+            this.oathUserControl1.Size = new System.Drawing.Size(547, 91);
+            this.oathUserControl1.TabIndex = 0;
+            // 
+            // OathDialog
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(711, 317);
+            this.Name = "OathDialog";
             this.Text = "OathDialog";
+            this.dialogBaseFormPanel.ResumeLayout(false);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private ControlLibrary.OathUserControl oathUserControl1;
     }
 }
