@@ -53,8 +53,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(711, 317);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "OathDialog";
+            this.ShowIcon = false;
             this.Text = "OathDialog";
+            this.Load += new System.EventHandler(this.OathDialog_Load);
+            this.SizeChanged += new System.EventHandler(this.OathDialog_SizeChanged);
             this.dialogBaseFormPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 

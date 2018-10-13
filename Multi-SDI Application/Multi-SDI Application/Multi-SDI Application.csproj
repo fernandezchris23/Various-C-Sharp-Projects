@@ -68,6 +68,7 @@
     <Compile Include="AboutDialog.Designer.cs">
       <DependentUpon>AboutDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="FileProperties.cs" />
     <Compile Include="IWindowMenu.cs" />
     <Compile Include="OathDialog.cs">
       <SubType>Form</SubType>

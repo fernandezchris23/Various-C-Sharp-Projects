@@ -11,16 +11,13 @@ namespace Multi_SDI_Application
 {
     class MultiSDIApp : WindowsFormsApplicationBase//, IWindowMenu
     {
-
-
-
         private static MultiSDIApp application;
         internal static MultiSDIApp Application
         {
             get
             {
                 if (application == null)
-                    application = new MultiSDIApp();
+                    application = new MultiSDIApp(); //If no spplication exists, create one
                 return application;
             }
             
@@ -32,9 +29,16 @@ namespace Multi_SDI_Application
             this.ShutdownStyle = ShutdownMode.AfterAllFormsClose;
         }
 
+        //Create first top level form
         protected override void OnCreateMainForm()
         {
             this.MainForm = this.CreateTopLevelWindow(this.CommandLineArgs);
+        }
+
+        // Create subsequent top-level form
+        protected override void OnStartupNextInstance(StartupNextInstanceEventArgs e)
+        {
+            this.CreateTopLevelWindow(e.CommandLine);
         }
 
         private Form CreateTopLevelWindow(ReadOnlyCollection<string> args)

@@ -22,7 +22,12 @@ namespace ControlLibraryAssign3
 
         }
 
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        public virtual void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public virtual void newWindowToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }

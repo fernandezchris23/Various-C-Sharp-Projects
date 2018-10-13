@@ -55,11 +55,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(723, 383);
             this.Controls.Add(this.descriptionLabel);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AboutDialog";
+            this.ShowIcon = false;
             this.Text = "AboutDialog";
+            this.Load += new System.EventHandler(this.AboutDialog_Load);
+            this.SizeChanged += new System.EventHandler(this.AboutDialog_SizeChanged);
             this.Controls.SetChildIndex(this.dialogBaseFormPanel, 0);
             this.Controls.SetChildIndex(this.descriptionLabel, 0);
             this.ResumeLayout(false);
