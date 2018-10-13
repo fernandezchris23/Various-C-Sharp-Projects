@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ControlLibraryAssign3
+namespace ControlLibrary
 {
     public partial class BaseForm : Form
     {

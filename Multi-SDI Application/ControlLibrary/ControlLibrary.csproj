@@ -47,29 +47,35 @@
     <Compile Include="BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CourseUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CourseUserControl.Designer.cs">
-      <DependentUpon>CourseUserControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DialogBaseForm.cs">
+    <Compile Include="BaseMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DialogBaseForm.Designer.cs">
-      <DependentUpon>DialogBaseForm.cs</DependentUpon>
+    <Compile Include="BaseMainForm.Designer.cs">
+      <DependentUpon>BaseMainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="NamesUserControl.cs">
+    <Compile Include="courseUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="NamesUserControl.Designer.cs">
-      <DependentUpon>NamesUserControl.cs</DependentUpon>
+    <Compile Include="courseUserControl.Designer.cs">
+      <DependentUpon>courseUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="OathUserControl.cs">
+    <Compile Include="dialogBaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogBaseForm.Designer.cs">
+      <DependentUpon>dialogBaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="namesUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="OathUserControl.Designer.cs">
-      <DependentUpon>OathUserControl.cs</DependentUpon>
+    <Compile Include="namesUserControl.Designer.cs">
+      <DependentUpon>namesUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="oathUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="oathUserControl.Designer.cs">
+      <DependentUpon>oathUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -83,17 +89,20 @@
     <EmbeddedResource Include="BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CourseUserControl.resx">
-      <DependentUpon>CourseUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="BaseMainForm.resx">
+      <DependentUpon>BaseMainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DialogBaseForm.resx">
-      <DependentUpon>DialogBaseForm.cs</DependentUpon>
+    <EmbeddedResource Include="courseUserControl.resx">
+      <DependentUpon>courseUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NamesUserControl.resx">
-      <DependentUpon>NamesUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="dialogBaseForm.resx">
+      <DependentUpon>dialogBaseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OathUserControl.resx">
-      <DependentUpon>OathUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="namesUserControl.resx">
+      <DependentUpon>namesUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="oathUserControl.resx">
+      <DependentUpon>oathUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

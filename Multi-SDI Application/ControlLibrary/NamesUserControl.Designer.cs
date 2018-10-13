@@ -1,6 +1,6 @@
-﻿namespace ControlLibraryAssign3
+﻿namespace ControlLibrary
 {
-    partial class NamesUserControl
+    partial class namesUserControl
     {
         /// <summary>
         /// Required designer variable.

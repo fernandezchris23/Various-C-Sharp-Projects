@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ControlLibraryAssign3
+namespace ControlLibrary
 {
-    public partial class CourseUserControl : UserControl
+    public partial class courseUserControl : UserControl
     {
-        public CourseUserControl()
+        public courseUserControl()
         {
             InitializeComponent();
         }

@@ -13,7 +13,7 @@ using System.IO;
 
 namespace Multi_SDI_Application
 {
-    public partial class TopLevelForm : BaseForm
+    public partial class TopLevelForm : BaseMainForm
     {
         public TopLevelForm()
         {
@@ -46,6 +46,11 @@ namespace Multi_SDI_Application
         private void OpenFile(String filename)
         {
             
+        }
+
+        public override void oathToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("");
         }
     }
 }

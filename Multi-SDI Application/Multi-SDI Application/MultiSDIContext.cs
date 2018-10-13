@@ -9,16 +9,11 @@ using System.Collections.ObjectModel;
 
 namespace Multi_SDI_Application
 {
-    internal interface ISDIInterface
+    class MultiSDIApp : WindowsFormsApplicationBase//, IWindowMenu
     {
-        //void MultiSDIApp();
-        //void OnCreateMainForm();
-        //Form CreateTopLevelWindow(ReadOnlyCollection<string> args);
-    }
 
 
-    class MultiSDIApp : WindowsFormsApplicationBase, ISDIInterface
-        {
+
         private static MultiSDIApp application;
         internal static MultiSDIApp Application
         {

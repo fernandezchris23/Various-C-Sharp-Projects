@@ -1,6 +1,6 @@
-﻿namespace ControlLibraryAssign3
+﻿namespace ControlLibrary
 {
-    partial class DialogBaseForm
+    partial class dialogBaseForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.dialogBaseFormPanel = new System.Windows.Forms.Panel();
-            this.courseUserControl = new ControlLibraryAssign3.CourseUserControl();
-            this.namesUserControl1 = new ControlLibraryAssign3.NamesUserControl();
+            this.courseUserControl = new ControlLibrary.courseUserControl();
+            this.namesUserControl1 = new ControlLibrary.namesUserControl();
             this.SuspendLayout();
             // 
             // dialogBaseFormPanel
@@ -80,8 +80,8 @@
 
         #endregion
 
-        private NamesUserControl namesUserControl1;
-        private CourseUserControl courseUserControl;
+        private namesUserControl namesUserControl1;
+        private courseUserControl courseUserControl;
         protected internal System.Windows.Forms.Panel dialogBaseFormPanel;
     }
 }
