@@ -20,7 +20,13 @@ namespace Multi_SDI_Application
             InitializeComponent();
         }
 
-        string filename { get; set; }
+        //Variables
+        private string filename { get; set; }
+
+        //Enumerations
+        private enum shape { Ellipse, Rectangle, Custom};
+        private enum pen { Thin, Normal, Thick};
+        private enum brush { }
 
         //Creates new top level window
         public static TopLevelForm CreateWindow(string filename)
@@ -40,6 +46,7 @@ namespace Multi_SDI_Application
             TopLevelForm newForm = new TopLevelForm();
             newForm.OpenFile(filename);
             newForm.Show();
+            newForm.Text = "Untitled";
             newForm.Activate();
             return newForm;
         }
@@ -49,6 +56,7 @@ namespace Multi_SDI_Application
             
         }
 
+        //Override of Oath Tool Strip Menu Item Handler
         public override void oathToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OathDialog oathDlg = new OathDialog();
@@ -64,6 +72,7 @@ namespace Multi_SDI_Application
             
         }
 
+        //Override of About Tool Strip Menu Item Handler
         public override void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AboutDialog abtDlg = new AboutDialog();
@@ -79,9 +88,17 @@ namespace Multi_SDI_Application
             }
         }
 
+        //Override of New Window Tool Strip Menu Item Handler
         public override void newWindowToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CreateWindow("");
+            updateWindowMenu();
+        }
+
+        //Used to update the Window Menu Items
+        private void updateWindowMenu()
+        {
+            
         }
     }
 }
