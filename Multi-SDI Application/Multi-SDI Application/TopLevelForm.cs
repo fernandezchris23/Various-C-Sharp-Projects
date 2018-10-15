@@ -9,24 +9,32 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ControlLibraryAssign3;
 using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization.Formatters;
 
 
 namespace Multi_SDI_Application
 {
     public partial class TopLevelForm : BaseMainForm
     {
-        public TopLevelForm()
-        {
-            InitializeComponent();
-        }
-
         //Variables
         private string filename { get; set; }
+        private string fileFilter;
+        private SerializableProperties serializableProperties;
 
         //Enumerations
         private enum shape { Ellipse, Rectangle, Custom};
         private enum pen { Solid, Dashed, Compound};
         private enum brush { LinearGradient, Hatched, Solid}
+
+        public TopLevelForm()
+        {
+            InitializeComponent();
+            serializableProperties = new SerializableProperties();
+            fileFilter = "Files|*.ok";
+        }
+
 
         //Creates new top level window
         public static TopLevelForm CreateWindow(string filename)
@@ -93,6 +101,38 @@ namespace Multi_SDI_Application
         {
             CreateWindow("");
             updateWindowMenu();
+        }
+
+        public override void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = fileFilter;
+            saveFileDialog.Title = "Save file";
+
+            if (saveFileDialog.ShowDialog(this) != DialogResult.OK)
+                return;
+
+            if (Serializer.Serialize(saveFileDialog.FileName, serializableProperties))
+                Console.WriteLine(saveFileDialog.FileName + " saved succesfully");
+            else
+                Console.WriteLine("Failed to save file");
+        }
+
+        
+        public override void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = fileFilter;
+            openFileDialog.Title = "Select file to open";
+
+            if (openFileDialog.ShowDialog(this) != DialogResult.OK)
+                return;
+
+            SerializableProperties temp;
+            if ((temp = Serializer.Deserialize(openFileDialog.FileName)) != null)
+                serializableProperties = temp;
+            else
+                Console.WriteLine("Failed");
         }
 
         //Used to update the Window Menu Items

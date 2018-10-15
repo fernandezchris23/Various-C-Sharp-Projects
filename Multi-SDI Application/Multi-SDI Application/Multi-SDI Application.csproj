@@ -77,6 +77,8 @@
     <Compile Include="OathDialog.Designer.cs">
       <DependentUpon>OathDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="SerializableProperties.cs" />
+    <Compile Include="Serializer.cs" />
     <Compile Include="Shape.cs" />
     <Compile Include="ShapeOptionsDialog.cs">
       <SubType>Form</SubType>

@@ -17,10 +17,14 @@ namespace ControlLibraryAssign3
             InitializeComponent();
         }
 
-        public virtual void oathToolStripMenuItem_Click(object sender, EventArgs e)      {        }
+        public virtual void oathToolStripMenuItem_Click(object sender, EventArgs e) {}
 
-        public virtual void aboutToolStripMenuItem_Click(object sender, EventArgs e)     {        }
+        public virtual void aboutToolStripMenuItem_Click(object sender, EventArgs e) {}
 
-        public virtual void newWindowToolStripMenuItem_Click(object sender, EventArgs e) {        }
+        public virtual void newWindowToolStripMenuItem_Click(object sender, EventArgs e) {}
+
+        public virtual void saveToolStripMenuItem_Click(object sender, EventArgs e) {}
+
+        public virtual void openToolStripMenuItem_Click(object sender, EventArgs e) {}
     }
 }
