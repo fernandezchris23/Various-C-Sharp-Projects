@@ -25,8 +25,8 @@ namespace Multi_SDI_Application
 
         //Enumerations
         private enum shape { Ellipse, Rectangle, Custom};
-        private enum pen { Thin, Normal, Thick};
-        private enum brush { }
+        private enum pen { Solid, Dashed, Compound};
+        private enum brush { LinearGradient, Hatched, Solid}
 
         //Creates new top level window
         public static TopLevelForm CreateWindow(string filename)

@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace Multi_SDI_Application
 {
-    class Shape
+    public class Shape
     {
+        public string shapeId { get; set; } //Unique name for identifying shape
+
         public Size shapeSize { get; set; }
 
         public Point shapeLoc { get; set; }

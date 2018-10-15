@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Multi_SDI_Application
 {
-    class Document : Container
+    public class Document : Container
     {
         private int numShapes = 0;
 
@@ -31,6 +31,18 @@ namespace Multi_SDI_Application
                     numShapes--;
                 }
             }
+        }
+
+        public Shape GetShape(string id)
+        {
+            foreach(Shape component in Components)
+            {
+                if(string.Equals(id, component.shapeId))
+                {
+                    return component;
+                }
+            }
+            return null; //Should Never reach this because validation
         }
 
         public int countShapes()
