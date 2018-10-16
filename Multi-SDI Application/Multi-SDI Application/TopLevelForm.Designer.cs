@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TopLevelForm));
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.contextMenuStripShapes = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -48,7 +49,13 @@
             this.penColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.brushColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.oathToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.aboutToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.newWinToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.contextMenuStripShapes.SuspendLayout();
+            this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog
@@ -185,11 +192,67 @@
             // toolStrip
             // 
             this.toolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveToolStripButton,
+            this.openToolStripButton,
+            this.oathToolStripButton,
+            this.aboutToolStripButton,
+            this.newWinToolStripButton});
             this.toolStrip.Location = new System.Drawing.Point(0, 28);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(1067, 25);
+            this.toolStrip.Size = new System.Drawing.Size(1067, 27);
             this.toolStrip.TabIndex = 3;
             this.toolStrip.Text = "toolStrip1";
+            // 
+            // saveToolStripButton
+            // 
+            this.saveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.saveToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripButton.Image")));
+            this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveToolStripButton.Name = "saveToolStripButton";
+            this.saveToolStripButton.Size = new System.Drawing.Size(24, 24);
+            this.saveToolStripButton.Text = "toolStripButton1";
+            this.saveToolStripButton.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // openToolStripButton
+            // 
+            this.openToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.openToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripButton.Image")));
+            this.openToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.openToolStripButton.Name = "openToolStripButton";
+            this.openToolStripButton.Size = new System.Drawing.Size(24, 24);
+            this.openToolStripButton.Text = "toolStripButton1";
+            this.openToolStripButton.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
+            // oathToolStripButton
+            // 
+            this.oathToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.oathToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("oathToolStripButton.Image")));
+            this.oathToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.oathToolStripButton.Name = "oathToolStripButton";
+            this.oathToolStripButton.Size = new System.Drawing.Size(24, 24);
+            this.oathToolStripButton.Text = "toolStripButton1";
+            this.oathToolStripButton.Click += new System.EventHandler(this.oathToolStripMenuItem_Click);
+            // 
+            // aboutToolStripButton
+            // 
+            this.aboutToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.aboutToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("aboutToolStripButton.Image")));
+            this.aboutToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.aboutToolStripButton.Name = "aboutToolStripButton";
+            this.aboutToolStripButton.Size = new System.Drawing.Size(24, 24);
+            this.aboutToolStripButton.Text = "toolStripButton1";
+            this.aboutToolStripButton.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // newWinToolStripButton
+            // 
+            this.newWinToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.newWinToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("newWinToolStripButton.Image")));
+            this.newWinToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.newWinToolStripButton.Name = "newWinToolStripButton";
+            this.newWinToolStripButton.Size = new System.Drawing.Size(24, 24);
+            this.newWinToolStripButton.Text = "toolStripButton1";
+            this.newWinToolStripButton.Click += new System.EventHandler(this.newWindowToolStripMenuItem_Click);
             // 
             // TopLevelForm
             // 
@@ -205,6 +268,8 @@
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TopLevelForm_MouseUp);
             this.Controls.SetChildIndex(this.toolStrip, 0);
             this.contextMenuStripShapes.ResumeLayout(false);
+            this.toolStrip.ResumeLayout(false);
+            this.toolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -231,6 +296,11 @@
         private System.Windows.Forms.ToolStripMenuItem brushColorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lineToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip;
+        private System.Windows.Forms.ToolStripButton saveToolStripButton;
+        private System.Windows.Forms.ToolStripButton openToolStripButton;
+        private System.Windows.Forms.ToolStripButton oathToolStripButton;
+        private System.Windows.Forms.ToolStripButton aboutToolStripButton;
+        private System.Windows.Forms.ToolStripButton newWinToolStripButton;
     }
 }
 
