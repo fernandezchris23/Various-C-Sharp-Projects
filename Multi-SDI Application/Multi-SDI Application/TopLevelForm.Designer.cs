@@ -48,7 +48,15 @@
             this.penColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.brushColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabelPlus = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabelMinus = new System.Windows.Forms.ToolStripLabel();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusSize = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelColors = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelStyle = new System.Windows.Forms.ToolStripStatusLabel();
             this.contextMenuStripShapes.SuspendLayout();
+            this.toolStrip.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog
@@ -185,17 +193,66 @@
             // toolStrip
             // 
             this.toolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabelPlus,
+            this.toolStripLabelMinus});
             this.toolStrip.Location = new System.Drawing.Point(0, 28);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(1067, 25);
             this.toolStrip.TabIndex = 3;
             this.toolStrip.Text = "toolStrip1";
             // 
+            // toolStripLabelPlus
+            // 
+            this.toolStripLabelPlus.Name = "toolStripLabelPlus";
+            this.toolStripLabelPlus.Size = new System.Drawing.Size(19, 22);
+            this.toolStripLabelPlus.Text = "+";
+            this.toolStripLabelPlus.Click += new System.EventHandler(this.toolStripLabelPlus_Click);
+            // 
+            // toolStripLabelMinus
+            // 
+            this.toolStripLabelMinus.Name = "toolStripLabelMinus";
+            this.toolStripLabelMinus.Size = new System.Drawing.Size(15, 22);
+            this.toolStripLabelMinus.Text = "-";
+            this.toolStripLabelMinus.Click += new System.EventHandler(this.toolStripLabelMinus_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusSize,
+            this.toolStripStatusLabelColors,
+            this.toolStripStatusLabelStyle});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 529);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1067, 25);
+            this.statusStrip1.TabIndex = 4;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusSize
+            // 
+            this.toolStripStatusSize.Name = "toolStripStatusSize";
+            this.toolStripStatusSize.Size = new System.Drawing.Size(151, 20);
+            this.toolStripStatusSize.Text = "toolStripStatusLabel1";
+            // 
+            // toolStripStatusLabelColors
+            // 
+            this.toolStripStatusLabelColors.Name = "toolStripStatusLabelColors";
+            this.toolStripStatusLabelColors.Size = new System.Drawing.Size(151, 20);
+            this.toolStripStatusLabelColors.Text = "toolStripStatusLabel1";
+            // 
+            // toolStripStatusLabelStyle
+            // 
+            this.toolStripStatusLabelStyle.Name = "toolStripStatusLabelStyle";
+            this.toolStripStatusLabelStyle.Size = new System.Drawing.Size(151, 20);
+            this.toolStripStatusLabelStyle.Text = "toolStripStatusLabel1";
+            // 
             // TopLevelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip);
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "TopLevelForm";
@@ -204,7 +261,12 @@
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TopLevelForm_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TopLevelForm_MouseUp);
             this.Controls.SetChildIndex(this.toolStrip, 0);
+            this.Controls.SetChildIndex(this.statusStrip1, 0);
             this.contextMenuStripShapes.ResumeLayout(false);
+            this.toolStrip.ResumeLayout(false);
+            this.toolStrip.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -231,6 +293,12 @@
         private System.Windows.Forms.ToolStripMenuItem brushColorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lineToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip;
+        private System.Windows.Forms.ToolStripLabel toolStripLabelPlus;
+        private System.Windows.Forms.ToolStripLabel toolStripLabelMinus;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusSize;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelColors;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelStyle;
     }
 }
 

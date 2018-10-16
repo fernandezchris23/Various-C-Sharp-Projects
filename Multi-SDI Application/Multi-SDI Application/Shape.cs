@@ -58,6 +58,26 @@ namespace Multi_SDI_Application
             }
         }
 
+        public Pen GetPen()
+        {
+            switch (PenType)
+            {
+                case SerializableProperties.PenEnum.Solid:
+                    Console.WriteLine("Using Solid pen");
+                    return new Pen(GetBrush());
+
+                case SerializableProperties.PenEnum.Dashed:
+                    Console.WriteLine("Using Dashed pen");
+                    float[] dashValues = { 5, 2, 15, 4 };
+                    Pen pen = new Pen(GetBrush());
+                    pen.DashPattern = dashValues;
+                    return pen;
+
+                default:
+                    return new Pen(GetBrush());
+            }
+        }
+
         public Rectangle GetShape()
         {
             return new Rectangle(ShapeLoc, ShapeSize);
