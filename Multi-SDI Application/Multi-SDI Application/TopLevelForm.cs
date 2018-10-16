@@ -22,6 +22,7 @@ namespace Multi_SDI_Application
         private string filename { get; set; }
         private string fileFilter;
         private SerializableProperties serializableProperties;
+      //  private MenuStrip menuStrip;
 
         //Enumerations
         private enum shape { Ellipse, Rectangle, Custom};
@@ -33,6 +34,22 @@ namespace Multi_SDI_Application
             InitializeComponent();
             serializableProperties = new SerializableProperties();
             fileFilter = "Files|*.ok";
+
+            /*menuStrip = new MenuStrip();
+            menuStrip.SuspendLayout();
+            menuStrip.ImageScalingSize = new Size(20, 20);
+            ToolStripMenuItem item = new ToolStripMenuItem();
+            menuStrip.Items.Add(item);
+            menuStrip.Location = new System.Drawing.Point(0, 0);
+            menuStrip.Name = "menuStrip2";
+            menuStrip.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            menuStrip.Size = new System.Drawing.Size(1067, 28);
+            menuStrip.TabIndex = 1;
+            menuStrip.Text = "menuStrip2";
+            this.Controls.Add(menuStrip);
+            menuStrip.ResumeLayout(false);
+            menuStrip.PerformLayout();*/
+            Shape shape = new Shape();
         }
 
 
