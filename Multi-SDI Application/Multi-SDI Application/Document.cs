@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Multi_SDI_Application
 {
-    public class Document : Container
+    [Serializable()]
+    public class Document : Container, ISerializable
     {
         private int numShapes = 0;
 
@@ -48,6 +45,27 @@ namespace Multi_SDI_Application
         public int countShapes()
         {
             return numShapes;
+        }
+
+        public Document() { }
+
+        public Document(SerializationInfo info, StreamingContext context)
+        {
+            Shape sh;
+            for (int x = 0; x < Components.Count; ++x)
+                sh = (Shape)info.GetValue("item" + x, typeof(Shape));
+
+            Console.WriteLine("All data deserialized");
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            int count = 0;
+            foreach(Shape component in Components)
+            {
+                info.AddValue("item" + count, component);
+                ++count;
+            }
         }
     }
 }

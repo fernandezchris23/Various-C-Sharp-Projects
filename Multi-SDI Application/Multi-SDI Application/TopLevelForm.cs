@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using ControlLibraryAssign3;
 using System.ComponentModel;
+using System.Collections.Generic;
 
 namespace Multi_SDI_Application
 {
@@ -11,17 +12,15 @@ namespace Multi_SDI_Application
         //Variables
         private string filename { get; set; }
         private string fileFilter;
-        private SerializableProperties serializableProperties;
         private Shape currentShape;
         private Boolean isDrawing;
         public static int count = 0;
         private Document document;
-        private Boolean isBrush, isPen;
+        private Boolean isBrush;
 
         public TopLevelForm()
         {
             InitializeComponent();
-            serializableProperties = new SerializableProperties();
             fileFilter = "Files|*.ok";
             
             //Set more menu
@@ -34,7 +33,6 @@ namespace Multi_SDI_Application
             currentShape = new Shape(SerializableProperties.ShapeEnum.Ellipse, SerializableProperties.BrushEnum.Solid, SerializableProperties.PenEnum.Solid);
             isDrawing = false;
             isBrush = true;
-            isPen = false;
             UpdateLabels();
         }
 
@@ -131,10 +129,13 @@ namespace Multi_SDI_Application
             if (saveFileDialog.ShowDialog(this) != DialogResult.OK)
                 return;
 
-            if (Serializer.Serialize(saveFileDialog.FileName, serializableProperties))
-                Console.WriteLine(saveFileDialog.FileName + " saved succesfully");
+            //Shape[] shapes = new Shape[document.Components.Count]; 
+            //document.Components.CopyTo(shapes, 0);
+
+            if (Serializer.Serialize(saveFileDialog.FileName, document))
+                MessageBox.Show(saveFileDialog.FileName + " saved succesfully");
             else
-                Console.WriteLine("Failed to save file");
+                MessageBox.Show("Failed to save file");
         }
 
         
@@ -147,11 +148,15 @@ namespace Multi_SDI_Application
             if (openFileDialog.ShowDialog(this) != DialogResult.OK)
                 return;
 
-            SerializableProperties temp;
+            object temp;
             if ((temp = Serializer.Deserialize(openFileDialog.FileName)) != null)
-                serializableProperties = temp;
+            {
+                Console.WriteLine("Before " + document.Components.Count);
+                document = (Document)temp;
+                Console.WriteLine("After " + document.Components.Count);
+            }
             else
-                Console.WriteLine("Failed");
+                MessageBox.Show("Failed to load file");
         }
 
         //Used to update the Window Menu Items
@@ -193,7 +198,6 @@ namespace Multi_SDI_Application
         private void solidToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.PenType = SerializableProperties.PenEnum.Solid;
-            isPen = true;
             isBrush = false;
             UpdateLabels();
 
@@ -204,7 +208,6 @@ namespace Multi_SDI_Application
         private void customDashedToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.PenType = SerializableProperties.PenEnum.Dashed;
-            isPen = true;
             isBrush = false;
             UpdateLabels();
 
@@ -214,7 +217,6 @@ namespace Multi_SDI_Application
         private void compoundToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.PenType = SerializableProperties.PenEnum.Compound;
-            isPen = true;
             isBrush = false;
             UpdateLabels();
 
@@ -228,7 +230,6 @@ namespace Multi_SDI_Application
         {
             currentShape.BrushType = SerializableProperties.BrushEnum.Solid;
             isBrush = true;
-            isPen = false;
             UpdateLabels();
 
             Console.WriteLine("Current brush is " + currentShape.BrushType);
@@ -238,7 +239,6 @@ namespace Multi_SDI_Application
         {
             currentShape.BrushType = SerializableProperties.BrushEnum.Hatched;
             isBrush = true;
-            isPen = false;
             UpdateLabels();
 
             Console.WriteLine("Current brush is " + currentShape.BrushType);
@@ -248,7 +248,6 @@ namespace Multi_SDI_Application
         {
             currentShape.BrushType = SerializableProperties.BrushEnum.LinearGradient;
             isBrush = true;
-            isPen = false;
             UpdateLabels();
 
             Console.WriteLine("Current brush is " + currentShape.BrushType);

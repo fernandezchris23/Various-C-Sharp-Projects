@@ -6,10 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing.Drawing2D;
 using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace Multi_SDI_Application
 {
-    public class Shape : Component
+    [Serializable()]
+    public class Shape : Component, ISerializable
     {
         public Shape(Enum shape, Enum BrushType, Enum Pentype)
         {
@@ -40,6 +42,43 @@ namespace Multi_SDI_Application
         public Color PenColor { get; set; }
 
         public Color BrushColor { get; set; }
+
+        public Shape(SerializationInfo info, StreamingContext context)
+        {
+            ShapeId = (int)info.GetValue("ShapeId", typeof(int));
+            CurrentShape = (SerializableProperties.ShapeEnum)info.GetValue("CurrentShape", typeof(SerializableProperties.ShapeEnum));
+            BrushType = (SerializableProperties.BrushEnum)info.GetValue("BrushType", typeof(SerializableProperties.BrushEnum));
+            PenType = (SerializableProperties.PenEnum)info.GetValue("PenType", typeof(SerializableProperties.PenEnum));
+
+            int width = (int)info.GetValue("Width", typeof(int));
+            int height = (int)info.GetValue("Height", typeof(int));
+            ShapeSize = new Size(width, height);
+
+            int x = (int)info.GetValue("X", typeof(int));
+            int y = (int)info.GetValue("Y", typeof(int));
+            ShapeLoc = new Point(x, y);
+
+            int pColorRGB = (int)info.GetValue("PenColor", typeof(int));
+            int bColorRGB = (int)info.GetValue("BrushColor", typeof(int));
+            PenColor = Color.FromArgb(pColorRGB);
+            BrushColor = Color.FromArgb(bColorRGB);
+        }
+
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("ShapeId", ShapeId);
+            info.AddValue("CurrentShape", CurrentShape);
+            info.AddValue("BrushType", BrushType);
+            info.AddValue("PenType", PenType);
+            info.AddValue("Width", ShapeSize.Width);
+            info.AddValue("Height", ShapeSize.Height);
+
+            info.AddValue("X", ShapeLoc.X);
+            info.AddValue("Y", ShapeLoc.Y);
+
+            info.AddValue("PenColor", PenColor.ToArgb());
+            info.AddValue("BrushColor", BrushColor.ToArgb());
+        }
 
         public Brush GetBrush()
         {
@@ -83,5 +122,6 @@ namespace Multi_SDI_Application
             return new Rectangle(ShapeLoc, ShapeSize);
         }
 
+        
     }
 }
