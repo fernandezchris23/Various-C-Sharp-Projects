@@ -140,7 +140,7 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip;
+        public System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem oathToolStripMenuItem;

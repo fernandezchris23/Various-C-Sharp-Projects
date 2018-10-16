@@ -35,23 +35,8 @@ namespace Multi_SDI_Application
             serializableProperties = new SerializableProperties();
             fileFilter = "Files|*.ok";
 
-            /*menuStrip = new MenuStrip();
-            menuStrip.SuspendLayout();
-            menuStrip.ImageScalingSize = new Size(20, 20);
-            ToolStripMenuItem item = new ToolStripMenuItem();
-            menuStrip.Items.Add(item);
-            menuStrip.Location = new System.Drawing.Point(0, 0);
-            menuStrip.Name = "menuStrip2";
-            menuStrip.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            menuStrip.Size = new System.Drawing.Size(1067, 28);
-            menuStrip.TabIndex = 1;
-            menuStrip.Text = "menuStrip2";
-            this.Controls.Add(menuStrip);
-            menuStrip.ResumeLayout(false);
-            menuStrip.PerformLayout();*/
-            Shape shape = new Shape();
+            SetMainMenu();
         }
-
 
         //Creates new top level window
         public static TopLevelForm CreateWindow(string filename)
@@ -74,6 +59,13 @@ namespace Multi_SDI_Application
             newForm.Text = "Untitled";
             newForm.Activate();
             return newForm;
+        }
+
+        private void SetMainMenu()
+        {
+            ToolStripMenuItem item = new ToolStripMenuItem("More");
+            item.DropDown = contextMenuStripShapes;
+            this.menuStrip.Items.Insert(menuStrip.Items.Count, item);
         }
 
         private void OpenFile(String filename)
