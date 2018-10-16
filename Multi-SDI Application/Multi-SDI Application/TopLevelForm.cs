@@ -12,6 +12,7 @@ namespace Multi_SDI_Application
         private string fileFilter;
         private SerializableProperties serializableProperties;
         private Shape currentShape;
+        private Boolean isDrawing;
 
         public TopLevelForm()
         {
@@ -26,6 +27,7 @@ namespace Multi_SDI_Application
             
             //Create shape object
             currentShape = new Shape(SerializableProperties.ShapeEnum.Ellipse, SerializableProperties.BrushEnum.Solid, SerializableProperties.PenEnum.Solid);
+            isDrawing = false;
         }
 
         //Creates new top level window
@@ -148,13 +150,7 @@ namespace Multi_SDI_Application
             Console.WriteLine("Current shape is " + currentShape.CurrentShape);
         }
 
-        private void polygonToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            currentShape.CurrentShape = SerializableProperties.ShapeEnum.PolyGon;
-            Console.WriteLine("Current shape is " + currentShape.CurrentShape);
-        }
-
-        private void lineToolStripMenuItem_Click(object sender, EventArgs e)
+        private void customToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.CurrentShape = SerializableProperties.ShapeEnum.Custom;
             Console.WriteLine("Current shape is " + currentShape.CurrentShape);
@@ -227,6 +223,43 @@ namespace Multi_SDI_Application
         {
             currentShape.BrushColor = GetColor();
             Console.WriteLine("BrushColor = " + currentShape.BrushColor);
+        }
+
+        private void TopLevelForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            isDrawing = true;
+        }
+
+        private void TopLevelForm_MouseUp(object sender, MouseEventArgs e)
+        {
+            isDrawing = false;
+        }
+
+        private void TopLevelForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (!isDrawing) return;
+
+            //Get cursor positions
+            currentShape.ShapeLoc = new Point(e.X, e.Y);
+
+            //Draw
+            using (Graphics g = this.CreateGraphics())
+            {
+                switch(currentShape.CurrentShape)
+                {
+                    case SerializableProperties.ShapeEnum.Ellipse:
+                        g.FillEllipse(currentShape.GetBrush(), currentShape.GetShape());
+                        break;
+                    case SerializableProperties.ShapeEnum.Rectangle:
+                        g.FillRectangle(currentShape.GetBrush(), currentShape.GetShape());
+                        break;
+                    case SerializableProperties.ShapeEnum.Custom: //Update this
+                        g.FillRectangle(currentShape.GetBrush(), currentShape.GetShape());
+                        break;
+                }
+
+            }
+           
         }
     }
 }

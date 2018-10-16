@@ -9,7 +9,7 @@ namespace Multi_SDI_Application
     [System.Serializable]
     class SerializableProperties
     {
-        public enum ShapeEnum { Ellipse, Rectangle, PolyGon, Custom };
+        public enum ShapeEnum { Ellipse, Rectangle, Custom };
         public enum PenEnum { Solid, Dashed, Compound };
         public enum BrushEnum { Solid, Hatched, LinearGradient }
 

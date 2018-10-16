@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing.Drawing2D;
 
 namespace Multi_SDI_Application
 {
@@ -39,7 +40,27 @@ namespace Multi_SDI_Application
 
         public Color BrushColor { get; set; }
 
+        public Brush GetBrush()
+        {
+            switch (BrushType)
+            {
+                case SerializableProperties.BrushEnum.Solid:
+                    Console.WriteLine("Using Solid brush");
+                    return new SolidBrush(BrushColor);
 
+                case SerializableProperties.BrushEnum.Hatched:
+                    Console.WriteLine("Using Hatched brush");
+                    return new HatchBrush(HatchStyle.LightVertical, BrushColor, Color.DarkBlue);
+
+                default:
+                    return new LinearGradientBrush(new Point(10, 10), new Point(20, 20), BrushColor, Color.Blue);
+            }
+        }
+
+        public Rectangle GetShape()
+        {
+            return new Rectangle(ShapeLoc, ShapeSize);
+        }
 
     }
 }
