@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing.Drawing2D;
+using System.ComponentModel;
 
 namespace Multi_SDI_Application
 {
-    public class Shape
+    public class Shape : Component
     {
         public Shape(Enum shape, Enum BrushType, Enum Pentype)
         {

@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Drawing;
 using ControlLibraryAssign3;
+using System.ComponentModel;
 
 namespace Multi_SDI_Application
 {
@@ -13,6 +14,8 @@ namespace Multi_SDI_Application
         private SerializableProperties serializableProperties;
         private Shape currentShape;
         private Boolean isDrawing;
+        public static int count = 0;
+        private Document document;
 
         public TopLevelForm()
         {
@@ -24,8 +27,9 @@ namespace Multi_SDI_Application
             ToolStripMenuItem item = new ToolStripMenuItem("More");
             item.DropDown = contextMenuStripShapes;
             this.menuStrip.Items.Insert(menuStrip.Items.Count, item);
-            
+
             //Create shape object
+            document = new Document();
             currentShape = new Shape(SerializableProperties.ShapeEnum.Ellipse, SerializableProperties.BrushEnum.Solid, SerializableProperties.PenEnum.Solid);
             isDrawing = false;
         }
@@ -46,9 +50,10 @@ namespace Multi_SDI_Application
             }
 
             TopLevelForm newForm = new TopLevelForm();
-            newForm.OpenFile(filename);
+            ++count;
+           // newForm.OpenFile(filename);
             newForm.Show();
-            newForm.Text = "Untitled";
+            newForm.Text = "Untitled " + count;
             newForm.Activate();
             return newForm;
         }
@@ -233,6 +238,7 @@ namespace Multi_SDI_Application
         private void TopLevelForm_MouseUp(object sender, MouseEventArgs e)
         {
             isDrawing = false;
+            Console.WriteLine("size of document = " + document.countShapes());
         }
 
         private void TopLevelForm_MouseMove(object sender, MouseEventArgs e)
@@ -241,6 +247,9 @@ namespace Multi_SDI_Application
 
             //Get cursor positions
             currentShape.ShapeLoc = new Point(e.X, e.Y);
+
+            //Add to document
+            document.Add(currentShape);
 
             //Draw
             using (Graphics g = this.CreateGraphics())
