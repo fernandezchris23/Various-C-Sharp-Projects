@@ -80,20 +80,20 @@ namespace Multi_SDI_Application
         private void updateDialogValues()
         {
             //Set Everything to Current Shape Properties
-            widthBox.Text = currentShape.shapeSize.Width.ToString();
-            heightBox.Text = currentShape.shapeSize.Height.ToString();
+            widthBox.Text = currentShape.ShapeSize.Width.ToString();
+            heightBox.Text = currentShape.ShapeSize.Height.ToString();
 
-            xCoorBox.Text = currentShape.shapeLoc.X.ToString();
-            yCoorBox.Text = currentShape.shapeLoc.Y.ToString();
+            xCoorBox.Text = currentShape.ShapeLoc.X.ToString();
+            yCoorBox.Text = currentShape.ShapeLoc.Y.ToString();
 
-            penColorBttn.BackColor = currentShape.penColor;
-            brushColorBttn.BackColor = currentShape.brushColor;
+            penColorBttn.BackColor = currentShape.PenColor;
+            brushColorBttn.BackColor = currentShape.BrushColor;
 
-            penTypeCombo.SelectedItem = currentShape.penType;
-            brushTypeCombo.SelectedItem = currentShape.brushType;
-            shapeTypeCombo.SelectedItem = currentShape.shape;
+            penTypeCombo.SelectedItem = currentShape.PenType;
+            brushTypeCombo.SelectedItem = currentShape.BrushType;
+            shapeTypeCombo.SelectedItem = currentShape.CurrentShape;
 
-            currentShapeCombo.SelectedItem = currentShape.shapeId;
+            currentShapeCombo.SelectedItem = currentShape.ShapeId;
         }
 
         private bool validValues()

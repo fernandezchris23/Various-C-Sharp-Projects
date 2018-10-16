@@ -9,21 +9,37 @@ namespace Multi_SDI_Application
 {
     public class Shape
     {
-        public string shapeId { get; set; } //Unique name for identifying shape
+        public Shape(Enum shape, Enum BrushType, Enum Pentype)
+        {
+            this.CurrentShape = shape;
+            this.BrushType = BrushType;
+            this.PenType = PenType;
+            this.ShapeId = 0;
+            this.ShapeSize = new Size(10, 10);
+            this.ShapeLoc = new Point(0, 0);
+            this.PenColor = Color.Black;
+            this.BrushColor = Color.Black;
+        }
 
-        public Size shapeSize { get; set; }
+        public Shape(Enum shape): this(shape, SerializableProperties.BrushEnum.Solid, SerializableProperties.PenEnum.Solid) {}
 
-        public Point shapeLoc { get; set; }
+        public int ShapeId { get; set; }
 
-        public Color penColor { get; set; }
+        public Enum CurrentShape { get; set; }
 
-        public Color brushColor { get; set; }
+        public Enum BrushType { get; set; }
 
-        public Enum shape { get; set; }
+        public Enum PenType { get; set; }
 
-        public Enum brushType { get; set; }
+        public Size ShapeSize { get; set; }
 
-        public Enum penType { get; set; }
+        public Point ShapeLoc { get; set; }
+
+        public Color PenColor { get; set; }
+
+        public Color BrushColor { get; set; }
+
+
 
     }
 }

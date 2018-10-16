@@ -1,18 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 using ControlLibraryAssign3;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Runtime.Serialization.Formatters;
-
 
 namespace Multi_SDI_Application
 {
@@ -22,20 +11,21 @@ namespace Multi_SDI_Application
         private string filename { get; set; }
         private string fileFilter;
         private SerializableProperties serializableProperties;
-      //  private MenuStrip menuStrip;
-
-        //Enumerations
-        private enum shape { Ellipse, Rectangle, Custom};
-        private enum pen { Solid, Dashed, Compound};
-        private enum brush { LinearGradient, Hatched, Solid}
+        private Shape currentShape;
 
         public TopLevelForm()
         {
             InitializeComponent();
             serializableProperties = new SerializableProperties();
             fileFilter = "Files|*.ok";
-
-            SetMainMenu();
+            
+            //Set more menu
+            ToolStripMenuItem item = new ToolStripMenuItem("More");
+            item.DropDown = contextMenuStripShapes;
+            this.menuStrip.Items.Insert(menuStrip.Items.Count, item);
+            
+            //Create shape object
+            currentShape = new Shape(SerializableProperties.ShapeEnum.Ellipse, SerializableProperties.BrushEnum.Solid, SerializableProperties.PenEnum.Solid);
         }
 
         //Creates new top level window
@@ -59,13 +49,6 @@ namespace Multi_SDI_Application
             newForm.Text = "Untitled";
             newForm.Activate();
             return newForm;
-        }
-
-        private void SetMainMenu()
-        {
-            ToolStripMenuItem item = new ToolStripMenuItem("More");
-            item.DropDown = contextMenuStripShapes;
-            this.menuStrip.Items.Insert(menuStrip.Items.Count, item);
         }
 
         private void OpenFile(String filename)
@@ -148,6 +131,102 @@ namespace Multi_SDI_Application
         private void updateWindowMenu()
         {
             
+        }
+
+        //
+        // Shape
+        //
+        private void ellipseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentShape.CurrentShape = SerializableProperties.ShapeEnum.Ellipse;
+            Console.WriteLine("Current shape is " + currentShape.CurrentShape);
+        }
+
+        private void rectangleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentShape.CurrentShape = SerializableProperties.ShapeEnum.Rectangle;
+            Console.WriteLine("Current shape is " + currentShape.CurrentShape);
+        }
+
+        private void polygonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentShape.CurrentShape = SerializableProperties.ShapeEnum.PolyGon;
+            Console.WriteLine("Current shape is " + currentShape.CurrentShape);
+        }
+
+        private void lineToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentShape.CurrentShape = SerializableProperties.ShapeEnum.Custom;
+            Console.WriteLine("Current shape is " + currentShape.CurrentShape);
+        }
+
+        //
+        // Pen
+        //
+        private void solidToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentShape.PenType = SerializableProperties.PenEnum.Solid;
+            Console.WriteLine("Current pen is " + currentShape.PenType);
+
+        }
+
+        private void customDashedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentShape.PenType = SerializableProperties.PenEnum.Dashed;
+            Console.WriteLine("Current pen is " + currentShape.PenType);
+        }
+
+        private void compoundToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentShape.PenType = SerializableProperties.PenEnum.Compound;
+            Console.WriteLine("Current pen is " + currentShape.PenType);
+        }
+
+        //
+        // Brushes
+        //
+        private void solidToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            currentShape.BrushType = SerializableProperties.BrushEnum.Solid;
+            Console.WriteLine("Current brush is " + currentShape.BrushType);
+        }
+
+        private void hatchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentShape.BrushType = SerializableProperties.BrushEnum.Hatched;
+            Console.WriteLine("Current brush is " + currentShape.BrushType);
+        }
+
+        private void linearGradientToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentShape.BrushType = SerializableProperties.BrushEnum.LinearGradient;
+            Console.WriteLine("Current brush is " + currentShape.BrushType);
+        }
+
+
+        private Color GetColor()
+        {
+            ColorDialog colorDialog = new ColorDialog();
+            DialogResult result = colorDialog.ShowDialog();
+            if (result == DialogResult.OK)
+                return colorDialog.Color;
+
+            return Color.Black;
+        }
+
+        //
+        // Color
+        //
+        private void penColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentShape.PenColor = GetColor();
+            Console.WriteLine("PenColor = " + currentShape.PenColor);
+        }
+
+        private void brushColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentShape.BrushColor = GetColor();
+            Console.WriteLine("BrushColor = " + currentShape.BrushColor);
         }
     }
 }

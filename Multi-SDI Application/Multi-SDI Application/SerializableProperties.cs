@@ -9,19 +9,19 @@ namespace Multi_SDI_Application
     [System.Serializable]
     class SerializableProperties
     {
-        public enum Shape { Ellipse, Rectangle, Custom };
-        public enum Pen { Solid, Dashed, Compound };
-        public enum Brush { LinearGradient, Hatched, Solid }
+        public enum ShapeEnum { Ellipse, Rectangle, PolyGon, Custom };
+        public enum PenEnum { Solid, Dashed, Compound };
+        public enum BrushEnum { Solid, Hatched, LinearGradient }
 
-        public Shape shape { get; set; }
-        public Pen pen { get; set; }
-        public Brush brush { get; set; }
+        public ShapeEnum Shape { get; set; }
+        public PenEnum Pen { get; set; }
+        public BrushEnum Brush { get; set; }
 
         public SerializableProperties()
         {
-            shape = Shape.Ellipse;
-            pen = Pen.Solid;
-            brush = Brush.Solid;
+            Shape = ShapeEnum.Ellipse;
+            Pen = PenEnum.Solid;
+            Brush = BrushEnum.Solid;
         }
     }
 }
