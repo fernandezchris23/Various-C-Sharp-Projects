@@ -154,5 +154,14 @@
   <ItemGroup>
     <None Include="Resources\triforceIcon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveHeart.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveHeart.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
