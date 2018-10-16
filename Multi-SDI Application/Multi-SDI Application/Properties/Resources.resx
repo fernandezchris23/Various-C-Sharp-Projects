@@ -121,8 +121,20 @@
   <data name="bgOath" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bgOath.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="bossKey" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bossKey.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="navi" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\navi.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="openChest" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\openChest.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="saveHeart" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\saveHeart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tatl" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tatl.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="triforceIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\triforceIcon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

@@ -217,41 +217,41 @@
             // openToolStripButton
             // 
             this.openToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.openToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripButton.Image")));
+            this.openToolStripButton.Image = global::Multi_SDI_Application.Properties.Resources.openChest;
             this.openToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openToolStripButton.Name = "openToolStripButton";
             this.openToolStripButton.Size = new System.Drawing.Size(24, 24);
-            this.openToolStripButton.Text = "toolStripButton1";
+            this.openToolStripButton.Text = "Open";
             this.openToolStripButton.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // oathToolStripButton
             // 
             this.oathToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.oathToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("oathToolStripButton.Image")));
+            this.oathToolStripButton.Image = global::Multi_SDI_Application.Properties.Resources.tatl;
             this.oathToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.oathToolStripButton.Name = "oathToolStripButton";
             this.oathToolStripButton.Size = new System.Drawing.Size(24, 24);
-            this.oathToolStripButton.Text = "toolStripButton1";
+            this.oathToolStripButton.Text = "Oath ";
             this.oathToolStripButton.Click += new System.EventHandler(this.oathToolStripMenuItem_Click);
             // 
             // aboutToolStripButton
             // 
             this.aboutToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.aboutToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("aboutToolStripButton.Image")));
+            this.aboutToolStripButton.Image = global::Multi_SDI_Application.Properties.Resources.navi;
             this.aboutToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.aboutToolStripButton.Name = "aboutToolStripButton";
             this.aboutToolStripButton.Size = new System.Drawing.Size(24, 24);
-            this.aboutToolStripButton.Text = "toolStripButton1";
+            this.aboutToolStripButton.Text = "About";
             this.aboutToolStripButton.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // newWinToolStripButton
             // 
             this.newWinToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.newWinToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("newWinToolStripButton.Image")));
+            this.newWinToolStripButton.Image = global::Multi_SDI_Application.Properties.Resources.bossKey;
             this.newWinToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.newWinToolStripButton.Name = "newWinToolStripButton";
             this.newWinToolStripButton.Size = new System.Drawing.Size(24, 24);
-            this.newWinToolStripButton.Text = "toolStripButton1";
+            this.newWinToolStripButton.Text = "New Window";
             this.newWinToolStripButton.Click += new System.EventHandler(this.newWindowToolStripMenuItem_Click);
             // 
             // TopLevelForm

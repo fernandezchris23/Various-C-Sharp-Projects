@@ -163,5 +163,17 @@
   <ItemGroup>
     <None Include="Resources\saveHeart.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\navi.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tatl.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\openChest.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bossKey.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
