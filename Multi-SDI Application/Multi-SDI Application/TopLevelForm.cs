@@ -4,6 +4,7 @@ using System.Drawing;
 using ControlLibraryAssign3;
 using System.ComponentModel;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 
 namespace Multi_SDI_Application
 {
@@ -17,6 +18,7 @@ namespace Multi_SDI_Application
         public static int count = 0;
         private Document document;
         private Boolean isBrush;
+        private Shape touchedShape;
 
         public TopLevelForm()
         {
@@ -33,6 +35,7 @@ namespace Multi_SDI_Application
             currentShape = new Shape(SerializableProperties.ShapeEnum.Ellipse, SerializableProperties.BrushEnum.Solid, SerializableProperties.PenEnum.Solid);
             isDrawing = false;
             isBrush = true;
+            touchedShape = null;
             UpdateLabels();
         }
 
@@ -49,7 +52,6 @@ namespace Multi_SDI_Application
             this.toolStripStatusLabelStyle.BackColor = Color.Black;
             this.toolStripStatusLabelStyle.ForeColor = Color.White;
             this.toolStripStatusLabelStyle.Text = "Brush: " + currentShape.BrushType + " | " + " Pen: " + currentShape.PenType;
-            Console.WriteLine("Pentype is " + currentShape.PenType);
         }
 
         //Creates new top level window
@@ -151,9 +153,7 @@ namespace Multi_SDI_Application
             object temp;
             if ((temp = Serializer.Deserialize(openFileDialog.FileName)) != null)
             {
-                Console.WriteLine("Before " + document.Components.Count);
                 document = (Document)temp;
-                Console.WriteLine("After " + document.Components.Count);
                 RedrawGraphics();
             }
             else
@@ -164,7 +164,6 @@ namespace Multi_SDI_Application
         {
             foreach(Shape shape in document.Components)
             {
-                Console.WriteLine("Redrawing");
                 DrawGraphic(shape);
             }
         }
@@ -173,9 +172,6 @@ namespace Multi_SDI_Application
         {
             using (Graphics g = this.CreateGraphics())
             {
-                Console.WriteLine("Redrawing shape " + shape.CurrentShape + shape.GetShape());
-                Console.WriteLine("Location " + shape.ShapeLoc);
-
                 switch (shape.CurrentShape)
                 {
                     case SerializableProperties.ShapeEnum.Ellipse:
@@ -214,24 +210,18 @@ namespace Multi_SDI_Application
         {
             currentShape.CurrentShape = SerializableProperties.ShapeEnum.Ellipse;
             UpdateLabels();
-
-            Console.WriteLine("Current shape is " + currentShape.CurrentShape);
         }
 
         private void rectangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.CurrentShape = SerializableProperties.ShapeEnum.Rectangle;
             UpdateLabels();
-
-            Console.WriteLine("Current shape is " + currentShape.CurrentShape);
         }
 
         private void customToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.CurrentShape = SerializableProperties.ShapeEnum.Custom;
             UpdateLabels();
-
-            Console.WriteLine("Current shape is " + currentShape.CurrentShape);
         }
 
         //
@@ -242,9 +232,6 @@ namespace Multi_SDI_Application
             currentShape.PenType = SerializableProperties.PenEnum.Solid;
             isBrush = false;
             UpdateLabels();
-
-            Console.WriteLine("Current pen is " + currentShape.PenType);
-
         }
 
         private void customDashedToolStripMenuItem_Click(object sender, EventArgs e)
@@ -252,8 +239,6 @@ namespace Multi_SDI_Application
             currentShape.PenType = SerializableProperties.PenEnum.Dashed;
             isBrush = false;
             UpdateLabels();
-
-            Console.WriteLine("Current pen is " + currentShape.PenType);
         }
 
         private void compoundToolStripMenuItem_Click(object sender, EventArgs e)
@@ -261,8 +246,6 @@ namespace Multi_SDI_Application
             currentShape.PenType = SerializableProperties.PenEnum.Compound;
             isBrush = false;
             UpdateLabels();
-
-            Console.WriteLine("Current pen is " + currentShape.PenType);
         }
 
         //
@@ -273,8 +256,6 @@ namespace Multi_SDI_Application
             currentShape.BrushType = SerializableProperties.BrushEnum.Solid;
             isBrush = true;
             UpdateLabels();
-
-            Console.WriteLine("Current brush is " + currentShape.BrushType);
         }
 
         private void hatchToolStripMenuItem_Click(object sender, EventArgs e)
@@ -282,8 +263,6 @@ namespace Multi_SDI_Application
             currentShape.BrushType = SerializableProperties.BrushEnum.Hatched;
             isBrush = true;
             UpdateLabels();
-
-            Console.WriteLine("Current brush is " + currentShape.BrushType);
         }
 
         private void linearGradientToolStripMenuItem_Click(object sender, EventArgs e)
@@ -291,8 +270,6 @@ namespace Multi_SDI_Application
             currentShape.BrushType = SerializableProperties.BrushEnum.LinearGradient;
             isBrush = true;
             UpdateLabels();
-
-            Console.WriteLine("Current brush is " + currentShape.BrushType);
         }
 
 
@@ -313,41 +290,63 @@ namespace Multi_SDI_Application
         {
             currentShape.PenColor = GetColor();
             UpdateLabels();
-
-            Console.WriteLine("PenColor = " + currentShape.PenColor);
         }
 
         private void brushColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.BrushColor = GetColor();
             UpdateLabels();
-
-            Console.WriteLine("BrushColor = " + currentShape.BrushColor);
         }
 
         private void TopLevelForm_MouseDown(object sender, MouseEventArgs e)
         {
-
             isDrawing = true;
 
-            //Get cursor positions
-            currentShape.ShapeLoc = new Point(e.X, e.Y);
+            foreach (Shape shape in document.Components)
+            {
+                if (e.X > shape.ShapeLoc.X && (e.X < shape.ShapeLoc.X + shape.ShapeSize.Width))
+                {
+                    touchedShape = shape;
+                    Console.WriteLine("Within bounds!!!");
+                }
+            }
 
-            Shape ttshape = new Shape(currentShape.CurrentShape, currentShape.BrushType, currentShape.PenType);
-            ttshape.ShapeLoc = currentShape.ShapeLoc;
-            ttshape.ShapeSize = currentShape.ShapeSize;
+            if(touchedShape == null)
+            {
+                //Get cursor positions
+                currentShape.ShapeLoc = new Point(e.X, e.Y);
 
-            //Add to document
-            document.Add(ttshape);
+                Shape ttshape = new Shape(currentShape.CurrentShape, currentShape.BrushType, currentShape.PenType);
+                ttshape.ShapeLoc = currentShape.ShapeLoc;
+                ttshape.ShapeSize = currentShape.ShapeSize;
 
-            //Draw
-            DrawGraphic(ttshape);
+                //Add to document
+                document.Add(ttshape);
+
+                //Draw
+                DrawGraphic(ttshape);
+            }
+
+        }
+
+        private void TopLevelForm_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (!isDrawing) return;
+
+            if(touchedShape != null)
+            {
+                this.Invalidate();
+                touchedShape.ShapeSize = new Size(touchedShape.ShapeSize.Width + 1, touchedShape.ShapeSize.Height + 1);
+                DrawGraphic(touchedShape);
+            }
+
         }
 
         private void TopLevelForm_MouseUp(object sender, MouseEventArgs e)
         {
             isDrawing = false;
-            Console.WriteLine("size of document = " + document.countShapes());
+            touchedShape = null;
+            RedrawGraphics();
         }
 
         private void toolStripLabelPlus_Click(object sender, EventArgs e)
@@ -362,12 +361,6 @@ namespace Multi_SDI_Application
             UpdateLabels();
         }
 
-        private void TopLevelForm_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (!isDrawing) return;
-
-            
-           
-        }
+      
     }
 }
