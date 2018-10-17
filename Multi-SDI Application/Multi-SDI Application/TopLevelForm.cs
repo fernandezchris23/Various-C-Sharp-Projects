@@ -132,9 +132,6 @@ namespace Multi_SDI_Application
             if (saveFileDialog.ShowDialog(this) != DialogResult.OK)
                 return;
 
-            //Shape[] shapes = new Shape[document.Components.Count]; 
-            //document.Components.CopyTo(shapes, 0);
-
             if (Serializer.Serialize(saveFileDialog.FileName, document))
                 MessageBox.Show(saveFileDialog.FileName + " saved succesfully");
             else
@@ -305,7 +302,7 @@ namespace Multi_SDI_Application
 
             foreach (Shape shape in document.Components)
             {
-                if (e.X > shape.ShapeLoc.X && (e.X < shape.ShapeLoc.X + shape.ShapeSize.Width))
+                if ((e.X > shape.ShapeLoc.X && (e.X < shape.ShapeLoc.X + shape.ShapeSize.Width)) && e.Y >= shape.ShapeLoc.Y && e.Y <= (shape.ShapeLoc.Y + shape.ShapeSize.Height))
                 {
                     if(e.Button == MouseButtons.Left)
                         touchedShape = shape;
@@ -315,6 +312,7 @@ namespace Multi_SDI_Application
                         shapeOptionsDialog = new ShapeOptionsDialog(shape, document);
                         shapeOptionsDialog.Show();
                     }
+                    break;
                 }
             }
 
