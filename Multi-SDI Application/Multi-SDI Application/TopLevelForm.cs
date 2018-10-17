@@ -154,9 +154,51 @@ namespace Multi_SDI_Application
                 Console.WriteLine("Before " + document.Components.Count);
                 document = (Document)temp;
                 Console.WriteLine("After " + document.Components.Count);
+                RedrawGraphics();
             }
             else
                 MessageBox.Show("Failed to load file");
+        }
+
+        private void RedrawGraphics()
+        {
+            foreach(Shape shape in document.Components)
+            {
+                Console.WriteLine("Redrawing");
+                DrawGraphic(shape);
+            }
+        }
+
+        private void DrawGraphic(Shape shape)
+        {
+            using (Graphics g = this.CreateGraphics())
+            {
+                Console.WriteLine("Redrawing shape " + shape.CurrentShape + shape.GetShape());
+                Console.WriteLine("Location " + shape.ShapeLoc);
+
+                switch (shape.CurrentShape)
+                {
+                    case SerializableProperties.ShapeEnum.Ellipse:
+                        if (isBrush)
+                            g.FillEllipse(shape.GetBrush(), shape.GetShape());
+                        else
+                            g.DrawEllipse(shape.GetPen(), shape.GetShape());
+                        break;
+                    case SerializableProperties.ShapeEnum.Rectangle:
+                        if (isBrush)
+                            g.FillRectangle(shape.GetBrush(), shape.GetShape());
+                        else
+                            g.DrawRectangle(shape.GetPen(), shape.GetShape());
+                        break;
+                    case SerializableProperties.ShapeEnum.Custom: //Update this
+                        if (isBrush)
+                            g.FillRectangle(shape.GetBrush(), shape.GetShape());
+                        else
+                            g.DrawRectangle(shape.GetPen(), shape.GetShape());
+                        break;
+                }
+
+            }
         }
 
         //Used to update the Window Menu Items
@@ -285,7 +327,21 @@ namespace Multi_SDI_Application
 
         private void TopLevelForm_MouseDown(object sender, MouseEventArgs e)
         {
+
             isDrawing = true;
+
+            //Get cursor positions
+            currentShape.ShapeLoc = new Point(e.X, e.Y);
+
+            Shape ttshape = new Shape(currentShape.CurrentShape, currentShape.BrushType, currentShape.PenType);
+            ttshape.ShapeLoc = currentShape.ShapeLoc;
+            ttshape.ShapeSize = currentShape.ShapeSize;
+
+            //Add to document
+            document.Add(ttshape);
+
+            //Draw
+            DrawGraphic(ttshape);
         }
 
         private void TopLevelForm_MouseUp(object sender, MouseEventArgs e)
@@ -310,38 +366,7 @@ namespace Multi_SDI_Application
         {
             if (!isDrawing) return;
 
-            //Get cursor positions
-            currentShape.ShapeLoc = new Point(e.X, e.Y);
-
-            //Add to document
-            document.Add(currentShape);
-
-            //Draw
-            using (Graphics g = this.CreateGraphics())
-            {
-                switch(currentShape.CurrentShape)
-                {
-                    case SerializableProperties.ShapeEnum.Ellipse:
-                        if (isBrush)
-                            g.FillEllipse(currentShape.GetBrush(), currentShape.GetShape());
-                        else
-                            g.DrawEllipse(currentShape.GetPen(), currentShape.GetShape());
-                        break;
-                    case SerializableProperties.ShapeEnum.Rectangle:
-                        if (isBrush)
-                            g.FillRectangle(currentShape.GetBrush(), currentShape.GetShape());
-                        else
-                            g.DrawRectangle(currentShape.GetPen(), currentShape.GetShape());
-                        break;
-                    case SerializableProperties.ShapeEnum.Custom: //Update this
-                        if(isBrush)
-                            g.FillRectangle(currentShape.GetBrush(), currentShape.GetShape());
-                        else
-                            g.DrawRectangle(currentShape.GetPen(), currentShape.GetShape());
-                        break;
-                }
-
-            }
+            
            
         }
     }

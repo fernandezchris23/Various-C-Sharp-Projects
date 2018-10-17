@@ -13,19 +13,17 @@ namespace Multi_SDI_Application
     [Serializable()]
     public class Shape : Component, ISerializable
     {
-        public Shape(Enum shape, Enum BrushType, Enum Pentype)
+        public Shape(Enum shape, Enum bbType, Enum ppType)
         {
-            this.CurrentShape = shape;
-            this.BrushType = BrushType;
-            this.PenType = PenType;
-            this.ShapeId = 0;
-            this.ShapeSize = new Size(10, 10);
-            this.ShapeLoc = new Point(0, 0);
-            this.PenColor = Color.Black;
-            this.BrushColor = Color.Black;
+            CurrentShape = shape;
+            BrushType = bbType;
+            PenType = ppType;
+            ShapeId = 0;
+            ShapeSize = new Size(10, 10);
+            ShapeLoc = new Point(0, 0);
+            PenColor = Color.Black;
+            BrushColor = Color.Black;
         }
-
-        public Shape(Enum shape): this(shape, SerializableProperties.BrushEnum.Solid, SerializableProperties.PenEnum.Solid) {}
 
         public int ShapeId { get; set; }
 
@@ -49,6 +47,7 @@ namespace Multi_SDI_Application
             CurrentShape = (SerializableProperties.ShapeEnum)info.GetValue("CurrentShape", typeof(SerializableProperties.ShapeEnum));
             BrushType = (SerializableProperties.BrushEnum)info.GetValue("BrushType", typeof(SerializableProperties.BrushEnum));
             PenType = (SerializableProperties.PenEnum)info.GetValue("PenType", typeof(SerializableProperties.PenEnum));
+
 
             int width = (int)info.GetValue("Width", typeof(int));
             int height = (int)info.GetValue("Height", typeof(int));

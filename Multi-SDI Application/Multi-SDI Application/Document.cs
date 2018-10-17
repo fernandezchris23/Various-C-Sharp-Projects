@@ -51,11 +51,9 @@ namespace Multi_SDI_Application
 
         public Document(SerializationInfo info, StreamingContext context)
         {
-            Shape sh;
-            for (int x = 0; x < Components.Count; ++x)
-                sh = (Shape)info.GetValue("item" + x, typeof(Shape));
-
-            Console.WriteLine("All data deserialized");
+            for (int x = 0; x < info.MemberCount; ++x)
+                this.Add((Shape)info.GetValue("item" + x, typeof(Shape)));
+            Console.WriteLine(info.MemberCount + " components");
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
@@ -66,6 +64,8 @@ namespace Multi_SDI_Application
                 info.AddValue("item" + count, component);
                 ++count;
             }
+
+            Console.WriteLine(count + " items added");
         }
     }
 }
