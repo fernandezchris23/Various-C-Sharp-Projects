@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TopLevelForm));
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.contextMenuStripShapes = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -50,10 +51,6 @@
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripLabelPlus = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabelMinus = new System.Windows.Forms.ToolStripLabel();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusSize = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabelColors = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabelStyle = new System.Windows.Forms.ToolStripStatusLabel();
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.oathToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -70,6 +67,10 @@
             this.linearGradientToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.penColorToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.brushColortoolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusSize = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelColors = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelStyle = new System.Windows.Forms.ToolStripStatusLabel();
             this.contextMenuStripShapes.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -248,37 +249,6 @@
             this.toolStripLabelMinus.Text = "-";
             this.toolStripLabelMinus.Click += new System.EventHandler(this.toolStripLabelMinus_Click);
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusSize,
-            this.toolStripStatusLabelColors,
-            this.toolStripStatusLabelStyle});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 529);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1067, 25);
-            this.statusStrip1.TabIndex = 4;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusSize
-            // 
-            this.toolStripStatusSize.Name = "toolStripStatusSize";
-            this.toolStripStatusSize.Size = new System.Drawing.Size(151, 20);
-            this.toolStripStatusSize.Text = "toolStripStatusLabel1";
-            // 
-            // toolStripStatusLabelColors
-            // 
-            this.toolStripStatusLabelColors.Name = "toolStripStatusLabelColors";
-            this.toolStripStatusLabelColors.Size = new System.Drawing.Size(151, 20);
-            this.toolStripStatusLabelColors.Text = "toolStripStatusLabel1";
-            // 
-            // toolStripStatusLabelStyle
-            // 
-            this.toolStripStatusLabelStyle.Name = "toolStripStatusLabelStyle";
-            this.toolStripStatusLabelStyle.Size = new System.Drawing.Size(151, 20);
-            this.toolStripStatusLabelStyle.Text = "toolStripStatusLabel1";
-            // 
             // saveToolStripButton
             // 
             this.saveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -439,6 +409,37 @@
             this.brushColortoolStripButton.Text = "Brush Color";
             this.brushColortoolStripButton.Click += new System.EventHandler(this.brushColorToolStripMenuItem_Click);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusSize,
+            this.toolStripStatusLabelColors,
+            this.toolStripStatusLabelStyle});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 529);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1067, 25);
+            this.statusStrip1.TabIndex = 4;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusSize
+            // 
+            this.toolStripStatusSize.Name = "toolStripStatusSize";
+            this.toolStripStatusSize.Size = new System.Drawing.Size(151, 20);
+            this.toolStripStatusSize.Text = "toolStripStatusLabel1";
+            // 
+            // toolStripStatusLabelColors
+            // 
+            this.toolStripStatusLabelColors.Name = "toolStripStatusLabelColors";
+            this.toolStripStatusLabelColors.Size = new System.Drawing.Size(151, 20);
+            this.toolStripStatusLabelColors.Text = "toolStripStatusLabel1";
+            // 
+            // toolStripStatusLabelStyle
+            // 
+            this.toolStripStatusLabelStyle.Name = "toolStripStatusLabelStyle";
+            this.toolStripStatusLabelStyle.Size = new System.Drawing.Size(151, 20);
+            this.toolStripStatusLabelStyle.Text = "toolStripStatusLabel1";
+            // 
             // TopLevelForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -446,6 +447,7 @@
             this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "TopLevelForm";
             this.Text = "TopLevelForm";
