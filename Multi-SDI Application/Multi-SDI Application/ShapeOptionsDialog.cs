@@ -15,16 +15,34 @@ namespace Multi_SDI_Application
         private Document shapeCollection;
         private Shape currentShape;
         private Color penColor, brushColor;
-        public event EventHandler applyEvent;
+        private FileProperties fileProperties;
 
-        public ShapeOptionsDialog(Shape shape, Document shapeContainer)
+        public ShapeOptionsDialog(Shape shape, Document shapeContainer, FileProperties fProperties)
         {
+            fileProperties = fProperties;
             InitializeComponent();
 
             currentShape = shape;
             shapeCollection = shapeContainer;
 
             updateDialogValues();
+
+            InitBindings(fileProperties);
+        }
+
+        private void InitBindings(FileProperties fProperties)
+        {
+            widthBox.DataBindings.Add("Text", fileProperties, "ShapeWidth");
+            heightBox.DataBindings.Add("Text", fileProperties, "ShapeHeight");
+            xCoorBox.DataBindings.Add("Text", fileProperties, "ShapeX");
+            yCoorBox.DataBindings.Add("Text", fileProperties, "ShapeY");
+
+            penColorBttn.DataBindings.Add("BackColor", fileProperties, "PenColor");
+            brushColorBttn.DataBindings.Add("BackColor", fileProperties, "BrushColor");
+
+            penTypeCombo.DataBindings.Add("SelectedValue", fileProperties, "PenType");
+            brushTypeCombo.DataBindings.Add("SelectedValue", fileProperties, "BrushType");
+            shapeTypeCombo.DataBindings.Add("SelectedValue", fileProperties, "ShapeType");
         }
 
         private void penColorBttn_Click(object sender, EventArgs e)
@@ -40,8 +58,8 @@ namespace Multi_SDI_Application
 
         private void currentShapeCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            currentShape = shapeCollection.GetShape(currentShapeCombo.SelectedItem.ToString());
-            updateDialogValues();
+            //currentShape = shapeCollection.GetShape(currentShapeCombo.SelectedItem.ToString());
+            //updateDialogValues();
         }
 
         private void brushColorBttn_Click(object sender, EventArgs e)
@@ -59,7 +77,7 @@ namespace Multi_SDI_Application
         {
             if (validValues())
             {
-                applyEvent(this, EventArgs.Empty);
+                //changeValues();
             }
             this.Close();
         }
@@ -68,7 +86,7 @@ namespace Multi_SDI_Application
         {
             if(validValues())
             {
-                applyEvent(this, EventArgs.Empty);
+                //changeValues();
             }
         }
 
@@ -80,18 +98,18 @@ namespace Multi_SDI_Application
         private void updateDialogValues()
         {
             //Set Everything to Current Shape Properties
-            widthBox.Text = currentShape.ShapeSize.Width.ToString();
-            heightBox.Text = currentShape.ShapeSize.Height.ToString();
+            fileProperties.ShapeWidth = currentShape.ShapeSize.Width;
+            fileProperties.ShapeHeight = currentShape.ShapeSize.Height;
 
-            xCoorBox.Text = currentShape.ShapeLoc.X.ToString();
-            yCoorBox.Text = currentShape.ShapeLoc.Y.ToString();
+            fileProperties.ShapeX = currentShape.ShapeLoc.X;
+            fileProperties.ShapeY = currentShape.ShapeLoc.Y;
 
-            penColorBttn.BackColor = currentShape.PenColor;
-            brushColorBttn.BackColor = currentShape.BrushColor;
+            fileProperties.PenColor = currentShape.PenColor;
+            fileProperties.BrushColor = currentShape.BrushColor;
 
-            penTypeCombo.SelectedItem = currentShape.PenType;
-            brushTypeCombo.SelectedItem = currentShape.BrushType;
-            shapeTypeCombo.SelectedItem = currentShape.CurrentShape;
+            fileProperties.PenType = currentShape.PenType;
+            fileProperties.BrushType = currentShape.BrushType;
+            fileProperties.ShapeType = currentShape.CurrentShape;
 
             currentShapeCombo.SelectedItem = currentShape.ShapeId;
         }

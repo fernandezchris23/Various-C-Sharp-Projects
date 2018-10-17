@@ -11,15 +11,18 @@ namespace Multi_SDI_Application
     public partial class TopLevelForm : BaseMainForm
     {
         //Variables
-        private string filename { get; set; }
+        private string filename;
         private string fileFilter;
-        private Shape currentShape;
+
         private Boolean isDrawing;
         public static int count = 0;
-        private Document document;
         private Boolean isBrush;
+
+        private Shape currentShape;
         private Shape touchedShape;
         private ShapeOptionsDialog shapeOptionsDialog;
+        private Document document;
+        private FileProperties fileProperties;
 
         public TopLevelForm()
         {
@@ -31,7 +34,7 @@ namespace Multi_SDI_Application
             item.DropDown = contextMenuStripShapes;
             this.menuStrip.Items.Insert(menuStrip.Items.Count, item);
 
-            //Create shape object
+            fileProperties = new FileProperties();
             document = new Document();
             currentShape = new Shape(SerializableProperties.ShapeEnum.Ellipse, SerializableProperties.BrushEnum.Solid, SerializableProperties.PenEnum.Solid, Color.Black, Color.Black);
             isDrawing = false;
@@ -312,7 +315,7 @@ namespace Multi_SDI_Application
 
                     if (e.Button == MouseButtons.Right)
                     {
-                        shapeOptionsDialog = new ShapeOptionsDialog(shape, document);
+                        shapeOptionsDialog = new ShapeOptionsDialog(shape, document, fileProperties);
                         shapeOptionsDialog.Show();
                     }
                 }
