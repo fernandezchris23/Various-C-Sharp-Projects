@@ -203,6 +203,18 @@
             // 
             // toolStrip
             // 
+            this.toolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabelPlus,
+            this.toolStripLabelMinus,
+            this.saveToolStripButton,
+            this.openToolStripButton,
+            this.oathToolStripButton,
+            this.aboutToolStripButton,
+            this.newWinToolStripButton,
+            this.ellispeToolStripButton,
+            this.recToolStripButton,
+            this.customToolStripButton,
             this.solidToolStripButton,
             this.custDashToolStripButton,
             this.compoundToolStripButton,
