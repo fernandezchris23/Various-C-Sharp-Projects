@@ -151,5 +151,59 @@
   <ItemGroup>
     <None Include="Resources\bgOath.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\customshape.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ellipseShape.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hatched.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\linear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\navi.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\openChest.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rectsShape.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveHeart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\smallerBrushColor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\smallerpenColor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\solidbrushpen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tatl.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bossKey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\solidpen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\compound.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\customdash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\largerdashed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\largersolidpen.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
