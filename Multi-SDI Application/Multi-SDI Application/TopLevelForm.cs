@@ -17,7 +17,6 @@ namespace Multi_SDI_Application
         private Boolean isDrawing;
         public static int count = 0;
         private Document document;
-        private Boolean isBrush;
         private Shape touchedShape;
 
         public TopLevelForm()
@@ -34,7 +33,6 @@ namespace Multi_SDI_Application
             document = new Document();
             currentShape = new Shape(SerializableProperties.ShapeEnum.Ellipse, SerializableProperties.BrushEnum.Solid, SerializableProperties.PenEnum.Solid);
             isDrawing = false;
-            isBrush = true;
             touchedShape = null;
             UpdateLabels();
         }
@@ -172,19 +170,19 @@ namespace Multi_SDI_Application
                 switch (shape.CurrentShape)
                 {
                     case SerializableProperties.ShapeEnum.Ellipse:
-                        if (isBrush)
+                        if (shape.IsBrush)
                             g.FillEllipse(shape.GetBrush(), shape.GetShape());
                         else
                             g.DrawEllipse(shape.GetPen(), shape.GetShape());
                         break;
                     case SerializableProperties.ShapeEnum.Rectangle:
-                        if (isBrush)
+                        if (shape.IsBrush)
                             g.FillRectangle(shape.GetBrush(), shape.GetShape());
                         else
                             g.DrawRectangle(shape.GetPen(), shape.GetShape());
                         break;
                     case SerializableProperties.ShapeEnum.Custom: //Update this
-                        if (isBrush)
+                        if (shape.IsBrush)
                             g.FillRectangle(shape.GetBrush(), shape.GetShape());
                         else
                             g.DrawRectangle(shape.GetPen(), shape.GetShape());
@@ -227,21 +225,21 @@ namespace Multi_SDI_Application
         private void solidToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.PenType = SerializableProperties.PenEnum.Solid;
-            isBrush = false;
+            currentShape.IsBrush = false;
             UpdateLabels();
         }
 
         private void customDashedToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.PenType = SerializableProperties.PenEnum.Dashed;
-            isBrush = false;
+            currentShape.IsBrush = false;
             UpdateLabels();
         }
 
         private void compoundToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.PenType = SerializableProperties.PenEnum.Compound;
-            isBrush = false;
+            currentShape.IsBrush = false;
             UpdateLabels();
         }
 
@@ -251,21 +249,21 @@ namespace Multi_SDI_Application
         private void solidToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             currentShape.BrushType = SerializableProperties.BrushEnum.Solid;
-            isBrush = true;
+            currentShape.IsBrush = true;
             UpdateLabels();
         }
 
         private void hatchToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.BrushType = SerializableProperties.BrushEnum.Hatched;
-            isBrush = true;
+            currentShape.IsBrush = true;
             UpdateLabels();
         }
 
         private void linearGradientToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.BrushType = SerializableProperties.BrushEnum.LinearGradient;
-            isBrush = true;
+            currentShape.IsBrush = true;
             UpdateLabels();
         }
 
@@ -304,6 +302,19 @@ namespace Multi_SDI_Application
 
         }
 
+
+        private Shape CopyShape(Shape shape)
+        {
+            Shape newShape = new Shape(currentShape.CurrentShape, currentShape.BrushType, currentShape.PenType);
+            newShape.ShapeLoc = shape.ShapeLoc;
+            newShape.ShapeSize = shape.ShapeSize;
+            newShape.IsBrush = shape.IsBrush;
+            newShape.PenColor = shape.PenColor;
+            newShape.BrushColor = shape.BrushColor;
+
+            return newShape;
+        }
+
         private void TopLevelForm_MouseDown(object sender, MouseEventArgs e)
         {
             isDrawing = true;
@@ -318,15 +329,13 @@ namespace Multi_SDI_Application
                 //Get cursor positions
                 currentShape.ShapeLoc = new Point(e.X, e.Y);
 
-                Shape ttshape = new Shape(currentShape.CurrentShape, currentShape.BrushType, currentShape.PenType);
-                ttshape.ShapeLoc = currentShape.ShapeLoc;
-                ttshape.ShapeSize = currentShape.ShapeSize;
-
+                Shape cloneShape = CopyShape(currentShape);
+                
                 //Add to document
-                document.Add(ttshape);
+                document.Add(cloneShape);
 
                 //Draw
-                DrawGraphic(ttshape);
+                DrawGraphic(cloneShape);
             }
 
         }
