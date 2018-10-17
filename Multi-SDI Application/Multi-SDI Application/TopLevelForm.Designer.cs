@@ -367,7 +367,7 @@
             this.solidBrushToolStripButton.Name = "solidBrushToolStripButton";
             this.solidBrushToolStripButton.Size = new System.Drawing.Size(24, 24);
             this.solidBrushToolStripButton.Text = "Solid Brush";
-            this.solidBrushToolStripButton.Click += new System.EventHandler(this.solidBrushToolStripMenuItem_Click);
+            //this.solidBrushToolStripButton.Click += new System.EventHandler(this.solidBrushToolStripMenuItem_Click);
             // 
             // hatchBrushToolStripButton
             // 

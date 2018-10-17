@@ -255,7 +255,7 @@ namespace Multi_SDI_Application
         //
         // Brushes
         //
-        private void solidToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void solidBrushToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.BrushType = SerializableProperties.BrushEnum.Solid;
             isBrush = true;

@@ -13,7 +13,7 @@ namespace Multi_SDI_Application
     [Serializable()]
     public class Shape : Component, ISerializable
     {
-        public Shape(Enum shape, Enum bbType, Enum ppType)
+        public Shape(Enum shape, Enum bbType, Enum ppType, Color penColor, Color brushColor)
         {
             CurrentShape = shape;
             BrushType = bbType;
@@ -21,8 +21,8 @@ namespace Multi_SDI_Application
             ShapeId = 0;
             ShapeSize = new Size(10, 10);
             ShapeLoc = new Point(0, 0);
-            PenColor = Color.Black;
-            BrushColor = Color.Black;
+            PenColor = penColor;
+            BrushColor = brushColor;
             IsBrush = true;
         }
 
