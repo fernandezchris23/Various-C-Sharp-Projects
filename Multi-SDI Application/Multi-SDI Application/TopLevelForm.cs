@@ -12,14 +12,11 @@ namespace Multi_SDI_Application
     {
         //Variables
         private string filename { get; set; }
+        public static int count = 0;
         private string fileFilter;
         private Shape currentShape;
-        private Boolean isDrawing;
-        public static int count = 0;
         private Document document;
-        private Boolean isBrush;
         private Shape touchedShape;
-        private ShapeOptionsDialog shapeOptionsDialog;
 
         public TopLevelForm()
         {
@@ -33,9 +30,7 @@ namespace Multi_SDI_Application
 
             //Create shape object
             document = new Document();
-            currentShape = new Shape(SerializableProperties.ShapeEnum.Ellipse, SerializableProperties.BrushEnum.Solid, SerializableProperties.PenEnum.Solid, Color.Black, Color.Black);
-            isDrawing = false;
-            isBrush = true;
+            currentShape = new Shape(SerializableProperties.ShapeEnum.Ellipse, SerializableProperties.BrushEnum.Solid, SerializableProperties.PenEnum.Solid);
             touchedShape = null;
             UpdateLabels();
         }
@@ -48,7 +43,7 @@ namespace Multi_SDI_Application
 
             this.toolStripStatusLabelColors.BackColor = Color.Brown;
             this.toolStripStatusLabelColors.ForeColor = Color.White;
-            this.toolStripStatusLabelColors.Text = "Brush: " + currentShape.BrushColor.Name + " | " + " Pen: " + currentShape.PenColor.Name;
+            this.toolStripStatusLabelColors.Text = "Brush-color: " + currentShape.BrushColor.Name + " | " + " Pen-color: " + currentShape.PenColor.Name;
 
             this.toolStripStatusLabelStyle.BackColor = Color.Black;
             this.toolStripStatusLabelStyle.ForeColor = Color.White;
@@ -132,9 +127,6 @@ namespace Multi_SDI_Application
             if (saveFileDialog.ShowDialog(this) != DialogResult.OK)
                 return;
 
-            //Shape[] shapes = new Shape[document.Components.Count]; 
-            //document.Components.CopyTo(shapes, 0);
-
             if (Serializer.Serialize(saveFileDialog.FileName, document))
                 MessageBox.Show(saveFileDialog.FileName + " saved succesfully");
             else
@@ -176,19 +168,19 @@ namespace Multi_SDI_Application
                 switch (shape.CurrentShape)
                 {
                     case SerializableProperties.ShapeEnum.Ellipse:
-                        if (isBrush)
+                        if (shape.IsBrush)
                             g.FillEllipse(shape.GetBrush(), shape.GetShape());
                         else
                             g.DrawEllipse(shape.GetPen(), shape.GetShape());
                         break;
                     case SerializableProperties.ShapeEnum.Rectangle:
-                        if (isBrush)
+                        if (shape.IsBrush)
                             g.FillRectangle(shape.GetBrush(), shape.GetShape());
                         else
                             g.DrawRectangle(shape.GetPen(), shape.GetShape());
                         break;
                     case SerializableProperties.ShapeEnum.Custom: //Update this
-                        if (isBrush)
+                        if (shape.IsBrush)
                             g.FillRectangle(shape.GetBrush(), shape.GetShape());
                         else
                             g.DrawRectangle(shape.GetPen(), shape.GetShape());
@@ -231,49 +223,51 @@ namespace Multi_SDI_Application
         private void solidToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.PenType = SerializableProperties.PenEnum.Solid;
-            isBrush = false;
+            currentShape.IsBrush = false;
             UpdateLabels();
         }
 
         private void customDashedToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.PenType = SerializableProperties.PenEnum.Dashed;
-            isBrush = false;
+            currentShape.IsBrush = false;
             UpdateLabels();
         }
 
         private void compoundToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.PenType = SerializableProperties.PenEnum.Compound;
-            isBrush = false;
+            currentShape.IsBrush = false;
             UpdateLabels();
         }
 
         //
         // Brushes
         //
-        private void solidBrushToolStripMenuItem_Click(object sender, EventArgs e)
+        private void solidToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             currentShape.BrushType = SerializableProperties.BrushEnum.Solid;
-            isBrush = true;
+            currentShape.IsBrush = true;
             UpdateLabels();
         }
 
         private void hatchToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.BrushType = SerializableProperties.BrushEnum.Hatched;
-            isBrush = true;
+            currentShape.IsBrush = true;
             UpdateLabels();
         }
 
         private void linearGradientToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.BrushType = SerializableProperties.BrushEnum.LinearGradient;
-            isBrush = true;
+            currentShape.IsBrush = true;
             UpdateLabels();
         }
 
-
+        //
+        // Color
+        //
         private Color GetColor()
         {
             ColorDialog colorDialog = new ColorDialog();
@@ -284,9 +278,6 @@ namespace Multi_SDI_Application
             return Color.Black;
         }
 
-        //
-        // Color
-        //
         private void penColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.PenColor = GetColor();
@@ -299,60 +290,65 @@ namespace Multi_SDI_Application
             UpdateLabels();
         }
 
+        private Shape Contains(Document docu, MouseEventArgs e)
+        {
+            foreach (Shape shape in docu.Components)
+                if ((e.X > shape.ShapeLoc.X && (e.X < shape.ShapeLoc.X + shape.ShapeSize.Width)) && e.Y >= shape.ShapeLoc.Y && e.Y <= (shape.ShapeLoc.Y + shape.ShapeSize.Height))
+                    return shape;
+
+            return null;
+
+        }
+
+
+        private Shape CopyShape(Shape shape)
+        {
+            Shape newShape = new Shape(currentShape.CurrentShape, currentShape.BrushType, currentShape.PenType);
+            newShape.ShapeLoc = shape.ShapeLoc;
+            newShape.ShapeSize = shape.ShapeSize;
+            newShape.IsBrush = shape.IsBrush;
+            newShape.PenColor = shape.PenColor;
+            newShape.BrushColor = shape.BrushColor;
+
+            return newShape;
+        }
+
         private void TopLevelForm_MouseDown(object sender, MouseEventArgs e)
         {
-            isDrawing = true;
+            touchedShape = Contains(document, e);
+            if (touchedShape != null && e.Button == MouseButtons.Right)
+                new ShapeOptionsDialog(touchedShape, document).Show();
 
-            foreach (Shape shape in document.Components)
-            {
-                if (e.X > shape.ShapeLoc.X && (e.X < shape.ShapeLoc.X + shape.ShapeSize.Width))
-                {
-                    if(e.Button == MouseButtons.Left)
-                        touchedShape = shape;
-
-                    if (e.Button == MouseButtons.Right)
-                    {
-                        shapeOptionsDialog = new ShapeOptionsDialog(shape, document);
-                        shapeOptionsDialog.Show();
-                    }
-                }
-            }
 
             if(touchedShape == null)
             {
                 //Get cursor positions
                 currentShape.ShapeLoc = new Point(e.X, e.Y);
 
-                Shape ttshape = new Shape(currentShape.CurrentShape, currentShape.BrushType, currentShape.PenType, currentShape.PenColor, currentShape.BrushColor);
-                ttshape.ShapeLoc = currentShape.ShapeLoc;
-                ttshape.ShapeSize = currentShape.ShapeSize;
-
+                Shape cloneShape = CopyShape(currentShape);
+                
                 //Add to document
-                document.Add(ttshape);
+                document.Add(cloneShape);
 
                 //Draw
-                DrawGraphic(ttshape);
+                DrawGraphic(cloneShape);
             }
 
         }
 
         private void TopLevelForm_MouseMove(object sender, MouseEventArgs e)
         {
-            if (!isDrawing) return;
+            if (touchedShape == null)
+                return;
 
-            if(touchedShape != null)
-            {
-                this.Invalidate();
-                touchedShape.ShapeSize = new Size(touchedShape.ShapeSize.Width + 1, touchedShape.ShapeSize.Height + 1);
-                DrawGraphic(touchedShape);
-                this.Invalidate();
-            }
-
+            this.Invalidate();
+            touchedShape.ShapeSize = new Size(touchedShape.ShapeSize.Width + 1, touchedShape.ShapeSize.Height + 1);
+            DrawGraphic(touchedShape);
+            this.Invalidate();
         }
 
         private void TopLevelForm_MouseUp(object sender, MouseEventArgs e)
         {
-            isDrawing = false;
             touchedShape = null;
             RedrawGraphics();
         }
