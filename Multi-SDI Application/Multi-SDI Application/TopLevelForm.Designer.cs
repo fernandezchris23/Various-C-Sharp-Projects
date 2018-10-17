@@ -229,7 +229,6 @@
             this.penColorToolStripButton,
             this.brushColortoolStripButton});
             this.toolStrip.Location = new System.Drawing.Point(0, 28);
-            this.toolStrip.MinimumSize = new System.Drawing.Size(0, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(1067, 27);
             this.toolStrip.TabIndex = 3;
@@ -293,7 +292,7 @@
             // openToolStripButton
             // 
             this.openToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.openToolStripButton.Image = global::Multi_SDI_Application.Properties.Resources.openChest;
+            this.openToolStripButton.Image = global::Multi_SDI_Application.Properties.Resources.openChest2;
             this.openToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openToolStripButton.Name = "openToolStripButton";
             this.openToolStripButton.Size = new System.Drawing.Size(24, 24);

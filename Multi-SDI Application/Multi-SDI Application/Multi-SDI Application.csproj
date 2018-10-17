@@ -205,5 +205,11 @@
   <ItemGroup>
     <None Include="Resources\largersolidpen.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\triforceIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\openChest2.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

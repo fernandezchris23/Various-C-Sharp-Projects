@@ -163,9 +163,9 @@ namespace Multi_SDI_Application.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap openChest {
+        internal static System.Drawing.Bitmap openChest2 {
             get {
-                object obj = ResourceManager.GetObject("openChest", resourceCulture);
+                object obj = ResourceManager.GetObject("openChest2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -227,6 +227,16 @@ namespace Multi_SDI_Application.Properties {
             get {
                 object obj = ResourceManager.GetObject("tatl", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon triforceIcon {
+            get {
+                object obj = ResourceManager.GetObject("triforceIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
     }
