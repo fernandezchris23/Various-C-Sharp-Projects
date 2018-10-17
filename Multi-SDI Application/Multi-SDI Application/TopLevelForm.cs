@@ -19,6 +19,7 @@ namespace Multi_SDI_Application
         private Document document;
         private Boolean isBrush;
         private Shape touchedShape;
+        private ShapeOptionsDialog shapeOptionsDialog;
 
         public TopLevelForm()
         {
@@ -306,8 +307,14 @@ namespace Multi_SDI_Application
             {
                 if (e.X > shape.ShapeLoc.X && (e.X < shape.ShapeLoc.X + shape.ShapeSize.Width))
                 {
-                    touchedShape = shape;
-                    Console.WriteLine("Within bounds!!!");
+                    if(e.Button == MouseButtons.Left)
+                        touchedShape = shape;
+
+                    if (e.Button == MouseButtons.Right)
+                    {
+                        shapeOptionsDialog = new ShapeOptionsDialog(shape, document);
+                        shapeOptionsDialog.Show();
+                    }
                 }
             }
 
