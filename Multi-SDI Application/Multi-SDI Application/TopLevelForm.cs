@@ -32,7 +32,7 @@ namespace Multi_SDI_Application
 
             //Create shape object
             document = new Document();
-            currentShape = new Shape(SerializableProperties.ShapeEnum.Ellipse, SerializableProperties.BrushEnum.Solid, SerializableProperties.PenEnum.Solid);
+            currentShape = new Shape(SerializableProperties.ShapeEnum.Ellipse, SerializableProperties.BrushEnum.Solid, SerializableProperties.PenEnum.Solid, Color.Black, Color.Black);
             isDrawing = false;
             isBrush = true;
             touchedShape = null;
@@ -316,7 +316,7 @@ namespace Multi_SDI_Application
                 //Get cursor positions
                 currentShape.ShapeLoc = new Point(e.X, e.Y);
 
-                Shape ttshape = new Shape(currentShape.CurrentShape, currentShape.BrushType, currentShape.PenType);
+                Shape ttshape = new Shape(currentShape.CurrentShape, currentShape.BrushType, currentShape.PenType, currentShape.PenColor, currentShape.BrushColor);
                 ttshape.ShapeLoc = currentShape.ShapeLoc;
                 ttshape.ShapeSize = currentShape.ShapeSize;
 
@@ -338,6 +338,7 @@ namespace Multi_SDI_Application
                 this.Invalidate();
                 touchedShape.ShapeSize = new Size(touchedShape.ShapeSize.Width + 1, touchedShape.ShapeSize.Height + 1);
                 DrawGraphic(touchedShape);
+                this.Invalidate();
             }
 
         }
