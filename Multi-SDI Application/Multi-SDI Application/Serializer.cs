@@ -7,6 +7,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization.Formatters;
 using System.IO;
+using System.Reflection;
 
 namespace Multi_SDI_Application
 {
@@ -17,7 +18,7 @@ namespace Multi_SDI_Application
          * Uses binary formatter to serialize file
          * 
          * */
-        public static Boolean Serialize(String filename, SerializableProperties serializableProperties)
+        public static Boolean Serialize(String filename, object serializableProperties)
         {
             Stream stream = File.OpenWrite(filename);
 
@@ -46,7 +47,7 @@ namespace Multi_SDI_Application
          * Uses binary formatter to deserialize file
          * returns the deserialize file
          * */
-        public static SerializableProperties Deserialize(String filename)
+        public static object Deserialize(String filename)
         {
             FileStream stream = null;
             object obj;
@@ -56,11 +57,19 @@ namespace Multi_SDI_Application
                 stream = File.Open(filename, FileMode.Open);
                 obj = new BinaryFormatter().Deserialize(stream);
             }
-            catch (Exception e)
+            catch(TargetInvocationException e)
             {
                 obj = null;
                 Console.WriteLine(e.Message);
+                Console.WriteLine("From Serializer1 " + e.InnerException.Message);
+
             }
+            catch (Exception e)
+            {
+                obj = null;
+                Console.WriteLine("From Serializer2 " + e.Message);
+            }
+
             finally
             {
                 stream.Flush();
@@ -68,7 +77,7 @@ namespace Multi_SDI_Application
                 stream.Close();
             }
 
-            return (SerializableProperties)obj;
+            return obj;
         }
 
         

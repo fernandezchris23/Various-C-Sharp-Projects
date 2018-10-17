@@ -3,6 +3,8 @@ using System.Windows.Forms;
 using System.Drawing;
 using ControlLibraryAssign3;
 using System.ComponentModel;
+using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 
 namespace Multi_SDI_Application
 {
@@ -11,16 +13,17 @@ namespace Multi_SDI_Application
         //Variables
         private string filename { get; set; }
         private string fileFilter;
-        private SerializableProperties serializableProperties;
         private Shape currentShape;
         private Boolean isDrawing;
         public static int count = 0;
         private Document document;
+        private Boolean isBrush;
+        private Shape touchedShape;
+        private ShapeOptionsDialog shapeOptionsDialog;
 
         public TopLevelForm()
         {
             InitializeComponent();
-            serializableProperties = new SerializableProperties();
             fileFilter = "Files|*.ok";
             
             //Set more menu
@@ -30,8 +33,26 @@ namespace Multi_SDI_Application
 
             //Create shape object
             document = new Document();
-            currentShape = new Shape(SerializableProperties.ShapeEnum.Ellipse, SerializableProperties.BrushEnum.Solid, SerializableProperties.PenEnum.Solid);
+            currentShape = new Shape(SerializableProperties.ShapeEnum.Ellipse, SerializableProperties.BrushEnum.Solid, SerializableProperties.PenEnum.Solid, Color.Black, Color.Black);
             isDrawing = false;
+            isBrush = true;
+            touchedShape = null;
+            UpdateLabels();
+        }
+
+        private void UpdateLabels()
+        {
+            this.toolStripStatusSize.BackColor = Color.Thistle;
+            this.toolStripStatusSize.ForeColor = Color.White;
+            this.toolStripStatusSize.Text = "Width: " + currentShape.ShapeSize.Width + " | " + "Height: " + currentShape.ShapeSize.Height;
+
+            this.toolStripStatusLabelColors.BackColor = Color.Brown;
+            this.toolStripStatusLabelColors.ForeColor = Color.White;
+            this.toolStripStatusLabelColors.Text = "Brush: " + currentShape.BrushColor.Name + " | " + " Pen: " + currentShape.PenColor.Name;
+
+            this.toolStripStatusLabelStyle.BackColor = Color.Black;
+            this.toolStripStatusLabelStyle.ForeColor = Color.White;
+            this.toolStripStatusLabelStyle.Text = "Brush: " + currentShape.BrushType + " | " + " Pen: " + currentShape.PenType;
         }
 
         //Creates new top level window
@@ -111,10 +132,13 @@ namespace Multi_SDI_Application
             if (saveFileDialog.ShowDialog(this) != DialogResult.OK)
                 return;
 
-            if (Serializer.Serialize(saveFileDialog.FileName, serializableProperties))
-                Console.WriteLine(saveFileDialog.FileName + " saved succesfully");
+            //Shape[] shapes = new Shape[document.Components.Count]; 
+            //document.Components.CopyTo(shapes, 0);
+
+            if (Serializer.Serialize(saveFileDialog.FileName, document))
+                MessageBox.Show(saveFileDialog.FileName + " saved succesfully");
             else
-                Console.WriteLine("Failed to save file");
+                MessageBox.Show("Failed to save file");
         }
 
         
@@ -127,11 +151,51 @@ namespace Multi_SDI_Application
             if (openFileDialog.ShowDialog(this) != DialogResult.OK)
                 return;
 
-            SerializableProperties temp;
+            object temp;
             if ((temp = Serializer.Deserialize(openFileDialog.FileName)) != null)
-                serializableProperties = temp;
+            {
+                document = (Document)temp;
+                RedrawGraphics();
+            }
             else
-                Console.WriteLine("Failed");
+                MessageBox.Show("Failed to load file");
+        }
+
+        private void RedrawGraphics()
+        {
+            foreach(Shape shape in document.Components)
+            {
+                DrawGraphic(shape);
+            }
+        }
+
+        private void DrawGraphic(Shape shape)
+        {
+            using (Graphics g = this.CreateGraphics())
+            {
+                switch (shape.CurrentShape)
+                {
+                    case SerializableProperties.ShapeEnum.Ellipse:
+                        if (isBrush)
+                            g.FillEllipse(shape.GetBrush(), shape.GetShape());
+                        else
+                            g.DrawEllipse(shape.GetPen(), shape.GetShape());
+                        break;
+                    case SerializableProperties.ShapeEnum.Rectangle:
+                        if (isBrush)
+                            g.FillRectangle(shape.GetBrush(), shape.GetShape());
+                        else
+                            g.DrawRectangle(shape.GetPen(), shape.GetShape());
+                        break;
+                    case SerializableProperties.ShapeEnum.Custom: //Update this
+                        if (isBrush)
+                            g.FillRectangle(shape.GetBrush(), shape.GetShape());
+                        else
+                            g.DrawRectangle(shape.GetPen(), shape.GetShape());
+                        break;
+                }
+
+            }
         }
 
         //Used to update the Window Menu Items
@@ -146,19 +210,19 @@ namespace Multi_SDI_Application
         private void ellipseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.CurrentShape = SerializableProperties.ShapeEnum.Ellipse;
-            Console.WriteLine("Current shape is " + currentShape.CurrentShape);
+            UpdateLabels();
         }
 
         private void rectangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.CurrentShape = SerializableProperties.ShapeEnum.Rectangle;
-            Console.WriteLine("Current shape is " + currentShape.CurrentShape);
+            UpdateLabels();
         }
 
         private void customToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.CurrentShape = SerializableProperties.ShapeEnum.Custom;
-            Console.WriteLine("Current shape is " + currentShape.CurrentShape);
+            UpdateLabels();
         }
 
         //
@@ -167,20 +231,22 @@ namespace Multi_SDI_Application
         private void solidToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.PenType = SerializableProperties.PenEnum.Solid;
-            Console.WriteLine("Current pen is " + currentShape.PenType);
-
+            isBrush = false;
+            UpdateLabels();
         }
 
         private void customDashedToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.PenType = SerializableProperties.PenEnum.Dashed;
-            Console.WriteLine("Current pen is " + currentShape.PenType);
+            isBrush = false;
+            UpdateLabels();
         }
 
         private void compoundToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.PenType = SerializableProperties.PenEnum.Compound;
-            Console.WriteLine("Current pen is " + currentShape.PenType);
+            isBrush = false;
+            UpdateLabels();
         }
 
         //
@@ -189,19 +255,22 @@ namespace Multi_SDI_Application
         private void solidToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             currentShape.BrushType = SerializableProperties.BrushEnum.Solid;
-            Console.WriteLine("Current brush is " + currentShape.BrushType);
+            isBrush = true;
+            UpdateLabels();
         }
 
         private void hatchToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.BrushType = SerializableProperties.BrushEnum.Hatched;
-            Console.WriteLine("Current brush is " + currentShape.BrushType);
+            isBrush = true;
+            UpdateLabels();
         }
 
         private void linearGradientToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.BrushType = SerializableProperties.BrushEnum.LinearGradient;
-            Console.WriteLine("Current brush is " + currentShape.BrushType);
+            isBrush = true;
+            UpdateLabels();
         }
 
 
@@ -221,54 +290,85 @@ namespace Multi_SDI_Application
         private void penColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.PenColor = GetColor();
-            Console.WriteLine("PenColor = " + currentShape.PenColor);
+            UpdateLabels();
         }
 
         private void brushColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.BrushColor = GetColor();
-            Console.WriteLine("BrushColor = " + currentShape.BrushColor);
+            UpdateLabels();
         }
 
         private void TopLevelForm_MouseDown(object sender, MouseEventArgs e)
         {
             isDrawing = true;
-        }
 
-        private void TopLevelForm_MouseUp(object sender, MouseEventArgs e)
-        {
-            isDrawing = false;
-            Console.WriteLine("size of document = " + document.countShapes());
+            foreach (Shape shape in document.Components)
+            {
+                if (e.X > shape.ShapeLoc.X && (e.X < shape.ShapeLoc.X + shape.ShapeSize.Width))
+                {
+                    if(e.Button == MouseButtons.Left)
+                        touchedShape = shape;
+
+                    if (e.Button == MouseButtons.Right)
+                    {
+                        shapeOptionsDialog = new ShapeOptionsDialog(shape, document);
+                        shapeOptionsDialog.Show();
+                    }
+                }
+            }
+
+            if(touchedShape == null)
+            {
+                //Get cursor positions
+                currentShape.ShapeLoc = new Point(e.X, e.Y);
+
+                Shape ttshape = new Shape(currentShape.CurrentShape, currentShape.BrushType, currentShape.PenType, currentShape.PenColor, currentShape.BrushColor);
+                ttshape.ShapeLoc = currentShape.ShapeLoc;
+                ttshape.ShapeSize = currentShape.ShapeSize;
+
+                //Add to document
+                document.Add(ttshape);
+
+                //Draw
+                DrawGraphic(ttshape);
+            }
+
         }
 
         private void TopLevelForm_MouseMove(object sender, MouseEventArgs e)
         {
             if (!isDrawing) return;
 
-            //Get cursor positions
-            currentShape.ShapeLoc = new Point(e.X, e.Y);
-
-            //Add to document
-            document.Add(currentShape);
-
-            //Draw
-            using (Graphics g = this.CreateGraphics())
+            if(touchedShape != null)
             {
-                switch(currentShape.CurrentShape)
-                {
-                    case SerializableProperties.ShapeEnum.Ellipse:
-                        g.FillEllipse(currentShape.GetBrush(), currentShape.GetShape());
-                        break;
-                    case SerializableProperties.ShapeEnum.Rectangle:
-                        g.FillRectangle(currentShape.GetBrush(), currentShape.GetShape());
-                        break;
-                    case SerializableProperties.ShapeEnum.Custom: //Update this
-                        g.FillRectangle(currentShape.GetBrush(), currentShape.GetShape());
-                        break;
-                }
-
+                this.Invalidate();
+                touchedShape.ShapeSize = new Size(touchedShape.ShapeSize.Width + 1, touchedShape.ShapeSize.Height + 1);
+                DrawGraphic(touchedShape);
+                this.Invalidate();
             }
-           
+
         }
+
+        private void TopLevelForm_MouseUp(object sender, MouseEventArgs e)
+        {
+            isDrawing = false;
+            touchedShape = null;
+            RedrawGraphics();
+        }
+
+        private void toolStripLabelPlus_Click(object sender, EventArgs e)
+        {
+            currentShape.ShapeSize = new Size(currentShape.ShapeSize.Width + 1, currentShape.ShapeSize.Height + 1);
+            UpdateLabels();
+        }
+
+        private void toolStripLabelMinus_Click(object sender, EventArgs e)
+        {
+            currentShape.ShapeSize = new Size(currentShape.ShapeSize.Width - 1, currentShape.ShapeSize.Height - 1);
+            UpdateLabels();
+        }
+
+      
     }
 }
