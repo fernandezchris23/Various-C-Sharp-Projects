@@ -12,10 +12,9 @@ namespace Multi_SDI_Application
     {
         //Variables
         private string filename { get; set; }
+        public static int count = 0;
         private string fileFilter;
         private Shape currentShape;
-        private Boolean isDrawing;
-        public static int count = 0;
         private Document document;
         private Shape touchedShape;
 
@@ -32,7 +31,6 @@ namespace Multi_SDI_Application
             //Create shape object
             document = new Document();
             currentShape = new Shape(SerializableProperties.ShapeEnum.Ellipse, SerializableProperties.BrushEnum.Solid, SerializableProperties.PenEnum.Solid);
-            isDrawing = false;
             touchedShape = null;
             UpdateLabels();
         }
@@ -317,8 +315,6 @@ namespace Multi_SDI_Application
 
         private void TopLevelForm_MouseDown(object sender, MouseEventArgs e)
         {
-            isDrawing = true;
-
             touchedShape = Contains(document, e);
             if (touchedShape != null && e.Button == MouseButtons.Right)
                 new ShapeOptionsDialog(touchedShape, document).Show();
@@ -342,21 +338,17 @@ namespace Multi_SDI_Application
 
         private void TopLevelForm_MouseMove(object sender, MouseEventArgs e)
         {
-            if (!isDrawing) return;
+            if (touchedShape == null)
+                return;
 
-            if(touchedShape != null)
-            {
-                this.Invalidate();
-                touchedShape.ShapeSize = new Size(touchedShape.ShapeSize.Width + 1, touchedShape.ShapeSize.Height + 1);
-                DrawGraphic(touchedShape);
-                this.Invalidate();
-            }
-
+            this.Invalidate();
+            touchedShape.ShapeSize = new Size(touchedShape.ShapeSize.Width + 1, touchedShape.ShapeSize.Height + 1);
+            DrawGraphic(touchedShape);
+            this.Invalidate();
         }
 
         private void TopLevelForm_MouseUp(object sender, MouseEventArgs e)
         {
-            isDrawing = false;
             touchedShape = null;
             RedrawGraphics();
         }
