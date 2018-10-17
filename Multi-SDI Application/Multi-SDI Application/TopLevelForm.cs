@@ -19,7 +19,6 @@ namespace Multi_SDI_Application
         private Document document;
         private Boolean isBrush;
         private Shape touchedShape;
-        private ShapeOptionsDialog shapeOptionsDialog;
 
         public TopLevelForm()
         {
@@ -48,7 +47,7 @@ namespace Multi_SDI_Application
 
             this.toolStripStatusLabelColors.BackColor = Color.Brown;
             this.toolStripStatusLabelColors.ForeColor = Color.White;
-            this.toolStripStatusLabelColors.Text = "Brush: " + currentShape.BrushColor.Name + " | " + " Pen: " + currentShape.PenColor.Name;
+            this.toolStripStatusLabelColors.Text = "Brush-color: " + currentShape.BrushColor.Name + " | " + " Pen-color: " + currentShape.PenColor.Name;
 
             this.toolStripStatusLabelStyle.BackColor = Color.Black;
             this.toolStripStatusLabelStyle.ForeColor = Color.White;
@@ -270,7 +269,9 @@ namespace Multi_SDI_Application
             UpdateLabels();
         }
 
-
+        //
+        // Color
+        //
         private Color GetColor()
         {
             ColorDialog colorDialog = new ColorDialog();
@@ -281,9 +282,6 @@ namespace Multi_SDI_Application
             return Color.Black;
         }
 
-        //
-        // Color
-        //
         private void penColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.PenColor = GetColor();
@@ -296,25 +294,24 @@ namespace Multi_SDI_Application
             UpdateLabels();
         }
 
+        private Shape Contains(Document docu, MouseEventArgs e)
+        {
+            foreach (Shape shape in docu.Components)
+                if ((e.X > shape.ShapeLoc.X && (e.X < shape.ShapeLoc.X + shape.ShapeSize.Width)) && e.Y >= shape.ShapeLoc.Y && e.Y <= (shape.ShapeLoc.Y + shape.ShapeSize.Height))
+                    return shape;
+
+            return null;
+
+        }
+
         private void TopLevelForm_MouseDown(object sender, MouseEventArgs e)
         {
             isDrawing = true;
 
-            foreach (Shape shape in document.Components)
-            {
-                if ((e.X > shape.ShapeLoc.X && (e.X < shape.ShapeLoc.X + shape.ShapeSize.Width)) && e.Y >= shape.ShapeLoc.Y && e.Y <= (shape.ShapeLoc.Y + shape.ShapeSize.Height))
-                {
-                    if(e.Button == MouseButtons.Left)
-                        touchedShape = shape;
+            touchedShape = Contains(document, e);
+            if (touchedShape != null && e.Button == MouseButtons.Right)
+                new ShapeOptionsDialog(touchedShape, document).Show();
 
-                    if (e.Button == MouseButtons.Right)
-                    {
-                        shapeOptionsDialog = new ShapeOptionsDialog(shape, document);
-                        shapeOptionsDialog.Show();
-                    }
-                    break;
-                }
-            }
 
             if(touchedShape == null)
             {
