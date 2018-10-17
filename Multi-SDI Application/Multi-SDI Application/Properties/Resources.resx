@@ -118,7 +118,58 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="tatl" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tatl.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="linear" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\linear.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hatched" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hatched.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="customshape" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\customshape.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="smallerpenColor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\smallerpenColor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="navi" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\navi.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="smallerBrushColor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\smallerBrushColor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rectsShape" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rectsShape.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="bgOath" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bgOath.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="solidbrush" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\solidbrushpen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="saveHeart" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\saveHeart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ellipseShape" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ellipseShape.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bossKey" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bossKey.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="compound" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\compound.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="largerdashed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\largerdashed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="largersolidpen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\largersolidpen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="openChest2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\openChest2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="triforceIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\triforceIcon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

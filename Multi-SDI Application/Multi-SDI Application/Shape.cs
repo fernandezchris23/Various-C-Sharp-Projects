@@ -13,7 +13,7 @@ namespace Multi_SDI_Application
     [Serializable()]
     public class Shape : Component, ISerializable
     {
-        public Shape(Enum shape, Enum bbType, Enum ppType, Color penColor, Color brushColor)
+        public Shape(Enum shape, Enum bbType, Enum ppType)
         {
             CurrentShape = shape;
             BrushType = bbType;
@@ -21,8 +21,9 @@ namespace Multi_SDI_Application
             ShapeId = 0;
             ShapeSize = new Size(10, 10);
             ShapeLoc = new Point(0, 0);
-            PenColor = penColor;
-            BrushColor = brushColor;
+            PenColor = Color.Black;
+            BrushColor = Color.Black;
+            IsBrush = true;
         }
 
         public int ShapeId { get; set; }
@@ -41,13 +42,15 @@ namespace Multi_SDI_Application
 
         public Color BrushColor { get; set; }
 
+        public Boolean IsBrush { get; set; }
+
         public Shape(SerializationInfo info, StreamingContext context)
         {
             ShapeId = (int)info.GetValue("ShapeId", typeof(int));
+            IsBrush = info.GetBoolean("IsBrush");
             CurrentShape = (SerializableProperties.ShapeEnum)info.GetValue("CurrentShape", typeof(SerializableProperties.ShapeEnum));
             BrushType = (SerializableProperties.BrushEnum)info.GetValue("BrushType", typeof(SerializableProperties.BrushEnum));
             PenType = (SerializableProperties.PenEnum)info.GetValue("PenType", typeof(SerializableProperties.PenEnum));
-
 
             int width = (int)info.GetValue("Width", typeof(int));
             int height = (int)info.GetValue("Height", typeof(int));
@@ -61,6 +64,7 @@ namespace Multi_SDI_Application
             int bColorRGB = (int)info.GetValue("BrushColor", typeof(int));
             PenColor = Color.FromArgb(pColorRGB);
             BrushColor = Color.FromArgb(bColorRGB);
+
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
@@ -77,6 +81,7 @@ namespace Multi_SDI_Application
 
             info.AddValue("PenColor", PenColor.ToArgb());
             info.AddValue("BrushColor", BrushColor.ToArgb());
+            info.AddValue("IsBrush", IsBrush);
         }
 
         public Brush GetBrush()
