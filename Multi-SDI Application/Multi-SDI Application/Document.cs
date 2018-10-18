@@ -34,7 +34,7 @@ namespace Multi_SDI_Application
         {
             foreach(Shape component in Components)
             {
-                if(string.Equals(id, component.ShapeId))
+                if(id == component.ShapeId)
                 {
                     return component;
                 }
