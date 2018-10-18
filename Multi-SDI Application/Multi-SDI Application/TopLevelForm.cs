@@ -22,7 +22,19 @@ namespace Multi_SDI_Application
         {
             InitializeComponent();
             fileFilter = "Files|*.ok";
-            
+
+            this.Text = String.Format("{0}:{1}", this.Text, count);
+
+            ToolStripMenuItem newToolStripMenuItem = new ToolStripMenuItem();
+            newToolStripMenuItem.Name = "newToolStripMenuItem";
+            newToolStripMenuItem.Size = new Size(152, 22);
+            newToolStripMenuItem.Text = "New";
+            newToolStripMenuItem.Click += new EventHandler(newToolStripMenuItem_Click);
+            this.fileToolStripMenuItem.DropDownItems.Add(newToolStripMenuItem);
+
+            MultiSDIApp.Application.AddTopLevelForm(this);
+            MultiSDIApp.Application.AddWindowMenu(this.windowToolStripMenuItem);
+
             //Set more menu
             ToolStripMenuItem item = new ToolStripMenuItem("More");
             item.DropDown = contextMenuStripShapes;
@@ -244,7 +256,7 @@ namespace Multi_SDI_Application
         //
         // Brushes
         //
-        private void solidToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void solidBrushToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.BrushType = SerializableProperties.BrushEnum.Solid;
             currentShape.IsBrush = true;
@@ -365,6 +377,9 @@ namespace Multi_SDI_Application
             UpdateLabels();
         }
 
-      
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TopLevelForm.CreateWindow(null);
+        }
     }
 }
