@@ -126,6 +126,19 @@ namespace Multi_SDI_Application
             return new Rectangle(ShapeLoc, ShapeSize);
         }
 
+        public Point[] GetCustom()
+        {
+            int widthLocal = ShapeSize.Width;
+            int heightLocal = ShapeSize.Width * 2;
+
+            Point[] p = {
+                new Point(ShapeLoc.X, ShapeLoc.Y),
+                new Point(0 + widthLocal, 0 + heightLocal),
+                new Point(0, 0 + heightLocal)
+            };
+            return p;
+        }
+
         
     }
 }

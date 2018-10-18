@@ -193,9 +193,9 @@ namespace Multi_SDI_Application
                         break;
                     case SerializableProperties.ShapeEnum.Custom: //Update this
                         if (shape.IsBrush)
-                            g.FillRectangle(shape.GetBrush(), shape.GetShape());
+                            g.FillPolygon(shape.GetBrush(), shape.GetCustom());
                         else
-                            g.DrawRectangle(shape.GetPen(), shape.GetShape());
+                            g.DrawPolygon(shape.GetPen(), shape.GetCustom());
                         break;
                 }
 
