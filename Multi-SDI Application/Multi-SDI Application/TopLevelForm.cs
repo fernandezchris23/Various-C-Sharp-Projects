@@ -28,19 +28,54 @@ namespace Multi_SDI_Application
         {
             InitializeComponent();
             fileFilter = "Files|*.ok";
-            
+
+            this.Text = String.Format("{0}:{1}", this.Text, count);
+
+            ToolStripMenuItem newToolStripMenuItem = new ToolStripMenuItem();
+            newToolStripMenuItem.Name = "newToolStripMenuItem";
+            newToolStripMenuItem.Size = new Size(152, 22);
+            newToolStripMenuItem.Text = "New";
+            newToolStripMenuItem.Click += new EventHandler(newToolStripMenuItem_Click);
+            this.fileToolStripMenuItem.DropDownItems.Add(newToolStripMenuItem);
+
+            MultiSDIApp.Application.AddTopLevelForm(this);
+            MultiSDIApp.Application.AddWindowMenu(this.windowToolStripMenuItem);
+
             //Set more menu
             ToolStripMenuItem item = new ToolStripMenuItem("More");
             item.DropDown = contextMenuStripShapes;
             this.menuStrip.Items.Insert(menuStrip.Items.Count, item);
 
             fileProperties = new FileProperties();
+            fileProperties.PropertyChanged += new PropertyChangedEventHandler(updateShapeValues);
+
             document = new Document();
             currentShape = new Shape(SerializableProperties.ShapeEnum.Ellipse, SerializableProperties.BrushEnum.Solid, SerializableProperties.PenEnum.Solid, Color.Black, Color.Black);
             isDrawing = false;
             isBrush = true;
             touchedShape = null;
             UpdateLabels();
+        }
+
+        private void updateShapeValues(object sender, EventArgs e)
+        {
+            SerializableProperties.PenEnum outputPen;
+            SerializableProperties.BrushEnum outputBrush;
+            SerializableProperties.ShapeEnum outputShape;
+
+            Enum.TryParse<SerializableProperties.PenEnum>(fileProperties.BrushType, out outputPen);
+            Enum.TryParse<SerializableProperties.BrushEnum>(fileProperties.BrushType, out outputBrush);
+            Enum.TryParse<SerializableProperties.ShapeEnum>(fileProperties.BrushType, out outputShape);
+
+            currentShape.ShapeSize = new Size(fileProperties.ShapeWidth, fileProperties.ShapeHeight);
+            currentShape.ShapeLoc = new Point(fileProperties.ShapeX, fileProperties.ShapeY);
+            currentShape.BrushColor = fileProperties.BrushColor;
+            currentShape.PenColor = fileProperties.PenColor;
+            currentShape.BrushType = outputPen;
+            currentShape.PenType = outputBrush;
+            currentShape.CurrentShape = outputShape;
+
+            DrawGraphic(currentShape);
         }
 
         private void UpdateLabels()
@@ -82,11 +117,6 @@ namespace Multi_SDI_Application
             return newForm;
         }
 
-        private void OpenFile(String filename)
-        {
-            
-        }
-
         //Override of Oath Tool Strip Menu Item Handler
         public override void oathToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -123,7 +153,6 @@ namespace Multi_SDI_Application
         public override void newWindowToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CreateWindow("");
-            updateWindowMenu();
         }
 
         public override void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -135,8 +164,6 @@ namespace Multi_SDI_Application
             if (saveFileDialog.ShowDialog(this) != DialogResult.OK)
                 return;
 
-            //Shape[] shapes = new Shape[document.Components.Count]; 
-            //document.Components.CopyTo(shapes, 0);
 
             if (Serializer.Serialize(saveFileDialog.FileName, document))
                 MessageBox.Show(saveFileDialog.FileName + " saved succesfully");
@@ -190,21 +217,15 @@ namespace Multi_SDI_Application
                         else
                             g.DrawRectangle(shape.GetPen(), shape.GetShape());
                         break;
-                    case SerializableProperties.ShapeEnum.Custom: //Update this
-                        if (isBrush)
-                            g.FillRectangle(shape.GetBrush(), shape.GetShape());
+                    case SerializableProperties.ShapeEnum.Custom:
+                        if (shape.IsBrush)
+                            g.FillPolygon(shape.GetBrush(), shape.GetCustom());
                         else
-                            g.DrawRectangle(shape.GetPen(), shape.GetShape());
+                            g.DrawPolygon(shape.GetPen(), shape.GetCustom());
                         break;
                 }
 
             }
-        }
-
-        //Used to update the Window Menu Items
-        private void updateWindowMenu()
-        {
-            
         }
 
         //
@@ -234,21 +255,21 @@ namespace Multi_SDI_Application
         private void solidToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.PenType = SerializableProperties.PenEnum.Solid;
-            isBrush = false;
+            currentShape.IsBrush = false;
             UpdateLabels();
         }
 
         private void customDashedToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.PenType = SerializableProperties.PenEnum.Dashed;
-            isBrush = false;
+            currentShape.IsBrush = false;
             UpdateLabels();
         }
 
         private void compoundToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.PenType = SerializableProperties.PenEnum.Compound;
-            isBrush = false;
+            currentShape.IsBrush = false;
             UpdateLabels();
         }
 
@@ -258,21 +279,21 @@ namespace Multi_SDI_Application
         private void solidBrushToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.BrushType = SerializableProperties.BrushEnum.Solid;
-            isBrush = true;
+            currentShape.IsBrush = true;
             UpdateLabels();
         }
 
         private void hatchToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.BrushType = SerializableProperties.BrushEnum.Hatched;
-            isBrush = true;
+            currentShape.IsBrush = true;
             UpdateLabels();
         }
 
         private void linearGradientToolStripMenuItem_Click(object sender, EventArgs e)
         {
             currentShape.BrushType = SerializableProperties.BrushEnum.LinearGradient;
-            isBrush = true;
+            currentShape.IsBrush = true;
             UpdateLabels();
         }
 
@@ -302,60 +323,67 @@ namespace Multi_SDI_Application
             UpdateLabels();
         }
 
+        private Shape Contains(Document docu, MouseEventArgs e)
+        {
+            foreach (Shape shape in docu.Components)
+                if ((e.X > shape.ShapeLoc.X && (e.X < shape.ShapeLoc.X + shape.ShapeSize.Width)) && e.Y >= shape.ShapeLoc.Y && e.Y <= (shape.ShapeLoc.Y + shape.ShapeSize.Height))
+                    return shape;
+
+            return null;
+
+        }
+
+        private Shape CopyShape(Shape shape)
+        {
+            Shape newShape = new Shape(currentShape.CurrentShape, currentShape.BrushType, currentShape.PenType, currentShape.PenColor, currentShape.BrushColor);
+            newShape.ShapeLoc = shape.ShapeLoc;
+            newShape.ShapeSize = shape.ShapeSize;
+            newShape.IsBrush = shape.IsBrush;
+            newShape.PenColor = shape.PenColor;
+            newShape.BrushColor = shape.BrushColor;
+
+            return newShape;
+        }
+
         private void TopLevelForm_MouseDown(object sender, MouseEventArgs e)
         {
-            isDrawing = true;
+            touchedShape = Contains(document, e);
+            if (touchedShape != null && e.Button == MouseButtons.Right)
+                new ShapeOptionsDialog(touchedShape, document, fileProperties).Show();
 
-            foreach (Shape shape in document.Components)
-            {
-                if (e.X > shape.ShapeLoc.X && (e.X < shape.ShapeLoc.X + shape.ShapeSize.Width))
-                {
-                    if(e.Button == MouseButtons.Left)
-                        touchedShape = shape;
 
-                    if (e.Button == MouseButtons.Right)
-                    {
-                        shapeOptionsDialog = new ShapeOptionsDialog(shape, document, fileProperties);
-                        shapeOptionsDialog.Show();
-                    }
-                }
-            }
-
-            if(touchedShape == null)
+            if (touchedShape == null)
             {
                 //Get cursor positions
                 currentShape.ShapeLoc = new Point(e.X, e.Y);
 
-                Shape ttshape = new Shape(currentShape.CurrentShape, currentShape.BrushType, currentShape.PenType, currentShape.PenColor, currentShape.BrushColor);
-                ttshape.ShapeLoc = currentShape.ShapeLoc;
-                ttshape.ShapeSize = currentShape.ShapeSize;
+                Shape cloneShape = CopyShape(currentShape);
 
                 //Add to document
-                document.Add(ttshape);
+                document.Add(cloneShape);
 
                 //Draw
-                DrawGraphic(ttshape);
+                DrawGraphic(cloneShape);
             }
-
+            else
+            {
+                Console.WriteLine("Found shape!");
+            }
         }
 
         private void TopLevelForm_MouseMove(object sender, MouseEventArgs e)
         {
-            if (!isDrawing) return;
+            if (touchedShape == null)
+                return;
 
-            if(touchedShape != null)
-            {
-                this.Invalidate();
-                touchedShape.ShapeSize = new Size(touchedShape.ShapeSize.Width + 1, touchedShape.ShapeSize.Height + 1);
-                DrawGraphic(touchedShape);
-                this.Invalidate();
-            }
-
+            this.Invalidate();
+            touchedShape.ShapeSize = new Size(touchedShape.ShapeSize.Width + 1, touchedShape.ShapeSize.Height + 1);
+            DrawGraphic(touchedShape);
+            this.Invalidate();
         }
 
         private void TopLevelForm_MouseUp(object sender, MouseEventArgs e)
         {
-            isDrawing = false;
             touchedShape = null;
             RedrawGraphics();
         }
@@ -372,6 +400,9 @@ namespace Multi_SDI_Application
             UpdateLabels();
         }
 
-      
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TopLevelForm.CreateWindow(null);
+        }
     }
 }

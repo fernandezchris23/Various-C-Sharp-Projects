@@ -17,6 +17,10 @@ namespace Multi_SDI_Application
         private Color penColor, brushColor;
         private FileProperties fileProperties;
 
+        public enum ShapeEnum { Ellipse, Rectangle, Custom };
+        public enum PenEnum { Solid, Dashed, Compound };
+        public enum BrushEnum { Solid, Hatched, LinearGradient };
+
         public ShapeOptionsDialog(Shape shape, Document shapeContainer, FileProperties fProperties)
         {
             fileProperties = fProperties;
@@ -25,7 +29,9 @@ namespace Multi_SDI_Application
             currentShape = shape;
             shapeCollection = shapeContainer;
 
-            updateDialogValues();
+            createComboBoxItems();
+
+            updatePropertiesValues();
 
             InitBindings(fileProperties);
         }
@@ -40,9 +46,9 @@ namespace Multi_SDI_Application
             penColorBttn.DataBindings.Add("BackColor", fileProperties, "PenColor");
             brushColorBttn.DataBindings.Add("BackColor", fileProperties, "BrushColor");
 
-            penTypeCombo.DataBindings.Add("SelectedValue", fileProperties, "PenType");
-            brushTypeCombo.DataBindings.Add("SelectedValue", fileProperties, "BrushType");
-            shapeTypeCombo.DataBindings.Add("SelectedValue", fileProperties, "ShapeType");
+            penTypeCombo.DataBindings.Add("SelectedText", fileProperties, "PenType");
+            brushTypeCombo.DataBindings.Add("SelectedText", fileProperties, "BrushType");
+            shapeTypeCombo.DataBindings.Add("SelectedText", fileProperties, "ShapeType");
         }
 
         private void penColorBttn_Click(object sender, EventArgs e)
@@ -58,8 +64,7 @@ namespace Multi_SDI_Application
 
         private void currentShapeCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //currentShape = shapeCollection.GetShape(currentShapeCombo.SelectedItem.ToString());
-            //updateDialogValues();
+            currentShape = shapeCollection.GetShape(currentShapeCombo.SelectedIndex);
         }
 
         private void brushColorBttn_Click(object sender, EventArgs e)
@@ -73,29 +78,7 @@ namespace Multi_SDI_Application
             }
         }
 
-        private void okBttn_Click(object sender, EventArgs e)
-        {
-            if (validValues())
-            {
-                //changeValues();
-            }
-            this.Close();
-        }
-
-        private void applyBttn_Click(object sender, EventArgs e)
-        {
-            if(validValues())
-            {
-                //changeValues();
-            }
-        }
-
-        private void cancelBttn_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void updateDialogValues()
+        private void updatePropertiesValues()
         {
             //Set Everything to Current Shape Properties
             fileProperties.ShapeWidth = currentShape.ShapeSize.Width;
@@ -107,16 +90,16 @@ namespace Multi_SDI_Application
             fileProperties.PenColor = currentShape.PenColor;
             fileProperties.BrushColor = currentShape.BrushColor;
 
-            fileProperties.PenType = currentShape.PenType;
-            fileProperties.BrushType = currentShape.BrushType;
-            fileProperties.ShapeType = currentShape.CurrentShape;
+            fileProperties.PenType = currentShape.PenType.ToString();
+            fileProperties.BrushType = currentShape.BrushType.ToString();
+            fileProperties.ShapeType = currentShape.CurrentShape.ToString();
 
             currentShapeCombo.SelectedItem = currentShape.ShapeId;
         }
 
-        private bool validValues()
+        private void createComboBoxItems()
         {
-            return true;
+            penTypeCombo.DataSource = Enum.GetNames(typeof(PenEnum));
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Multi_SDI_Application
     {
         public enum ShapeEnum { Ellipse, Rectangle, Custom };
         public enum PenEnum { Solid, Dashed, Compound };
-        public enum BrushEnum { Solid, Hatched, LinearGradient }
+        public enum BrushEnum { Solid, Hatched, LinearGradient };
 
         public ShapeEnum Shape { get; set; }
         public PenEnum Pen { get; set; }

@@ -30,7 +30,7 @@ namespace Multi_SDI_Application
             }
         }
 
-        public Shape GetShape(string id)
+        public Shape GetShape(int id)
         {
             foreach(Shape component in Components)
             {

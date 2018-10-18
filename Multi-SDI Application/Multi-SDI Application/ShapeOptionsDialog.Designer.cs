@@ -53,9 +53,6 @@
             this.brushTypeLabel = new System.Windows.Forms.Label();
             this.currentShapeGroup = new System.Windows.Forms.GroupBox();
             this.currentShapeCombo = new System.Windows.Forms.ComboBox();
-            this.okBttn = new System.Windows.Forms.Button();
-            this.applyBttn = new System.Windows.Forms.Button();
-            this.cancelBttn = new System.Windows.Forms.Button();
             this.sizeGroup.SuspendLayout();
             this.locGroup.SuspendLayout();
             this.colorGroup.SuspendLayout();
@@ -111,10 +108,6 @@
             // penTypeCombo
             // 
             this.penTypeCombo.FormattingEnabled = true;
-            this.penTypeCombo.Items.AddRange(new object[] {
-            "Solid",
-            "Dashed",
-            "Compound"});
             this.penTypeCombo.Location = new System.Drawing.Point(225, 336);
             this.penTypeCombo.Name = "penTypeCombo";
             this.penTypeCombo.Size = new System.Drawing.Size(121, 21);
@@ -345,45 +338,12 @@
             this.currentShapeCombo.TabIndex = 0;
             this.currentShapeCombo.SelectedIndexChanged += new System.EventHandler(this.currentShapeCombo_SelectedIndexChanged);
             // 
-            // okBttn
-            // 
-            this.okBttn.Location = new System.Drawing.Point(91, 511);
-            this.okBttn.Name = "okBttn";
-            this.okBttn.Size = new System.Drawing.Size(75, 23);
-            this.okBttn.TabIndex = 23;
-            this.okBttn.Text = "OK";
-            this.okBttn.UseVisualStyleBackColor = true;
-            this.okBttn.Click += new System.EventHandler(this.okBttn_Click);
-            // 
-            // applyBttn
-            // 
-            this.applyBttn.Location = new System.Drawing.Point(200, 511);
-            this.applyBttn.Name = "applyBttn";
-            this.applyBttn.Size = new System.Drawing.Size(75, 23);
-            this.applyBttn.TabIndex = 24;
-            this.applyBttn.Text = "Apply";
-            this.applyBttn.UseVisualStyleBackColor = true;
-            this.applyBttn.Click += new System.EventHandler(this.applyBttn_Click);
-            // 
-            // cancelBttn
-            // 
-            this.cancelBttn.Location = new System.Drawing.Point(312, 511);
-            this.cancelBttn.Name = "cancelBttn";
-            this.cancelBttn.Size = new System.Drawing.Size(75, 23);
-            this.cancelBttn.TabIndex = 25;
-            this.cancelBttn.Text = "Cancel";
-            this.cancelBttn.UseVisualStyleBackColor = true;
-            this.cancelBttn.Click += new System.EventHandler(this.cancelBttn_Click);
-            // 
             // ShapeOptionsDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(473, 546);
-            this.Controls.Add(this.cancelBttn);
-            this.Controls.Add(this.applyBttn);
-            this.Controls.Add(this.okBttn);
+            this.ClientSize = new System.Drawing.Size(473, 521);
             this.Controls.Add(this.currentShapeGroup);
             this.Controls.Add(this.brushTypeLabel);
             this.Controls.Add(this.shapeTypeLabel);
@@ -438,8 +398,5 @@
         private System.Windows.Forms.Label brushTypeLabel;
         private System.Windows.Forms.GroupBox currentShapeGroup;
         private System.Windows.Forms.ComboBox currentShapeCombo;
-        private System.Windows.Forms.Button okBttn;
-        private System.Windows.Forms.Button applyBttn;
-        private System.Windows.Forms.Button cancelBttn;
     }
 }

@@ -14,9 +14,9 @@ namespace Multi_SDI_Application
         private Point shapeLoc;
         private Color penColor;
         private Color brushColor;
-        private Enum penType;
-        private Enum brushType;
-        private Enum shapeType;
+        private string penType;
+        private string brushType;
+        private string shapeType;
 
         public FileProperties()
         {
@@ -153,7 +153,7 @@ namespace Multi_SDI_Application
             }
         }
 
-        public Enum PenType
+        public string PenType
         {
             get { return penType; }
 
@@ -174,7 +174,7 @@ namespace Multi_SDI_Application
             }
         }
 
-        public Enum BrushType
+        public string BrushType
         {
             get { return brushType; }
 
@@ -195,7 +195,7 @@ namespace Multi_SDI_Application
             }
         }
 
-        public Enum ShapeType
+        public string ShapeType
         {
             get { return shapeType; }
 
