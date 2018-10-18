@@ -89,11 +89,9 @@ namespace Multi_SDI_Application
             switch (BrushType)
             {
                 case SerializableProperties.BrushEnum.Solid:
-                    Console.WriteLine("Using Solid brush");
                     return new SolidBrush(BrushColor);
 
                 case SerializableProperties.BrushEnum.Hatched:
-                    Console.WriteLine("Using Hatched brush");
                     return new HatchBrush(HatchStyle.LightVertical, BrushColor, Color.DarkBlue);
 
                 default:
@@ -106,11 +104,9 @@ namespace Multi_SDI_Application
             switch (PenType)
             {
                 case SerializableProperties.PenEnum.Solid:
-                    Console.WriteLine("Using Solid pen");
                     return new Pen(GetBrush());
 
                 case SerializableProperties.PenEnum.Dashed:
-                    Console.WriteLine("Using Dashed pen");
                     float[] dashValues = { 5, 2, 15, 4 };
                     Pen pen = new Pen(GetBrush());
                     pen.DashPattern = dashValues;

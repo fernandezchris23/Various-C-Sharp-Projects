@@ -345,6 +345,10 @@ namespace Multi_SDI_Application
                 //Draw
                 DrawGraphic(cloneShape);
             }
+            else
+            {
+                Console.WriteLine("Found shape!");
+            }
 
         }
 
