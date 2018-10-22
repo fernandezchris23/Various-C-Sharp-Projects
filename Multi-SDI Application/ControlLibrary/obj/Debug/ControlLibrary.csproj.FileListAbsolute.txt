@@ -1,0 +1,13 @@
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\Multi-SDI Application\ControlLibrary\bin\Debug\ControlLibraryAssign3.dll
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\Multi-SDI Application\ControlLibrary\bin\Debug\ControlLibraryAssign3.pdb
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\Multi-SDI Application\ControlLibrary\obj\Debug\ControlLibraryAssign3.BaseMainForm.resources
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\Multi-SDI Application\ControlLibrary\obj\Debug\ControlLibrary.courseUserControl.resources
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\Multi-SDI Application\ControlLibrary\obj\Debug\ControlLibrary.dialogBaseForm.resources
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\Multi-SDI Application\ControlLibrary\obj\Debug\ControlLibrary.namesUserControl.resources
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\Multi-SDI Application\ControlLibrary\obj\Debug\ControlLibrary.OathUserControl.resources
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\Multi-SDI Application\ControlLibrary\obj\Debug\ControlLibraryAssign3.Properties.Resources.resources
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\Multi-SDI Application\ControlLibrary\obj\Debug\ControlLibrary.csproj.GenerateResource.cache
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\Multi-SDI Application\ControlLibrary\obj\Debug\ControlLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\Multi-SDI Application\ControlLibrary\obj\Debug\ControlLibraryAssign3.dll
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\Multi-SDI Application\ControlLibrary\obj\Debug\ControlLibraryAssign3.pdb
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\Multi-SDI Application\ControlLibrary\obj\Debug\ControlLibrary.csprojAssemblyReference.cache

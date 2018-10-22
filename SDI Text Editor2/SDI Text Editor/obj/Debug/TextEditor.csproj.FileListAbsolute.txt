@@ -1,0 +1,14 @@
+C:\Users\Mega Trainer\source\repos\1808-uha-repo2\SDI Text Editor2\SDI Text Editor\bin\Debug\SDI Text Editor.exe.config
+C:\Users\Mega Trainer\source\repos\1808-uha-repo2\SDI Text Editor2\SDI Text Editor\bin\Debug\SDI Text Editor.exe
+C:\Users\Mega Trainer\source\repos\1808-uha-repo2\SDI Text Editor2\SDI Text Editor\bin\Debug\SDI Text Editor.pdb
+C:\Users\Mega Trainer\source\repos\1808-uha-repo2\SDI Text Editor2\SDI Text Editor\bin\Debug\ControlLibraryAssign3.dll
+C:\Users\Mega Trainer\source\repos\1808-uha-repo2\SDI Text Editor2\SDI Text Editor\bin\Debug\ControlLibraryAssign3.pdb
+C:\Users\Mega Trainer\source\repos\1808-uha-repo2\SDI Text Editor2\SDI Text Editor\obj\Debug\TextEditor.csprojAssemblyReference.cache
+C:\Users\Mega Trainer\source\repos\1808-uha-repo2\SDI Text Editor2\SDI Text Editor\obj\Debug\SDI_Text_Editor.EditorForm.resources
+C:\Users\Mega Trainer\source\repos\1808-uha-repo2\SDI Text Editor2\SDI Text Editor\obj\Debug\SDI_Text_Editor.PrefsDialog.resources
+C:\Users\Mega Trainer\source\repos\1808-uha-repo2\SDI Text Editor2\SDI Text Editor\obj\Debug\SDI_Text_Editor.Properties.Resources.resources
+C:\Users\Mega Trainer\source\repos\1808-uha-repo2\SDI Text Editor2\SDI Text Editor\obj\Debug\TextEditor.csproj.GenerateResource.cache
+C:\Users\Mega Trainer\source\repos\1808-uha-repo2\SDI Text Editor2\SDI Text Editor\obj\Debug\TextEditor.csproj.CoreCompileInputs.cache
+C:\Users\Mega Trainer\source\repos\1808-uha-repo2\SDI Text Editor2\SDI Text Editor\obj\Debug\TextEditor.csproj.CopyComplete
+C:\Users\Mega Trainer\source\repos\1808-uha-repo2\SDI Text Editor2\SDI Text Editor\obj\Debug\SDI Text Editor.exe
+C:\Users\Mega Trainer\source\repos\1808-uha-repo2\SDI Text Editor2\SDI Text Editor\obj\Debug\SDI Text Editor.pdb

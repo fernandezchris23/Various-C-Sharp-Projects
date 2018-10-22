@@ -1,0 +1,13 @@
+C:\Users\cfern272\Source\Repos\1808-uha-repo2\abarn\SDI Text Editor\ControlLibraryAssign3\bin\Debug\ControlLibraryAssign3.dll
+C:\Users\cfern272\Source\Repos\1808-uha-repo2\abarn\SDI Text Editor\ControlLibraryAssign3\bin\Debug\ControlLibraryAssign3.pdb
+C:\Users\cfern272\Source\Repos\1808-uha-repo2\abarn\SDI Text Editor\ControlLibraryAssign3\obj\Debug\ControlLibrary.csprojAssemblyReference.cache
+C:\Users\cfern272\Source\Repos\1808-uha-repo2\abarn\SDI Text Editor\ControlLibraryAssign3\obj\Debug\ControlLibraryAssign3.BaseForm.resources
+C:\Users\cfern272\Source\Repos\1808-uha-repo2\abarn\SDI Text Editor\ControlLibraryAssign3\obj\Debug\ControlLibraryAssign3.CourseUserControl.resources
+C:\Users\cfern272\Source\Repos\1808-uha-repo2\abarn\SDI Text Editor\ControlLibraryAssign3\obj\Debug\ControlLibraryAssign3.DialogBaseForm.resources
+C:\Users\cfern272\Source\Repos\1808-uha-repo2\abarn\SDI Text Editor\ControlLibraryAssign3\obj\Debug\ControlLibraryAssign3.NamesUserControl.resources
+C:\Users\cfern272\Source\Repos\1808-uha-repo2\abarn\SDI Text Editor\ControlLibraryAssign3\obj\Debug\ControlLibrary.OathUserControl.resources
+C:\Users\cfern272\Source\Repos\1808-uha-repo2\abarn\SDI Text Editor\ControlLibraryAssign3\obj\Debug\ControlLibraryAssign3.Properties.Resources.resources
+C:\Users\cfern272\Source\Repos\1808-uha-repo2\abarn\SDI Text Editor\ControlLibraryAssign3\obj\Debug\ControlLibrary.csproj.GenerateResource.cache
+C:\Users\cfern272\Source\Repos\1808-uha-repo2\abarn\SDI Text Editor\ControlLibraryAssign3\obj\Debug\ControlLibrary.csproj.CoreCompileInputs.cache
+C:\Users\cfern272\Source\Repos\1808-uha-repo2\abarn\SDI Text Editor\ControlLibraryAssign3\obj\Debug\ControlLibraryAssign3.dll
+C:\Users\cfern272\Source\Repos\1808-uha-repo2\abarn\SDI Text Editor\ControlLibraryAssign3\obj\Debug\ControlLibraryAssign3.pdb
