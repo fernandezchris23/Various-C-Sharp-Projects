@@ -9,6 +9,8 @@ namespace TextThreadProgram
 {
     class Text
     {
+        public int TextId { get; set; }
+
         public string StringText { get; set; }
 
         public int Z_Order { get; set; }
