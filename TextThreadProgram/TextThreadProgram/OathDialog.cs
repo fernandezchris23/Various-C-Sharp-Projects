@@ -16,5 +16,10 @@ namespace TextThreadProgram
         {
             InitializeComponent();
         }
+
+        private void oathControl1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
