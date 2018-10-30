@@ -43,6 +43,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.capsLockStatusStrip = new System.Windows.Forms.ToolStripStatusLabel();
+            this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -116,19 +117,19 @@
             // cutCtrlXToolStripMenuItem
             // 
             this.cutCtrlXToolStripMenuItem.Name = "cutCtrlXToolStripMenuItem";
-            this.cutCtrlXToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
+            this.cutCtrlXToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.cutCtrlXToolStripMenuItem.Text = "Cut (Ctrl+X)";
             // 
             // copyCtrlCToolStripMenuItem
             // 
             this.copyCtrlCToolStripMenuItem.Name = "copyCtrlCToolStripMenuItem";
-            this.copyCtrlCToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
+            this.copyCtrlCToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.copyCtrlCToolStripMenuItem.Text = "Copy (Ctrl+C)";
             // 
             // pasteCtrlVToolStripMenuItem
             // 
             this.pasteCtrlVToolStripMenuItem.Name = "pasteCtrlVToolStripMenuItem";
-            this.pasteCtrlVToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
+            this.pasteCtrlVToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.pasteCtrlVToolStripMenuItem.Text = "Paste (Ctrl+V)";
             // 
             // preferencesToolStripMenuItem
@@ -139,6 +140,8 @@
             // 
             // helpToolStripMenuItem
             // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.searchToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
             this.helpToolStripMenuItem.Text = "Help";
@@ -159,6 +162,13 @@
             this.capsLockStatusStrip.Name = "capsLockStatusStrip";
             this.capsLockStatusStrip.Size = new System.Drawing.Size(111, 20);
             this.capsLockStatusStrip.Text = "CapsLockStatus";
+            // 
+            // searchToolStripMenuItem
+            // 
+            this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.searchToolStripMenuItem.Text = "Search";
+            this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -196,6 +206,7 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel capsLockStatusStrip;
+        private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
     }
 }
 

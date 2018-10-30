@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ControlLibrary;
 
 namespace TextThreadProgram
 {
-    public partial class SearchDialog : Form
+    public partial class SearchDialog : BaseDialogForm
     {
         public SearchDialog()
         {

@@ -33,5 +33,10 @@ namespace TextThreadProgram
         {
             //this.DataBindings.Add("")
         }
+
+        private void searchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
