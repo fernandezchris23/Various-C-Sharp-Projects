@@ -53,6 +53,8 @@ namespace TextThreadProgram
             Console.WriteLine(info.MemberCount + " components");
         }
 
+        public Document() { }
+
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             int count = 0;

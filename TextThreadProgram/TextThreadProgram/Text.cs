@@ -8,96 +8,31 @@ using System.ComponentModel;
 
 namespace TextThreadProgram
 {
-    class Text : INotifyPropertyChanged
+    public class Text
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnChange(string propName)
+        public Text(string stringText, Font textFont, Color textColor, Color bgColor, Point textLocation)
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propName));
-            }
+            StringText = stringText;
+            TextFont = textFont;
+            TextColor = textColor;
+            BgColor = bgColor;
+            TextLocation = textLocation;
         }
 
-        public int TextId
-        {
-            get { return TextId; }
-            set
-            {
-                this.TextId = value;
-                OnChange("TextID");
-            }
-        }
+        public int TextId { get; set; }
 
-        public string StringText
-        {
-            get { return StringText; }
-            set
-            {
-                this.StringText = value;
-                OnChange("StringText");
-            }
-        }
+        public string StringText { get; set; }
 
-        public int Z_Order
-        {
-            get { return Z_Order; }
-            set
-            {
-                this.Z_Order = value;
-                OnChange("Z_Order");
-            }
-        }
+        public Color TextColor { get; set; }
 
-        public Color TextColor
-        {
-            get { return TextColor; }
-            set
-            {
-                this.TextColor = value;
-                OnChange("TextColor");
-            }
-        }
+        public Color BgColor { get; set; }
 
-        public Color BgColor
-        {
-            get { return BgColor; }
-            set
-            {
-                this.BgColor = value;
-                OnChange("BgColor");
-            }
-        }
+        public Point TextLocation { get; set; }
 
-        public Point TextLocation
-        {
-            get { return TextLocation; }
-            set
-            {
-                this.TextLocation = value;
-                OnChange("TextLocation");
-            }
-        }
+        public Font TextFont { get; set; }
 
-        public Font TextFont
-        {
-            get { return TextFont; }
-            set
-            {
-                this.TextFont = value;
-                OnChange("TextFont");
-            }
-        }
+        public int Z_Order { get; set; }
 
-        public float Rotation
-        {
-            get { return Rotation; }
-            set
-            {
-                this.Rotation = value;
-                OnChange("Rotation");
-            }
-        }
+        public float Rotation { get; set; }
     }
 }

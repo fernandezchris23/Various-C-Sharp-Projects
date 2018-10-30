@@ -12,11 +12,13 @@ namespace TextThreadProgram
 {
     public partial class MainForm : Form
     {
+        private Document document;
         private SearchDialog searchDialog;
 
         public MainForm()
         {
             InitializeComponent();
+            document = new Document();
             searchDialog = new SearchDialog();
         }
 
@@ -32,7 +34,7 @@ namespace TextThreadProgram
             }
         }
 
-        private void SetBindings(Text data, )
+        private void SetBindings(Text data)
         {
             //this.DataBindings.Add("")
         }
@@ -54,5 +56,33 @@ namespace TextThreadProgram
             }
 
         }
+
+
+        public void DrawText(Text text)
+        {
+            using(Graphics g = this.mainPanel.CreateGraphics())
+            {
+                g.DrawString(text.StringText, text.TextFont, Brushes.Aqua, text.TextLocation.X, text.TextLocation.Y);
+            }
+        }
+
+        private void mainPanel_MouseClick(object sender, MouseEventArgs e)
+        {
+            Text text = new Text("Something", this.Font, Color.Black, Color.Red, new Point(e.X, e.Y));
+            document.Add(text);
+            DrawText(text);
+            Console.WriteLine("Size of document is " + document.Count);
+
+        }
+        private void openCtrlToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
