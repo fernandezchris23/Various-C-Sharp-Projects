@@ -83,6 +83,7 @@
             this.okayButton.TabIndex = 3;
             this.okayButton.Text = "Okay";
             this.okayButton.UseVisualStyleBackColor = true;
+            this.okayButton.Click += new System.EventHandler(this.okayButton_Click);
             // 
             // propertyTextBox
             // 

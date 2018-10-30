@@ -107,6 +107,13 @@ namespace TextThreadProgram
                     break;
             }
         }
+
+        private void okayButton_Click(object sender, EventArgs e)
+        {
+
+
+            this.Close();
+        }
     }
 }
 

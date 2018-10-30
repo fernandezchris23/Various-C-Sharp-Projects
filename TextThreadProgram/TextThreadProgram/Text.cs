@@ -4,25 +4,100 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace TextThreadProgram
 {
-    class Text
+    class Text : INotifyPropertyChanged
     {
-        public int TextId { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        public string StringText { get; set; }
+        protected void OnChange(string propName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propName));
+            }
+        }
 
-        public int Z_Order { get; set; }
+        public int TextId
+        {
+            get { return TextId; }
+            set
+            {
+                this.TextId = value;
+                OnChange("TextID");
+            }
+        }
 
-        public Color TextColor { get; set; }
+        public string StringText
+        {
+            get { return StringText; }
+            set
+            {
+                this.StringText = value;
+                OnChange("StringText");
+            }
+        }
 
-        public Color BgColor { get; set; }
+        public int Z_Order
+        {
+            get { return Z_Order; }
+            set
+            {
+                this.Z_Order = value;
+                OnChange("Z_Order");
+            }
+        }
 
-        public Point TextLocation { get; set; }
+        public Color TextColor
+        {
+            get { return TextColor; }
+            set
+            {
+                this.TextColor = value;
+                OnChange("TextColor");
+            }
+        }
 
-        public Font TextFont { get; set; }
+        public Color BgColor
+        {
+            get { return BgColor; }
+            set
+            {
+                this.BgColor = value;
+                OnChange("BgColor");
+            }
+        }
 
-        public float Rotation { get; set; }
+        public Point TextLocation
+        {
+            get { return TextLocation; }
+            set
+            {
+                this.TextLocation = value;
+                OnChange("TextLocation");
+            }
+        }
+
+        public Font TextFont
+        {
+            get { return TextFont; }
+            set
+            {
+                this.TextFont = value;
+                OnChange("TextFont");
+            }
+        }
+
+        public float Rotation
+        {
+            get { return Rotation; }
+            set
+            {
+                this.Rotation = value;
+                OnChange("Rotation");
+            }
+        }
     }
 }

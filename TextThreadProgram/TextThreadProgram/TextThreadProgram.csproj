@@ -51,6 +51,7 @@
     <Compile Include="AboutDialog.Designer.cs">
       <DependentUpon>AboutDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data.cs" />
     <Compile Include="Document.cs" />
     <Compile Include="TextOptions.cs">
       <SubType>Form</SubType>
