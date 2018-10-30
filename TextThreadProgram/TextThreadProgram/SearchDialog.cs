@@ -18,5 +18,24 @@ namespace TextThreadProgram
             InitializeComponent();
         }
 
+        private void startSearchBttn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void stopSearchBttn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pauseSearchBttn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxExtension_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

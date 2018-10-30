@@ -55,6 +55,7 @@
             this.startSearchBttn.TabIndex = 1;
             this.startSearchBttn.Text = "Start Search";
             this.startSearchBttn.UseVisualStyleBackColor = true;
+            this.startSearchBttn.Click += new System.EventHandler(this.startSearchBttn_Click);
             // 
             // stopSearchBttn
             // 
@@ -65,6 +66,7 @@
             this.stopSearchBttn.TabIndex = 1;
             this.stopSearchBttn.Text = "Stop Search";
             this.stopSearchBttn.UseVisualStyleBackColor = true;
+            this.stopSearchBttn.Click += new System.EventHandler(this.stopSearchBttn_Click);
             // 
             // pauseSearchBttn
             // 
@@ -75,6 +77,7 @@
             this.pauseSearchBttn.TabIndex = 1;
             this.pauseSearchBttn.Text = "Pause Search";
             this.pauseSearchBttn.UseVisualStyleBackColor = true;
+            this.pauseSearchBttn.Click += new System.EventHandler(this.pauseSearchBttn_Click);
             // 
             // comboBoxExtension
             // 
@@ -84,6 +87,7 @@
             this.comboBoxExtension.Name = "comboBoxExtension";
             this.comboBoxExtension.Size = new System.Drawing.Size(252, 24);
             this.comboBoxExtension.TabIndex = 2;
+            this.comboBoxExtension.SelectedIndexChanged += new System.EventHandler(this.comboBoxExtension_SelectedIndexChanged);
             // 
             // SearchDialog
             // 
