@@ -49,8 +49,7 @@ namespace TextThreadProgram
         public Document(SerializationInfo info, StreamingContext context)
         {
             for (int x = 0; x < info.MemberCount; ++x)
-                //this.Add((Text)info.GetValue("item" + x, typeof(Text)));
-            Console.WriteLine(info.MemberCount + " components");
+                this.Add((Text)info.GetValue("item" + x, typeof(Text)));
         }
 
         public Document() { }

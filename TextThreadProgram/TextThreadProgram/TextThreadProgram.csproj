@@ -59,6 +59,7 @@
     <Compile Include="SearchDialog.Designer.cs">
       <DependentUpon>SearchDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Serializer.cs" />
     <Compile Include="TextOptions.cs">
       <SubType>Form</SubType>
     </Compile>
