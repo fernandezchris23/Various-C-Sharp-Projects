@@ -32,7 +32,16 @@ namespace TextThreadProgram
 
         private void pauseSearchBttn_Click(object sender, EventArgs e)
         {
-
+            if (pauseSearchBttn.Text == "Pause Search")
+            {
+                pauseSearchBttn.Text = "Continue Search";
+                // add code here to stop searching
+            }
+            else // it says continue search
+            {
+                pauseSearchBttn.Text = "Pause Search";
+                // add code here to start searching
+            }
         }
 
         private void comboBoxExtension_SelectedIndexChanged(object sender, EventArgs e)

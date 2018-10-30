@@ -82,6 +82,11 @@
             // comboBoxExtension
             // 
             this.comboBoxExtension.FormattingEnabled = true;
+            this.comboBoxExtension.Items.AddRange(new object[] {
+            ".txt",
+            ".html",
+            ".htm",
+            ".*"});
             this.comboBoxExtension.Location = new System.Drawing.Point(148, 300);
             this.comboBoxExtension.MinimumSize = new System.Drawing.Size(252, 0);
             this.comboBoxExtension.Name = "comboBoxExtension";
