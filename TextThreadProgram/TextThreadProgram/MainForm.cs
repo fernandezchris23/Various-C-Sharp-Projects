@@ -28,5 +28,10 @@ namespace TextThreadProgram
                     this.capsLockStatusStrip.Text = "Caps Lock: OFF";
             }
         }
+
+        private void SetBindings(Text data, )
+        {
+            //this.DataBindings.Add("")
+        }
     }
 }
