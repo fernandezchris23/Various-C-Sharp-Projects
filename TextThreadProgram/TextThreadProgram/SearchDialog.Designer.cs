@@ -108,6 +108,7 @@
             this.MinimumSize = new System.Drawing.Size(560, 487);
             this.Name = "SearchDialog";
             this.Text = "Search Dialog";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SearchDialog_FormClosing);
             this.Controls.SetChildIndex(this.listBoxAllFiles, 0);
             this.Controls.SetChildIndex(this.startSearchBttn, 0);
             this.Controls.SetChildIndex(this.stopSearchBttn, 0);

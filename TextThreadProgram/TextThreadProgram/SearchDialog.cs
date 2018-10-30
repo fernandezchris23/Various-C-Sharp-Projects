@@ -48,5 +48,10 @@ namespace TextThreadProgram
         {
 
         }
+
+        private void SearchDialog_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // make sure to stop search if the form is closed
+        }
     }
 }
