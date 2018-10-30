@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ControlLibrary;
 
 namespace TextThreadProgram
 {
-    public partial class AboutDialog : Form
+    public partial class AboutDialog : BaseDialogForm
     {
         public AboutDialog()
         {
