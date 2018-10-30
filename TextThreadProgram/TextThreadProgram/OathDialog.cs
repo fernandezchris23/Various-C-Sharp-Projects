@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ControlLibrary;
 
 namespace TextThreadProgram
 {
-    public partial class OathDialog : Form
+    public partial class OathDialog : BaseDialogForm
     {
         public OathDialog()
         {

@@ -41,6 +41,7 @@
             this.listBoxAllFiles.FormattingEnabled = true;
             this.listBoxAllFiles.ItemHeight = 16;
             this.listBoxAllFiles.Location = new System.Drawing.Point(148, 65);
+            this.listBoxAllFiles.MinimumSize = new System.Drawing.Size(252, 164);
             this.listBoxAllFiles.Name = "listBoxAllFiles";
             this.listBoxAllFiles.Size = new System.Drawing.Size(252, 164);
             this.listBoxAllFiles.TabIndex = 0;
@@ -48,6 +49,7 @@
             // startSearchBttn
             // 
             this.startSearchBttn.Location = new System.Drawing.Point(111, 258);
+            this.startSearchBttn.MinimumSize = new System.Drawing.Size(105, 23);
             this.startSearchBttn.Name = "startSearchBttn";
             this.startSearchBttn.Size = new System.Drawing.Size(105, 23);
             this.startSearchBttn.TabIndex = 1;
@@ -57,6 +59,7 @@
             // stopSearchBttn
             // 
             this.stopSearchBttn.Location = new System.Drawing.Point(222, 258);
+            this.stopSearchBttn.MinimumSize = new System.Drawing.Size(105, 23);
             this.stopSearchBttn.Name = "stopSearchBttn";
             this.stopSearchBttn.Size = new System.Drawing.Size(105, 23);
             this.stopSearchBttn.TabIndex = 1;
@@ -66,6 +69,7 @@
             // pauseSearchBttn
             // 
             this.pauseSearchBttn.Location = new System.Drawing.Point(333, 258);
+            this.pauseSearchBttn.MinimumSize = new System.Drawing.Size(105, 23);
             this.pauseSearchBttn.Name = "pauseSearchBttn";
             this.pauseSearchBttn.Size = new System.Drawing.Size(105, 23);
             this.pauseSearchBttn.TabIndex = 1;
@@ -76,6 +80,7 @@
             // 
             this.comboBoxExtension.FormattingEnabled = true;
             this.comboBoxExtension.Location = new System.Drawing.Point(148, 300);
+            this.comboBoxExtension.MinimumSize = new System.Drawing.Size(252, 0);
             this.comboBoxExtension.Name = "comboBoxExtension";
             this.comboBoxExtension.Size = new System.Drawing.Size(252, 24);
             this.comboBoxExtension.TabIndex = 2;
@@ -85,14 +90,20 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(549, 389);
+            this.ClientSize = new System.Drawing.Size(542, 440);
             this.Controls.Add(this.comboBoxExtension);
             this.Controls.Add(this.pauseSearchBttn);
             this.Controls.Add(this.stopSearchBttn);
             this.Controls.Add(this.startSearchBttn);
             this.Controls.Add(this.listBoxAllFiles);
+            this.MinimumSize = new System.Drawing.Size(560, 487);
             this.Name = "SearchDialog";
             this.Text = "Search Dialog";
+            this.Controls.SetChildIndex(this.listBoxAllFiles, 0);
+            this.Controls.SetChildIndex(this.startSearchBttn, 0);
+            this.Controls.SetChildIndex(this.stopSearchBttn, 0);
+            this.Controls.SetChildIndex(this.pauseSearchBttn, 0);
+            this.Controls.SetChildIndex(this.comboBoxExtension, 0);
             this.ResumeLayout(false);
 
         }
