@@ -37,6 +37,7 @@
             this.aboutControl1.BackColor = System.Drawing.Color.Transparent;
             this.aboutControl1.Location = new System.Drawing.Point(0, 95);
             this.aboutControl1.Margin = new System.Windows.Forms.Padding(5);
+            this.aboutControl1.MinimumSize = new System.Drawing.Size(368, 158);
             this.aboutControl1.Name = "aboutControl1";
             this.aboutControl1.Size = new System.Drawing.Size(368, 158);
             this.aboutControl1.TabIndex = 4;
@@ -49,11 +50,9 @@
             this.ClientSize = new System.Drawing.Size(678, 429);
             this.Controls.Add(this.aboutControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "AboutDialog";
             this.Text = "About";
+            this.Controls.SetChildIndex(this.aboutControl1, 0);
             this.ResumeLayout(false);
 
         }
