@@ -50,7 +50,7 @@
             "Z-Order",
             "Rotation",
             "Location"});
-            this.comboBox1.Location = new System.Drawing.Point(12, 78);
+            this.comboBox1.Location = new System.Drawing.Point(22, 48);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(133, 24);
             this.comboBox1.TabIndex = 0;
@@ -59,7 +59,7 @@
             // 
             // applyButton
             // 
-            this.applyButton.Location = new System.Drawing.Point(175, 229);
+            this.applyButton.Location = new System.Drawing.Point(192, 99);
             this.applyButton.Name = "applyButton";
             this.applyButton.Size = new System.Drawing.Size(89, 30);
             this.applyButton.TabIndex = 1;
@@ -68,7 +68,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(325, 229);
+            this.cancelButton.Location = new System.Drawing.Point(299, 99);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(89, 30);
             this.cancelButton.TabIndex = 2;
@@ -77,7 +77,7 @@
             // 
             // okayButton
             // 
-            this.okayButton.Location = new System.Drawing.Point(34, 229);
+            this.okayButton.Location = new System.Drawing.Point(85, 99);
             this.okayButton.Name = "okayButton";
             this.okayButton.Size = new System.Drawing.Size(89, 30);
             this.okayButton.TabIndex = 3;
@@ -86,14 +86,14 @@
             // 
             // propertyTextBox
             // 
-            this.propertyTextBox.Location = new System.Drawing.Point(175, 80);
+            this.propertyTextBox.Location = new System.Drawing.Point(176, 50);
             this.propertyTextBox.Name = "propertyTextBox";
             this.propertyTextBox.Size = new System.Drawing.Size(131, 22);
             this.propertyTextBox.TabIndex = 4;
             // 
             // changeButton
             // 
-            this.changeButton.Location = new System.Drawing.Point(335, 78);
+            this.changeButton.Location = new System.Drawing.Point(338, 48);
             this.changeButton.Name = "changeButton";
             this.changeButton.Size = new System.Drawing.Size(89, 30);
             this.changeButton.TabIndex = 5;
@@ -105,7 +105,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(452, 289);
+            this.ClientSize = new System.Drawing.Size(452, 165);
             this.Controls.Add(this.changeButton);
             this.Controls.Add(this.propertyTextBox);
             this.Controls.Add(this.okayButton);
