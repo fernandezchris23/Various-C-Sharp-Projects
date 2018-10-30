@@ -59,6 +59,7 @@
             // 
             // stopSearchBttn
             // 
+            this.stopSearchBttn.Enabled = false;
             this.stopSearchBttn.Location = new System.Drawing.Point(222, 258);
             this.stopSearchBttn.MinimumSize = new System.Drawing.Size(105, 23);
             this.stopSearchBttn.Name = "stopSearchBttn";
@@ -70,6 +71,7 @@
             // 
             // pauseSearchBttn
             // 
+            this.pauseSearchBttn.Enabled = false;
             this.pauseSearchBttn.Location = new System.Drawing.Point(333, 258);
             this.pauseSearchBttn.MinimumSize = new System.Drawing.Size(105, 23);
             this.pauseSearchBttn.Name = "pauseSearchBttn";
