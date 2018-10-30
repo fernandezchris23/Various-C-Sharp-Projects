@@ -92,7 +92,7 @@
             this.Controls.Add(this.startSearchBttn);
             this.Controls.Add(this.listBoxAllFiles);
             this.Name = "SearchDialog";
-            this.Text = "SearchDialog";
+            this.Text = "Search Dialog";
             this.ResumeLayout(false);
 
         }
