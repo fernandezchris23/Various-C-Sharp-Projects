@@ -12,9 +12,12 @@ namespace TextThreadProgram
 {
     public partial class MainForm : Form
     {
+        private SearchDialog searchDialog;
+
         public MainForm()
         {
             InitializeComponent();
+            searchDialog = new SearchDialog();
         }
 
         //Event handler for caps lock status strip  label
@@ -36,7 +39,20 @@ namespace TextThreadProgram
 
         private void searchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            if (searchDialog.IsDisposed)
+                searchDialog = new SearchDialog();
+
+            // only allow one open at a time
+            if (!searchDialog.Visible)
+            {
+                // open modelessly
+                searchDialog.Show();
+                // open off of the main form
+                searchDialog.Location = new Point(this.Top, this.Right);
+                // make the main form the owner of this dialog
+                searchDialog.Owner = this;
+            }
+
         }
     }
 }
