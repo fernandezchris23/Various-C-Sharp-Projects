@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TextOptions));
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.applyButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
@@ -50,7 +51,7 @@
             "Z-Order",
             "Rotation",
             "Location"});
-            this.comboBox1.Location = new System.Drawing.Point(22, 48);
+            this.comboBox1.Location = new System.Drawing.Point(67, 130);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(133, 24);
             this.comboBox1.TabIndex = 0;
@@ -59,7 +60,7 @@
             // 
             // applyButton
             // 
-            this.applyButton.Location = new System.Drawing.Point(192, 99);
+            this.applyButton.Location = new System.Drawing.Point(237, 181);
             this.applyButton.Name = "applyButton";
             this.applyButton.Size = new System.Drawing.Size(89, 30);
             this.applyButton.TabIndex = 1;
@@ -68,7 +69,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(299, 99);
+            this.cancelButton.Location = new System.Drawing.Point(344, 181);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(89, 30);
             this.cancelButton.TabIndex = 2;
@@ -77,7 +78,7 @@
             // 
             // okayButton
             // 
-            this.okayButton.Location = new System.Drawing.Point(85, 99);
+            this.okayButton.Location = new System.Drawing.Point(130, 181);
             this.okayButton.Name = "okayButton";
             this.okayButton.Size = new System.Drawing.Size(89, 30);
             this.okayButton.TabIndex = 3;
@@ -87,14 +88,14 @@
             // 
             // propertyTextBox
             // 
-            this.propertyTextBox.Location = new System.Drawing.Point(176, 50);
+            this.propertyTextBox.Location = new System.Drawing.Point(221, 132);
             this.propertyTextBox.Name = "propertyTextBox";
             this.propertyTextBox.Size = new System.Drawing.Size(131, 22);
             this.propertyTextBox.TabIndex = 4;
             // 
             // changeButton
             // 
-            this.changeButton.Location = new System.Drawing.Point(338, 48);
+            this.changeButton.Location = new System.Drawing.Point(383, 130);
             this.changeButton.Name = "changeButton";
             this.changeButton.Size = new System.Drawing.Size(89, 30);
             this.changeButton.TabIndex = 5;
@@ -106,7 +107,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(452, 165);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(539, 341);
             this.Controls.Add(this.changeButton);
             this.Controls.Add(this.propertyTextBox);
             this.Controls.Add(this.okayButton);
@@ -115,6 +117,12 @@
             this.Controls.Add(this.comboBox1);
             this.Name = "TextOptions";
             this.Text = "Text Options";
+            this.Controls.SetChildIndex(this.comboBox1, 0);
+            this.Controls.SetChildIndex(this.applyButton, 0);
+            this.Controls.SetChildIndex(this.cancelButton, 0);
+            this.Controls.SetChildIndex(this.okayButton, 0);
+            this.Controls.SetChildIndex(this.propertyTextBox, 0);
+            this.Controls.SetChildIndex(this.changeButton, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
