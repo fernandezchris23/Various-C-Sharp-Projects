@@ -29,27 +29,32 @@ namespace TextThreadProgram
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (comboBox1.SelectedText)
+            switch (comboBox1.Text)
             {
                 case "Text":
                     propertyTextBox.Font = outOptions.TextFont;
                     propertyTextBox.Text = outOptions.StringText;
+                    propertyTextBox.BackColor = Color.White;
                     break;
 
                 case "Font":
                     propertyTextBox.Font = outOptions.TextFont;
                     propertyTextBox.Text = outOptions.TextFont.ToString();
+                    propertyTextBox.BackColor = Color.White;
                     break;
 
                 case "Text Color":
                     propertyTextBox.BackColor = outOptions.TextColor;
+                    propertyTextBox.Text = "";
                     break;
 
                 case "Background Color":
                     propertyTextBox.BackColor = outOptions.BgColor;
+                    propertyTextBox.Text = "";
                     break;
 
                 case "Z-Order":
+                    propertyTextBox.BackColor = Color.White;
                     if (outOptions.Z_Order == 0)
                         propertyTextBox.Text = "Back";
                     else
@@ -58,10 +63,12 @@ namespace TextThreadProgram
 
                 case "Location":
                     propertyTextBox.Text = outOptions.TextLocation.ToString();
+                    propertyTextBox.BackColor = Color.White;
                     break;
 
                 case "Rotation":
                     propertyTextBox.Text = outOptions.Rotation.ToString();
+                    propertyTextBox.BackColor = Color.White;
                     break;
             }
                     
@@ -69,7 +76,7 @@ namespace TextThreadProgram
 
         private void changeButton_Click(object sender, EventArgs e)
         {
-            switch (comboBox1.SelectedText)
+            switch (comboBox1.Text)
             {
                 case "Text Color":
                     if (colorDialog.ShowDialog() == DialogResult.OK)
@@ -109,6 +116,13 @@ namespace TextThreadProgram
         }
 
         private void okayButton_Click(object sender, EventArgs e)
+        {
+
+
+            this.Close();
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
         {
 
 

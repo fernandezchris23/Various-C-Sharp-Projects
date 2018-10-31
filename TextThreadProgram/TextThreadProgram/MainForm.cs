@@ -20,6 +20,7 @@ namespace TextThreadProgram
         private Boolean isTyping;
         private Text currentText;
         private Text movingText;
+        private Text test;
 
         public MainForm()
         {
@@ -29,6 +30,7 @@ namespace TextThreadProgram
             searchDialog = new SearchDialog();
             isTyping = false;
             currentText = new Text("", this.Font, Color.Black, Color.Red, new Point(0, 0), new Size(50, 50));
+            test = new Text("Hello", this.Font, Color.Black, Color.Red, new Point(0, 0), new Size(50, 50));
         }
 
         //Event handler for caps lock status strip  label
@@ -193,6 +195,17 @@ namespace TextThreadProgram
             aboutDialog.Location = new Point(this.Left, this.Bottom);
 
             aboutDialog.ShowDialog();        // open modally
+        }
+
+        private void textOptionsTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textOptionsTestToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            TextOptions txtOp = new TextOptions(test);
+            txtOp.Show();
         }
     }
 }
