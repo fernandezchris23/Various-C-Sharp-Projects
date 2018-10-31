@@ -34,7 +34,7 @@ namespace TextThreadProgram
         // key processing
         private void ChangeLocation(Keys key)
         {
-            //  it should be the text location 
+            //  it should be the text location  but I'm not sure its working, the text doesn't move
             Point location = currentText.TextLocation;
             //Handle arrow keys
             switch (key)
@@ -66,7 +66,7 @@ namespace TextThreadProgram
                 case Keys.Left:
                 case Keys.Down:
                 case Keys.Right:
-                    return true;
+                    return true; // ould be false, at this point too tired to tell the difference
             }
             return base.IsInputKey(keyData);
         }
@@ -81,8 +81,11 @@ namespace TextThreadProgram
                     this.capsLockStatusStrip.Text = "Caps Lock: ON";
                 else
                     this.capsLockStatusStrip.Text = "Caps Lock: OFF";
-            }
-            else if (IsInputKey(e.KeyCode))
+            } //also tried if (IsInputKey(e.KeyCode))
+            else if (e.KeyData == Keys.Up
+                  || e.KeyData == Keys.Left
+                  || e.KeyData == Keys.Down
+                  || e.KeyData == Keys.Right)
             {
                 ChangeLocation(e.KeyCode);
             }
