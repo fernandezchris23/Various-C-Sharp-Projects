@@ -15,8 +15,12 @@ namespace TextThreadProgram
         private string fileFilter;
         private Document document;
         private SearchDialog searchDialog;
-        private Boolean isTyping;
         private Text currentText;
+        private bool isTyping;
+        private bool isDrawing;
+        private bool isMoving;
+        private bool mouseIsDown;
+
 
         public MainForm()
         {
@@ -25,7 +29,10 @@ namespace TextThreadProgram
             document = new Document();
             searchDialog = new SearchDialog();
             isTyping = false;
-            currentText = new Text("", this.Font, Color.Black, Color.Red, new Point(0, 0), new Size(50, 50));
+            isDrawing = false;
+            isMoving = false;
+            mouseIsDown = false;
+            currentText = GetCurrentText();
             DoubleBuffered = true;
         }
 
@@ -69,7 +76,7 @@ namespace TextThreadProgram
             using(StringFormat format = new StringFormat())
             {
                 format.Trimming = StringTrimming.Word;
-                this.mainPanel.CreateGraphics().DrawString(text.StringText, text.TextFont, Brushes.Aqua, new Rectangle(text.TextLocation, text.TextSize), format);
+                this.mainPanel.CreateGraphics().DrawString(text.StringText, text.TextFont, new SolidBrush(text.TextColor), new Rectangle(text.TextLocation, text.TextSize), format);
             }
         }
 
@@ -88,45 +95,99 @@ namespace TextThreadProgram
             return null;
         }
 
-        private Boolean mouseIsDown = false;
+        private void MoveText(int x, int y)
+        {
+            currentText.TextLocation = new Point(x, y);
+        }
+
         private void mainPanel_MouseDown(object sender, MouseEventArgs e)
         {
             mouseIsDown = true;
             currentText = Contains(document, e); //Get clicked text
             if ((currentText = Contains(document, e)) != null)
+            {
                 isDrawing = true;
+            }
             else
-                currentText = new Text("", this.Font, Color.Black, Color.Red, new Point(0, 0), new Size(50, 50));
+            {
+                isDrawing = false;
+                currentText = GetCurrentText();
+            }
 
         }
 
-        private Boolean isDrawing = false;
         private void mainPanel_MouseMove(object sender, MouseEventArgs e)
         {
             if(mouseIsDown && isDrawing)
             {
-                currentText.TextLocation = new Point(e.X, e.Y);
+                isMoving = true;
+                MoveText(e.X, e.Y);
                 this.mainPanel.Invalidate();
             }
         }
 
         private void mainPanel_MouseUp(object sender, MouseEventArgs e)
         {
-            if (isDrawing)
+            if (isDrawing && isMoving)
             {
                 mouseIsDown = false;
                 isDrawing = false;
+                isMoving = false;
                 ReDrawDocument(document);
             }
         }
 
+        private Text GetCurrentText()
+        {
+            return new Text("", new Font("Times New Roman", 20.0f), Color.Black, Color.Red, new Point(0, 0), new Size(100, 100));
+        }
+
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            base.OnKeyDown(e);
+            Console.WriteLine("isDrawing=" + isDrawing + " isMoving=" + isMoving + "mouseIsDown=" + mouseIsDown);
+            if (isDrawing)
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.Left:
+                        MoveText(currentText.TextLocation.X - 10, currentText.TextLocation.Y);
+                        ReDrawDocument(document);
+                        Console.WriteLine("Drawed");
+                        break;
+                    case Keys.Right:
+                        MoveText(currentText.TextLocation.X + 10, currentText.TextLocation.Y);
+                        ReDrawDocument(document);
+                        Console.WriteLine("Drawed");
+
+                        break;
+                    case Keys.Up:
+                        MoveText(currentText.TextLocation.X, currentText.TextLocation.Y - 10);
+                        ReDrawDocument(document);
+                        Console.WriteLine("Drawed");
+
+                        break;
+                    case Keys.Down:
+                        MoveText(currentText.TextLocation.X, currentText.TextLocation.Y + 10);
+                        ReDrawDocument(document);
+                        Console.WriteLine("Drawed");
+
+                        break;
+                }
+            }
+        }
+
+        protected override void OnKeyUp(KeyEventArgs e)
+        {
+            base.OnKeyUp(e);
+        }
 
         private void mainPanel_MouseClick(object sender, MouseEventArgs e)
         {
             if (isTyping)
             {
                 document.Add(currentText);
-                currentText = new Text("", this.Font, Color.Black, Color.Red, new Point(0, 0), new Size(50, 50));
+                currentText = GetCurrentText();
             }
             isTyping = !isTyping; //Toggle
 
