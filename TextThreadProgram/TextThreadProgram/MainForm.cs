@@ -34,7 +34,7 @@ namespace TextThreadProgram
         // key processing
         private void ChangeLocation(Keys key)
         {
-            // instead of this, it should be the text location changed
+            //  it should be the text location 
             Point location = currentText.TextLocation;
             //Handle arrow keys
             switch (key)
@@ -82,7 +82,7 @@ namespace TextThreadProgram
                 else
                     this.capsLockStatusStrip.Text = "Caps Lock: OFF";
             }
-            else if (IsInputKey(e.KeyCode & Keys.KeyCode))
+            else if (IsInputKey(e.KeyCode))
             {
                 ChangeLocation(e.KeyCode);
             }
