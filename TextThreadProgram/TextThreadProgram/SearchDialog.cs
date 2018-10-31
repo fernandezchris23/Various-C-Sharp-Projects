@@ -74,5 +74,88 @@ namespace TextThreadProgram
         {
             // make sure to stop search if the form is closed
         }
+
+        // helper methods for searching from the text file from website
+        //you will need System.IO and System.Diagnostics
+        //Change the configuration to Debug to see a list of folders that are being read.
+        //Change to release to see just the folders that cannot be read.
+        //The search will be faster in Release configuration
+
+        private void Search()
+        {
+            foreach (String drive in Directory.GetLogicalDrives())
+            {
+                Debug.WriteLine(drive);
+                foreach (DirectoryInfo child in getDirectories(drive))
+                {
+                    Debug.WriteLine(child.FullName);
+                    FindFiles(child);
+                }
+            }
+        }
+
+        private void FindFiles(DirectoryInfo dir)
+        {
+            try
+            {
+                DirectoryInfo[] children = getDirectories(dir);
+                if (children.Length > 0)
+                {
+                    foreach (DirectoryInfo child in children)
+                    {
+                        Debug.WriteLine(child.FullName);
+                        FindFiles(child);
+                    }
+                }
+                else
+                {
+                    FileInfo[] Files = dir.GetFiles(comboBoxExtension.Text);
+                    if (Files.Length > 0)
+                    {
+                        //Found some files.
+                        //add to listbox something
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.Message);
+            }
+        }
+
+        private bool AttrOn(FileAttributes attr, FileAttributes field)
+        {
+            return (attr & field) == field;
+        }
+
+        public DirectoryInfo[] getDirectories(DirectoryInfo dir)
+        {
+            if (AttrOn(dir.Attributes, FileAttributes.Offline))
+            {
+                Console.Out.WriteLine(dir.Name + " is not mapped ");
+                return new DirectoryInfo[] { };
+            }
+            if (!dir.Exists)
+            {
+                Console.Out.WriteLine(dir.Name + " does not exist ");
+                return new DirectoryInfo[] { };
+            }
+            try
+            {
+                return dir.GetDirectories();
+            }
+            catch (Exception ex)
+            {
+                Console.Out.WriteLine(ex.Message);
+                Console.Out.WriteLine(ex.StackTrace);
+                return new DirectoryInfo[] { };
+            }
+        }
+
+        public DirectoryInfo[] getDirectories(String strDrive)
+        {
+            DirectoryInfo dir = new DirectoryInfo(strDrive);
+            return getDirectories(dir);
+        }
     }
 }
