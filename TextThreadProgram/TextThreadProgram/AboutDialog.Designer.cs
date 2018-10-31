@@ -29,60 +29,35 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutDialog));
-            this.groupMembers1 = new ControlLibrary.groupMembers();
-            this.courseControl1 = new ControlLibrary.courseControl();
             this.aboutControl1 = new ControlLibrary.aboutControl();
             this.SuspendLayout();
-            // 
-            // groupMembers1
-            // 
-            this.groupMembers1.BackColor = System.Drawing.Color.Transparent;
-            this.groupMembers1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupMembers1.Location = new System.Drawing.Point(0, 309);
-            this.groupMembers1.Margin = new System.Windows.Forms.Padding(4);
-            this.groupMembers1.Name = "groupMembers1";
-            this.groupMembers1.Size = new System.Drawing.Size(602, 58);
-            this.groupMembers1.TabIndex = 3;
-            // 
-            // courseControl1
-            // 
-            this.courseControl1.BackColor = System.Drawing.Color.Transparent;
-            this.courseControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.courseControl1.Location = new System.Drawing.Point(0, 0);
-            this.courseControl1.Name = "courseControl1";
-            this.courseControl1.Size = new System.Drawing.Size(602, 54);
-            this.courseControl1.TabIndex = 2;
             // 
             // aboutControl1
             // 
             this.aboutControl1.BackColor = System.Drawing.Color.Transparent;
-            this.aboutControl1.Location = new System.Drawing.Point(25, 124);
+            this.aboutControl1.Location = new System.Drawing.Point(0, 95);
+            this.aboutControl1.Margin = new System.Windows.Forms.Padding(5);
+            this.aboutControl1.MinimumSize = new System.Drawing.Size(368, 158);
             this.aboutControl1.Name = "aboutControl1";
-            this.aboutControl1.Size = new System.Drawing.Size(276, 128);
+            this.aboutControl1.Size = new System.Drawing.Size(368, 158);
             this.aboutControl1.TabIndex = 4;
             // 
             // AboutDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(602, 367);
+            this.ClientSize = new System.Drawing.Size(678, 429);
             this.Controls.Add(this.aboutControl1);
-            this.Controls.Add(this.groupMembers1);
-            this.Controls.Add(this.courseControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "AboutDialog";
             this.Text = "About";
+            this.Controls.SetChildIndex(this.aboutControl1, 0);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private ControlLibrary.groupMembers groupMembers1;
-        private ControlLibrary.courseControl courseControl1;
         private ControlLibrary.aboutControl aboutControl1;
     }
 }
