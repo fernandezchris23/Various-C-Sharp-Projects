@@ -31,6 +31,46 @@ namespace TextThreadProgram
             currentText = new Text("", this.Font, Color.Black, Color.Red, new Point(0, 0), new Size(50, 50));
         }
 
+        // key processing
+        private void ChangeLocation(Keys key)
+        {
+            // instead of this, it should be the text location changed
+            Point location = this.Location;
+            //Handle arrow keys
+            switch (key)
+            {
+                case Keys.Up:
+                    --location.Y;
+                    break;
+
+                case Keys.Left:
+                    --location.X;
+                    break;
+
+                case Keys.Down:
+                    ++location.Y;
+                    break;
+
+                case Keys.Right:
+                    ++location.X;
+                    break;
+            }
+            this.Location = location;
+        }
+
+        protected override bool IsInputKey(Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.Up:
+                case Keys.Left:
+                case Keys.Down:
+                case Keys.Right:
+                    return true;
+            }
+            return base.IsInputKey(keyData);
+        }
+
         //Event handler for caps lock status strip  label
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
@@ -40,6 +80,10 @@ namespace TextThreadProgram
                     this.capsLockStatusStrip.Text = "Caps Lock: ON";
                 else
                     this.capsLockStatusStrip.Text = "Caps Lock: OFF";
+            }
+            else if (IsInputKey(Keys.KeyCode))
+            {
+                ChangeLocation(e.KeyCode);
             }
         }
 
@@ -90,6 +134,8 @@ namespace TextThreadProgram
             return null;
         }
 
+
+
         private Boolean mouseIsDown = false;
         private void mainPanel_MouseDown(object sender, MouseEventArgs e)
         {
@@ -113,6 +159,7 @@ namespace TextThreadProgram
             mouseIsDown = false;
         }
 
+       
 
         private void mainPanel_MouseClick(object sender, MouseEventArgs e)
         {
