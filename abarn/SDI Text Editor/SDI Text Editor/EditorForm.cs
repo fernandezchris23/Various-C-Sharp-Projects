@@ -26,10 +26,13 @@ namespace SDI_Text_Editor
             textProperties = new TextProperties();
             fileIsSaved = false;
             aboutDialog = new AboutDialog();
+            textProperties.fileTitle = "";
+            formIsClosing = false; //Used to prevent exception in deactivation
 
             InitializeComponent();
 
             this.CenterToScreen();
+            fontInfo.Text = textProperties.textFont.FontFamily + " " + textProperties.textFont.Style + " " + textProperties.textFont.SizeInPoints;
 
             readRecentList();
 
@@ -71,27 +74,41 @@ namespace SDI_Text_Editor
             this.textEditorBox.ForeColor = textProperties.textColor;
             this.textEditorBox.Font = textProperties.textFont;
             this.textEditorBox.BackColor = textProperties.backColor;
+
+            fontInfo.Text = textProperties.textFont.FontFamily + " " + textProperties.textFont.Style + " " + textProperties.textFont.SizeInPoints;
         }
 
         //Save a file. Shows the saveFileDialog, and saves to the inputted filename
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            string filename;
+
             //First save any and all changes to the file's text.
             textProperties.fileText = this.textEditorBox.Text;
 
-            //If user doesn't click OK on saveFileDialog, don't do anything
-            if (this.saveFileDialog.ShowDialog(this) != DialogResult.OK)
-                return;
-
-            //Else, save to the inputted filename
-            string filename = this.saveFileDialog.FileName;
-            this.Text = Path.GetFileNameWithoutExtension(this.saveFileDialog.FileName);
+            //If this is a new file, as denoted by having no title, then open the save dialog
+            if (string.Equals(textProperties.fileTitle, ""))
+            {
+                //If user doesn't click OK on saveFileDialog, don't do anything
+                if (this.saveFileDialog.ShowDialog(this) != DialogResult.OK)
+                    return;
+                //Else, save to the inputted filename
+                filename = this.saveFileDialog.FileName;
+            }
+            else
+            {
+                filename = textProperties.fileTitle;
+            }
+            
+            this.Text = Path.GetFileNameWithoutExtension(this.saveFileDialog.FileName); //Used to update form title with name of file
             textProperties.fileTitle = this.Text; //Saves name of file to properties class
             textProperties.formLoc = this.DesktopLocation;
             fileIsSaved = true;
 
             //Used for building Open Recent list
             updateRecentList(filename);
+
+            fileNameSaveState.Text = textProperties.fileTitle + ": File Saved";
 
             SaveToFile(textProperties, filename);
         }
@@ -116,6 +133,8 @@ namespace SDI_Text_Editor
             this.Text = textProperties.fileTitle; //Changes title of form to file name
             this.DesktopLocation = textProperties.formLoc;
             fileIsSaved = true; //File that was just opened is already up to date
+
+            fileNameSaveState.Text = textProperties.fileTitle + ": File Saved";
 
             updateEditorBox();
         }
@@ -157,6 +176,7 @@ namespace SDI_Text_Editor
             stream.Dispose();
         }
 
+        //Start of Clipboard Handlers
         private void cutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int lengthOfSelection = textEditorBox.SelectionLength;
@@ -176,28 +196,34 @@ namespace SDI_Text_Editor
             //Changes text in textbox to the text after inserting what was in the clipboard at the current cursor location
             textEditorBox.Text = textEditorBox.Text.Insert(textEditorBox.SelectionStart, Clipboard.GetData(DataFormats.Text).ToString());
         }
+        //END of Clipboard Handlers
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        //If the Location is changed, need to resave
         private void EditorForm_Move(object sender, EventArgs e)
         {
             fileIsSaved = false; //If location of form changed, then the properties isn't up to date and needs to be saved
+            fileNameSaveState.Text = textProperties.fileTitle + " File Not Saved";
         }
 
+        //If the text is changed, need to resave
         private void textEditorBox_TextChanged(object sender, EventArgs e)
         {
             fileIsSaved = false;
+            fileNameSaveState.Text = textProperties.fileTitle + " File Not Saved";
         }
 
+        //Used for catching close without all changes being saved
         private void EditorForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if(!fileIsSaved)
             {
-                    formIsClosing = true;
-                    e.Cancel = ExitPrompt();
+                formIsClosing = true;
+                e.Cancel = ExitPrompt();
             }
         }
 
@@ -206,7 +232,7 @@ namespace SDI_Text_Editor
             return MessageBox.Show("Are you sure you want to exit without saving?","Your work was not saved.", MessageBoxButtons.YesNo) == DialogResult.No;
         }
 
-
+        //Oath Dialog button handler
         private void oathToolStripMenuItem_Click(object sender, EventArgs e)
         {
             oathDialog = new OathDialog();
@@ -218,6 +244,7 @@ namespace SDI_Text_Editor
             oathDialog.ShowDialog();        // open modally
         }
 
+        //About Dialog button handler
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (aboutDialog.IsDisposed)
@@ -244,6 +271,9 @@ namespace SDI_Text_Editor
             }
         }
 
+        //NOTE: EVERYTHING BELOW THIS POINT ARE EXTRA FEATURES CHRIS ADDED FOR KICKS
+
+        //Used for updating text file that holds recent files
         private void updateRecentList(string fileName)
         {
             StreamWriter openRecentStream;
@@ -254,8 +284,10 @@ namespace SDI_Text_Editor
             readRecentList();
         }
 
+        //Used for reading the text file and populating the Open Recent Menu Item's sublist
         private void readRecentList()
         {
+            //If the file doesn't exist, create it to prevent exception
             if (!File.Exists(RECENT_FILENAMES))
             {
                 File.Create(RECENT_FILENAMES).Close();
@@ -265,6 +297,7 @@ namespace SDI_Text_Editor
             string lineOfFile;
             int numLinesInFile = 0;
 
+            //Required to wrap opening of file in try catch block
             try
             {
                 openRecentStream = new StreamReader(RECENT_FILENAMES);
@@ -280,9 +313,11 @@ namespace SDI_Text_Editor
                 numLinesInFile++; //Gets number of lines in file
             }
 
+            //Resets position of file pointer to beginning of file
             openRecentStream.BaseStream.Position = 0;
             openRecentStream.DiscardBufferedData();
 
+            //If there are no items, insert none tag, else clear the previous list
             if (numLinesInFile <= 0)
             {
                 openRecentToolStripMenuItem.DropDownItems.Add(new ToolStripMenuItem("(none)"));
@@ -291,7 +326,6 @@ namespace SDI_Text_Editor
             {
                 openRecentToolStripMenuItem.DropDownItems.Clear();
             }
-
 
             //Moves the reading point of the stream such that the last ten entries are the only ones being added
             //10 was a good number in Chris' opinion to end at, else the list might get too long
@@ -303,6 +337,7 @@ namespace SDI_Text_Editor
                 }
             }
 
+            //Goes through lines of file and creates menu items and their handlers so menu items open files they refer to
             while ((lineOfFile = openRecentStream.ReadLine()) != null)
             {
                 ToolStripMenuItem newItem = new ToolStripMenuItem(lineOfFile);
@@ -312,6 +347,7 @@ namespace SDI_Text_Editor
             openRecentStream.Close();
         }
 
+        //Handler used for each of the newly created menu items
         private void openRecentClickHandler(Object sender, EventArgs e)
         {
             ToolStripMenuItem clickedItem = sender as ToolStripMenuItem;
@@ -323,7 +359,54 @@ namespace SDI_Text_Editor
             this.DesktopLocation = textProperties.formLoc;
             fileIsSaved = true; //File that was just opened is already up to date
 
+            fileNameSaveState.Text = textProperties.fileTitle + ": File Saved";
+
             updateEditorBox();
+        }
+
+        //Save As menu item which just does a typical save regardless of if the file already exists
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //First save any and all changes to the file's text.
+            textProperties.fileText = this.textEditorBox.Text;
+
+            //If user doesn't click OK on saveFileDialog, don't do anything
+            if (this.saveFileDialog.ShowDialog(this) != DialogResult.OK)
+                return;
+
+            //Else, save to the inputted filename
+            string filename = this.saveFileDialog.FileName;
+            this.Text = Path.GetFileNameWithoutExtension(this.saveFileDialog.FileName);
+            textProperties.fileTitle = this.Text; //Saves name of file to properties class
+            textProperties.formLoc = this.DesktopLocation;
+            fileIsSaved = true;
+
+            //Used for building Open Recent list
+            updateRecentList(filename);
+
+            SaveToFile(textProperties, filename);
+        }
+
+        //Creates a new file that is re-initialized to defaults
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool continueOn = true;
+
+            //Makes sure you get chance to save progress before continuing
+            if (!fileIsSaved)
+            {
+                continueOn = MessageBox.Show("Are you sure you want to exit this document without saving?", "Your work was not saved.", MessageBoxButtons.YesNo) == DialogResult.Yes;
+            }
+            if(continueOn)
+            {
+                textProperties = new TextProperties();
+                fileIsSaved = false;
+                this.textEditorBox.Text = textProperties.fileText;
+                textProperties.fileTitle = ""; //Re-Initialize
+                this.Text = textProperties.fileTitle; //Changes title of form to file name
+                fileNameSaveState.Text = "New File: Not Saved";
+                updateEditorBox();
+            }
         }
     }
 }

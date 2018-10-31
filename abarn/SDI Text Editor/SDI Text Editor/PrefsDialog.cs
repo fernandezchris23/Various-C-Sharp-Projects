@@ -10,11 +10,6 @@ namespace SDI_Text_Editor
         private TextProperties formProperties; //Used for accessing properties file shared between dialog and main
         public event EventHandler applyBttnClick; //Event for apply button
 
-        public PrefsDialog()
-        {
-            InitializeComponent();
-        }
-
         //Overloaded constructor with inherited text properties
         public PrefsDialog(TextProperties properties)
         {
@@ -23,6 +18,7 @@ namespace SDI_Text_Editor
             UpdateCurrentProperties(formProperties);
             UpdateCurrentFontBox(formProperties);
             UpdateBackColorTextBox(formProperties);
+            createHelpInfo();
         }
 
         //Update the current TextProperties for the preferences dialog to use and return
@@ -125,6 +121,24 @@ namespace SDI_Text_Editor
             {
                 return false;
             }
+        }
+
+        private void createHelpInfo()
+        {
+            helpProvider.SetShowHelp(changeFontButton, true);
+            helpProvider.SetHelpString(changeFontButton, "This button will open a dialog to change the current style and color of the text.");
+
+            helpProvider.SetShowHelp(changeBackColorButton, true);
+            helpProvider.SetHelpString(changeBackColorButton, "This button will open a dialog to change the current background color of the body of the text editor.");
+
+            helpProvider.SetShowHelp(okayButton, true);
+            helpProvider.SetHelpString(okayButton, "Saves the values entered and closes the dialog.");
+
+            helpProvider.SetShowHelp(applyBttn, true);
+            helpProvider.SetHelpString(applyBttn, "Saves the values entered but does not close the dialog.");
+
+            helpProvider.SetShowHelp(cancelButton, true);
+            helpProvider.SetHelpString(cancelButton, "Closes the dialog without saving the values.");
         }
     }
 }

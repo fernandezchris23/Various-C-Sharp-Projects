@@ -42,6 +42,7 @@
             this.changeBackColorButton = new System.Windows.Forms.Button();
             this.applyBttn = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.helpProvider = new System.Windows.Forms.HelpProvider();
             this.dialogBaseFormPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
@@ -114,11 +115,13 @@
             // currentFontTextBox
             // 
             this.currentFontTextBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.currentFontTextBox.Enabled = false;
             this.currentFontTextBox.Location = new System.Drawing.Point(124, 26);
             this.currentFontTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.currentFontTextBox.Multiline = true;
             this.currentFontTextBox.Name = "currentFontTextBox";
             this.currentFontTextBox.ReadOnly = true;
+            this.helpProvider.SetShowHelp(this.currentFontTextBox, true);
             this.currentFontTextBox.Size = new System.Drawing.Size(169, 36);
             this.currentFontTextBox.TabIndex = 4;
             // 
@@ -142,6 +145,7 @@
             this.backColorBox.Multiline = true;
             this.backColorBox.Name = "backColorBox";
             this.backColorBox.ReadOnly = true;
+            this.helpProvider.SetShowHelp(this.backColorBox, true);
             this.backColorBox.Size = new System.Drawing.Size(169, 37);
             this.backColorBox.TabIndex = 9;
             // 
@@ -180,12 +184,14 @@
             this.CancelButton = this.cancelButton;
             this.ClientSize = new System.Drawing.Size(492, 293);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(508, 332);
             this.Name = "PrefsDialog";
+            this.helpProvider.SetShowHelp(this, true);
             this.Text = "Preferences";
             this.dialogBaseFormPanel.ResumeLayout(false);
             this.dialogBaseFormPanel.PerformLayout();
@@ -208,5 +214,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button applyBttn;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.HelpProvider helpProvider;
     }
 }
