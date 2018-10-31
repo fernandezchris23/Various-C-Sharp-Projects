@@ -45,6 +45,8 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.capsLockStatusStrip = new System.Windows.Forms.ToolStripStatusLabel();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.oathDialogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutDialogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -144,7 +146,9 @@
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.searchToolStripMenuItem});
+            this.searchToolStripMenuItem,
+            this.oathDialogToolStripMenuItem,
+            this.aboutDialogToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
             this.helpToolStripMenuItem.Text = "Help";
@@ -152,7 +156,7 @@
             // searchToolStripMenuItem
             // 
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(128, 26);
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.searchToolStripMenuItem.Text = "Search";
             this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
             // 
@@ -183,6 +187,19 @@
             this.mainPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainPanel_MouseDown);
             this.mainPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mainPanel_MouseMove);
             this.mainPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mainPanel_MouseUp);
+            // 
+            // oathDialogToolStripMenuItem
+            // 
+            this.oathDialogToolStripMenuItem.Name = "oathDialogToolStripMenuItem";
+            this.oathDialogToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.oathDialogToolStripMenuItem.Text = "Oath Dialog";
+            this.oathDialogToolStripMenuItem.Click += new System.EventHandler(this.oathDialogToolStripMenuItem_Click);
+            // 
+            // aboutDialogToolStripMenuItem
+            // 
+            this.aboutDialogToolStripMenuItem.Name = "aboutDialogToolStripMenuItem";
+            this.aboutDialogToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.aboutDialogToolStripMenuItem.Text = "About Dialog";
             // 
             // MainForm
             // 
@@ -224,6 +241,8 @@
         private System.Windows.Forms.ToolStripStatusLabel capsLockStatusStrip;
         private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
         private System.Windows.Forms.Panel mainPanel;
+        private System.Windows.Forms.ToolStripMenuItem oathDialogToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutDialogToolStripMenuItem;
     }
 }
 

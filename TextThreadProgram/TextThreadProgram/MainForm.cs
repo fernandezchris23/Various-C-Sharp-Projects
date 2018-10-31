@@ -169,6 +169,9 @@ namespace TextThreadProgram
                 MessageBox.Show("Failed to save file");
         }
 
-        
+        private void oathDialogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
