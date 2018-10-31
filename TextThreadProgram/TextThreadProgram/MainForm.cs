@@ -239,6 +239,9 @@ namespace TextThreadProgram
                 MessageBox.Show("Failed to save file");
         }
 
-        
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

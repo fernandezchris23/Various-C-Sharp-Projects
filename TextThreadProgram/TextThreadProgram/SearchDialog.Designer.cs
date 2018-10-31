@@ -85,6 +85,7 @@
             // 
             this.comboBoxExtension.FormattingEnabled = true;
             this.comboBoxExtension.Items.AddRange(new object[] {
+            ".ok",
             ".txt",
             ".html",
             ".htm",

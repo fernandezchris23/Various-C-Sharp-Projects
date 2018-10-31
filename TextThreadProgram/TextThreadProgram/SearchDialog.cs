@@ -10,14 +10,63 @@ using System.Windows.Forms;
 using ControlLibrary;
 using System.IO;
 using System.Diagnostics;
+using System.Threading;
 
 namespace TextThreadProgram
 {
     public partial class SearchDialog : BaseDialogForm
     {
+        static List<DirectoryInfo> folders = new List<DirectoryInfo>(); // List that hold direcotries that cannot be accessed
+
         public SearchDialog()
         {
             InitializeComponent();
+        }
+
+        delegate void FileDelegate(string filePath, string fileExtension);
+
+        void FindFiles(string filePath, string fileExtension)
+        {
+            DirectoryInfo directoryInfo = new DirectoryInfo(filePath);
+            List<FileInfo> files = new List<FileInfo>();
+            Console.WriteLine(filePath + " " + directoryInfo.GetFiles(fileExtension).Count());
+            try
+            {
+                foreach (FileInfo f in directoryInfo.GetFiles(fileExtension))
+                {
+                    Console.WriteLine("File {0}", f.FullName);
+                    files.Add(f);
+                }
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return;
+            }
+        }
+
+        void EndFiles(IAsyncResult result)
+        {
+
+            try
+            {
+                FileDelegate thread = (FileDelegate)result.AsyncState;
+                thread.EndInvoke(result);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            // process each directory
+            // If I have been able to see the files in the directory I should also be able 
+            // to look at its directories so I dont think I should place this in a try catch block
+            /*
+            foreach (DirectoryInfo d in directoryInfo.GetDirectories())
+            {
+                folders.Add(d);
+                Console.WriteLine(d.FullName);
+                //FullDirList(d, searchPattern);
+            }*/
         }
 
         private void startSearchBttn_Click(object sender, EventArgs e)
@@ -27,8 +76,20 @@ namespace TextThreadProgram
             stopSearchBttn.Enabled = true;
             pauseSearchBttn.Enabled = true;
             startSearchBttn.Enabled = false;
+
+            string selectedExtension = comboBoxExtension.SelectedItem.ToString();
+            string path = "C:\\Users\\alvar\\Desktop";
+
+
+            FileDelegate thread = new FileDelegate(FindFiles);
+            thread.BeginInvoke(
+                path, selectedExtension,
+                EndFiles,
+                thread
+                );
             
         }
+
 
         private void stopSearchBttn_Click(object sender, EventArgs e)
         {
