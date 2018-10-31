@@ -52,7 +52,7 @@ namespace TextThreadProgram
                 // open modelessly
                 searchDialog.Show();
                 // open off of the main form
-                searchDialog.Location = new Point(this.Top, this.Right);
+                searchDialog.Location = new Point(this.Right, this.Top);
                 // make the main form the owner of this dialog
                 searchDialog.Owner = this;
             }
