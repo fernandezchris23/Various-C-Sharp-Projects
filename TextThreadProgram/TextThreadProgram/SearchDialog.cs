@@ -76,6 +76,7 @@ namespace TextThreadProgram
         }
 
         // helper methods for searching from the text file from website
+
         //you will need System.IO and System.Diagnostics
         //Change the configuration to Debug to see a list of folders that are being read.
         //Change to release to see just the folders that cannot be read.
