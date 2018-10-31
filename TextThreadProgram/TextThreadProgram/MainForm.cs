@@ -17,7 +17,6 @@ namespace TextThreadProgram
         private SearchDialog searchDialog;
         private Boolean isTyping;
         private Text currentText;
-        private Text movingText;
 
         public MainForm()
         {
@@ -27,6 +26,7 @@ namespace TextThreadProgram
             searchDialog = new SearchDialog();
             isTyping = false;
             currentText = new Text("", this.Font, Color.Black, Color.Red, new Point(0, 0), new Size(50, 50));
+            DoubleBuffered = true;
         }
 
         //Event handler for caps lock status strip  label
@@ -92,46 +92,55 @@ namespace TextThreadProgram
         private void mainPanel_MouseDown(object sender, MouseEventArgs e)
         {
             mouseIsDown = true;
+            currentText = Contains(document, e); //Get clicked text
+            if ((currentText = Contains(document, e)) != null)
+                isDrawing = true;
+            else
+                currentText = new Text("", this.Font, Color.Black, Color.Red, new Point(0, 0), new Size(50, 50));
+
         }
 
+        private Boolean isDrawing = false;
         private void mainPanel_MouseMove(object sender, MouseEventArgs e)
         {
-            movingText = Contains(document, e);
-            if(mouseIsDown && movingText != null)
+            if(mouseIsDown && isDrawing)
             {
-                movingText.TextLocation = new Point(e.X, e.Y);
-                ReDrawDocument(document);
+                currentText.TextLocation = new Point(e.X, e.Y);
                 this.mainPanel.Invalidate();
-                this.Invalidate();
             }
         }
 
         private void mainPanel_MouseUp(object sender, MouseEventArgs e)
         {
-            mouseIsDown = false;
+            if (isDrawing)
+            {
+                mouseIsDown = false;
+                isDrawing = false;
+                ReDrawDocument(document);
+            }
         }
 
 
         private void mainPanel_MouseClick(object sender, MouseEventArgs e)
         {
-            //Toggle
             if (isTyping)
             {
                 document.Add(currentText);
                 currentText = new Text("", this.Font, Color.Black, Color.Red, new Point(0, 0), new Size(50, 50));
-                Console.WriteLine("Size of document = " + document.Count);
             }
-            isTyping = !isTyping;
+            isTyping = !isTyping; //Toggle
 
-            currentText.TextLocation = new Point(e.X, e.Y);
+            if(currentText != null)
+                currentText.TextLocation = new Point(e.X, e.Y);
         }
 
         private void MainForm_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (isTyping)
+            if (isTyping && currentText != null)
             {
                 currentText.StringText += e.KeyChar;
-                DrawText(currentText);
+                document.Add(currentText);
+                ReDrawDocument(document);
             }
         }
 
