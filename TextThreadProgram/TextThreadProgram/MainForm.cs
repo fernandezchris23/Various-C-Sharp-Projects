@@ -15,6 +15,8 @@ namespace TextThreadProgram
         private string fileFilter;
         private Document document;
         private SearchDialog searchDialog;
+        private Boolean isTyping;
+        private Text currentText;
 
         public MainForm()
         {
@@ -22,6 +24,8 @@ namespace TextThreadProgram
             fileFilter = "Files|*.ok";
             document = new Document();
             searchDialog = new SearchDialog();
+            isTyping = false;
+            currentText = new Text("", this.Font, Color.Black, Color.Red, new Point(0, 0), new Size(50, 50));
         }
 
         //Event handler for caps lock status strip  label
@@ -61,9 +65,10 @@ namespace TextThreadProgram
 
         private void DrawText(Text text)
         {
-            using(Graphics g = this.mainPanel.CreateGraphics())
+            using(StringFormat format = new StringFormat())
             {
-                g.DrawString(text.StringText, text.TextFont, Brushes.Aqua, text.TextLocation.X, text.TextLocation.Y);
+                format.Trimming = StringTrimming.Word;
+                this.mainPanel.CreateGraphics().DrawString(text.StringText, text.TextFont, Brushes.Aqua, new Rectangle(text.TextLocation, text.TextSize), format);
             }
         }
 
@@ -73,13 +78,42 @@ namespace TextThreadProgram
                 DrawText(text);
         }
 
+        private Text Contains(Document docu, MouseEventArgs e)
+        {
+            foreach (Text text in docu)
+                if ((e.X >= text.TextLocation.X && (e.X < text.TextLocation.X + text.TextSize.Width)) && e.Y >= text.TextLocation.Y && e.Y <= (text.TextLocation.Y + text.TextSize.Height))
+                    return text;
+
+            return null;
+        }
+
         private void mainPanel_MouseClick(object sender, MouseEventArgs e)
         {
-            Text text = new Text("Something", this.Font, Color.Black, Color.Red, new Point(e.X, e.Y));
-            document.Add(text);
-            DrawText(text);
-            Console.WriteLine("Size of document is " + document.Count);
 
+            if(Contains(document, e) != null)
+            {
+                Console.WriteLine("There is something there..");
+            }
+
+            //Toggle
+            if (isTyping)
+            {
+                document.Add(currentText);
+                currentText = new Text("", this.Font, Color.Black, Color.Red, new Point(0, 0), new Size(50, 50));
+                Console.WriteLine("Size of document = " + document.Count);
+            }
+            isTyping = !isTyping;
+
+            currentText.TextLocation = new Point(e.X, e.Y);
+        }
+
+        private void MainForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (isTyping)
+            {
+                currentText.StringText += e.KeyChar;
+                DrawText(currentText);
+            }
         }
 
         private void openCtrlToolStripMenuItem_Click(object sender, EventArgs e)
@@ -116,5 +150,6 @@ namespace TextThreadProgram
                 MessageBox.Show("Failed to save file");
         }
 
+        
     }
 }
