@@ -35,7 +35,7 @@ namespace TextThreadProgram
         private void ChangeLocation(Keys key)
         {
             // instead of this, it should be the text location changed
-            Point location = this.Location;
+            Point location = currentText.TextLocation;
             //Handle arrow keys
             switch (key)
             {
@@ -55,7 +55,7 @@ namespace TextThreadProgram
                     ++location.X;
                     break;
             }
-            this.Location = location;
+            currentText.TextLocation = location;
         }
 
         protected override bool IsInputKey(Keys keyData)
@@ -74,6 +74,7 @@ namespace TextThreadProgram
         //Event handler for caps lock status strip  label
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
+            
             if ((e.KeyCode & Keys.KeyCode) == Keys.CapsLock)
             {
                 if (Control.IsKeyLocked(Keys.CapsLock))
@@ -81,7 +82,7 @@ namespace TextThreadProgram
                 else
                     this.capsLockStatusStrip.Text = "Caps Lock: OFF";
             }
-            else if (IsInputKey(Keys.KeyCode))
+            else if (IsInputKey(e.KeyCode & Keys.KeyCode))
             {
                 ChangeLocation(e.KeyCode);
             }
