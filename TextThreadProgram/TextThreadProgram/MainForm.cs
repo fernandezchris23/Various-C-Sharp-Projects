@@ -17,6 +17,7 @@ namespace TextThreadProgram
         private SearchDialog searchDialog;
         private Boolean isTyping;
         private Text currentText;
+        private Text movingText;
 
         public MainForm()
         {
@@ -87,14 +88,32 @@ namespace TextThreadProgram
             return null;
         }
 
+        private Boolean mouseIsDown = false;
+        private void mainPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseIsDown = true;
+        }
+
+        private void mainPanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            movingText = Contains(document, e);
+            if(mouseIsDown && movingText != null)
+            {
+                movingText.TextLocation = new Point(e.X, e.Y);
+                ReDrawDocument(document);
+                this.mainPanel.Invalidate();
+                this.Invalidate();
+            }
+        }
+
+        private void mainPanel_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseIsDown = false;
+        }
+
+
         private void mainPanel_MouseClick(object sender, MouseEventArgs e)
         {
-
-            if(Contains(document, e) != null)
-            {
-                Console.WriteLine("There is something there..");
-            }
-
             //Toggle
             if (isTyping)
             {
