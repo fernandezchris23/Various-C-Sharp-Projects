@@ -1,12 +1,20 @@
 ﻿using System;
 using System.Drawing;
 using System.Runtime.Serialization;
+using System.ComponentModel;
 
 namespace TextThreadProgram
 {
-    [Serializable()]
-    public class Text : ISerializable
+    
+    public class Text : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void RaisePropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+        }
         public Text(string stringText, Font textFont, Color textColor, Color bgColor, Point textLocation, Size textSize)
         {
             StringText = stringText;
@@ -53,22 +61,94 @@ namespace TextThreadProgram
             info.AddValue("emSize", TextFont.Size);
         }
 
-        public int TextId { get; set; }
+        public int TextId
+        {
+            get { return TextId; }
+            set
+            {
+                TextId = value;
+                RaisePropertyChanged("TextId");
+            }
+        }
 
-        public string StringText { get; set; }
+        public string StringText
+        {
+            get { return StringText; }
+            set
+            {
+                StringText = value;
+                RaisePropertyChanged("StringText");
+            }
+        }
 
-        public int Z_Order { get; set; }
+        public int Z_Order
+        {
+            get { return Z_Order; }
+            set
+            {
+                Z_Order = value;
+                RaisePropertyChanged("Z_Order");
+            }
+        }
 
-        public float Rotation { get; set; }
+        public float Rotation
+        {
+            get { return Rotation; }
+            set
+            {
+                Rotation = value;
+                RaisePropertyChanged("Rotation");
+            }
+        }
 
-        public Color TextColor { get; set; }
+        public Color TextColor
+        {
+            get { return TextColor; }
+            set
+            {
+                TextColor = value;
+                RaisePropertyChanged("TextColor");
+            }
+        }
 
-        public Color BgColor { get; set; }
+        public Color BgColor
+        {
+            get { return BgColor; }
+            set
+            {
+                BgColor = value;
+                RaisePropertyChanged("BgColor");
+            }
+        }
 
-        public Point TextLocation { get; set; }
+        public Point TextLocation
+        {
+            get { return TextLocation; }
+            set
+            {
+                TextLocation = value;
+                RaisePropertyChanged("TextLocation");
+            }
+        }
 
-        public Font TextFont { get; set; }
+        public Font TextFont
+        {
+            get { return TextFont; }
+            set
+            {
+                TextFont = value;
+                RaisePropertyChanged("TextFont");
+            }
+        }
 
-        public Size TextSize { get; set; }
+        public Size TextSize
+        {
+            get { return TextSize; }
+            set
+            {
+                TextSize = value;
+                RaisePropertyChanged("TextSize");
+            }
+        }
     }
 }

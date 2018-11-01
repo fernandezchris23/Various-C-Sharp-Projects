@@ -45,9 +45,11 @@ namespace TextThreadProgram
             }
         }
 
-        private void SetBindings(Text data)
+        private void OpenTextOptionsDialog(Text data)
         {
-            //this.DataBindings.Add("")
+            
+            TextOptions optionsDialog = new TextOptions(data);
+            optionsDialog.Show();
         }
 
         private void searchToolStripMenuItem_Click(object sender, EventArgs e)
@@ -74,6 +76,32 @@ namespace TextThreadProgram
             {
                 format.Trimming = StringTrimming.Word;
                 this.mainPanel.CreateGraphics().DrawString(text.StringText, text.TextFont, Brushes.Aqua, new Rectangle(text.TextLocation, text.TextSize), format);
+            }
+        }
+
+        private void TextPropertyChanged(Object sender, PropertyChangedEventArgs e)
+        {
+            Text newProp = (Text)sender;
+            switch (e.PropertyName)
+            {
+                case "StringText":
+                    currentText.StringText = newProp.StringText;
+                    break;
+                case "Z_Order":
+                    currentText.Z_Order = newProp.Z_Order;
+                    break;
+                case "Rotation":
+                    currentText.Rotation = newProp.Rotation;
+                    break;
+                case "TextFont":
+                    currentText.TextFont = newProp.TextFont;
+                    break;
+                case "TextColor":
+                    currentText.TextColor = newProp.TextColor;
+                    break;
+                case "TextLocation":
+                    currentText.TextLocation = newProp.TextLocation;
+                    break;                
             }
         }
 
@@ -109,6 +137,7 @@ namespace TextThreadProgram
                 this.Invalidate();
             }
         }
+
 
         private void mainPanel_MouseUp(object sender, MouseEventArgs e)
         {
@@ -180,7 +209,7 @@ namespace TextThreadProgram
 
             // manaully change location of modal dialog
             oathDialog.StartPosition = FormStartPosition.Manual;
-            oathDialog.Location = new Point(this.Right, this.Bottom);
+            oathDialog.Location = new Point(this.Right, this.Top);
 
             oathDialog.ShowDialog();        // open modally
         }
@@ -192,7 +221,7 @@ namespace TextThreadProgram
 
             // manaully change location of modal dialog
             aboutDialog.StartPosition = FormStartPosition.Manual;
-            aboutDialog.Location = new Point(this.Left, this.Bottom);
+            aboutDialog.Location = new Point(this.Left, this.Top);
 
             aboutDialog.ShowDialog();        // open modally
         }

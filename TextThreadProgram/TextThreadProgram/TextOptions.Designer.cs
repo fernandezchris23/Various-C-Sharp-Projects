@@ -55,7 +55,7 @@
             "Z-Order",
             "Rotation",
             "Location"});
-            this.comboBox1.Location = new System.Drawing.Point(67, 130);
+            this.comboBox1.Location = new System.Drawing.Point(38, 130);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(133, 24);
             this.comboBox1.TabIndex = 0;
@@ -69,6 +69,7 @@
             this.applyButton.TabIndex = 1;
             this.applyButton.Text = "Apply";
             this.applyButton.UseVisualStyleBackColor = true;
+            this.applyButton.Click += new System.EventHandler(this.applyButton_Click);
             // 
             // cancelButton
             // 
@@ -92,14 +93,15 @@
             // 
             // propertyTextBox
             // 
-            this.propertyTextBox.Location = new System.Drawing.Point(221, 132);
+            this.propertyTextBox.Location = new System.Drawing.Point(206, 132);
             this.propertyTextBox.Name = "propertyTextBox";
-            this.propertyTextBox.Size = new System.Drawing.Size(131, 22);
+            this.propertyTextBox.ReadOnly = true;
+            this.propertyTextBox.Size = new System.Drawing.Size(171, 22);
             this.propertyTextBox.TabIndex = 4;
             // 
             // changeButton
             // 
-            this.changeButton.Location = new System.Drawing.Point(383, 130);
+            this.changeButton.Location = new System.Drawing.Point(405, 126);
             this.changeButton.Name = "changeButton";
             this.changeButton.Size = new System.Drawing.Size(89, 30);
             this.changeButton.TabIndex = 5;
