@@ -42,11 +42,11 @@
             this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.oathDialogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutDialogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.capsLockStatusStrip = new System.Windows.Forms.ToolStripStatusLabel();
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.oathDialogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutDialogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -156,9 +156,23 @@
             // searchToolStripMenuItem
             // 
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
             this.searchToolStripMenuItem.Text = "Search";
             this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
+            // 
+            // oathDialogToolStripMenuItem
+            // 
+            this.oathDialogToolStripMenuItem.Name = "oathDialogToolStripMenuItem";
+            this.oathDialogToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
+            this.oathDialogToolStripMenuItem.Text = "Oath Dialog";
+            this.oathDialogToolStripMenuItem.Click += new System.EventHandler(this.oathDialogToolStripMenuItem_Click);
+            // 
+            // aboutDialogToolStripMenuItem
+            // 
+            this.aboutDialogToolStripMenuItem.Name = "aboutDialogToolStripMenuItem";
+            this.aboutDialogToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
+            this.aboutDialogToolStripMenuItem.Text = "About Dialog";
+            this.aboutDialogToolStripMenuItem.Click += new System.EventHandler(this.aboutDialogToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -188,20 +202,6 @@
             this.mainPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mainPanel_MouseMove);
             this.mainPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mainPanel_MouseUp);
             // 
-            // oathDialogToolStripMenuItem
-            // 
-            this.oathDialogToolStripMenuItem.Name = "oathDialogToolStripMenuItem";
-            this.oathDialogToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.oathDialogToolStripMenuItem.Text = "Oath Dialog";
-            this.oathDialogToolStripMenuItem.Click += new System.EventHandler(this.oathDialogToolStripMenuItem_Click);
-            // 
-            // aboutDialogToolStripMenuItem
-            // 
-            this.aboutDialogToolStripMenuItem.Name = "aboutDialogToolStripMenuItem";
-            this.aboutDialogToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.aboutDialogToolStripMenuItem.Text = "About Dialog";
-            this.aboutDialogToolStripMenuItem.Click += new System.EventHandler(this.aboutDialogToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -214,6 +214,7 @@
             this.Name = "MainForm";
             this.Text = "Main Form";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MainForm_KeyPress);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
