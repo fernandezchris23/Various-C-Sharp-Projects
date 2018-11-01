@@ -17,38 +17,96 @@ namespace TextThreadProgram
     public partial class SearchDialog : BaseDialogForm
     {
 
-        private FileDelegate thread;
-        private IAsyncResult threadR;
+        struct ThreadInfo
+        {
+            public string extension;
+        }
+        private ThreadInfo threadInfo;
+
 
         public SearchDialog()
         {
             InitializeComponent();
         }
 
-        delegate void FileDelegate(string filePath, string fileExtension);
+        private void Search(string extension)
+        {
+            int index = 1;
+            foreach (String drive in Directory.GetLogicalDrives())
+            {
+                DirectoryInfo[] directories = getDirectories(drive);
+                for(int i = 0; i < directories.Length; ++i)
+                {
+                    if (!this.searchBackgroundWorker.CancellationPending)
+                    {
+                        this.searchBackgroundWorker.ReportProgress(index++ * 100 / directories.Length);
+                        FindFiles(directories[i], extension);
+                    }
+                }
+            }
+        }
 
-        void FullDirList(DirectoryInfo directory, string extension)
+        private void FindFiles(DirectoryInfo dir, string extension)
         {
             try
             {
-                foreach (FileInfo f in directory.GetFiles(extension))
-                    AddToList(f.FullName);
+                DirectoryInfo[] children = getDirectories(dir);
+                if (children.Length > 0)
+                {
+                    foreach (DirectoryInfo child in children)
+                    {
+                        FindFiles(child, extension);
+                    }
+                }
+                else
+                {
+                    FileInfo[] Files = dir.GetFiles(extension);
+                    if (Files.Length > 0)
+                    {
+                        for(int x = 0; x < Files.Length; ++x)
+                        {
+                            AddToList(Files[x].FullName);
+                        }
+                    }
+                }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e.Message);
-                return;
+                System.Console.WriteLine(ex.Message);
             }
-
-            foreach (DirectoryInfo d in directory.GetDirectories())
-                FullDirList(d, extension);
-
         }
 
-        void FindFiles(string filePath, string fileExtension)
+        public DirectoryInfo[] getDirectories(DirectoryInfo dir)
         {
-            FullDirList(new DirectoryInfo(filePath), fileExtension);
+            if (AttrOn(dir.Attributes, FileAttributes.Offline))
+            {
+                return new DirectoryInfo[] { };
+            }
+            if (!dir.Exists)
+            {
+                return new DirectoryInfo[] { };
+            }
+            try
+            {
+                return dir.GetDirectories();
+            }
+            catch (Exception ex)
+            {
+                return new DirectoryInfo[] { };
+            }
         }
+
+        private bool AttrOn(FileAttributes attr, FileAttributes field)
+        {
+            return (attr & field) == field;
+        }
+
+        public DirectoryInfo[] getDirectories(String strDrive)
+        {
+            DirectoryInfo dir = new DirectoryInfo(strDrive);
+            return getDirectories(dir);
+        }
+
 
         void AddToList(string item)
         {
@@ -61,20 +119,6 @@ namespace TextThreadProgram
                 this.listBoxAllFiles.Items.Add(item);
         }
 
-        void EndFiles(IAsyncResult result)
-        {
-
-            try
-            {
-                FileDelegate thread = (FileDelegate)result.AsyncState;
-                thread.EndInvoke(result);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-
         private void startSearchBttn_Click(object sender, EventArgs e)
         {
             // once started there is no need for start anymore
@@ -84,15 +128,9 @@ namespace TextThreadProgram
             startSearchBttn.Enabled = false;
 
             string selectedExtension = "*" + comboBoxExtension.SelectedItem.ToString();
-            string path = "C:\\";
 
-
-            thread = new FileDelegate(FindFiles);
-            threadR = thread.BeginInvoke(
-                path, selectedExtension,
-                EndFiles,
-                thread
-                );
+            threadInfo.extension = selectedExtension;
+            this.searchBackgroundWorker.RunWorkerAsync(threadInfo);
         }
 
 
@@ -103,6 +141,10 @@ namespace TextThreadProgram
             startSearchBttn.Enabled = true;
             stopSearchBttn.Enabled = false;
             pauseSearchBttn.Enabled = false;
+
+            if (this.searchBackgroundWorker.IsBusy)
+                this.searchBackgroundWorker.CancelAsync();
+
         }
 
         private void pauseSearchBttn_Click(object sender, EventArgs e)
@@ -137,6 +179,17 @@ namespace TextThreadProgram
         private void SearchDialog_FormClosing(object sender, FormClosingEventArgs e)
         {
             // make sure to stop search if the form is closed
+        }
+
+        private void searchBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            ThreadInfo arg = (ThreadInfo)e.Argument;
+            Search(arg.extension);
+        }
+
+        private void searchBackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            this.progressBar.Value = e.ProgressPercentage;
         }
     }
 }

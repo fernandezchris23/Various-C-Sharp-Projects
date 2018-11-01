@@ -34,6 +34,8 @@
             this.stopSearchBttn = new System.Windows.Forms.Button();
             this.pauseSearchBttn = new System.Windows.Forms.Button();
             this.comboBoxExtension = new System.Windows.Forms.ComboBox();
+            this.searchBackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // listBoxAllFiles
@@ -97,12 +99,27 @@
             this.comboBoxExtension.TabIndex = 2;
             this.comboBoxExtension.SelectedIndexChanged += new System.EventHandler(this.comboBoxExtension_SelectedIndexChanged);
             // 
+            // searchBackgroundWorker
+            // 
+            this.searchBackgroundWorker.WorkerReportsProgress = true;
+            this.searchBackgroundWorker.WorkerSupportsCancellation = true;
+            this.searchBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.searchBackgroundWorker_DoWork);
+            this.searchBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.searchBackgroundWorker_ProgressChanged);
+            // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(148, 330);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(252, 23);
+            this.progressBar.TabIndex = 3;
+            // 
             // SearchDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(542, 440);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.comboBoxExtension);
             this.Controls.Add(this.pauseSearchBttn);
             this.Controls.Add(this.stopSearchBttn);
@@ -117,6 +134,7 @@
             this.Controls.SetChildIndex(this.stopSearchBttn, 0);
             this.Controls.SetChildIndex(this.pauseSearchBttn, 0);
             this.Controls.SetChildIndex(this.comboBoxExtension, 0);
+            this.Controls.SetChildIndex(this.progressBar, 0);
             this.ResumeLayout(false);
 
         }
@@ -128,5 +146,7 @@
         private System.Windows.Forms.Button stopSearchBttn;
         private System.Windows.Forms.Button pauseSearchBttn;
         private System.Windows.Forms.ComboBox comboBoxExtension;
+        private System.ComponentModel.BackgroundWorker searchBackgroundWorker;
+        private System.Windows.Forms.ProgressBar progressBar;
     }
 }
