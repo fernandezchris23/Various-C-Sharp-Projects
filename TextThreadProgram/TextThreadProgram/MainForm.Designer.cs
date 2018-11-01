@@ -42,8 +42,6 @@
             this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.oathDialogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutDialogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.capsLockStatusStrip = new System.Windows.Forms.ToolStripStatusLabel();
             this.mainPanel = new System.Windows.Forms.Panel();
@@ -146,9 +144,7 @@
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.searchToolStripMenuItem,
-            this.oathDialogToolStripMenuItem,
-            this.aboutDialogToolStripMenuItem});
+            this.searchToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
             this.helpToolStripMenuItem.Text = "Help";
@@ -156,39 +152,26 @@
             // searchToolStripMenuItem
             // 
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(128, 26);
             this.searchToolStripMenuItem.Text = "Search";
             this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
-            // 
-            // oathDialogToolStripMenuItem
-            // 
-            this.oathDialogToolStripMenuItem.Name = "oathDialogToolStripMenuItem";
-            this.oathDialogToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
-            this.oathDialogToolStripMenuItem.Text = "Oath Dialog";
-            this.oathDialogToolStripMenuItem.Click += new System.EventHandler(this.oathDialogToolStripMenuItem_Click);
-            // 
-            // aboutDialogToolStripMenuItem
-            // 
-            this.aboutDialogToolStripMenuItem.Name = "aboutDialogToolStripMenuItem";
-            this.aboutDialogToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
-            this.aboutDialogToolStripMenuItem.Text = "About Dialog";
-            this.aboutDialogToolStripMenuItem.Click += new System.EventHandler(this.aboutDialogToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.capsLockStatusStrip});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 426);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 425);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(800, 24);
+            this.statusStrip1.Size = new System.Drawing.Size(800, 25);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // capsLockStatusStrip
             // 
             this.capsLockStatusStrip.Name = "capsLockStatusStrip";
-            this.capsLockStatusStrip.Size = new System.Drawing.Size(0, 19);
+            this.capsLockStatusStrip.Size = new System.Drawing.Size(111, 20);
+            this.capsLockStatusStrip.Text = "CapsLockStatus";
             // 
             // mainPanel
             // 
@@ -212,7 +195,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "Main Form";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MainForm_KeyPress);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -242,8 +225,6 @@
         private System.Windows.Forms.ToolStripStatusLabel capsLockStatusStrip;
         private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
         private System.Windows.Forms.Panel mainPanel;
-        private System.Windows.Forms.ToolStripMenuItem oathDialogToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aboutDialogToolStripMenuItem;
     }
 }
 
