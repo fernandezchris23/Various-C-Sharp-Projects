@@ -16,57 +16,107 @@ namespace TextThreadProgram
 {
     public partial class SearchDialog : BaseDialogForm
     {
-        static List<DirectoryInfo> folders = new List<DirectoryInfo>(); // List that hold direcotries that cannot be accessed
+
+        struct ThreadInfo
+        {
+            public string extension;
+        }
+        private ThreadInfo threadInfo;
+
 
         public SearchDialog()
         {
             InitializeComponent();
         }
 
-        delegate void FileDelegate(string filePath, string fileExtension);
-
-        void FindFiles(string filePath, string fileExtension)
+        private void Search(string extension)
         {
-            DirectoryInfo directoryInfo = new DirectoryInfo(filePath);
-            List<FileInfo> files = new List<FileInfo>();
-            Console.WriteLine(filePath + " " + directoryInfo.GetFiles(fileExtension).Count());
-            try
+            int index = 1;
+            foreach (String drive in Directory.GetLogicalDrives())
             {
-                foreach (FileInfo f in directoryInfo.GetFiles(fileExtension))
+                DirectoryInfo[] directories = getDirectories(drive);
+                for(int i = 0; i < directories.Length; ++i)
                 {
-                    Console.WriteLine("File {0}", f.FullName);
-                    files.Add(f);
+                    if (!this.searchBackgroundWorker.CancellationPending)
+                    {
+                        this.searchBackgroundWorker.ReportProgress(index++ * 100 / directories.Length);
+                        FindFiles(directories[i], extension);
+                    }
                 }
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return;
             }
         }
 
-        void EndFiles(IAsyncResult result)
+        private void FindFiles(DirectoryInfo dir, string extension)
         {
-
             try
             {
-                FileDelegate thread = (FileDelegate)result.AsyncState;
-                thread.EndInvoke(result);
+                DirectoryInfo[] children = getDirectories(dir);
+                if (children.Length > 0)
+                {
+                    foreach (DirectoryInfo child in children)
+                    {
+                        FindFiles(child, extension);
+                    }
+                }
+                else
+                {
+                    FileInfo[] Files = dir.GetFiles(extension);
+                    if (Files.Length > 0)
+                    {
+                        for(int x = 0; x < Files.Length; ++x)
+                        {
+                            AddToList(Files[x].FullName);
+                        }
+                    }
+                }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine(e.Message);
+                System.Console.WriteLine(ex.Message);
             }
-            // process each directory
-            // If I have been able to see the files in the directory I should also be able 
-            // to look at its directories so I dont think I should place this in a try catch block
-            /*
-            foreach (DirectoryInfo d in directoryInfo.GetDirectories())
+        }
+
+        public DirectoryInfo[] getDirectories(DirectoryInfo dir)
+        {
+            if (AttrOn(dir.Attributes, FileAttributes.Offline))
             {
-                folders.Add(d);
-                Console.WriteLine(d.FullName);
-                //FullDirList(d, searchPattern);
-            }*/
+                return new DirectoryInfo[] { };
+            }
+            if (!dir.Exists)
+            {
+                return new DirectoryInfo[] { };
+            }
+            try
+            {
+                return dir.GetDirectories();
+            }
+            catch (Exception ex)
+            {
+                return new DirectoryInfo[] { };
+            }
+        }
+
+        private bool AttrOn(FileAttributes attr, FileAttributes field)
+        {
+            return (attr & field) == field;
+        }
+
+        public DirectoryInfo[] getDirectories(String strDrive)
+        {
+            DirectoryInfo dir = new DirectoryInfo(strDrive);
+            return getDirectories(dir);
+        }
+
+
+        void AddToList(string item)
+        {
+            if (this.listBoxAllFiles.InvokeRequired)
+                this.listBoxAllFiles.Invoke((MethodInvoker)delegate ()
+                {
+                    AddToList(item);
+                });
+            else
+                this.listBoxAllFiles.Items.Add(item);
         }
 
         private void startSearchBttn_Click(object sender, EventArgs e)
@@ -77,17 +127,10 @@ namespace TextThreadProgram
             pauseSearchBttn.Enabled = true;
             startSearchBttn.Enabled = false;
 
-            string selectedExtension = comboBoxExtension.SelectedItem.ToString();
-            string path = "C:\\Users\\alvar\\Desktop";
+            string selectedExtension = "*" + comboBoxExtension.SelectedItem.ToString();
 
-
-            FileDelegate thread = new FileDelegate(FindFiles);
-            thread.BeginInvoke(
-                path, selectedExtension,
-                EndFiles,
-                thread
-                );
-            
+            threadInfo.extension = selectedExtension;
+            this.searchBackgroundWorker.RunWorkerAsync(threadInfo);
         }
 
 
@@ -98,6 +141,10 @@ namespace TextThreadProgram
             startSearchBttn.Enabled = true;
             stopSearchBttn.Enabled = false;
             pauseSearchBttn.Enabled = false;
+
+            if (this.searchBackgroundWorker.IsBusy)
+                this.searchBackgroundWorker.CancelAsync();
+
         }
 
         private void pauseSearchBttn_Click(object sender, EventArgs e)
@@ -110,8 +157,6 @@ namespace TextThreadProgram
                 // but there might be a need to stop
                 startSearchBttn.Enabled = false;
                 stopSearchBttn.Enabled = true;
-
-                // add code here to stop searching
             }
             else // it says continue search
             {
@@ -136,88 +181,15 @@ namespace TextThreadProgram
             // make sure to stop search if the form is closed
         }
 
-        // helper methods for searching from the text file from website
-
-        //you will need System.IO and System.Diagnostics
-        //Change the configuration to Debug to see a list of folders that are being read.
-        //Change to release to see just the folders that cannot be read.
-        //The search will be faster in Release configuration
-
-        private void Search()
+        private void searchBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            foreach (String drive in Directory.GetLogicalDrives())
-            {
-                Debug.WriteLine(drive);
-                foreach (DirectoryInfo child in getDirectories(drive))
-                {
-                    Debug.WriteLine(child.FullName);
-                    FindFiles(child);
-                }
-            }
+            ThreadInfo arg = (ThreadInfo)e.Argument;
+            Search(arg.extension);
         }
 
-        private void FindFiles(DirectoryInfo dir)
+        private void searchBackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            try
-            {
-                DirectoryInfo[] children = getDirectories(dir);
-                if (children.Length > 0)
-                {
-                    foreach (DirectoryInfo child in children)
-                    {
-                        Debug.WriteLine(child.FullName);
-                        FindFiles(child);
-                    }
-                }
-                else
-                {
-                    FileInfo[] Files = dir.GetFiles(comboBoxExtension.Text);
-                    if (Files.Length > 0)
-                    {
-                        //Found some files.
-                        //add to listbox something
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Console.WriteLine(ex.Message);
-            }
-        }
-
-        private bool AttrOn(FileAttributes attr, FileAttributes field)
-        {
-            return (attr & field) == field;
-        }
-
-        public DirectoryInfo[] getDirectories(DirectoryInfo dir)
-        {
-            if (AttrOn(dir.Attributes, FileAttributes.Offline))
-            {
-                Console.Out.WriteLine(dir.Name + " is not mapped ");
-                return new DirectoryInfo[] { };
-            }
-            if (!dir.Exists)
-            {
-                Console.Out.WriteLine(dir.Name + " does not exist ");
-                return new DirectoryInfo[] { };
-            }
-            try
-            {
-                return dir.GetDirectories();
-            }
-            catch (Exception ex)
-            {
-                Console.Out.WriteLine(ex.Message);
-                Console.Out.WriteLine(ex.StackTrace);
-                return new DirectoryInfo[] { };
-            }
-        }
-
-        public DirectoryInfo[] getDirectories(String strDrive)
-        {
-            DirectoryInfo dir = new DirectoryInfo(strDrive);
-            return getDirectories(dir);
+            this.progressBar.Value = e.ProgressPercentage;
         }
     }
 }
