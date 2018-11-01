@@ -106,7 +106,10 @@ namespace TextThreadProgram
             currentText = Contains(document, e); //Get clicked text
             if ((currentText = Contains(document, e)) != null)
             {
-                isDrawing = true;
+                if (e.Button == MouseButtons.Left)
+                    isDrawing = true;
+                else
+                    new TextOptions().Show();
             }
             else
             {
