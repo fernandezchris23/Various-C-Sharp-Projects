@@ -15,6 +15,8 @@ namespace TextThreadProgram
         private string fileFilter;
         private Document document;
         private SearchDialog searchDialog;
+        private OathDialog oathDialog;
+        private AboutDialog aboutDialog;
         private Text currentText;
         private bool isTyping;
         private bool isDrawing;
@@ -242,6 +244,30 @@ namespace TextThreadProgram
         private void MainForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void oathDialogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            oathDialog = new OathDialog();
+            oathDialog.Owner = this;        // the main form is the owner of the oath dialog  
+
+            // manaully change location of modal dialog
+            oathDialog.StartPosition = FormStartPosition.Manual;
+            oathDialog.Location = new Point(this.Right, this.Bottom);
+
+            oathDialog.ShowDialog();        // open modally
+        }
+
+        private void aboutDialogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            aboutDialog = new AboutDialog();
+            aboutDialog.Owner = this;        // the main form is the owner of the about dialog  
+
+            // manaully change location of modal dialog
+            aboutDialog.StartPosition = FormStartPosition.Manual;
+            aboutDialog.Location = new Point(this.Left, this.Bottom);
+
+            aboutDialog.ShowDialog();        // open modally
         }
     }
 }
