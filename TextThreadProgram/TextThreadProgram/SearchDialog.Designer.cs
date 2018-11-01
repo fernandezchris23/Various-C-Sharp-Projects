@@ -85,6 +85,7 @@
             // 
             // comboBoxExtension
             // 
+            this.comboBoxExtension.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxExtension.FormattingEnabled = true;
             this.comboBoxExtension.Items.AddRange(new object[] {
             ".ok",
