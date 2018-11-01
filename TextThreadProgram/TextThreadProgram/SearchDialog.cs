@@ -16,8 +16,9 @@ namespace TextThreadProgram
 {
     public partial class SearchDialog : BaseDialogForm
     {
-        static List<DirectoryInfo> folders = new List<DirectoryInfo>(); // List that hold direcotries that cannot be accessed
-        static List<FileInfo> files = new List<FileInfo>();
+
+        private FileDelegate thread;
+        private IAsyncResult threadR;
 
         public SearchDialog()
         {
@@ -26,24 +27,27 @@ namespace TextThreadProgram
 
         delegate void FileDelegate(string filePath, string fileExtension);
 
-        void FindFiles(string filePath, string fileExtension)
+        void FullDirList(DirectoryInfo directory, string extension)
         {
-            DirectoryInfo directoryInfo = new DirectoryInfo(filePath);
-
             try
             {
-                foreach (FileInfo f in directoryInfo.GetFiles(fileExtension))
-                {
-                    Console.WriteLine("File {0}", f.FullName);
+                foreach (FileInfo f in directory.GetFiles(extension))
                     AddToList(f.FullName);
-                    files.Add(f);
-                }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
                 return;
             }
+
+            foreach (DirectoryInfo d in directory.GetDirectories())
+                FullDirList(d, extension);
+
+        }
+
+        void FindFiles(string filePath, string fileExtension)
+        {
+            FullDirList(new DirectoryInfo(filePath), fileExtension);
         }
 
         void AddToList(string item)
@@ -80,11 +84,11 @@ namespace TextThreadProgram
             startSearchBttn.Enabled = false;
 
             string selectedExtension = "*" + comboBoxExtension.SelectedItem.ToString();
-            string path = "C:\\Users\\alvar\\Desktop";
+            string path = "C:\\";
 
 
-            FileDelegate thread = new FileDelegate(FindFiles);
-            thread.BeginInvoke(
+            thread = new FileDelegate(FindFiles);
+            threadR = thread.BeginInvoke(
                 path, selectedExtension,
                 EndFiles,
                 thread
@@ -111,8 +115,6 @@ namespace TextThreadProgram
                 // but there might be a need to stop
                 startSearchBttn.Enabled = false;
                 stopSearchBttn.Enabled = true;
-
-                // add code here to stop searching
             }
             else // it says continue search
             {
