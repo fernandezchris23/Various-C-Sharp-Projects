@@ -9,6 +9,15 @@ namespace TextThreadProgram
     public class Text : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        private string stringText;
+        private Font textFont;
+        private Color bgColor;
+        private Color textColor;
+        private Point textLocation;
+        private int z_Order;
+        private Size textSize;
+        private int textId;
+        private float rotation;
 
         protected void RaisePropertyChanged(string name)
         {
@@ -63,90 +72,90 @@ namespace TextThreadProgram
 
         public int TextId
         {
-            get { return TextId; }
+            get { return textId; }
             set
             {
-                TextId = value;
+                this.textId = value;
                 RaisePropertyChanged("TextId");
             }
         }
 
         public string StringText
         {
-            get { return StringText; }
+            get { return stringText; }
             set
             {
-                StringText = value;
+                this.stringText = value;
                 RaisePropertyChanged("StringText");
             }
         }
 
         public int Z_Order
         {
-            get { return Z_Order; }
+            get { return z_Order; }
             set
             {
-                Z_Order = value;
+                this.z_Order = value;
                 RaisePropertyChanged("Z_Order");
             }
         }
 
         public float Rotation
         {
-            get { return Rotation; }
+            get { return rotation; }
             set
             {
-                Rotation = value;
+                this.rotation = value;
                 RaisePropertyChanged("Rotation");
             }
         }
 
         public Color TextColor
         {
-            get { return TextColor; }
+            get { return textColor; }
             set
             {
-                TextColor = value;
+                this.textColor = value;
                 RaisePropertyChanged("TextColor");
             }
         }
 
         public Color BgColor
         {
-            get { return BgColor; }
+            get { return bgColor; }
             set
             {
-                BgColor = value;
+                this.bgColor = value;
                 RaisePropertyChanged("BgColor");
             }
         }
 
         public Point TextLocation
         {
-            get { return TextLocation; }
+            get { return textLocation; }
             set
             {
-                TextLocation = value;
+                this.textLocation = value;
                 RaisePropertyChanged("TextLocation");
             }
         }
 
         public Font TextFont
         {
-            get { return TextFont; }
+            get { return textFont; }
             set
             {
-                TextFont = value;
+                this.textFont = value;
                 RaisePropertyChanged("TextFont");
             }
         }
 
         public Size TextSize
         {
-            get { return TextSize; }
+            get { return textSize; }
             set
             {
-                TextSize = value;
+                this.textSize = value;
                 RaisePropertyChanged("TextSize");
             }
         }
