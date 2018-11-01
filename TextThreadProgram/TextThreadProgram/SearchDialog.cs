@@ -17,6 +17,7 @@ namespace TextThreadProgram
     public partial class SearchDialog : BaseDialogForm
     {
         static List<DirectoryInfo> folders = new List<DirectoryInfo>(); // List that hold direcotries that cannot be accessed
+        static List<FileInfo> files = new List<FileInfo>();
 
         public SearchDialog()
         {
@@ -28,13 +29,13 @@ namespace TextThreadProgram
         void FindFiles(string filePath, string fileExtension)
         {
             DirectoryInfo directoryInfo = new DirectoryInfo(filePath);
-            List<FileInfo> files = new List<FileInfo>();
-            Console.WriteLine(filePath + " " + directoryInfo.GetFiles(fileExtension).Count());
+
             try
             {
                 foreach (FileInfo f in directoryInfo.GetFiles(fileExtension))
                 {
                     Console.WriteLine("File {0}", f.FullName);
+                    AddToList(f.FullName);
                     files.Add(f);
                 }
             }
@@ -43,6 +44,17 @@ namespace TextThreadProgram
                 Console.WriteLine(e.Message);
                 return;
             }
+        }
+
+        void AddToList(string item)
+        {
+            if (this.listBoxAllFiles.InvokeRequired)
+                this.listBoxAllFiles.Invoke((MethodInvoker)delegate ()
+                {
+                    AddToList(item);
+                });
+            else
+                this.listBoxAllFiles.Items.Add(item);
         }
 
         void EndFiles(IAsyncResult result)
@@ -57,16 +69,6 @@ namespace TextThreadProgram
             {
                 Console.WriteLine(e.Message);
             }
-            // process each directory
-            // If I have been able to see the files in the directory I should also be able 
-            // to look at its directories so I dont think I should place this in a try catch block
-            /*
-            foreach (DirectoryInfo d in directoryInfo.GetDirectories())
-            {
-                folders.Add(d);
-                Console.WriteLine(d.FullName);
-                //FullDirList(d, searchPattern);
-            }*/
         }
 
         private void startSearchBttn_Click(object sender, EventArgs e)
@@ -77,7 +79,7 @@ namespace TextThreadProgram
             pauseSearchBttn.Enabled = true;
             startSearchBttn.Enabled = false;
 
-            string selectedExtension = comboBoxExtension.SelectedItem.ToString();
+            string selectedExtension = "*" + comboBoxExtension.SelectedItem.ToString();
             string path = "C:\\Users\\alvar\\Desktop";
 
 
@@ -87,7 +89,6 @@ namespace TextThreadProgram
                 EndFiles,
                 thread
                 );
-            
         }
 
 
