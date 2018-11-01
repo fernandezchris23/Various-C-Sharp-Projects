@@ -88,6 +88,37 @@ namespace TextThreadProgram
                 DrawText(text);
         }
 
+        /*
+         * FOR DATA BINDING: This is supposed to catch any incoming PropertyChanged events, 
+         * and update the current text. It casts the sender to a Text object because its sender
+         * is always the Text object that's currently in the TextOptions dialog, then updates
+         * e.PropertyName in the current text object.
+         */
+        private void TextPropertyChanged(Object sender, PropertyChangedEventArgs e)
+        {
+            Text newProp = (Text)sender;
+            switch (e.PropertyName)
+            {
+                case "StringText":
+                    currentText.StringText = newProp.StringText;
+                    break;
+                case "Z_Order":
+                    currentText.Z_Order = newProp.Z_Order;
+                    break;
+                case "Rotation":
+                    currentText.Rotation = newProp.Rotation;
+                    break;
+                case "TextFont":
+                    currentText.TextFont = newProp.TextFont;
+                    break;
+                case "TextColor":
+                    currentText.TextColor = newProp.TextColor;
+                    break;
+                case "TextLocation":
+                    currentText.TextLocation = newProp.TextLocation;
+                    break;
+            }
+        }
         private Text Contains(Document docu, MouseEventArgs e)
         {
             foreach (Text text in docu)
@@ -111,7 +142,7 @@ namespace TextThreadProgram
                 if (e.Button == MouseButtons.Left)
                     isDrawing = true;
                 else
-                    new TextOptions().Show();
+                    new TextOptions(currentText).Show();
             }
             else
             {

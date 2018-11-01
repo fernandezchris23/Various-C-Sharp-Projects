@@ -70,6 +70,15 @@ namespace TextThreadProgram
             info.AddValue("emSize", TextFont.Size);
         }
 
+
+        /*
+         * FOR DATA BINDING: these setters and getters are the way the book and
+         * some videos do data binding. So theres a method above called RaisePropertyChanged
+         * that sends out a PropertyChanged event, and gives the event.PropertyChanged whatever
+         * string we pass to the method. So if theres a change to TextId we call RaisePropertyChanged("TextId")
+         * and the event it creates will have a property called "TextId" so the main form knows
+         * which property to update in its currentText object 
+         */
         public int TextId
         {
             get { return textId; }

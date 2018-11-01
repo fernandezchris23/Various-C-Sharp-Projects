@@ -106,6 +106,13 @@ namespace TextThreadProgram
             }
         }
 
+        /*
+         * UpdateProperties will take String as an input and then update the corresponding
+         * property on the textProperties object. This will send out a PropertyChanged event
+         * that the main form has to catch somehow (it isn't catching it right now but i think
+         * everything leading up to it is working)
+         * 
+         */
         private void UpdateProperties(String propName)
         {
             switch (propName)
@@ -133,6 +140,9 @@ namespace TextThreadProgram
             }
         }
 
+        /*
+         * OkayButton and ApplyButton will both run UpdateProperties. OkayButton then closes the form
+         */ 
         private void okayButton_Click(object sender, EventArgs e)
         {
             UpdateProperties(comboBox1.Text);
