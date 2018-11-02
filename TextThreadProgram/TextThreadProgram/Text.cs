@@ -1,12 +1,29 @@
 ﻿using System;
 using System.Drawing;
 using System.Runtime.Serialization;
+using System.ComponentModel;
 
 namespace TextThreadProgram
 {
-    [Serializable()]
-    public class Text : ISerializable
+
+    public class Text : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        private string stringText;
+        private Font textFont;
+        private Color bgColor;
+        private Color textColor;
+        private Point textLocation;
+        private int z_Order;
+        private Size textSize;
+        private int textId;
+        private float rotation;
+
+        protected void RaisePropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+        }
         public Text(string stringText, Font textFont, Color textColor, Color bgColor, Point textLocation, Size textSize)
         {
             StringText = stringText;
@@ -53,22 +70,103 @@ namespace TextThreadProgram
             info.AddValue("emSize", TextFont.Size);
         }
 
-        public int TextId { get; set; }
 
-        public string StringText { get; set; }
+        /*
+         * FOR DATA BINDING: these setters and getters are the way the book and
+         * some videos do data binding. So theres a method above called RaisePropertyChanged
+         * that sends out a PropertyChanged event, and gives the event.PropertyChanged whatever
+         * string we pass to the method. So if theres a change to TextId we call RaisePropertyChanged("TextId")
+         * and the event it creates will have a property called "TextId" so the main form knows
+         * which property to update in its currentText object 
+         */
+        public int TextId
+        {
+            get { return textId; }
+            set
+            {
+                this.textId = value;
+                RaisePropertyChanged("TextId");
+            }
+        }
 
-        public int Z_Order { get; set; }
+        public string StringText
+        {
+            get { return stringText; }
+            set
+            {
+                this.stringText = value;
+                RaisePropertyChanged("StringText");
+            }
+        }
 
-        public float Rotation { get; set; }
+        public int Z_Order
+        {
+            get { return z_Order; }
+            set
+            {
+                this.z_Order = value;
+                RaisePropertyChanged("Z_Order");
+            }
+        }
 
-        public Color TextColor { get; set; }
+        public float Rotation
+        {
+            get { return rotation; }
+            set
+            {
+                this.rotation = value;
+                RaisePropertyChanged("Rotation");
+            }
+        }
 
-        public Color BgColor { get; set; }
+        public Color TextColor
+        {
+            get { return textColor; }
+            set
+            {
+                this.textColor = value;
+                RaisePropertyChanged("TextColor");
+            }
+        }
 
-        public Point TextLocation { get; set; }
+        public Color BgColor
+        {
+            get { return bgColor; }
+            set
+            {
+                this.bgColor = value;
+                RaisePropertyChanged("BgColor");
+            }
+        }
 
-        public Font TextFont { get; set; }
+        public Point TextLocation
+        {
+            get { return textLocation; }
+            set
+            {
+                this.textLocation = value;
+                RaisePropertyChanged("TextLocation");
+            }
+        }
 
-        public Size TextSize { get; set; }
+        public Font TextFont
+        {
+            get { return textFont; }
+            set
+            {
+                this.textFont = value;
+                RaisePropertyChanged("TextFont");
+            }
+        }
+
+        public Size TextSize
+        {
+            get { return textSize; }
+            set
+            {
+                this.textSize = value;
+                RaisePropertyChanged("TextSize");
+            }
+        }
     }
 }

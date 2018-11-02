@@ -17,9 +17,12 @@ namespace TextThreadProgram
         private SearchDialog searchDialog;
         private OathDialog oathDialog;
         private AboutDialog aboutDialog;
-        private Boolean isTyping;
         private Text currentText;
-        private Text movingText;
+        private bool isTyping;
+        private bool isDrawing;
+        private bool isMoving;
+        private bool mouseIsDown;
+
 
         public MainForm()
         {
@@ -28,66 +31,22 @@ namespace TextThreadProgram
             document = new Document();
             searchDialog = new SearchDialog();
             isTyping = false;
-            currentText = new Text("", this.Font, Color.Black, Color.Red, new Point(0, 0), new Size(50, 50));
-        }
-
-        // key processing
-        private void ChangeLocation(Keys key)
-        {
-            //  it should be the text location  but I'm not sure its working, the text doesn't move
-            Point location = currentText.TextLocation;
-            //Handle arrow keys
-            switch (key)
-            {
-                case Keys.Up:
-                    --location.Y;
-                    break;
-
-                case Keys.Left:
-                    --location.X;
-                    break;
-
-                case Keys.Down:
-                    ++location.Y;
-                    break;
-
-                case Keys.Right:
-                    ++location.X;
-                    break;
-            }
-            currentText.TextLocation = location;
-        }
-
-        protected override bool IsInputKey(Keys keyData)
-        {
-            switch (keyData)
-            {
-                case Keys.Up:
-                case Keys.Left:
-                case Keys.Down:
-                case Keys.Right:
-                    return true; // ould be false, at this point too tired to tell the difference
-            }
-            return base.IsInputKey(keyData);
+            isDrawing = false;
+            isMoving = false;
+            mouseIsDown = false;
+            currentText = GetCurrentText();
+            DoubleBuffered = true;
         }
 
         //Event handler for caps lock status strip  label
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
-            
             if ((e.KeyCode & Keys.KeyCode) == Keys.CapsLock)
             {
                 if (Control.IsKeyLocked(Keys.CapsLock))
                     this.capsLockStatusStrip.Text = "Caps Lock: ON";
                 else
                     this.capsLockStatusStrip.Text = "Caps Lock: OFF";
-            } //also tried if (IsInputKey(e.KeyCode))
-            else if (e.KeyData == Keys.Up
-                  || e.KeyData == Keys.Left
-                  || e.KeyData == Keys.Down
-                  || e.KeyData == Keys.Right)
-            {
-                ChangeLocation(e.KeyCode);
             }
         }
 
@@ -107,7 +66,7 @@ namespace TextThreadProgram
                 // open modelessly
                 searchDialog.Show();
                 // open off of the main form
-                searchDialog.Location = new Point(this.Right, this.Top);
+                searchDialog.Location = new Point(this.Top, this.Right);
                 // make the main form the owner of this dialog
                 searchDialog.Owner = this;
             }
@@ -119,7 +78,7 @@ namespace TextThreadProgram
             using(StringFormat format = new StringFormat())
             {
                 format.Trimming = StringTrimming.Word;
-                this.mainPanel.CreateGraphics().DrawString(text.StringText, text.TextFont, Brushes.Aqua, new Rectangle(text.TextLocation, text.TextSize), format);
+                this.mainPanel.CreateGraphics().DrawString(text.StringText, text.TextFont, new SolidBrush(text.TextColor), new Rectangle(text.TextLocation, text.TextSize), format);
             }
         }
 
@@ -129,6 +88,37 @@ namespace TextThreadProgram
                 DrawText(text);
         }
 
+        /*
+         * FOR DATA BINDING: This is supposed to catch any incoming PropertyChanged events, 
+         * and update the current text. It casts the sender to a Text object because its sender
+         * is always the Text object that's currently in the TextOptions dialog, then updates
+         * e.PropertyName in the current text object.
+         */
+        private void TextPropertyChanged(Object sender, PropertyChangedEventArgs e)
+        {
+            Text newProp = (Text)sender;
+            switch (e.PropertyName)
+            {
+                case "StringText":
+                    currentText.StringText = newProp.StringText;
+                    break;
+                case "Z_Order":
+                    currentText.Z_Order = newProp.Z_Order;
+                    break;
+                case "Rotation":
+                    currentText.Rotation = newProp.Rotation;
+                    break;
+                case "TextFont":
+                    currentText.TextFont = newProp.TextFont;
+                    break;
+                case "TextColor":
+                    currentText.TextColor = newProp.TextColor;
+                    break;
+                case "TextLocation":
+                    currentText.TextLocation = newProp.TextLocation;
+                    break;
+            }
+        }
         private Text Contains(Document docu, MouseEventArgs e)
         {
             foreach (Text text in docu)
@@ -138,53 +128,116 @@ namespace TextThreadProgram
             return null;
         }
 
+        private void MoveText(int x, int y)
+        {
+            currentText.TextLocation = new Point(x, y);
+        }
 
-
-        private Boolean mouseIsDown = false;
         private void mainPanel_MouseDown(object sender, MouseEventArgs e)
         {
             mouseIsDown = true;
+            currentText = Contains(document, e); //Get clicked text
+            if ((currentText = Contains(document, e)) != null)
+            {
+                if (e.Button == MouseButtons.Left)
+                    isDrawing = true;
+                else
+                    new TextOptions(currentText).Show();
+            }
+            else
+            {
+                isDrawing = false;
+                currentText = GetCurrentText();
+            }
+
         }
 
         private void mainPanel_MouseMove(object sender, MouseEventArgs e)
         {
-            movingText = Contains(document, e);
-            if(mouseIsDown && movingText != null)
+            if(mouseIsDown && isDrawing)
             {
-                movingText.TextLocation = new Point(e.X, e.Y);
-                ReDrawDocument(document);
+                isMoving = true;
+                MoveText(e.X, e.Y);
                 this.mainPanel.Invalidate();
-                this.Invalidate();
             }
         }
 
         private void mainPanel_MouseUp(object sender, MouseEventArgs e)
         {
-            mouseIsDown = false;
+            if (isDrawing && isMoving)
+            {
+                mouseIsDown = false;
+                isDrawing = false;
+                isMoving = false;
+                ReDrawDocument(document);
+            }
         }
 
-       
+        private Text GetCurrentText()
+        {
+            return new Text("", new Font("Times New Roman", 20.0f), Color.Black, Color.Red, new Point(0, 0), new Size(100, 100));
+        }
+
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            base.OnKeyDown(e);
+            Console.WriteLine("isDrawing=" + isDrawing + " isMoving=" + isMoving + "mouseIsDown=" + mouseIsDown);
+            if (isDrawing)
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.Left:
+                        MoveText(currentText.TextLocation.X - 10, currentText.TextLocation.Y);
+                        ReDrawDocument(document);
+                        Console.WriteLine("Drawed");
+                        break;
+                    case Keys.Right:
+                        MoveText(currentText.TextLocation.X + 10, currentText.TextLocation.Y);
+                        ReDrawDocument(document);
+                        Console.WriteLine("Drawed");
+
+                        break;
+                    case Keys.Up:
+                        MoveText(currentText.TextLocation.X, currentText.TextLocation.Y - 10);
+                        ReDrawDocument(document);
+                        Console.WriteLine("Drawed");
+
+                        break;
+                    case Keys.Down:
+                        MoveText(currentText.TextLocation.X, currentText.TextLocation.Y + 10);
+                        ReDrawDocument(document);
+                        Console.WriteLine("Drawed");
+
+                        break;
+                }
+            }
+        }
+
+        protected override void OnKeyUp(KeyEventArgs e)
+        {
+            base.OnKeyUp(e);
+        }
 
         private void mainPanel_MouseClick(object sender, MouseEventArgs e)
         {
-            //Toggle
             if (isTyping)
             {
                 document.Add(currentText);
-                currentText = new Text("", this.Font, Color.Black, Color.Red, new Point(0, 0), new Size(50, 50));
-                Console.WriteLine("Size of document = " + document.Count);
+                currentText = GetCurrentText();
             }
-            isTyping = !isTyping;
+            isTyping = !isTyping; //Toggle
 
-            currentText.TextLocation = new Point(e.X, e.Y);
+            if(currentText != null)
+                currentText.TextLocation = new Point(e.X, e.Y);
         }
 
         private void MainForm_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (isTyping)
+            if (isTyping && currentText != null)
             {
                 currentText.StringText += e.KeyChar;
-                DrawText(currentText);
+                document.Add(currentText);
+                ReDrawDocument(document);
             }
         }
 
@@ -222,7 +275,12 @@ namespace TextThreadProgram
                 MessageBox.Show("Failed to save file");
         }
 
-        private void oathDialogToolStripMenuItem_Click(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void oathToolStripMenuItem_Click(object sender, EventArgs e)
         {
             oathDialog = new OathDialog();
             oathDialog.Owner = this;        // the main form is the owner of the oath dialog  
@@ -234,7 +292,7 @@ namespace TextThreadProgram
             oathDialog.ShowDialog();        // open modally
         }
 
-        private void aboutDialogToolStripMenuItem_Click(object sender, EventArgs e)
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             aboutDialog = new AboutDialog();
             aboutDialog.Owner = this;        // the main form is the owner of the about dialog  

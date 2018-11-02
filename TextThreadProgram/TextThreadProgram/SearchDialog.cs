@@ -10,14 +10,113 @@ using System.Windows.Forms;
 using ControlLibrary;
 using System.IO;
 using System.Diagnostics;
+using System.Threading;
 
 namespace TextThreadProgram
 {
     public partial class SearchDialog : BaseDialogForm
     {
+
+        struct ThreadInfo
+        {
+            public string extension;
+        }
+        private ThreadInfo threadInfo;
+
+
         public SearchDialog()
         {
             InitializeComponent();
+        }
+
+        private void Search(string extension)
+        {
+            int index = 1;
+            foreach (String drive in Directory.GetLogicalDrives())
+            {
+                DirectoryInfo[] directories = getDirectories(drive);
+                for(int i = 0; i < directories.Length; ++i)
+                {
+                    if (!this.searchBackgroundWorker.CancellationPending)
+                    {
+                        this.searchBackgroundWorker.ReportProgress(index++ * 100 / directories.Length);
+                        FindFiles(directories[i], extension);
+                    }
+                }
+            }
+        }
+
+        private void FindFiles(DirectoryInfo dir, string extension)
+        {
+            try
+            {
+                DirectoryInfo[] children = getDirectories(dir);
+                if (children.Length > 0)
+                {
+                    foreach (DirectoryInfo child in children)
+                    {
+                        FindFiles(child, extension);
+                    }
+                }
+                else
+                {
+                    FileInfo[] Files = dir.GetFiles(extension);
+                    if (Files.Length > 0)
+                    {
+                        for(int x = 0; x < Files.Length; ++x)
+                        {
+                            AddToList(Files[x].FullName);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.Message);
+            }
+        }
+
+        public DirectoryInfo[] getDirectories(DirectoryInfo dir)
+        {
+            if (AttrOn(dir.Attributes, FileAttributes.Offline))
+            {
+                return new DirectoryInfo[] { };
+            }
+            if (!dir.Exists)
+            {
+                return new DirectoryInfo[] { };
+            }
+            try
+            {
+                return dir.GetDirectories();
+            }
+            catch (Exception ex)
+            {
+                return new DirectoryInfo[] { };
+            }
+        }
+
+        private bool AttrOn(FileAttributes attr, FileAttributes field)
+        {
+            return (attr & field) == field;
+        }
+
+        public DirectoryInfo[] getDirectories(String strDrive)
+        {
+            DirectoryInfo dir = new DirectoryInfo(strDrive);
+            return getDirectories(dir);
+        }
+
+
+        void AddToList(string item)
+        {
+            if (this.listBoxAllFiles.InvokeRequired)
+                this.listBoxAllFiles.Invoke((MethodInvoker)delegate ()
+                {
+                    AddToList(item);
+                });
+            else
+                this.listBoxAllFiles.Items.Add(item);
         }
 
         private void startSearchBttn_Click(object sender, EventArgs e)
@@ -27,8 +126,13 @@ namespace TextThreadProgram
             stopSearchBttn.Enabled = true;
             pauseSearchBttn.Enabled = true;
             startSearchBttn.Enabled = false;
-            
+
+            string selectedExtension = "*" + comboBoxExtension.SelectedItem.ToString();
+
+            threadInfo.extension = selectedExtension;
+            this.searchBackgroundWorker.RunWorkerAsync(threadInfo);
         }
+
 
         private void stopSearchBttn_Click(object sender, EventArgs e)
         {
@@ -37,6 +141,10 @@ namespace TextThreadProgram
             startSearchBttn.Enabled = true;
             stopSearchBttn.Enabled = false;
             pauseSearchBttn.Enabled = false;
+
+            if (this.searchBackgroundWorker.IsBusy)
+                this.searchBackgroundWorker.CancelAsync();
+
         }
 
         private void pauseSearchBttn_Click(object sender, EventArgs e)
@@ -49,8 +157,6 @@ namespace TextThreadProgram
                 // but there might be a need to stop
                 startSearchBttn.Enabled = false;
                 stopSearchBttn.Enabled = true;
-
-                // add code here to stop searching
             }
             else // it says continue search
             {
@@ -75,88 +181,15 @@ namespace TextThreadProgram
             // make sure to stop search if the form is closed
         }
 
-        // helper methods for searching from the text file from website
-
-        //you will need System.IO and System.Diagnostics
-        //Change the configuration to Debug to see a list of folders that are being read.
-        //Change to release to see just the folders that cannot be read.
-        //The search will be faster in Release configuration
-
-        private void Search()
+        private void searchBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            foreach (String drive in Directory.GetLogicalDrives())
-            {
-                Debug.WriteLine(drive);
-                foreach (DirectoryInfo child in getDirectories(drive))
-                {
-                    Debug.WriteLine(child.FullName);
-                    FindFiles(child);
-                }
-            }
+            ThreadInfo arg = (ThreadInfo)e.Argument;
+            Search(arg.extension);
         }
 
-        private void FindFiles(DirectoryInfo dir)
+        private void searchBackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            try
-            {
-                DirectoryInfo[] children = getDirectories(dir);
-                if (children.Length > 0)
-                {
-                    foreach (DirectoryInfo child in children)
-                    {
-                        Debug.WriteLine(child.FullName);
-                        FindFiles(child);
-                    }
-                }
-                else
-                {
-                    FileInfo[] Files = dir.GetFiles(comboBoxExtension.Text);
-                    if (Files.Length > 0)
-                    {
-                        //Found some files.
-                        //add to listbox something
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Console.WriteLine(ex.Message);
-            }
-        }
-
-        private bool AttrOn(FileAttributes attr, FileAttributes field)
-        {
-            return (attr & field) == field;
-        }
-
-        public DirectoryInfo[] getDirectories(DirectoryInfo dir)
-        {
-            if (AttrOn(dir.Attributes, FileAttributes.Offline))
-            {
-                Console.Out.WriteLine(dir.Name + " is not mapped ");
-                return new DirectoryInfo[] { };
-            }
-            if (!dir.Exists)
-            {
-                Console.Out.WriteLine(dir.Name + " does not exist ");
-                return new DirectoryInfo[] { };
-            }
-            try
-            {
-                return dir.GetDirectories();
-            }
-            catch (Exception ex)
-            {
-                Console.Out.WriteLine(ex.Message);
-                Console.Out.WriteLine(ex.StackTrace);
-                return new DirectoryInfo[] { };
-            }
-        }
-
-        public DirectoryInfo[] getDirectories(String strDrive)
-        {
-            DirectoryInfo dir = new DirectoryInfo(strDrive);
-            return getDirectories(dir);
+            this.progressBar.Value = e.ProgressPercentage;
         }
     }
 }
