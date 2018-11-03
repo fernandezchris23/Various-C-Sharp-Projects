@@ -76,8 +76,7 @@ namespace TextThreadProgram
                     propertyTextBox.DataBindings.Add(binding);
                     propertyTextBox.BackColor = Color.White;
                     break;
-            }
-                    
+            }    
         }
 
         private void changeButton_Click(object sender, EventArgs e)

@@ -339,7 +339,7 @@ namespace TextThreadProgram
 
         private Text GetCurrentText()
         {
-            return new Text("", new Font("Times New Roman", 20.0f), Color.Black, Color.Red, new Point(0, 0), new Size(100, 100));
+            return new Text("", new Font("Times New Roman", 20.0f), Color.Black, Color.White, new Point(0, 0), new Size(100, 100));
         }
 
         private void DrawText(Text text)
@@ -347,6 +347,9 @@ namespace TextThreadProgram
             using (StringFormat format = new StringFormat())
             {
                 format.Trimming = StringTrimming.Word;
+                text.TextSize = new Size(((int)this.mainPanel.CreateGraphics().MeasureString(text.StringText, text.TextFont).Width) + 1, 
+                                         ((int)this.mainPanel.CreateGraphics().MeasureString(text.StringText, text.TextFont).Height) + 1); //+ 1 needed or else last letter will be cut off
+                this.mainPanel.CreateGraphics().FillRectangle(new SolidBrush(text.BgColor), new Rectangle(text.TextLocation, text.TextSize));
                 this.mainPanel.CreateGraphics().DrawString(text.StringText, text.TextFont, new SolidBrush(text.TextColor), new Rectangle(text.TextLocation, text.TextSize), format);
             }
         }
@@ -369,11 +372,6 @@ namespace TextThreadProgram
         private void mainPanel_Paint(object sender, PaintEventArgs e)
         {
             ReDrawDocument(document);
-        }
-
-        private void SetBindings(Text data)
-        {
-            //this.DataBindings.Add("")
         }
 
         private void OwnedFormClosed(object dialog, FormClosedEventArgs e)

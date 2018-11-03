@@ -53,19 +53,12 @@ namespace TextThreadProgram
         }
 
         private string stringText;
-
         private int zOrder;
-
         private float rotation;
-
         private Color textColor;
-
         private Color bgColor;
-
         private Point textLocation;
-
         private Font textFont;
-
         private Size textSize;
 
         public string StringText
