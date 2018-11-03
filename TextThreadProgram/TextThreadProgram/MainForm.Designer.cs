@@ -105,8 +105,10 @@
             // closeAltF4ToolStripMenuItem
             // 
             this.closeAltF4ToolStripMenuItem.Name = "closeAltF4ToolStripMenuItem";
+            this.closeAltF4ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
             this.closeAltF4ToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.closeAltF4ToolStripMenuItem.Text = "Close (Alt+F4)";
+            this.closeAltF4ToolStripMenuItem.Text = "Close";
+            this.closeAltF4ToolStripMenuItem.Click += new System.EventHandler(this.closeAltF4ToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -123,18 +125,21 @@
             this.cutCtrlXToolStripMenuItem.Name = "cutCtrlXToolStripMenuItem";
             this.cutCtrlXToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cutCtrlXToolStripMenuItem.Text = "Cut (Ctrl+X)";
+            this.cutCtrlXToolStripMenuItem.Click += new System.EventHandler(this.cutCtrlXToolStripMenuItem_Click);
             // 
             // copyCtrlCToolStripMenuItem
             // 
             this.copyCtrlCToolStripMenuItem.Name = "copyCtrlCToolStripMenuItem";
             this.copyCtrlCToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.copyCtrlCToolStripMenuItem.Text = "Copy (Ctrl+C)";
+            this.copyCtrlCToolStripMenuItem.Click += new System.EventHandler(this.copyCtrlCToolStripMenuItem_Click);
             // 
             // pasteCtrlVToolStripMenuItem
             // 
             this.pasteCtrlVToolStripMenuItem.Name = "pasteCtrlVToolStripMenuItem";
             this.pasteCtrlVToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.pasteCtrlVToolStripMenuItem.Text = "Paste (Ctrl+V)";
+            this.pasteCtrlVToolStripMenuItem.Click += new System.EventHandler(this.pasteCtrlVToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -149,21 +154,21 @@
             // searchToolStripMenuItem
             // 
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.searchToolStripMenuItem.Text = "Search";
             this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
             // 
             // oathToolStripMenuItem
             // 
             this.oathToolStripMenuItem.Name = "oathToolStripMenuItem";
-            this.oathToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.oathToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.oathToolStripMenuItem.Text = "Oath";
             this.oathToolStripMenuItem.Click += new System.EventHandler(this.oathToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -192,6 +197,7 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(582, 318);
             this.mainPanel.TabIndex = 2;
+            this.mainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.mainPanel_Paint);
             this.mainPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mainPanel_MouseClick);
             this.mainPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainPanel_MouseDown);
             this.mainPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mainPanel_MouseMove);

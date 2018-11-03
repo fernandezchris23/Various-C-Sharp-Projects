@@ -16,9 +16,13 @@ namespace TextThreadProgram
         public const string CAPS_OFF = "Caps Lock: OFF";
 
         private string fileFilter;
+
         private Document document;
         private Text currentText;
         private Text selectedText;
+        private Text copiedText;
+        private Text oldRightClickText;
+        private Text newRightClickText;
 
         private bool isTyping;
         private bool isDrawing;
@@ -89,16 +93,15 @@ namespace TextThreadProgram
             if ((currentText = Contains(document, e)) != null)
             {
                 if (e.Button == MouseButtons.Right)
-                    openTextOptions();
+                {
+                    selectedText = document.GetText(new Point(e.X, e.Y));
+                    openTextOptions(e);
+                }
                 else
                 {
                     isSelected = true;
                     selectedText = document.GetText(new Point(e.X, e.Y));
-                }       
-            }
-            else
-            {
-                currentText = GetCurrentText();
+                }
             }
 
         }
@@ -117,31 +120,31 @@ namespace TextThreadProgram
         {
             if (isSelected && isMoving)
             {
-                mouseIsDown = false;
-                isDrawing = false;
-                isMoving = false;
-                isSelected = false;
                 ReDrawDocument(document);
-                selectedText = null;
             }
+            mouseIsDown = false;
+            isDrawing = false;
+            isMoving = false;
+            isSelected = false;
         }
 
         private void mainPanel_MouseClick(object sender, MouseEventArgs e)
         {
-            if (isTyping)
+            if ((currentText = Contains(document, e)) == null)
             {
+                currentText = GetCurrentText();
                 currentText.Z_Order = numText++;
                 document.Add(currentText);
                 currentText = GetCurrentText();
+            }
+            else
+            {
+                return;
             }
             isTyping = !isTyping; //Toggle
 
             if (currentText != null)
                 currentText.TextLocation = new Point(e.X, e.Y);
-            else
-            {
-
-            }
         }
 
         private void openCtrlToolStripMenuItem_Click(object sender, EventArgs e)
@@ -157,7 +160,7 @@ namespace TextThreadProgram
             if ((temp = Serializer.Deserialize(openFileDialog.FileName)) != null)
             {
                 document = (Document)temp;
-                ReDrawDocument(document);
+                mainPanel.Invalidate();
             }
             else
                 MessageBox.Show("Failed to load file");
@@ -244,10 +247,60 @@ namespace TextThreadProgram
             }
         }
 
+        //Cut, Copy, Paste still broken
+        private void cutCtrlXToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (selectedText != null)
+            {
+                copiedText = selectedText;
+                document.RemoveItem(selectedText);
+                this.mainPanel.Invalidate();
+                ReDrawDocument(document);
+                selectedText = null;
+                Clipboard.Clear();
+            }
+        }
+
+        private void copyCtrlCToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (selectedText != null)
+            {
+                copiedText = selectedText;
+                Clipboard.Clear();
+            }
+        }
+
+        private void pasteCtrlVToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Clipboard.GetText() != null
+            if (false)
+            {
+                string clipboardText = Clipboard.GetText();
+
+                currentText = GetCurrentText();
+                currentText.StringText = clipboardText;
+
+                currentText.Z_Order = numText++;
+                document.Add(currentText);
+                this.mainPanel.Invalidate();
+                ReDrawDocument(document);
+            }
+            else
+            {
+                copiedText.Z_Order = numText++;
+                document.Add(copiedText);
+                mainPanel.Invalidate();
+            }
+        }
+
+        private void closeAltF4ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         protected override void OnKeyDown(KeyEventArgs e)
         {
             base.OnKeyDown(e);
-            Console.WriteLine("isDrawing=" + isDrawing + " isMoving=" + isMoving + "mouseIsDown=" + mouseIsDown);
             if (isDrawing)
             {
                 switch (e.KeyCode)
@@ -313,6 +366,11 @@ namespace TextThreadProgram
             return null;
         }
 
+        private void mainPanel_Paint(object sender, PaintEventArgs e)
+        {
+            ReDrawDocument(document);
+        }
+
         private void SetBindings(Text data)
         {
             //this.DataBindings.Add("")
@@ -338,12 +396,15 @@ namespace TextThreadProgram
             }
         }
 
-        private void openTextOptions()
+        private void openTextOptions(MouseEventArgs e)
         {
             if (!isTextOptions)
             {
+                oldRightClickText = document.GetText(new Point(e.X, e.Y));
+                newRightClickText = oldRightClickText;
                 isTextOptions = true;
-                TextOptions textOptionsDialog = new TextOptions();
+                TextOptions textOptionsDialog = new TextOptions(newRightClickText);
+                textOptionsDialog.applyBttnClick += new EventHandler(updateText);
                 textOptionsDialog.FormClosed += new FormClosedEventHandler(OwnedFormClosed);
 
                 // open modelessly
@@ -356,6 +417,13 @@ namespace TextThreadProgram
             {
                 return;
             }
+        }
+
+        private void updateText(object sender, EventArgs e)
+        {
+            document.RemoveItem(oldRightClickText);
+            document.AddItem(newRightClickText);
+            mainPanel.Invalidate();
         }
     }
 }

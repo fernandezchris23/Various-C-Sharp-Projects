@@ -51,36 +51,42 @@
             "Z-Order",
             "Rotation",
             "Location"});
-            this.comboBox1.Location = new System.Drawing.Point(67, 130);
+            this.comboBox1.Location = new System.Drawing.Point(50, 106);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(133, 24);
+            this.comboBox1.Size = new System.Drawing.Size(101, 21);
             this.comboBox1.TabIndex = 0;
             this.comboBox1.Text = "Choose Property...";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // applyButton
             // 
-            this.applyButton.Location = new System.Drawing.Point(237, 181);
+            this.applyButton.Location = new System.Drawing.Point(178, 147);
+            this.applyButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.applyButton.Name = "applyButton";
-            this.applyButton.Size = new System.Drawing.Size(89, 30);
+            this.applyButton.Size = new System.Drawing.Size(67, 24);
             this.applyButton.TabIndex = 1;
             this.applyButton.Text = "Apply";
             this.applyButton.UseVisualStyleBackColor = true;
+            this.applyButton.Click += new System.EventHandler(this.applyButton_Click);
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(344, 181);
+            this.cancelButton.Location = new System.Drawing.Point(258, 147);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(89, 30);
+            this.cancelButton.Size = new System.Drawing.Size(67, 24);
             this.cancelButton.TabIndex = 2;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // okayButton
             // 
-            this.okayButton.Location = new System.Drawing.Point(130, 181);
+            this.okayButton.Location = new System.Drawing.Point(98, 147);
+            this.okayButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.okayButton.Name = "okayButton";
-            this.okayButton.Size = new System.Drawing.Size(89, 30);
+            this.okayButton.Size = new System.Drawing.Size(67, 24);
             this.okayButton.TabIndex = 3;
             this.okayButton.Text = "Okay";
             this.okayButton.UseVisualStyleBackColor = true;
@@ -88,16 +94,21 @@
             // 
             // propertyTextBox
             // 
-            this.propertyTextBox.Location = new System.Drawing.Point(221, 132);
+            this.propertyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.propertyTextBox.Location = new System.Drawing.Point(166, 107);
+            this.propertyTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.propertyTextBox.Name = "propertyTextBox";
-            this.propertyTextBox.Size = new System.Drawing.Size(131, 22);
+            this.propertyTextBox.Size = new System.Drawing.Size(99, 20);
             this.propertyTextBox.TabIndex = 4;
             // 
             // changeButton
             // 
-            this.changeButton.Location = new System.Drawing.Point(383, 130);
+            this.changeButton.Location = new System.Drawing.Point(287, 106);
+            this.changeButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.changeButton.Name = "changeButton";
-            this.changeButton.Size = new System.Drawing.Size(89, 30);
+            this.changeButton.Size = new System.Drawing.Size(67, 24);
             this.changeButton.TabIndex = 5;
             this.changeButton.Text = "Change...";
             this.changeButton.UseVisualStyleBackColor = true;
@@ -105,16 +116,18 @@
             // 
             // TextOptions
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(539, 341);
+            this.ClientSize = new System.Drawing.Size(404, 277);
             this.Controls.Add(this.changeButton);
             this.Controls.Add(this.propertyTextBox);
             this.Controls.Add(this.okayButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.applyButton);
             this.Controls.Add(this.comboBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "TextOptions";
             this.Text = "Text Options";
             this.Controls.SetChildIndex(this.comboBox1, 0);

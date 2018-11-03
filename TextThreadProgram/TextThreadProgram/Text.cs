@@ -1,11 +1,12 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.Serialization;
 
 namespace TextThreadProgram
 {
     [Serializable()]
-    public class Text : ISerializable
+    public class Text : ISerializable, INotifyPropertyChanged
     {
         public Text(string stringText, Font textFont, Color textColor, Color bgColor, Point textLocation, Size textSize)
         {
@@ -51,20 +52,195 @@ namespace TextThreadProgram
             info.AddValue("emSize", TextFont.Size);
         }
 
-        public string StringText { get; set; }
+        private string stringText;
 
-        public int Z_Order { get; set; }
+        private int zOrder;
 
-        public float Rotation { get; set; }
+        private float rotation;
 
-        public Color TextColor { get; set; }
+        private Color textColor;
 
-        public Color BgColor { get; set; }
+        private Color bgColor;
 
-        public Point TextLocation { get; set; }
+        private Point textLocation;
 
-        public Font TextFont { get; set; }
+        private Font textFont;
 
-        public Size TextSize { get; set; }
+        private Size textSize;
+
+        public string StringText
+        {
+            get { return stringText; }
+            set
+            {
+
+                if (stringText == value)
+                {
+                    return;
+                }
+                else
+                {
+                    stringText = value;
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this, new PropertyChangedEventArgs("StringText"));
+                    }
+                }
+            }
+        }
+
+        public int Z_Order
+        {
+            get { return zOrder; }
+            set
+            {
+
+                if (zOrder == value)
+                {
+                    return;
+                }
+                else
+                {
+                    zOrder = value;
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this, new PropertyChangedEventArgs("ZOrder"));
+                    }
+                }
+            }
+        }
+
+        public float Rotation
+        {
+            get { return rotation; }
+            set
+            {
+
+                if (rotation == value)
+                {
+                    return;
+                }
+                else
+                {
+                    rotation = value;
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this, new PropertyChangedEventArgs("Rotation"));
+                    }
+                }
+            }
+        }
+
+        public Color TextColor
+        {
+            get { return textColor; }
+            set
+            {
+
+                if (textColor == value)
+                {
+                    return;
+                }
+                else
+                {
+                    textColor = value;
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this, new PropertyChangedEventArgs("TextColor"));
+                    }
+                }
+            }
+        }
+
+        public Color BgColor
+        {
+            get { return bgColor; }
+            set
+            {
+
+                if (bgColor == value)
+                {
+                    return;
+                }
+                else
+                {
+                    bgColor = value;
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this, new PropertyChangedEventArgs("BgColor"));
+                    }
+                }
+            }
+        }
+
+        public Point TextLocation
+        {
+            get { return textLocation; }
+            set
+            {
+
+                if (textLocation == value)
+                {
+                    return;
+                }
+                else
+                {
+                    textLocation = value;
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this, new PropertyChangedEventArgs("TextLocation"));
+                    }
+                }
+            }
+        }
+
+        public Font TextFont
+        {
+            get { return textFont; }
+            set
+            {
+
+                if (textFont == value)
+                {
+                    return;
+                }
+                else
+                {
+                    textFont = value;
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this, new PropertyChangedEventArgs("TextFont"));
+                    }
+                }
+            }
+        }
+
+        public Size TextSize
+        {
+            get { return textSize; }
+            set
+            {
+
+                if (textSize == value)
+                {
+                    return;
+                }
+                else
+                {
+                    textSize = value;
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this, new PropertyChangedEventArgs("TextSize"));
+                    }
+                }
+            }
+        }
+
+        #region INotifyPropertyChanged Members
+
+        [field: NonSerialized]
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        #endregion
     }
 }
