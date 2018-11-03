@@ -166,24 +166,19 @@ namespace TextThreadProgram
             }
         }
 
+        public int TextLocationX { get; set; }
+        public int TextLocationY { get; set; }
+
         public Point TextLocation
         {
             get { return textLocation; }
             set
             {
-
-                if (textLocation == value)
-                {
-                    return;
-                }
-                else
-                {
-                    textLocation = value;
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this, new PropertyChangedEventArgs("TextLocation"));
-                    }
-                }
+                 textLocation = value;
+                 if (PropertyChanged != null)
+                 {
+                     PropertyChanged(this, new PropertyChangedEventArgs("TextLocation"));
+                 }
             }
         }
 

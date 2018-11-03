@@ -23,6 +23,7 @@ namespace TextThreadProgram
         private Text copiedText;
         private Text oldRightClickText;
         private Text newRightClickText;
+        private Graphics g;
 
         private bool isTyping;
         private bool isDrawing;
@@ -63,6 +64,7 @@ namespace TextThreadProgram
             {
                 this.capsLockStatusStrip.Text = CAPS_OFF;
             }
+            this.mainPanel.Invalidate();
         }
 
         //Event handler for caps lock status strip  label
@@ -346,11 +348,13 @@ namespace TextThreadProgram
         {
             using (StringFormat format = new StringFormat())
             {
+                g = this.mainPanel.CreateGraphics();
                 format.Trimming = StringTrimming.Word;
                 text.TextSize = new Size(((int)this.mainPanel.CreateGraphics().MeasureString(text.StringText, text.TextFont).Width) + 1, 
                                          ((int)this.mainPanel.CreateGraphics().MeasureString(text.StringText, text.TextFont).Height) + 1); //+ 1 needed or else last letter will be cut off
-                this.mainPanel.CreateGraphics().FillRectangle(new SolidBrush(text.BgColor), new Rectangle(text.TextLocation, text.TextSize));
-                this.mainPanel.CreateGraphics().DrawString(text.StringText, text.TextFont, new SolidBrush(text.TextColor), new Rectangle(text.TextLocation, text.TextSize), format);
+                g.RotateTransform(text.Rotation);
+                g.FillRectangle(new SolidBrush(text.BgColor), new Rectangle(text.TextLocation, text.TextSize));
+                g.DrawString(text.StringText, text.TextFont, new SolidBrush(text.TextColor), new Rectangle(text.TextLocation, text.TextSize), format);
             }
         }
 
@@ -422,6 +426,8 @@ namespace TextThreadProgram
             document.RemoveItem(oldRightClickText);
             document.AddItem(newRightClickText);
             mainPanel.Invalidate();
+
+            Console.WriteLine(newRightClickText.Rotation);
         }
     }
 }

@@ -23,6 +23,8 @@ namespace TextThreadProgram
             outOptions = text;
             InitializeComponent();
             propertyTextBox.Text = outOptions.StringText;
+            outOptions.TextLocationX = outOptions.TextLocation.X;
+            outOptions.TextLocationY = outOptions.TextLocation.Y;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -65,8 +67,11 @@ namespace TextThreadProgram
 
                 case "Location":
                     propertyTextBox.DataBindings.Clear();
-                    binding = new Binding("Text", outOptions, "TextLocation");
-                    propertyTextBox.DataBindings.Add(binding);
+                    binding = new Binding("Text", outOptions, "TextLocationX");
+                    label1.DataBindings.Add(binding);
+                    binding = new Binding("Text", outOptions, "TextLocationY");
+                    label2.DataBindings.Add(binding);
+                    propertyTextBox.Text = outOptions.TextLocationX + ", " + outOptions.TextLocationY;
                     propertyTextBox.BackColor = Color.White;
                     break;
 
@@ -105,18 +110,35 @@ namespace TextThreadProgram
 
         private void okayButton_Click(object sender, EventArgs e)
         {
+            if(comboBox1.Text == "Location")
+            {
+                updateLocation();
+            }
             applyBttnClick(this, EventArgs.Empty);
             this.Close();
         }
 
         private void applyButton_Click(object sender, EventArgs e)
         {
+            if (comboBox1.Text == "Location")
+            {
+                updateLocation();
+            }
             applyBttnClick(this, EventArgs.Empty);
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void updateLocation()
+        {
+            string[] coorParts = propertyTextBox.Text.Split(',');
+            outOptions.TextLocationX = Int32.Parse(coorParts[0]);
+            outOptions.TextLocationY = Int32.Parse(coorParts[1]);
+
+            outOptions.TextLocation = new Point(outOptions.TextLocationX, outOptions.TextLocationY);
         }
     }
 }
