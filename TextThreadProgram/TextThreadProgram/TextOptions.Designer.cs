@@ -51,16 +51,16 @@
             "Z-Order",
             "Rotation",
             "Location"});
-            this.comboBox1.Location = new System.Drawing.Point(56, 130);
+            this.comboBox1.Location = new System.Drawing.Point(67, 130);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(154, 24);
+            this.comboBox1.Size = new System.Drawing.Size(133, 24);
             this.comboBox1.TabIndex = 0;
             this.comboBox1.Text = "Choose Property...";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // applyButton
             // 
-            this.applyButton.Location = new System.Drawing.Point(247, 181);
+            this.applyButton.Location = new System.Drawing.Point(237, 181);
             this.applyButton.Name = "applyButton";
             this.applyButton.Size = new System.Drawing.Size(89, 30);
             this.applyButton.TabIndex = 1;
@@ -69,7 +69,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(354, 181);
+            this.cancelButton.Location = new System.Drawing.Point(344, 181);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(89, 30);
             this.cancelButton.TabIndex = 2;
@@ -78,7 +78,7 @@
             // 
             // okayButton
             // 
-            this.okayButton.Location = new System.Drawing.Point(140, 181);
+            this.okayButton.Location = new System.Drawing.Point(130, 181);
             this.okayButton.Name = "okayButton";
             this.okayButton.Size = new System.Drawing.Size(89, 30);
             this.okayButton.TabIndex = 3;
@@ -88,14 +88,14 @@
             // 
             // propertyTextBox
             // 
-            this.propertyTextBox.Location = new System.Drawing.Point(231, 132);
+            this.propertyTextBox.Location = new System.Drawing.Point(221, 132);
             this.propertyTextBox.Name = "propertyTextBox";
             this.propertyTextBox.Size = new System.Drawing.Size(131, 22);
             this.propertyTextBox.TabIndex = 4;
             // 
             // changeButton
             // 
-            this.changeButton.Location = new System.Drawing.Point(393, 130);
+            this.changeButton.Location = new System.Drawing.Point(383, 130);
             this.changeButton.Name = "changeButton";
             this.changeButton.Size = new System.Drawing.Size(89, 30);
             this.changeButton.TabIndex = 5;
