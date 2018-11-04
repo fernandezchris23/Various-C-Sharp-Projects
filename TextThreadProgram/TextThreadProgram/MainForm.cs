@@ -56,7 +56,7 @@ namespace TextThreadProgram
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            if(Control.IsKeyLocked(Keys.CapsLock))
+            if (Control.IsKeyLocked(Keys.CapsLock))
             {
                 this.capsLockStatusStrip.Text = CAPS_ON;
             }
@@ -76,6 +76,27 @@ namespace TextThreadProgram
                     this.capsLockStatusStrip.Text = CAPS_ON;
                 else
                     this.capsLockStatusStrip.Text = CAPS_OFF;
+            }
+
+            if (selectedText != null && (e.KeyCode & Keys.KeyCode) == Keys.Left)
+            {
+                document.moveText(selectedText, new Point(selectedText.TextLocation.X - 5, selectedText.TextLocation.Y));
+                mainPanel.Invalidate();
+            }
+            else if (selectedText != null && (e.KeyCode & Keys.KeyCode) == Keys.Right)
+            {
+                document.moveText(selectedText, new Point(selectedText.TextLocation.X + 5, selectedText.TextLocation.Y));
+                mainPanel.Invalidate();
+            }
+            else if (selectedText != null && (e.KeyCode & Keys.KeyCode) == Keys.Up)
+            {
+                document.moveText(selectedText, new Point(selectedText.TextLocation.X, selectedText.TextLocation.Y - 5));
+                mainPanel.Invalidate();
+            }
+            else if (selectedText != null && (e.KeyCode & Keys.KeyCode) == Keys.Down)
+            {
+                document.moveText(selectedText, new Point(selectedText.TextLocation.X, selectedText.TextLocation.Y + 5));
+                mainPanel.Invalidate();
             }
         }
 
@@ -105,7 +126,6 @@ namespace TextThreadProgram
                     selectedText = document.GetText(new Point(e.X, e.Y));
                 }
             }
-
         }
 
         private void mainPanel_MouseMove(object sender, MouseEventArgs e)
@@ -298,45 +318,6 @@ namespace TextThreadProgram
         private void closeAltF4ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        protected override void OnKeyDown(KeyEventArgs e)
-        {
-            base.OnKeyDown(e);
-            if (isDrawing)
-            {
-                switch (e.KeyCode)
-                {
-                    case Keys.Left:
-                       // MoveText(currentText.TextLocation.X - 10, currentText.TextLocation.Y);
-                        ReDrawDocument(document);
-                        Console.WriteLine("Drawed");
-                        break;
-                    case Keys.Right:
-                       // MoveText(currentText.TextLocation.X + 10, currentText.TextLocation.Y);
-                        ReDrawDocument(document);
-                        Console.WriteLine("Drawed");
-
-                        break;
-                    case Keys.Up:
-                      //  MoveText(currentText.TextLocation.X, currentText.TextLocation.Y - 10);
-                        ReDrawDocument(document);
-                        Console.WriteLine("Drawed");
-
-                        break;
-                    case Keys.Down:
-                       // MoveText(currentText.TextLocation.X, currentText.TextLocation.Y + 10);
-                        ReDrawDocument(document);
-                        Console.WriteLine("Drawed");
-
-                        break;
-                }
-            }
-        }
-
-        protected override void OnKeyUp(KeyEventArgs e)
-        {
-            base.OnKeyUp(e);
         }
 
         private Text GetCurrentText()
