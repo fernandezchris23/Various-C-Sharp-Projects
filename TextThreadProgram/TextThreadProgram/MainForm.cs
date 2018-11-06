@@ -9,6 +9,7 @@ namespace TextThreadProgram
         public const string CAPS_ON = "Caps Lock: ON";
         public const string CAPS_OFF = "Caps Lock: OFF";
 
+        private string filename;
         private string fileFilter;
 
         private Document document;
@@ -44,6 +45,27 @@ namespace TextThreadProgram
             currentText = GetCurrentText();
             DoubleBuffered = true;
             numText = 0;
+        }
+
+        public static MainForm CreateWindow(string filename)
+        {
+            if (!String.IsNullOrEmpty(filename))
+            {
+                foreach (MainForm form in Application.OpenForms)
+                {
+                    if (String.Compare(form.filename, filename, true) == 0) //Checks if file is already open
+                    {
+                        form.Activate();
+                        return form;
+                    }
+                }
+            }
+
+            MainForm newForm = new MainForm();
+            newForm.Show();
+            newForm.Text = "Untitled";
+            newForm.Activate();
+            return newForm;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -304,6 +326,11 @@ namespace TextThreadProgram
                 document.Add(copiedText);
                 mainPanel.Invalidate();
             }
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateWindow("");
         }
 
         private void closeAltF4ToolStripMenuItem_Click(object sender, EventArgs e)

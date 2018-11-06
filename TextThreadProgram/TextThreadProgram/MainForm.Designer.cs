@@ -81,6 +81,7 @@
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.newToolStripMenuItem.Text = "New";
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openCtrlToolStripMenuItem
             // 
@@ -123,21 +124,21 @@
             // cutCtrlXToolStripMenuItem
             // 
             this.cutCtrlXToolStripMenuItem.Name = "cutCtrlXToolStripMenuItem";
-            this.cutCtrlXToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cutCtrlXToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.cutCtrlXToolStripMenuItem.Text = "Cut (Ctrl+X)";
             this.cutCtrlXToolStripMenuItem.Click += new System.EventHandler(this.cutCtrlXToolStripMenuItem_Click);
             // 
             // copyCtrlCToolStripMenuItem
             // 
             this.copyCtrlCToolStripMenuItem.Name = "copyCtrlCToolStripMenuItem";
-            this.copyCtrlCToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.copyCtrlCToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.copyCtrlCToolStripMenuItem.Text = "Copy (Ctrl+C)";
             this.copyCtrlCToolStripMenuItem.Click += new System.EventHandler(this.copyCtrlCToolStripMenuItem_Click);
             // 
             // pasteCtrlVToolStripMenuItem
             // 
             this.pasteCtrlVToolStripMenuItem.Name = "pasteCtrlVToolStripMenuItem";
-            this.pasteCtrlVToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pasteCtrlVToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.pasteCtrlVToolStripMenuItem.Text = "Paste (Ctrl+V)";
             this.pasteCtrlVToolStripMenuItem.Click += new System.EventHandler(this.pasteCtrlVToolStripMenuItem_Click);
             // 
