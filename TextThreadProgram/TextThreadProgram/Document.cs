@@ -9,7 +9,7 @@ using System.Drawing;
 namespace TextThreadProgram
 {
     [Serializable()]
-    class Document:List<Text>, ISerializable
+    public class Document:List<Text>, ISerializable
     {
         private int numOfTextElem = 0;
 

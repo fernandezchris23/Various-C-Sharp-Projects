@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace TextThreadProgram
@@ -10,6 +11,7 @@ namespace TextThreadProgram
         public const string CAPS_OFF = "Caps Lock: OFF";
 
         private string filename;
+        private string fileName; //Used for filename with extension
         private string fileFilter;
 
         private Document document;
@@ -45,15 +47,17 @@ namespace TextThreadProgram
             currentText = GetCurrentText();
             DoubleBuffered = true;
             numText = 0;
+            filename = this.Text;
+            fileName = "";
         }
 
-        public static MainForm CreateWindow(string filename)
+        public static MainForm CreateWindow(string fname)
         {
-            if (!String.IsNullOrEmpty(filename))
+            if (!String.IsNullOrEmpty(fname))
             {
                 foreach (MainForm form in Application.OpenForms)
                 {
-                    if (String.Compare(form.filename, filename, true) == 0) //Checks if file is already open
+                    if (String.Compare(form.filename, fname, true) == 0) //Checks if file is already open
                     {
                         form.Activate();
                         return form;
@@ -65,6 +69,17 @@ namespace TextThreadProgram
             newForm.Show();
             newForm.Text = "Untitled";
             newForm.Activate();
+            return newForm;
+        }
+
+        public static MainForm OpenFileInNewWindow(Document doc, string fname)
+        {
+            MainForm newForm = new MainForm();
+            newForm.Show();
+            newForm.Text = Path.GetFileNameWithoutExtension(fname);
+            newForm.document = doc;
+            newForm.Activate();
+            newForm.mainPanel.Invalidate();
             return newForm;
         }
 
@@ -192,10 +207,11 @@ namespace TextThreadProgram
                 return;
 
             object temp;
+            Document doc;
             if ((temp = Serializer.Deserialize(openFileDialog.FileName)) != null)
             {
-                document = (Document)temp;
-                mainPanel.Invalidate();
+                doc = (Document)temp;
+                OpenFileInNewWindow(doc, openFileDialog.FileName);
             }
             else
                 MessageBox.Show("Failed to load file");
@@ -207,8 +223,31 @@ namespace TextThreadProgram
             saveFileDialog.Filter = fileFilter;
             saveFileDialog.Title = "Save file";
 
+            if(string.Equals(fileName, ""))
+            {
+                if (saveFileDialog.ShowDialog(this) != DialogResult.OK)
+                    return;
+                fileName = saveFileDialog.FileName;
+                this.Text = Path.GetFileNameWithoutExtension(saveFileDialog.FileName); //Used to update form title with name of file
+            }
+
+            if (Serializer.Serialize(fileName, document))
+                MessageBox.Show(saveFileDialog.FileName + " saved succesfully");
+            else
+                MessageBox.Show("Failed to save file");
+        }
+
+        private void saveAsCtrlShiftSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = fileFilter;
+            saveFileDialog.Title = "Save file as...";
+
             if (saveFileDialog.ShowDialog(this) != DialogResult.OK)
-                return;
+                   return;
+            fileName = saveFileDialog.FileName;
+
+            this.Text = Path.GetFileNameWithoutExtension(saveFileDialog.FileName); //Used to update form title with name of file
 
             if (Serializer.Serialize(saveFileDialog.FileName, document))
                 MessageBox.Show(saveFileDialog.FileName + " saved succesfully");
