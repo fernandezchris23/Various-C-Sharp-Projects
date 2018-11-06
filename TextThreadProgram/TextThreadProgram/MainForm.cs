@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TextThreadProgram
@@ -26,7 +20,6 @@ namespace TextThreadProgram
         private Graphics g;
 
         private bool isTyping;
-        private bool isDrawing;
         private bool isMoving;
         private bool isSelected;
         private bool mouseIsDown;
@@ -41,7 +34,6 @@ namespace TextThreadProgram
             fileFilter = "Files|*.ok";
             document = new Document();
             isTyping = false;
-            isDrawing = false;
             isMoving = false;
             isSelected = false;
             mouseIsDown = false;
@@ -145,7 +137,6 @@ namespace TextThreadProgram
                 ReDrawDocument(document);
             }
             mouseIsDown = false;
-            isDrawing = false;
             isMoving = false;
             isSelected = false;
         }
