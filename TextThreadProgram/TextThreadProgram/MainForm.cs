@@ -49,6 +49,7 @@ namespace TextThreadProgram
             numText = 0;
             filename = this.Text;
             fileName = "";
+            this.mainPanel.AllowDrop = true;
         }
 
         public static MainForm CreateWindow(string fname)
@@ -93,6 +94,7 @@ namespace TextThreadProgram
             {
                 this.capsLockStatusStrip.Text = CAPS_OFF;
             }
+
             this.mainPanel.Invalidate();
         }
 
@@ -217,34 +219,17 @@ namespace TextThreadProgram
                 MessageBox.Show("Failed to load file");
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = fileFilter;
-            saveFileDialog.Title = "Save file";
+       
 
-            if(string.Equals(fileName, ""))
-            {
-                if (saveFileDialog.ShowDialog(this) != DialogResult.OK)
-                    return;
-                fileName = saveFileDialog.FileName;
-                this.Text = Path.GetFileNameWithoutExtension(saveFileDialog.FileName); //Used to update form title with name of file
-            }
-
-            if (Serializer.Serialize(fileName, document))
-                MessageBox.Show(saveFileDialog.FileName + " saved succesfully");
-            else
-                MessageBox.Show("Failed to save file");
-        }
-
-        private void saveAsCtrlShiftSToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveFile()
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = fileFilter;
             saveFileDialog.Title = "Save file as...";
 
             if (saveFileDialog.ShowDialog(this) != DialogResult.OK)
-                   return;
+                return;
+
             fileName = saveFileDialog.FileName;
 
             this.Text = Path.GetFileNameWithoutExtension(saveFileDialog.FileName); //Used to update form title with name of file
@@ -253,6 +238,16 @@ namespace TextThreadProgram
                 MessageBox.Show(saveFileDialog.FileName + " saved succesfully");
             else
                 MessageBox.Show("Failed to save file");
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFile();
+        }
+
+        private void saveAsCtrlShiftSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFile();
         }
 
         private void searchToolStripMenuItem_Click(object sender, EventArgs e)
@@ -406,9 +401,17 @@ namespace TextThreadProgram
 
             StreamReader fileReader = new StreamReader(openFileDialog.FileName);
 
-            string[] arrayOfWords = fileReader.ReadToEnd().Split(' ', '\n');
+            //string[] arrayOfWords = fileReader.ReadToEnd().Split(' ', '\n');
+            string[] arrayOfWords = SplitString(fileReader.ReadToEnd());
 
-            foreach(string s in arrayOfWords)
+            AddStringsToDocument(arrayOfWords);
+
+            mainPanel.Invalidate();            
+        }
+
+        private void AddStringsToDocument(string[] arrayOfWords)
+        {
+            foreach (string s in arrayOfWords)
             {
                 //Create text objects
                 currentText = GetCurrentText();
@@ -416,7 +419,17 @@ namespace TextThreadProgram
                 currentText.StringText = s;
                 document.Add(currentText);
             }
-            mainPanel.Invalidate();            
+        }
+
+        /**
+         * Splits given parameter
+         **/
+        private string[] SplitString(string stringToSplit)
+        {
+            if (stringToSplit == null)
+                return null;
+
+            return stringToSplit.Split(' ', '\n');
         }
 
         private Text GetCurrentText()
@@ -456,6 +469,29 @@ namespace TextThreadProgram
         private void mainPanel_Paint(object sender, PaintEventArgs e)
         {
             ReDrawDocument(document);
+        }
+
+        private void mainPanel_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(typeof(string)))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void mainPanel_DragDrop(object sender, DragEventArgs e)
+        {
+            string data = (string)e.Data.GetData(typeof(string));
+            if(data != null)
+            {
+                //Split string into words and add it to the document
+                AddStringsToDocument(SplitString(data));
+                mainPanel.Invalidate();
+            }
         }
 
         private void OwnedFormClosed(object dialog, FormClosedEventArgs e)
