@@ -262,6 +262,7 @@ namespace TextThreadProgram
                 isSearch = true;
                 SearchDialog searchDialog = new SearchDialog();
                 searchDialog.FormClosed += new FormClosedEventHandler(OwnedFormClosed);
+                searchDialog.doubleClickItem += new EventHandler<MyEventArgs>(searchDlg_DoubleClickItem);
 
                 // open modelessly
                 searchDialog.Show();
@@ -275,6 +276,23 @@ namespace TextThreadProgram
             {
                 return;
             }
+        }
+
+        private void searchDlg_DoubleClickItem(object sender, MyEventArgs e)
+        {
+            StreamReader fileReader = new StreamReader(e.ListItemBeingPassed);
+
+            string[] arrayOfWords = fileReader.ReadToEnd().Split(' ', '\n');
+
+            foreach (string s in arrayOfWords)
+            {
+                //Create text objects
+                currentText = GetCurrentText();
+                currentText.Z_Order = numText++;
+                currentText.StringText = s;
+                document.Add(currentText);
+            }
+            mainPanel.Invalidate();
         }
 
         private void oathToolStripMenuItem_Click(object sender, EventArgs e)
