@@ -46,6 +46,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.capsLockStatusStrip = new System.Windows.Forms.ToolStripStatusLabel();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.importTextFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -69,6 +70,7 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newToolStripMenuItem,
             this.openCtrlToolStripMenuItem,
+            this.importTextFileToolStripMenuItem,
             this.saveToolStripMenuItem,
             this.saveAsCtrlShiftSToolStripMenuItem,
             this.closeAltF4ToolStripMenuItem});
@@ -210,6 +212,13 @@
             this.mainPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mainPanel_MouseMove);
             this.mainPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mainPanel_MouseUp);
             // 
+            // importTextFileToolStripMenuItem
+            // 
+            this.importTextFileToolStripMenuItem.Name = "importTextFileToolStripMenuItem";
+            this.importTextFileToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.importTextFileToolStripMenuItem.Text = "Import Text File";
+            this.importTextFileToolStripMenuItem.Click += new System.EventHandler(this.importTextFileToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -254,6 +263,7 @@
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.ToolStripMenuItem oathToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importTextFileToolStripMenuItem;
     }
 }
 

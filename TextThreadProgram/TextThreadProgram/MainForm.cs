@@ -377,6 +377,30 @@ namespace TextThreadProgram
             this.Close();
         }
 
+        private void importTextFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Files|*.txt";
+            openFileDialog.Title = "Select file to import";
+
+            if (openFileDialog.ShowDialog(this) != DialogResult.OK)
+                return;
+
+            StreamReader fileReader = new StreamReader(openFileDialog.FileName);
+
+            string[] arrayOfWords = fileReader.ReadToEnd().Split(' ', '\n');
+
+            foreach(string s in arrayOfWords)
+            {
+                //Create text objects
+                currentText = GetCurrentText();
+                currentText.Z_Order = numText++;
+                currentText.StringText = s;
+                document.Add(currentText);
+            }
+            mainPanel.Invalidate();            
+        }
+
         private Text GetCurrentText()
         {
             return new Text("", new Font("Times New Roman", 20.0f), Color.Black, Color.White, new Point(0, 0), new Size(100, 100));
