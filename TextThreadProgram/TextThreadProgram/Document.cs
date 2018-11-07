@@ -21,7 +21,9 @@ namespace TextThreadProgram
 
         public void RemoveItem(Text item)
         {
-            base.Remove(item);
+            base.RemoveAll(delegate (Text text) {
+                return text == item;
+            });
             if (numOfTextElem > 0)
             {
                 numOfTextElem--;

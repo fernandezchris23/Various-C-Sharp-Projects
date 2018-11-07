@@ -9,6 +9,7 @@ namespace TextThreadProgram
     {
         public const string CAPS_ON = "Caps Lock: ON";
         public const string CAPS_OFF = "Caps Lock: OFF";
+        public const string CLIPBOARD_FORMAT = "copiedData";
 
         private string filename;
         private string fileName; //Used for filename with extension
@@ -344,12 +345,13 @@ namespace TextThreadProgram
         {
             if (selectedText != null)
             {
-                copiedText = selectedText;
-                document.RemoveItem(selectedText);
-                this.mainPanel.Invalidate();
-                ReDrawDocument(document);
-                selectedText = null;
                 Clipboard.Clear();
+
+                copiedText = selectedText;
+                Clipboard.SetData(CLIPBOARD_FORMAT, copiedText);
+                selectedText = null;
+                document.RemoveItem(copiedText);
+                this.mainPanel.Invalidate();
             }
         }
 
@@ -357,15 +359,16 @@ namespace TextThreadProgram
         {
             if (selectedText != null)
             {
-                copiedText = selectedText;
                 Clipboard.Clear();
+
+                copiedText = selectedText;
+                Clipboard.SetData(CLIPBOARD_FORMAT, copiedText);
             }
         }
 
         private void pasteCtrlVToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Clipboard.GetText() != null
-            if (false)
+            if (!Clipboard.ContainsData(CLIPBOARD_FORMAT))
             {
                 string clipboardText = Clipboard.GetText();
 
@@ -375,10 +378,10 @@ namespace TextThreadProgram
                 currentText.Z_Order = numText++;
                 document.Add(currentText);
                 this.mainPanel.Invalidate();
-                ReDrawDocument(document);
             }
             else
             {
+                copiedText = (Text)Clipboard.GetData(CLIPBOARD_FORMAT);
                 copiedText.Z_Order = numText++;
                 document.Add(copiedText);
                 mainPanel.Invalidate();
