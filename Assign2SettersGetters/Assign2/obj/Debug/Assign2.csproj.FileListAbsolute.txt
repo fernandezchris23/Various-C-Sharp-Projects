@@ -1,0 +1,30 @@
+C:\Users\Mega Trainer\source\repos\Assign2\Assign2\bin\Debug\Assign2.exe.config
+C:\Users\Mega Trainer\source\repos\Assign2\Assign2\bin\Debug\Assign2.exe
+C:\Users\Mega Trainer\source\repos\Assign2\Assign2\bin\Debug\Assign2.pdb
+C:\Users\Mega Trainer\source\repos\Assign2\Assign2\obj\Debug\Assign2.csprojAssemblyReference.cache
+C:\Users\Mega Trainer\source\repos\Assign2\Assign2\obj\Debug\Assign2.Form1.resources
+C:\Users\Mega Trainer\source\repos\Assign2\Assign2\obj\Debug\Assign2.Properties.Resources.resources
+C:\Users\Mega Trainer\source\repos\Assign2\Assign2\obj\Debug\Assign2.csproj.GenerateResource.cache
+C:\Users\Mega Trainer\source\repos\Assign2\Assign2\obj\Debug\Assign2.csproj.CoreCompileInputs.cache
+C:\Users\Mega Trainer\source\repos\Assign2\Assign2\obj\Debug\Assign2.exe
+C:\Users\Mega Trainer\source\repos\Assign2\Assign2\obj\Debug\Assign2.pdb
+\\buffalo.cs.fiu.edu\homes\Desktop\Assign2\Assign2\bin\Debug\Assign2.exe.config
+\\buffalo.cs.fiu.edu\homes\Desktop\Assign2\Assign2\bin\Debug\Assign2.exe
+\\buffalo.cs.fiu.edu\homes\Desktop\Assign2\Assign2\bin\Debug\Assign2.pdb
+\\buffalo.cs.fiu.edu\homes\Desktop\Assign2\Assign2\obj\Debug\Assign2.csprojAssemblyReference.cache
+\\buffalo.cs.fiu.edu\homes\Desktop\Assign2\Assign2\obj\Debug\Assign2.Form1.resources
+\\buffalo.cs.fiu.edu\homes\Desktop\Assign2\Assign2\obj\Debug\Assign2.Properties.Resources.resources
+\\buffalo.cs.fiu.edu\homes\Desktop\Assign2\Assign2\obj\Debug\Assign2.csproj.GenerateResource.cache
+\\buffalo.cs.fiu.edu\homes\Desktop\Assign2\Assign2\obj\Debug\Assign2.csproj.CoreCompileInputs.cache
+\\buffalo.cs.fiu.edu\homes\Desktop\Assign2\Assign2\obj\Debug\Assign2.exe
+\\buffalo.cs.fiu.edu\homes\Desktop\Assign2\Assign2\obj\Debug\Assign2.pdb
+C:\Users\Nessy\source\repos\1808-uha-repo2\Assign2SettersGetters\Assign2\bin\Debug\Assign2.exe.config
+C:\Users\Nessy\source\repos\1808-uha-repo2\Assign2SettersGetters\Assign2\bin\Debug\Assign2.exe
+C:\Users\Nessy\source\repos\1808-uha-repo2\Assign2SettersGetters\Assign2\bin\Debug\Assign2.pdb
+C:\Users\Nessy\source\repos\1808-uha-repo2\Assign2SettersGetters\Assign2\obj\Debug\Assign2.csprojAssemblyReference.cache
+C:\Users\Nessy\source\repos\1808-uha-repo2\Assign2SettersGetters\Assign2\obj\Debug\Assign2.Form1.resources
+C:\Users\Nessy\source\repos\1808-uha-repo2\Assign2SettersGetters\Assign2\obj\Debug\Assign2.Properties.Resources.resources
+C:\Users\Nessy\source\repos\1808-uha-repo2\Assign2SettersGetters\Assign2\obj\Debug\Assign2.csproj.GenerateResource.cache
+C:\Users\Nessy\source\repos\1808-uha-repo2\Assign2SettersGetters\Assign2\obj\Debug\Assign2.csproj.CoreCompileInputs.cache
+C:\Users\Nessy\source\repos\1808-uha-repo2\Assign2SettersGetters\Assign2\obj\Debug\Assign2.exe
+C:\Users\Nessy\source\repos\1808-uha-repo2\Assign2SettersGetters\Assign2\obj\Debug\Assign2.pdb

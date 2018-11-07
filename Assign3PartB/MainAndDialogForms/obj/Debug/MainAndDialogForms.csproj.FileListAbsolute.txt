@@ -1,0 +1,55 @@
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\ControlLibraryAssign3\MainAndDialogForms\bin\Debug\PrefDialog.resx
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\ControlLibraryAssign3\MainAndDialogForms\bin\Debug\MainAndDialogForms.exe.config
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\ControlLibraryAssign3\MainAndDialogForms\bin\Debug\MainAndDialogForms.exe
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\ControlLibraryAssign3\MainAndDialogForms\bin\Debug\MainAndDialogForms.pdb
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\ControlLibraryAssign3\MainAndDialogForms\bin\Debug\ControlLibraryAssign3.dll
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\ControlLibraryAssign3\MainAndDialogForms\bin\Debug\ControlLibraryAssign3.pdb
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\ControlLibraryAssign3\MainAndDialogForms\obj\Debug\MainAndDialogForms.csprojAssemblyReference.cache
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\ControlLibraryAssign3\MainAndDialogForms\obj\Debug\MainAndDialogForms.Ellipse.resources
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\ControlLibraryAssign3\MainAndDialogForms\obj\Debug\MainAndDialogForms.MainForm.resources
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\ControlLibraryAssign3\MainAndDialogForms\obj\Debug\MainAndDialogForms.PrefDialog.resources
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\ControlLibraryAssign3\MainAndDialogForms\obj\Debug\MainAndDialogForms.Properties.Resources.resources
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\ControlLibraryAssign3\MainAndDialogForms\obj\Debug\MainAndDialogForms.RectangleForm.resources
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\ControlLibraryAssign3\MainAndDialogForms\obj\Debug\MainAndDialogForms.csproj.GenerateResource.cache
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\ControlLibraryAssign3\MainAndDialogForms\obj\Debug\MainAndDialogForms.csproj.CoreCompileInputs.cache
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\ControlLibraryAssign3\MainAndDialogForms\obj\Debug\MainAndDialogForms.csproj.CopyComplete
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\ControlLibraryAssign3\MainAndDialogForms\obj\Debug\MainAndDialogForms.exe
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\ControlLibraryAssign3\MainAndDialogForms\obj\Debug\MainAndDialogForms.pdb
+C:\Users\Nessy\source\repos\1808-uha-repo2\ControlLibraryAssign3 - Copy\MainAndDialogForms\bin\Debug\PrefDialog.resx
+C:\Users\Nessy\source\repos\1808-uha-repo2\ControlLibraryAssign3 - Copy\MainAndDialogForms\bin\Debug\MainAndDialogForms.exe.config
+C:\Users\Nessy\source\repos\1808-uha-repo2\ControlLibraryAssign3 - Copy\MainAndDialogForms\bin\Debug\MainAndDialogForms.exe
+C:\Users\Nessy\source\repos\1808-uha-repo2\ControlLibraryAssign3 - Copy\MainAndDialogForms\bin\Debug\MainAndDialogForms.pdb
+C:\Users\Nessy\source\repos\1808-uha-repo2\ControlLibraryAssign3 - Copy\MainAndDialogForms\bin\Debug\ControlLibraryAssign3.dll
+C:\Users\Nessy\source\repos\1808-uha-repo2\ControlLibraryAssign3 - Copy\MainAndDialogForms\bin\Debug\ControlLibraryAssign3.pdb
+C:\Users\Nessy\source\repos\1808-uha-repo2\ControlLibraryAssign3 - Copy\MainAndDialogForms\obj\Debug\MainAndDialogForms.csprojAssemblyReference.cache
+C:\Users\Nessy\source\repos\1808-uha-repo2\ControlLibraryAssign3 - Copy\MainAndDialogForms\obj\Debug\MainAndDialogForms.Ellipse.resources
+C:\Users\Nessy\source\repos\1808-uha-repo2\ControlLibraryAssign3 - Copy\MainAndDialogForms\obj\Debug\MainAndDialogForms.MainForm.resources
+C:\Users\Nessy\source\repos\1808-uha-repo2\ControlLibraryAssign3 - Copy\MainAndDialogForms\obj\Debug\MainAndDialogForms.PrefDialog.resources
+C:\Users\Nessy\source\repos\1808-uha-repo2\ControlLibraryAssign3 - Copy\MainAndDialogForms\obj\Debug\MainAndDialogForms.Properties.Resources.resources
+C:\Users\Nessy\source\repos\1808-uha-repo2\ControlLibraryAssign3 - Copy\MainAndDialogForms\obj\Debug\MainAndDialogForms.RectangleForm.resources
+C:\Users\Nessy\source\repos\1808-uha-repo2\ControlLibraryAssign3 - Copy\MainAndDialogForms\obj\Debug\MainAndDialogForms.csproj.GenerateResource.cache
+C:\Users\Nessy\source\repos\1808-uha-repo2\ControlLibraryAssign3 - Copy\MainAndDialogForms\obj\Debug\MainAndDialogForms.csproj.CoreCompileInputs.cache
+C:\Users\Nessy\source\repos\1808-uha-repo2\ControlLibraryAssign3 - Copy\MainAndDialogForms\obj\Debug\MainAndDialogForms.csproj.CopyComplete
+C:\Users\Nessy\source\repos\1808-uha-repo2\ControlLibraryAssign3 - Copy\MainAndDialogForms\obj\Debug\MainAndDialogForms.exe
+C:\Users\Nessy\source\repos\1808-uha-repo2\ControlLibraryAssign3 - Copy\MainAndDialogForms\obj\Debug\MainAndDialogForms.pdb
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\Assign3PartB\MainAndDialogForms\bin\Debug\PrefDialog.resx
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\Assign3PartB\MainAndDialogForms\bin\Debug\MainAndDialogForms.exe.config
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\Assign3PartB\MainAndDialogForms\bin\Debug\MainAndDialogForms.exe
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\Assign3PartB\MainAndDialogForms\bin\Debug\MainAndDialogForms.pdb
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\Assign3PartB\MainAndDialogForms\bin\Debug\ControlLibraryAssign3.dll
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\Assign3PartB\MainAndDialogForms\bin\Debug\ControlLibraryAssign3.pdb
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\Assign3PartB\MainAndDialogForms\obj\Debug\MainAndDialogForms.csprojAssemblyReference.cache
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\Assign3PartB\MainAndDialogForms\obj\Debug\MainAndDialogForms.Ellipse.resources
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\Assign3PartB\MainAndDialogForms\obj\Debug\MainAndDialogForms.MainForm.resources
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\Assign3PartB\MainAndDialogForms\obj\Debug\MainAndDialogForms.PrefDialog.resources
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\Assign3PartB\MainAndDialogForms\obj\Debug\MainAndDialogForms.Properties.Resources.resources
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\Assign3PartB\MainAndDialogForms\obj\Debug\MainAndDialogForms.RectangleForm.resources
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\Assign3PartB\MainAndDialogForms\obj\Debug\MainAndDialogForms.csproj.GenerateResource.cache
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\Assign3PartB\MainAndDialogForms\obj\Debug\MainAndDialogForms.csproj.CoreCompileInputs.cache
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\Assign3PartB\MainAndDialogForms\obj\Debug\MainAndDialogForms.csproj.CopyComplete
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\Assign3PartB\MainAndDialogForms\obj\Debug\MainAndDialogForms.exe
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\Assign3PartB\MainAndDialogForms\obj\Debug\MainAndDialogForms.pdb
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\Assign3PartB\MainAndDialogForms\obj\Debug\MainAndDialogForms.AboutDialog.resources
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\Assign3PartB\MainAndDialogForms\obj\Debug\MainAndDialogForms.OathDialog.resources
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\Assign3PartB\MainAndDialogForms\obj\Debug\MainAndDialogForms.LoginDialog.resources
+C:\Users\Nessy\Source\Repos\1808-uha-repo2\Assign3PartB\MainAndDialogForms\obj\Debug\MainAndDialogForms.CustomChild.resources

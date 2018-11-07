@@ -1,0 +1,12 @@
+C:\Users\Nessy\source\repos\1808-uha-repo2\ControlLibraryAssign3\ControlLibraryAssign3\obj\Debug\ControlLibraryAssign3.csprojAssemblyReference.cache
+C:\Users\Nessy\source\repos\1808-uha-repo2\ControlLibraryAssign3\ControlLibraryAssign3\obj\Debug\ControlLibraryAssign3.Properties.Resources.resources
+C:\Users\Nessy\source\repos\1808-uha-repo2\ControlLibraryAssign3\ControlLibraryAssign3\obj\Debug\ControlLibraryAssign3.csproj.GenerateResource.cache
+C:\Users\Nessy\source\repos\1808-uha-repo2\ControlLibraryAssign3\ControlLibraryAssign3\obj\Debug\ControlLibraryAssign3.csproj.CoreCompileInputs.cache
+C:\Users\Nessy\source\repos\1808-uha-repo2\ControlLibraryAssign3\ControlLibraryAssign3\obj\Debug\ControlLibraryAssign3.BaseForm.resources
+C:\Users\Nessy\source\repos\1808-uha-repo2\ControlLibraryAssign3\ControlLibraryAssign3\bin\Debug\ControlLibraryAssign3.dll
+C:\Users\Nessy\source\repos\1808-uha-repo2\ControlLibraryAssign3\ControlLibraryAssign3\bin\Debug\ControlLibraryAssign3.pdb
+C:\Users\Nessy\source\repos\1808-uha-repo2\ControlLibraryAssign3\ControlLibraryAssign3\obj\Debug\ControlLibraryAssign3.CourseUserControl.resources
+C:\Users\Nessy\source\repos\1808-uha-repo2\ControlLibraryAssign3\ControlLibraryAssign3\obj\Debug\ControlLibraryAssign3.NamesUserControl.resources
+C:\Users\Nessy\source\repos\1808-uha-repo2\ControlLibraryAssign3\ControlLibraryAssign3\obj\Debug\ControlLibraryAssign3.dll
+C:\Users\Nessy\source\repos\1808-uha-repo2\ControlLibraryAssign3\ControlLibraryAssign3\obj\Debug\ControlLibraryAssign3.pdb
+C:\Users\Nessy\source\repos\1808-uha-repo2\ControlLibraryAssign3\ControlLibraryAssign3\obj\Debug\ControlLibraryAssign3.DialogBaseForm.resources
