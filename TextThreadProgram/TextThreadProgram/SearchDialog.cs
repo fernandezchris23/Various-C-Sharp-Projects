@@ -20,6 +20,7 @@ namespace TextThreadProgram
 
         private string extension; //The selected extension
         private int numOfDir;
+        private int filesFound;
         private float numOfDirGoneThrough;
         private bool isPaused;
         private DirectoryInfo[] array; //Only used to get number of directories for progress bar
@@ -33,6 +34,7 @@ namespace TextThreadProgram
             isPaused = false;
             extension = "";
             array = null;
+            filesFound = 0;
         }
 
         private void Search()
@@ -48,7 +50,14 @@ namespace TextThreadProgram
                     while(isPaused) {} //Used to wait while paused
                     numOfDir = array.Length;
                     numOfDirGoneThrough += 0.5f;
-                    this.searchBackgroundWorker.ReportProgress((int)((numOfDirGoneThrough / (float)numOfDir) * 100));
+                    if ((int)((numOfDirGoneThrough / (float)numOfDir) * 100) > 100)
+                    {
+                        this.searchBackgroundWorker.ReportProgress(100);
+                    }
+                    else
+                    {
+                        this.searchBackgroundWorker.ReportProgress((int)((numOfDirGoneThrough / (float)numOfDir) * 100));
+                    }
                     FindFiles(child);
                 }
             }
@@ -130,7 +139,11 @@ namespace TextThreadProgram
                     AddToList(item);
                 });
             else
+            {
                 this.listBoxAllFiles.Items.Add(item);
+                filesFound++;
+            }
+                
         }
 
         private void startSearchBttn_Click(object sender, EventArgs e)
@@ -219,6 +232,7 @@ namespace TextThreadProgram
             stopSearchBttn.Enabled = false;
             pauseSearchBttn.Enabled = false;
             this.progressBar.Value = 100;
+            MessageBox.Show("Search Completed. Files found: " + filesFound);
         }
 
         private void listBoxAllFiles_MouseDoubleClick(object sender, MouseEventArgs e)
