@@ -4,11 +4,12 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace TextThreadProgram
 {
     [Serializable()]
-    class Document:List<Text>, ISerializable
+    public class Document:List<Text>, ISerializable
     {
         private int numOfTextElem = 0;
 
@@ -27,15 +28,21 @@ namespace TextThreadProgram
             }
         }
 
-        public Text GetText(int id)
+        public Text GetText(Point mouseLoc)
         {
             Text itemToReturn = null; //Should never return null because validation
+            int highestZorder = 0;
 
             base.ForEach(delegate(Text item)
                 {
-                    if (id == item.TextId)
+                    if ((mouseLoc.X >= item.TextLocation.X && (mouseLoc.X < item.TextLocation.X + item.TextSize.Width)) &&
+                         mouseLoc.Y >= item.TextLocation.Y && mouseLoc.Y <= (item.TextLocation.Y + item.TextSize.Height))
                     {
-                        itemToReturn = item;
+                        if(item.Z_Order >= highestZorder)
+                        {
+                            itemToReturn = item;
+                            highestZorder = item.Z_Order;
+                        }
                     }
                 });
             return itemToReturn;
@@ -44,6 +51,15 @@ namespace TextThreadProgram
         public int countTextElem()
         {
             return numOfTextElem;
+        }
+
+        public void moveText(Text item, Point newLocation)
+        {
+            RemoveItem(item);
+
+            item.TextLocation = newLocation;
+
+            AddItem(item);
         }
 
         public Document(SerializationInfo info, StreamingContext context)

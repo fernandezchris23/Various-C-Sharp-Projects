@@ -1,0 +1,16 @@
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\Multi-SDI Application\Multi-SDI Application\bin\Debug\Multi-SDI Application.exe.config
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\Multi-SDI Application\Multi-SDI Application\bin\Debug\Multi-SDI Application.exe
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\Multi-SDI Application\Multi-SDI Application\bin\Debug\Multi-SDI Application.pdb
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\Multi-SDI Application\Multi-SDI Application\bin\Debug\ControlLibraryAssign3.dll
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\Multi-SDI Application\Multi-SDI Application\bin\Debug\ControlLibraryAssign3.pdb
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\Multi-SDI Application\Multi-SDI Application\obj\Debug\Multi-SDI Application.csprojAssemblyReference.cache
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\Multi-SDI Application\Multi-SDI Application\obj\Debug\Multi_SDI_Application.Properties.Resources.resources
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\Multi-SDI Application\Multi-SDI Application\obj\Debug\Multi_SDI_Application.TopLevelForm.resources
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\Multi-SDI Application\Multi-SDI Application\obj\Debug\Multi-SDI Application.csproj.GenerateResource.cache
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\Multi-SDI Application\Multi-SDI Application\obj\Debug\Multi-SDI Application.csproj.CoreCompileInputs.cache
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\Multi-SDI Application\Multi-SDI Application\obj\Debug\Multi-SDI Application.csproj.CopyComplete
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\Multi-SDI Application\Multi-SDI Application\obj\Debug\Multi-SDI Application.exe
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\Multi-SDI Application\Multi-SDI Application\obj\Debug\Multi-SDI Application.pdb
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\Multi-SDI Application\Multi-SDI Application\obj\Debug\Multi_SDI_Application.OathDialog.resources
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\Multi-SDI Application\Multi-SDI Application\obj\Debug\Multi_SDI_Application.AboutDialog.resources
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\Multi-SDI Application\Multi-SDI Application\obj\Debug\Multi_SDI_Application.ShapeOptionsDialog.resources

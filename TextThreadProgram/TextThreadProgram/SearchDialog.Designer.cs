@@ -40,20 +40,25 @@
             // 
             // listBoxAllFiles
             // 
+            this.listBoxAllFiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listBoxAllFiles.FormattingEnabled = true;
-            this.listBoxAllFiles.ItemHeight = 16;
-            this.listBoxAllFiles.Location = new System.Drawing.Point(148, 65);
-            this.listBoxAllFiles.MinimumSize = new System.Drawing.Size(252, 164);
+            this.listBoxAllFiles.HorizontalScrollbar = true;
+            this.listBoxAllFiles.Location = new System.Drawing.Point(43, 53);
+            this.listBoxAllFiles.Margin = new System.Windows.Forms.Padding(2);
+            this.listBoxAllFiles.MinimumSize = new System.Drawing.Size(190, 134);
             this.listBoxAllFiles.Name = "listBoxAllFiles";
-            this.listBoxAllFiles.Size = new System.Drawing.Size(252, 164);
+            this.listBoxAllFiles.Size = new System.Drawing.Size(331, 134);
             this.listBoxAllFiles.TabIndex = 0;
+            this.listBoxAllFiles.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBoxAllFiles_MouseDoubleClick);
             // 
             // startSearchBttn
             // 
-            this.startSearchBttn.Location = new System.Drawing.Point(111, 258);
-            this.startSearchBttn.MinimumSize = new System.Drawing.Size(105, 23);
+            this.startSearchBttn.Location = new System.Drawing.Point(83, 210);
+            this.startSearchBttn.Margin = new System.Windows.Forms.Padding(2);
+            this.startSearchBttn.MinimumSize = new System.Drawing.Size(79, 19);
             this.startSearchBttn.Name = "startSearchBttn";
-            this.startSearchBttn.Size = new System.Drawing.Size(105, 23);
+            this.startSearchBttn.Size = new System.Drawing.Size(79, 19);
             this.startSearchBttn.TabIndex = 1;
             this.startSearchBttn.Text = "Start Search";
             this.startSearchBttn.UseVisualStyleBackColor = true;
@@ -62,10 +67,11 @@
             // stopSearchBttn
             // 
             this.stopSearchBttn.Enabled = false;
-            this.stopSearchBttn.Location = new System.Drawing.Point(222, 258);
-            this.stopSearchBttn.MinimumSize = new System.Drawing.Size(105, 23);
+            this.stopSearchBttn.Location = new System.Drawing.Point(166, 210);
+            this.stopSearchBttn.Margin = new System.Windows.Forms.Padding(2);
+            this.stopSearchBttn.MinimumSize = new System.Drawing.Size(79, 19);
             this.stopSearchBttn.Name = "stopSearchBttn";
-            this.stopSearchBttn.Size = new System.Drawing.Size(105, 23);
+            this.stopSearchBttn.Size = new System.Drawing.Size(79, 19);
             this.stopSearchBttn.TabIndex = 1;
             this.stopSearchBttn.Text = "Stop Search";
             this.stopSearchBttn.UseVisualStyleBackColor = true;
@@ -74,10 +80,11 @@
             // pauseSearchBttn
             // 
             this.pauseSearchBttn.Enabled = false;
-            this.pauseSearchBttn.Location = new System.Drawing.Point(333, 258);
-            this.pauseSearchBttn.MinimumSize = new System.Drawing.Size(105, 23);
+            this.pauseSearchBttn.Location = new System.Drawing.Point(250, 210);
+            this.pauseSearchBttn.Margin = new System.Windows.Forms.Padding(2);
+            this.pauseSearchBttn.MinimumSize = new System.Drawing.Size(79, 19);
             this.pauseSearchBttn.Name = "pauseSearchBttn";
-            this.pauseSearchBttn.Size = new System.Drawing.Size(105, 23);
+            this.pauseSearchBttn.Size = new System.Drawing.Size(79, 19);
             this.pauseSearchBttn.TabIndex = 1;
             this.pauseSearchBttn.Text = "Pause Search";
             this.pauseSearchBttn.UseVisualStyleBackColor = true;
@@ -85,48 +92,50 @@
             // 
             // comboBoxExtension
             // 
-            this.comboBoxExtension.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxExtension.FormattingEnabled = true;
             this.comboBoxExtension.Items.AddRange(new object[] {
-            ".ok",
-            ".txt",
-            ".html",
-            ".htm",
-            ".*"});
-            this.comboBoxExtension.Location = new System.Drawing.Point(148, 300);
-            this.comboBoxExtension.MinimumSize = new System.Drawing.Size(252, 0);
+            "*.ok",
+            "*.txt",
+            "*.html",
+            "*.htm"});
+            this.comboBoxExtension.Location = new System.Drawing.Point(111, 244);
+            this.comboBoxExtension.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxExtension.MinimumSize = new System.Drawing.Size(190, 0);
             this.comboBoxExtension.Name = "comboBoxExtension";
-            this.comboBoxExtension.Size = new System.Drawing.Size(252, 24);
+            this.comboBoxExtension.Size = new System.Drawing.Size(190, 21);
             this.comboBoxExtension.TabIndex = 2;
-            this.comboBoxExtension.SelectedIndexChanged += new System.EventHandler(this.comboBoxExtension_SelectedIndexChanged);
             // 
             // searchBackgroundWorker
             // 
             this.searchBackgroundWorker.WorkerReportsProgress = true;
             this.searchBackgroundWorker.WorkerSupportsCancellation = true;
             this.searchBackgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.searchBackgroundWorker_DoWork);
-            this.searchBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.searchBackgroundWorker_ProgressChanged);
+            this.searchBackgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.SearchBackgroundWorker_ProgressChanged);
+            this.searchBackgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.searchBackgroundWorker_RunWorkerCompleted);
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(148, 330);
+            this.progressBar.Location = new System.Drawing.Point(111, 268);
+            this.progressBar.Margin = new System.Windows.Forms.Padding(2);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(252, 23);
+            this.progressBar.Size = new System.Drawing.Size(189, 19);
             this.progressBar.TabIndex = 3;
             // 
             // SearchDialog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(542, 440);
+            this.ClientSize = new System.Drawing.Size(408, 364);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.comboBoxExtension);
             this.Controls.Add(this.pauseSearchBttn);
             this.Controls.Add(this.stopSearchBttn);
             this.Controls.Add(this.startSearchBttn);
             this.Controls.Add(this.listBoxAllFiles);
-            this.MinimumSize = new System.Drawing.Size(560, 487);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(424, 403);
             this.Name = "SearchDialog";
             this.Text = "Search Dialog";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SearchDialog_FormClosing);

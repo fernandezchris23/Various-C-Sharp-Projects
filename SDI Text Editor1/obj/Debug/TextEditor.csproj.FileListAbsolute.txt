@@ -1,0 +1,16 @@
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\abarn\SDI Text Editor\SDI Text Editor\bin\Debug\SDI Text Editor.exe.config
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\abarn\SDI Text Editor\SDI Text Editor\bin\Debug\SDI Text Editor.exe
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\abarn\SDI Text Editor\SDI Text Editor\bin\Debug\SDI Text Editor.pdb
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\abarn\SDI Text Editor\SDI Text Editor\bin\Debug\ControlLibraryAssign3.dll
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\abarn\SDI Text Editor\SDI Text Editor\bin\Debug\ControlLibraryAssign3.pdb
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\abarn\SDI Text Editor\SDI Text Editor\obj\Debug\TextEditor.csprojAssemblyReference.cache
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\abarn\SDI Text Editor\SDI Text Editor\obj\Debug\SDI_Text_Editor.AboutDialog.resources
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\abarn\SDI Text Editor\SDI Text Editor\obj\Debug\SDI_Text_Editor.EditorForm.resources
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\abarn\SDI Text Editor\SDI Text Editor\obj\Debug\SDI_Text_Editor.OathDialog.resources
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\abarn\SDI Text Editor\SDI Text Editor\obj\Debug\SDI_Text_Editor.PrefsDialog.resources
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\abarn\SDI Text Editor\SDI Text Editor\obj\Debug\SDI_Text_Editor.Properties.Resources.resources
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\abarn\SDI Text Editor\SDI Text Editor\obj\Debug\TextEditor.csproj.GenerateResource.cache
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\abarn\SDI Text Editor\SDI Text Editor\obj\Debug\TextEditor.csproj.CoreCompileInputs.cache
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\abarn\SDI Text Editor\SDI Text Editor\obj\Debug\TextEditor.csproj.CopyComplete
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\abarn\SDI Text Editor\SDI Text Editor\obj\Debug\SDI Text Editor.exe
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\abarn\SDI Text Editor\SDI Text Editor\obj\Debug\SDI Text Editor.pdb
