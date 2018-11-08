@@ -17,5 +17,15 @@ namespace TextThreadProgram
         {
             InitializeComponent();
         }
+
+        private void oldColorBttn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void newColorBttn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
