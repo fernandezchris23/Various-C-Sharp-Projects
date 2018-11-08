@@ -25,7 +25,6 @@ namespace TextThreadProgram
         private PictureBox pb;
         private Color oldColorFromDlg;
         private Color newColorFromDlg;
-        private Bitmap bmpColorChange;
         private bool isTyping;
         private bool isMoving;
         private bool isSelected;
@@ -593,9 +592,12 @@ namespace TextThreadProgram
 
                     // open modelessly
                     changeColorDialog.Show();
+
                     // make the main form the owner of this dialog
                     changeColorDialog.Owner = this;
-                    changeColorDialog.StartPosition = FormStartPosition.CenterParent;
+                    changeColorDialog.StartPosition = FormStartPosition.Manual;
+                    changeColorDialog.Location = new Point(this.Right, this.Top);
+
 
                 }
                 else
