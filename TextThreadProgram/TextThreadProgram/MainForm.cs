@@ -27,7 +27,7 @@ namespace TextThreadProgram
         private bool isMoving;
         private bool isSelected;
         private bool mouseIsDown;
-        private bool isOath, isAbout, isSearch, isTextOptions;
+        private bool isOath, isAbout, isSearch, isTextOptions, isChangeColor;
 
         //Used to give Z-order values. Since we don't want any two text on the same z-order (or else we won't know who will overlap who) we want it to be unique
         private int numText;
@@ -45,6 +45,7 @@ namespace TextThreadProgram
             isAbout = false;
             isSearch = false;
             isTextOptions = false;
+            isChangeColor = false;
             currentText = GetCurrentText();
             DoubleBuffered = true;
             numText = 0;
@@ -545,32 +546,51 @@ namespace TextThreadProgram
                 pb.Image = loadImage;
                 // add to main panel control
                 this.mainPanel.Controls.Add(pb);
-
             }
         }
 
         private void changeImageColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!isChangeColor)
+            {
+                isChangeColor = true;
+                ChangeColorDialog changeColorDialog = new ChangeColorDialog(newRightClickText);
+                changeColorDialog.applyBttnClick += new EventHandler(updateText);
+                changeColorDialog.FormClosed += new FormClosedEventHandler(OwnedFormClosed);
 
+                // open modelessly
+                changeColorDialog.Show();
+                // make the main form the owner of this dialog
+                changeColorDialog.Owner = this;
+                changeColorDialog.StartPosition = FormStartPosition.CenterParent;
+            }
+            else
+            {
+                return;
+            }
         }
 
         private void OwnedFormClosed(object dialog, FormClosedEventArgs e)
         {
-            if(dialog is SearchDialog)
+            if (dialog is SearchDialog)
             {
                 isSearch = false;
             }
-            else if(dialog is AboutDialog)
+            else if (dialog is AboutDialog)
             {
                 isAbout = false;
             }
-            else if(dialog is OathDialog)
+            else if (dialog is OathDialog)
             {
                 isOath = false;
             }
-            else if(dialog is TextOptions)
+            else if (dialog is TextOptions)
             {
                 isTextOptions = false;
+            }
+            else if (dialog is ChangeColorDialog)
+            {
+                isChangeColor = false;
             }
         }
 
