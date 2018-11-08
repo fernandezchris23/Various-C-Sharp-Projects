@@ -410,17 +410,11 @@ namespace TextThreadProgram
 
             StreamReader fileReader = new StreamReader(openFileDialog.FileName);
 
-            string[] arrayOfWords = fileReader.ReadToEnd().Split(' ', '\n');
+            string[] arrayOfWords = SplitString(fileReader.ReadToEnd());
 
-            foreach(string s in arrayOfWords)
-            {
-                //Create text objects
-                currentText = GetCurrentText();
-                currentText.Z_Order = numText++;
-                currentText.StringText = s;
-                document.Add(currentText);
-            }
-            mainPanel.Invalidate();            
+            AddStringsToDocument(arrayOfWords);
+
+            mainPanel.Invalidate();
         }
 
         private void openImageToolStripMenuItem_Click(object sender, EventArgs e)
@@ -472,6 +466,39 @@ namespace TextThreadProgram
             }
             else
                 return;
+        }
+
+        private void gridViewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GridViewForm gForm = new GridViewForm();
+            gForm.Owner = this;
+            gForm.dataGridView1.DataSource = document;
+            //gForm.dataGridView1.DataBind();
+            Console.WriteLine("Elements = " + document.Count);
+            gForm.Show();
+        }
+
+        private void mainPanel_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(typeof(string)))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void mainPanel_DragDrop(object sender, DragEventArgs e)
+        {
+            string data = (string)e.Data.GetData(typeof(string));
+            if (data != null)
+            {
+                //Split string into words and add it to the document
+                AddStringsToDocument(SplitString(data));
+                mainPanel.Invalidate();
+            }
         }
 
         private Text GetCurrentText()
@@ -593,6 +620,28 @@ namespace TextThreadProgram
         {
             foreach (Text text in document)
                 DrawTextToGraphic(text, imageGraphic);
+        }
+
+        //Following two methods are used for importing text
+        private void AddStringsToDocument(string[] arrayOfWords)
+        {
+            foreach (string s in arrayOfWords)
+            {
+                //Create text objects
+                currentText = GetCurrentText();
+                currentText.Z_Order = numText++;
+                currentText.StringText = s;
+                document.Add(currentText);
+            }
+        }
+
+        //Splits given parameter
+        private string[] SplitString(string stringToSplit)
+        {
+            if (stringToSplit == null)
+                return null;
+
+            return stringToSplit.Split(' ', '\n');
         }
     }
 }

@@ -52,6 +52,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.capsLockStatusStrip = new System.Windows.Forms.ToolStripStatusLabel();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.gridViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -63,6 +64,7 @@
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
             this.imageToolStripMenuItem,
+            this.gridViewToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -176,21 +178,21 @@
             // openImageToolStripMenuItem
             // 
             this.openImageToolStripMenuItem.Name = "openImageToolStripMenuItem";
-            this.openImageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openImageToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openImageToolStripMenuItem.Text = "Open";
             this.openImageToolStripMenuItem.Click += new System.EventHandler(this.openImageToolStripMenuItem_Click);
             // 
             // saveImageToolStripMenuItem1
             // 
             this.saveImageToolStripMenuItem1.Name = "saveImageToolStripMenuItem1";
-            this.saveImageToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.saveImageToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.saveImageToolStripMenuItem1.Text = "Save";
             this.saveImageToolStripMenuItem1.Click += new System.EventHandler(this.saveImageToolStripMenuItem1_Click);
             // 
             // changeColorsToolStripMenuItem
             // 
             this.changeColorsToolStripMenuItem.Name = "changeColorsToolStripMenuItem";
-            this.changeColorsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.changeColorsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.changeColorsToolStripMenuItem.Text = "Change Colors";
             // 
             // helpToolStripMenuItem
@@ -206,21 +208,21 @@
             // searchToolStripMenuItem
             // 
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.searchToolStripMenuItem.Text = "Search";
             this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
             // 
             // oathToolStripMenuItem
             // 
             this.oathToolStripMenuItem.Name = "oathToolStripMenuItem";
-            this.oathToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.oathToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.oathToolStripMenuItem.Text = "Oath";
             this.oathToolStripMenuItem.Click += new System.EventHandler(this.oathToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -244,16 +246,26 @@
             // 
             // mainPanel
             // 
+            this.mainPanel.AllowDrop = true;
             this.mainPanel.Location = new System.Drawing.Point(9, 25);
             this.mainPanel.Margin = new System.Windows.Forms.Padding(2);
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(582, 318);
             this.mainPanel.TabIndex = 2;
+            this.mainPanel.DragDrop += new System.Windows.Forms.DragEventHandler(this.mainPanel_DragDrop);
+            this.mainPanel.DragEnter += new System.Windows.Forms.DragEventHandler(this.mainPanel_DragEnter);
             this.mainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.mainPanel_Paint);
             this.mainPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mainPanel_MouseClick);
             this.mainPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainPanel_MouseDown);
             this.mainPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mainPanel_MouseMove);
             this.mainPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mainPanel_MouseUp);
+            // 
+            // gridViewToolStripMenuItem
+            // 
+            this.gridViewToolStripMenuItem.Name = "gridViewToolStripMenuItem";
+            this.gridViewToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.gridViewToolStripMenuItem.Text = "GridView";
+            this.gridViewToolStripMenuItem.Click += new System.EventHandler(this.gridViewToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -305,6 +317,7 @@
         private System.Windows.Forms.ToolStripMenuItem openImageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveImageToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem changeColorsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gridViewToolStripMenuItem;
     }
 }
 
