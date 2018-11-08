@@ -139,6 +139,7 @@ namespace TextThreadProgram
         {
             if (isTyping && currentText != null)
             {
+                document.Remove(currentText);
                 currentText.StringText += e.KeyChar;
                 document.Add(currentText);
                 ReDrawDocument(document);
@@ -190,8 +191,6 @@ namespace TextThreadProgram
             {
                 currentText = GetCurrentText();
                 currentText.Z_Order = numText++;
-                document.Add(currentText);
-                currentText = GetCurrentText();
             }
             else
             {
