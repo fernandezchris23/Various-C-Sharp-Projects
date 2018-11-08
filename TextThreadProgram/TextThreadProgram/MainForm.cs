@@ -592,7 +592,7 @@ namespace TextThreadProgram
         private void saveColorsEvent(object sender, EventArgs e)
         {
             pb.Paint += new PaintEventHandler(colorMap);
-            mainPanel.Invalidate();
+            pb.Invalidate();
         }
 
 
