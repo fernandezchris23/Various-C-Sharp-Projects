@@ -549,6 +549,10 @@ namespace TextThreadProgram
             }
         }
 
+        private void changeImageColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void OwnedFormClosed(object dialog, FormClosedEventArgs e)
         {

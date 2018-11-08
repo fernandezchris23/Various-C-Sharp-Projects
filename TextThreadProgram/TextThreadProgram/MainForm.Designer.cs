@@ -160,6 +160,7 @@
             this.changeImageColorToolStripMenuItem.Name = "changeImageColorToolStripMenuItem";
             this.changeImageColorToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.changeImageColorToolStripMenuItem.Text = "Change Color";
+            this.changeImageColorToolStripMenuItem.Click += new System.EventHandler(this.changeImageColorToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
