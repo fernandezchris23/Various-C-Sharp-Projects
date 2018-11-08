@@ -2,12 +2,16 @@
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace TextThreadProgram
 {
     public partial class MainForm : Form
     {
+        [DllImport("user32.dll")]
+        static extern IntPtr LoadCursorFromFile(string lpFileName);
+
         public const string CAPS_ON = "Caps Lock: ON";
         public const string CAPS_OFF = "Caps Lock: OFF";
         public const string CLIPBOARD_FORMAT = "copiedData";
@@ -501,6 +505,11 @@ namespace TextThreadProgram
             }
         }
 
+        private void mainPanel_MouseHover(object sender, EventArgs e)
+        {
+            this.Cursor = GetCustomCursor();
+        }
+
         private Text GetCurrentText()
         {
             return new Text("", new Font("Times New Roman", 20.0f), Color.Black, Color.White, new Point(0, 0), new Size(100, 100));
@@ -642,6 +651,18 @@ namespace TextThreadProgram
                 return null;
 
             return stringToSplit.Split(' ', '\n');
+        }
+
+        private Cursor GetCustomCursor()
+        {
+            // Load colored cursor once for the lifetime of the application
+            String str = @"..\..\..\..\TextThreadProgram\TextThreadProgram\Resources\ccursor.cur";
+            Console.WriteLine(Path.GetFullPath(str));
+            if (!File.Exists(str))
+                throw new Exception("Cannot find file: " + Path.GetFullPath(str));
+
+            IntPtr cursor = LoadCursorFromFile(str);
+            return new Cursor(cursor);
         }
     }
 }

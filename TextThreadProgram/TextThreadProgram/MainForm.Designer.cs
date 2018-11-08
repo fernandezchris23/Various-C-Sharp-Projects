@@ -45,6 +45,7 @@
             this.openImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveImageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.changeColorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gridViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,7 +53,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.capsLockStatusStrip = new System.Windows.Forms.ToolStripStatusLabel();
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.gridViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -195,6 +195,13 @@
             this.changeColorsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.changeColorsToolStripMenuItem.Text = "Change Colors";
             // 
+            // gridViewToolStripMenuItem
+            // 
+            this.gridViewToolStripMenuItem.Name = "gridViewToolStripMenuItem";
+            this.gridViewToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
+            this.gridViewToolStripMenuItem.Text = "GridView";
+            this.gridViewToolStripMenuItem.Click += new System.EventHandler(this.gridViewToolStripMenuItem_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -257,15 +264,9 @@
             this.mainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.mainPanel_Paint);
             this.mainPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mainPanel_MouseClick);
             this.mainPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainPanel_MouseDown);
+            this.mainPanel.MouseHover += new System.EventHandler(this.mainPanel_MouseHover);
             this.mainPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mainPanel_MouseMove);
             this.mainPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mainPanel_MouseUp);
-            // 
-            // gridViewToolStripMenuItem
-            // 
-            this.gridViewToolStripMenuItem.Name = "gridViewToolStripMenuItem";
-            this.gridViewToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.gridViewToolStripMenuItem.Text = "GridView";
-            this.gridViewToolStripMenuItem.Click += new System.EventHandler(this.gridViewToolStripMenuItem_Click);
             // 
             // MainForm
             // 
