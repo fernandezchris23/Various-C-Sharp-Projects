@@ -510,8 +510,7 @@ namespace TextThreadProgram
                 // gets name for saving
                 string imageName = saveImageDialog.FileName;
 
-                Rectangle graphicsView = new Rectangle(0, 0, 200, 200);
-
+                Rectangle graphicsView = new Rectangle(0, 0, mainPanel.Width, mainPanel.Height);
 
                 // Get current graphics object for display
                 using (Graphics displayGraphics = g)
@@ -520,8 +519,7 @@ namespace TextThreadProgram
                 // Wrap Graphics object around image to draw into
                 using (Graphics imageGraphics = Graphics.FromImage(image))
                 {
-                    // if I don't fill rectangle it saves as transparent.
-                    //imageGraphics.FillRectangle(Brushes.Black, graphicsView);
+                    ImageDraw(imageGraphics, graphicsView);
                     image.Save(imageName, ImageFormat.Png);
                     // for testing purposes
                     MessageBox.Show("Saved to file: " + imageName);
@@ -530,6 +528,24 @@ namespace TextThreadProgram
             }
             else
                 return;
+        }
+        private void ImageDraw(Graphics imageGraphics, Rectangle rect)
+        {
+            using (Brush brush = new SolidBrush(mainPanel.BackColor))
+            {
+                imageGraphics.FillRectangle(brush, rect);
+            }
+
+            ReDrawToImage(imageGraphics);
+        }
+        
+        private void DrawTextToGraphic(Text text, Graphics imageGraphics)
+        {
+            
+        }
+
+        private void ReDrawToImage(Graphics imageGraphics)
+        {
         }
 
         private void openImageToolStripMenuItem_Click(object sender, EventArgs e)
