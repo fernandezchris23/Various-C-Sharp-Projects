@@ -22,6 +22,7 @@ namespace TextThreadProgram
         private Text oldRightClickText;
         private Text newRightClickText;
         private Graphics g;
+        private PictureBox pb;
 
         private bool isTyping;
         private bool isMoving;
@@ -52,6 +53,7 @@ namespace TextThreadProgram
             filename = this.Text;
             fileName = "";
             this.mainPanel.AllowDrop = true;
+            pb = null;
         }
 
         public static MainForm CreateWindow(string fname)
@@ -539,7 +541,7 @@ namespace TextThreadProgram
                 if (openImageDialog.ShowDialog(this) != DialogResult.OK)
                     return;
 
-                PictureBox pb = new PictureBox();
+                pb = new PictureBox();
                 Image loadImage = Image.FromFile(openImageDialog.FileName);
                 pb.Height = loadImage.Height;
                 pb.Width = loadImage.Width;
@@ -553,16 +555,24 @@ namespace TextThreadProgram
         {
             if (!isChangeColor)
             {
-                isChangeColor = true;
-                ChangeColorDialog changeColorDialog = new ChangeColorDialog(newRightClickText);
-                changeColorDialog.applyBttnClick += new EventHandler(updateText);
-                changeColorDialog.FormClosed += new FormClosedEventHandler(OwnedFormClosed);
+                if (pb != null)
+                {
+                    isChangeColor = true;
+                    ChangeColorDialog changeColorDialog = new ChangeColorDialog(this.pb);
+                    changeColorDialog.applyBttnClick += new EventHandler(updateText);
+                    changeColorDialog.FormClosed += new FormClosedEventHandler(OwnedFormClosed);
 
-                // open modelessly
-                changeColorDialog.Show();
-                // make the main form the owner of this dialog
-                changeColorDialog.Owner = this;
-                changeColorDialog.StartPosition = FormStartPosition.CenterParent;
+                    // open modelessly
+                    changeColorDialog.Show();
+                    // make the main form the owner of this dialog
+                    changeColorDialog.Owner = this;
+                    changeColorDialog.StartPosition = FormStartPosition.CenterParent;
+                }
+                else
+                {
+                    MessageBox.Show("There is no image to edit, try opening an image.");
+                    return;
+                }
             }
             else
             {

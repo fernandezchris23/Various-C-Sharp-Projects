@@ -13,68 +13,72 @@ namespace TextThreadProgram
 {
     public partial class ChangeColorDialog : BaseDialogForm
     {
-        private PictureBox pictureBox;
+        private PictureBox pb;
         public event EventHandler applyBttnClick;
 
         public ChangeColorDialog(PictureBox pictureBox)
         {
             InitializeComponent();
-            this.pictureBox = pictureBox;
+            this.pb = pictureBox;
         }
 
         private void oldColorBttn_Click(object sender, EventArgs e)
         {
             // reset color label
             oldColorLabelDisplay.Text = "";
+            oldColorLabelDisplay.BackColor = Color.White;
+
             ColorDialog dlg = new ColorDialog();
+            DialogResult result = dlg.ShowDialog();
             Boolean IsColorFound = false;
 
-            if (pictureBox.Image != null)
+            if (result == System.Windows.Forms.DialogResult.OK)
             {
-                //Converting loaded image into bitmap
-                Bitmap bmp = new Bitmap(pictureBox.Image);
-
-                //Iterate whole bitmap to findout the picked color
-                for (int i = 0; i < pictureBox.Image.Height; i++)
+                if (pb.Image != null)
                 {
+                    //Converting loaded image into bitmap
+                    Bitmap bmp = new Bitmap(pb.Image);
 
-                    for (int j = 0; j < pictureBox.Image.Width; j++)
+                    //Iterate whole bitmap to findout the picked color
+                    for (int i = 0; i < pb.Image.Height; i++)
                     {
-                        //Get the color at each pixel
-                        Color nowColor = bmp.GetPixel(j, i);
-
-                        //Compare Pixel's Color ARGB property with the picked color's ARGB property 
-                        if (nowColor.ToArgb() == dlg.Color.ToArgb())
+                        for (int j = 0; j < pb.Image.Width; j++)
                         {
-                            IsColorFound = true;
+                            //Get the color at each pixel
+                            Color nowColor = bmp.GetPixel(j, i);
 
-                            if (dlg.Color.IsKnownColor == true)
+                            //Compare Pixel's Color ARGB property with the picked color's ARGB property 
+                            if (nowColor.ToArgb() == dlg.Color.ToArgb())
                             {
-                                oldColorLabelDisplay.BackColor = dlg.Color;
-                                oldColorLabelDisplay.Text = dlg.Color.ToKnownColor().ToString();
+                                IsColorFound = true;
+
+                                if (dlg.Color.IsKnownColor == true)
+                                {
+                                    oldColorLabelDisplay.BackColor = dlg.Color;
+                                    oldColorLabelDisplay.Text = dlg.Color.ToKnownColor().ToString();
+                                }
+                                else
+                                {
+                                    oldColorLabelDisplay.BackColor = dlg.Color;
+                                    oldColorLabelDisplay.Text = dlg.Color.ToString();
+                                }
+                                break;
                             }
-                            else
-                                oldColorLabelDisplay.Text = dlg.Color.ToString();
+                        }
+                        if (IsColorFound == true)
+                        {
                             break;
                         }
                     }
-
-                    if (IsColorFound == true)
+                    if (IsColorFound == false)
                     {
-
-                        break;
+                        MessageBox.Show("Selected Color Not Found, try again.");
                     }
-
                 }
-                if (IsColorFound == false)
+                else
                 {
-                    MessageBox.Show("Selected Color Not Found, try again.");
+                    MessageBox.Show("Image is not loaded.");
                 }
-            }
-            else
-            {
-
-                MessageBox.Show("Image is not loaded");
             }
 
         }
@@ -83,6 +87,7 @@ namespace TextThreadProgram
         {
             // reset color label
             newColorLabelDisplay.Text = "";
+            newColorLabelDisplay.BackColor = Color.White;
 
             ColorDialog dlg = new ColorDialog();
             DialogResult result = dlg.ShowDialog();
@@ -92,11 +97,14 @@ namespace TextThreadProgram
 
                 if (dlg.Color.IsKnownColor == true)
                 {
-                    newColorLabelDisplay.BackColor = dlg.Color;                   
+                    newColorLabelDisplay.BackColor = dlg.Color;
                     newColorLabelDisplay.Text = dlg.Color.ToKnownColor().ToString();
                 }
                 else
+                {
+                    newColorLabelDisplay.BackColor = dlg.Color;
                     newColorLabelDisplay.Text = dlg.Color.ToString();
+                }
             }
         }
 
