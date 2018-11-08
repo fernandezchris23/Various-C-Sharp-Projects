@@ -54,6 +54,12 @@
     </Compile>
     <Compile Include="Data.cs" />
     <Compile Include="Document.cs" />
+    <Compile Include="GridViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GridViewForm.Designer.cs">
+      <DependentUpon>GridViewForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MultiSDI.cs" />
     <Compile Include="SearchDialog.cs">
       <SubType>Form</SubType>
@@ -86,6 +92,9 @@
     <EmbeddedResource Include="AboutDialog.resx">
       <DependentUpon>AboutDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GridViewForm.resx">
+      <DependentUpon>GridViewForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -107,6 +116,7 @@
     <EmbeddedResource Include="TextOptions.resx">
       <DependentUpon>TextOptions.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\Document.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -135,6 +135,7 @@ namespace TextThreadProgram
         {
             if (isTyping && currentText != null)
             {
+                document.Remove(currentText);
                 currentText.StringText += e.KeyChar;
                 document.Add(currentText);
                 ReDrawDocument(document);
@@ -186,8 +187,8 @@ namespace TextThreadProgram
             {
                 currentText = GetCurrentText();
                 currentText.Z_Order = numText++;
-                document.Add(currentText);
-                currentText = GetCurrentText();
+                //document.Add(currentText);
+                //currentText = GetCurrentText();
             }
             else
             {
@@ -492,6 +493,14 @@ namespace TextThreadProgram
                 AddStringsToDocument(SplitString(data));
                 mainPanel.Invalidate();
             }
+        }
+
+        private void gridViewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GridViewForm gForm = new GridViewForm();
+            gForm.dataGridView1.DataSource = document;
+            Console.WriteLine("Elements = " + document.Count);
+            gForm.Show();
         }
 
         private void OwnedFormClosed(object dialog, FormClosedEventArgs e)
