@@ -561,13 +561,15 @@ namespace TextThreadProgram
                     isChangeColor = true;
                     ChangeColorDialog changeColorDialog = new ChangeColorDialog(this.pb);
                     changeColorDialog.colors += new EventHandler<ColorEventArgs>(colorDlg_Color);
+                    changeColorDialog.saveColors += new EventHandler(saveColorsEvent);
                     changeColorDialog.FormClosed += new FormClosedEventHandler(OwnedFormClosed);
 
                     // open modelessly
                     changeColorDialog.Show();
                     // make the main form the owner of this dialog
                     changeColorDialog.Owner = this;
-                    changeColorDialog.StartPosition = FormStartPosition.CenterParent;                    
+                    changeColorDialog.StartPosition = FormStartPosition.CenterParent;
+
                 }
                 else
                 {
@@ -587,26 +589,34 @@ namespace TextThreadProgram
             newColorFromDlg = e.newColorPass;
         }
 
-        private void colorMap(object sender, PaintEventArgs e)
+        private void saveColorsEvent(object sender, EventArgs e)
         {
-            Graphics graph = e.Graphics;
-            using (Bitmap bmp = new Bitmap(pb.Image))
-            {
-                // Set the image attribute's color mappings
-                ColorMap[] colorMap = new ColorMap[1];
-                colorMap[0] = new ColorMap();
-                colorMap[0].OldColor = oldColorFromDlg;
-                colorMap[0].NewColor = newColorFromDlg;
-                
-                ImageAttributes attr = new ImageAttributes();
-                attr.SetRemapTable(colorMap);
-
-                // Draw using the color map
-                Rectangle rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
-                graph.DrawImage(bmp, rect, 0, 0, rect.Width, rect.Height, graph.PageUnit, attr);
-            }
+            pb.Paint += new PaintEventHandler(colorMap);
+            mainPanel.Invalidate();
         }
 
+
+        private void colorMap(object sender, PaintEventArgs e)
+        {
+            if (pb != null)
+            {
+                Graphics g = e.Graphics;
+                using (Bitmap bmp = new Bitmap(pb.Image))
+                {
+                    // Set the image attribute's color mappings
+                    ColorMap[] colorMap = new ColorMap[1];
+                    colorMap[0] = new ColorMap();
+                    colorMap[0].OldColor = oldColorFromDlg;
+                    colorMap[0].NewColor = newColorFromDlg;
+                    
+                    ImageAttributes attr = new ImageAttributes();
+                    attr.SetRemapTable(colorMap);
+
+                    Rectangle rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
+                    g.DrawImage(bmp, rect, 0, 0, rect.Width, rect.Height, GraphicsUnit.Pixel, attr);
+                }
+            }
+        }
         private void OwnedFormClosed(object dialog, FormClosedEventArgs e)
         {
             if (dialog is SearchDialog)

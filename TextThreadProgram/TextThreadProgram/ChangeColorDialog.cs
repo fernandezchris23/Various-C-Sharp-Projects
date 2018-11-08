@@ -15,6 +15,7 @@ namespace TextThreadProgram
     {
         private PictureBox pb;
         public event EventHandler<ColorEventArgs> colors;
+        public event EventHandler saveColors;
 
         public ChangeColorDialog(PictureBox pictureBox)
         {
@@ -111,12 +112,14 @@ namespace TextThreadProgram
         private void okayColorBttn_Click(object sender, EventArgs e)
         {
             colors(this, new ColorEventArgs(oldColorLabelDisplay.BackColor, newColorLabelDisplay.BackColor));
+            saveColors(this, EventArgs.Empty);
             this.Close();
         }
 
         private void colorApplyBttn_Click(object sender, EventArgs e)
         {
             colors(this, new ColorEventArgs(oldColorLabelDisplay.BackColor, newColorLabelDisplay.BackColor));
+            saveColors(this, EventArgs.Empty);
         }
 
         private void cancelColorBttn_Click(object sender, EventArgs e)
