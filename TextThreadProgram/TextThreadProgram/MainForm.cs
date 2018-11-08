@@ -23,7 +23,8 @@ namespace TextThreadProgram
         private Text newRightClickText;
         private Graphics g;
         private PictureBox pb;
-
+        private Color oldColorFromDlg;
+        private Color newColorFromDlg;
         private bool isTyping;
         private bool isMoving;
         private bool isSelected;
@@ -559,7 +560,7 @@ namespace TextThreadProgram
                 {
                     isChangeColor = true;
                     ChangeColorDialog changeColorDialog = new ChangeColorDialog(this.pb);
-                    changeColorDialog.applyBttnClick += new EventHandler(updateText);
+                    changeColorDialog.color += new EventHandler<ColorEventArgs>(colorDlg_Color);
                     changeColorDialog.FormClosed += new FormClosedEventHandler(OwnedFormClosed);
 
                     // open modelessly
@@ -578,6 +579,11 @@ namespace TextThreadProgram
             {
                 return;
             }
+        }
+        private void colorDlg_Color(object sender, ColorEventArgs e)
+        {
+            oldColorFromDlg = e.oldColorPass;
+            newColorFromDlg = e.oldColorPass;
         }
 
         private void OwnedFormClosed(object dialog, FormClosedEventArgs e)
