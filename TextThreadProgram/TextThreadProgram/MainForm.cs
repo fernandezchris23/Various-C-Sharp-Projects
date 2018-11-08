@@ -19,7 +19,6 @@ namespace TextThreadProgram
         private string filename;
         private string fileName; //Used for filename with extension
         private string fileFilter;
-        private string imageToChangeFilename;
 
         private Document document;
         private Text currentText;
@@ -30,7 +29,7 @@ namespace TextThreadProgram
         private Graphics g;
         private Color oldColorFromDlg;
         private Color newColorFromDlg;
-        private Bitmap imageColorChange;
+        private PictureBox pb;
 
         private bool isTyping;
         private bool isMoving;
@@ -514,36 +513,50 @@ namespace TextThreadProgram
             this.Cursor = GetCustomCursor();
         }
 
+        private void saveChangedImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveChangedImage();
+        }
+
+        private void clearImageViewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.mainPanel.Controls.Remove(pb);
+        }
+
         private void changeColorsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!isChangeColor)
             {
                 using (OpenFileDialog openImageDialog = new OpenFileDialog())
-                { 
+                {
                     openImageDialog.Filter = "Png Image (.png)|*.png";
                     openImageDialog.Title = "Open Image To Change Colors For...";
 
                     if (openImageDialog.ShowDialog(this) != DialogResult.OK)
                         return;
 
-                    imageToChangeFilename = openImageDialog.FileName;
-
-                    using (Form form = new Form())
-                    using (Bitmap bmp = new Bitmap(imageToChangeFilename))
+                    using (Bitmap bmp = new Bitmap(openImageDialog.FileName))
                     {
+                        pb = new PictureBox();
+                        Image loadImage = Image.FromFile(openImageDialog.FileName);
+                        pb.Height = loadImage.Height;
+                        pb.Width = loadImage.Width;
+                        pb.Image = loadImage;
+                        // add to main panel control
+                        this.mainPanel.Controls.Add(pb);
+
                         isChangeColor = true;
-                        imageColorChange = bmp;
 
                         ChangeColorDialog changeColorDialog = new ChangeColorDialog(openImageDialog.FileName);
                         changeColorDialog.colors += new EventHandler<ColorEventArgs>(colorDlg_Color);
                         changeColorDialog.saveColors += new EventHandler(saveColorsEvent);
                         changeColorDialog.FormClosed += new FormClosedEventHandler(OwnedFormClosed);
+                        changeColorDialog.StartPosition = FormStartPosition.CenterParent;
 
                         // open modelessly
                         changeColorDialog.Show();
                         // make the main form the owner of this dialog
                         changeColorDialog.Owner = this;
-                        changeColorDialog.StartPosition = FormStartPosition.CenterParent;
                     }
                 }
             }
@@ -551,6 +564,31 @@ namespace TextThreadProgram
             {
                 return;
             }
+        }
+
+        private void saveChangedImage()
+        {
+            SaveFileDialog saveImageDialog = new SaveFileDialog();
+            saveImageDialog.Filter = "Png Image (.png)|*.png";
+            saveImageDialog.Title = "Save image as...";
+
+            if (saveImageDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                // gets name for saving
+                string imageName = saveImageDialog.FileName;
+
+                if (pb != null)
+                {
+                    Rectangle rect = new Rectangle(0, 0, pb.Width, pb.Height);
+                    Bitmap dumpBitmap = new Bitmap(pb.Width, pb.Height);
+                    pb.DrawToBitmap(dumpBitmap, rect);
+                    dumpBitmap.Save(imageName, ImageFormat.Png);
+                    // for testing purposes
+                    MessageBox.Show("Saved to file: " + imageName);
+                }
+            }
+            else
+                return;
         }
 
         private void colorDlg_Color(object sender, ColorEventArgs e)
@@ -561,21 +599,29 @@ namespace TextThreadProgram
 
         private void saveColorsEvent(object sender, EventArgs e)
         {
-            using (Bitmap bmp = imageColorChange)
-            using (Graphics imageG = Graphics.FromImage(bmp))
+            pb.Paint += new PaintEventHandler(colorMap);
+            pb.Invalidate();
+        }
+
+        private void colorMap(object sender, PaintEventArgs e)
+        {
+            if (pb != null)
             {
-                // Set the image attribute's color mappings
-                ColorMap[] colorMap = new ColorMap[1];
-                colorMap[0] = new ColorMap();
-                colorMap[0].OldColor = oldColorFromDlg;
-                colorMap[0].NewColor = newColorFromDlg;
+                Graphics g = e.Graphics;
+                using (Bitmap bmp = new Bitmap(pb.Image))
+                {
+                    // Set the image attribute's color mappings
+                    ColorMap[] colorMap = new ColorMap[1];
+                    colorMap[0] = new ColorMap();
+                    colorMap[0].OldColor = oldColorFromDlg;
+                    colorMap[0].NewColor = newColorFromDlg;
 
-                ImageAttributes attr = new ImageAttributes();
-                attr.SetRemapTable(colorMap);
+                    ImageAttributes attr = new ImageAttributes();
+                    attr.SetRemapTable(colorMap);
 
-                Rectangle rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
-                imageG.DrawImage(bmp, rect, 0, 0, rect.Width, rect.Height, GraphicsUnit.Pixel, attr);
-                bmp.Save(imageToChangeFilename, ImageFormat.Png);
+                    Rectangle rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
+                    g.DrawImage(bmp, rect, 0, 0, rect.Width, rect.Height, GraphicsUnit.Pixel, attr);
+                }
             }
         }
 
@@ -635,6 +681,10 @@ namespace TextThreadProgram
             else if(dialog is TextOptions)
             {
                 isTextOptions = false;
+            }
+            else if(dialog is ChangeColorDialog)
+            {
+                isChangeColor = false;
             }
         }
 
