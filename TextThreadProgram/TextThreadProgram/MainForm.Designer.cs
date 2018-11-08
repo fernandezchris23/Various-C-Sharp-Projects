@@ -33,6 +33,7 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openCtrlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importTextFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsCtrlShiftSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeAltF4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,6 +41,10 @@
             this.cutCtrlXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyCtrlCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteCtrlVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.imageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveImageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeColorsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,7 +52,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.capsLockStatusStrip = new System.Windows.Forms.ToolStripStatusLabel();
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.importTextFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -58,6 +62,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.editToolStripMenuItem,
+            this.imageToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -95,6 +100,13 @@
             this.openCtrlToolStripMenuItem.Text = "Open";
             this.openCtrlToolStripMenuItem.Click += new System.EventHandler(this.openCtrlToolStripMenuItem_Click);
             // 
+            // importTextFileToolStripMenuItem
+            // 
+            this.importTextFileToolStripMenuItem.Name = "importTextFileToolStripMenuItem";
+            this.importTextFileToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.importTextFileToolStripMenuItem.Text = "Import Text File";
+            this.importTextFileToolStripMenuItem.Click += new System.EventHandler(this.importTextFileToolStripMenuItem_Click);
+            // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
@@ -116,7 +128,7 @@
             // 
             this.closeAltF4ToolStripMenuItem.Name = "closeAltF4ToolStripMenuItem";
             this.closeAltF4ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.closeAltF4ToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.closeAltF4ToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.closeAltF4ToolStripMenuItem.Text = "Close";
             this.closeAltF4ToolStripMenuItem.Click += new System.EventHandler(this.closeAltF4ToolStripMenuItem_Click);
             // 
@@ -151,6 +163,36 @@
             this.pasteCtrlVToolStripMenuItem.Text = "Paste (Ctrl+V)";
             this.pasteCtrlVToolStripMenuItem.Click += new System.EventHandler(this.pasteCtrlVToolStripMenuItem_Click);
             // 
+            // imageToolStripMenuItem
+            // 
+            this.imageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openImageToolStripMenuItem,
+            this.saveImageToolStripMenuItem1,
+            this.changeColorsToolStripMenuItem});
+            this.imageToolStripMenuItem.Name = "imageToolStripMenuItem";
+            this.imageToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.imageToolStripMenuItem.Text = "Image";
+            // 
+            // openImageToolStripMenuItem
+            // 
+            this.openImageToolStripMenuItem.Name = "openImageToolStripMenuItem";
+            this.openImageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openImageToolStripMenuItem.Text = "Open";
+            this.openImageToolStripMenuItem.Click += new System.EventHandler(this.openImageToolStripMenuItem_Click);
+            // 
+            // saveImageToolStripMenuItem1
+            // 
+            this.saveImageToolStripMenuItem1.Name = "saveImageToolStripMenuItem1";
+            this.saveImageToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.saveImageToolStripMenuItem1.Text = "Save";
+            this.saveImageToolStripMenuItem1.Click += new System.EventHandler(this.saveImageToolStripMenuItem1_Click);
+            // 
+            // changeColorsToolStripMenuItem
+            // 
+            this.changeColorsToolStripMenuItem.Name = "changeColorsToolStripMenuItem";
+            this.changeColorsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.changeColorsToolStripMenuItem.Text = "Change Colors";
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -164,21 +206,21 @@
             // searchToolStripMenuItem
             // 
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.searchToolStripMenuItem.Text = "Search";
             this.searchToolStripMenuItem.Click += new System.EventHandler(this.searchToolStripMenuItem_Click);
             // 
             // oathToolStripMenuItem
             // 
             this.oathToolStripMenuItem.Name = "oathToolStripMenuItem";
-            this.oathToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.oathToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.oathToolStripMenuItem.Text = "Oath";
             this.oathToolStripMenuItem.Click += new System.EventHandler(this.oathToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -212,13 +254,6 @@
             this.mainPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainPanel_MouseDown);
             this.mainPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mainPanel_MouseMove);
             this.mainPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mainPanel_MouseUp);
-            // 
-            // importTextFileToolStripMenuItem
-            // 
-            this.importTextFileToolStripMenuItem.Name = "importTextFileToolStripMenuItem";
-            this.importTextFileToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.importTextFileToolStripMenuItem.Text = "Import Text File";
-            this.importTextFileToolStripMenuItem.Click += new System.EventHandler(this.importTextFileToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -266,6 +301,10 @@
         private System.Windows.Forms.ToolStripMenuItem oathToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importTextFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem imageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openImageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveImageToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem changeColorsToolStripMenuItem;
     }
 }
 

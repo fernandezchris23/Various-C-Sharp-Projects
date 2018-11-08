@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
 
@@ -422,6 +423,57 @@ namespace TextThreadProgram
             mainPanel.Invalidate();            
         }
 
+        private void openImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openImageDialog = new OpenFileDialog())
+            {
+                openImageDialog.Filter = "Png Image (.png)|*.png";
+                openImageDialog.Title = "Open Image";
+
+                if (openImageDialog.ShowDialog(this) != DialogResult.OK)
+                    return;
+
+                using (Form form = new Form())
+                using (Bitmap bmp = new Bitmap(openImageDialog.FileName))
+                {
+                    form.Width = bmp.Width + 10;
+                    form.Height = bmp.Height + 30;
+                    form.BackgroundImage = bmp;
+                    form.ShowDialog();
+                }
+            }
+        }
+
+        private void saveImageToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveImageDialog = new SaveFileDialog();
+            saveImageDialog.Filter = "Png Image (.png)|*.png";
+            saveImageDialog.Title = "Save image as...";
+
+            if (saveImageDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                // gets name for saving
+                string imageName = saveImageDialog.FileName;
+
+                Rectangle graphicsView = new Rectangle(0, 0, mainPanel.Width, mainPanel.Height);
+
+                // Get current graphics object for display
+                using (Graphics displayGraphics = this.CreateGraphics())
+                // Create bitmap to draw into based on existing Graphics object
+                using (Image image = new Bitmap(graphicsView.Width, graphicsView.Height, displayGraphics))
+                // Wrap Graphics object around image to draw into
+                using (Graphics imageGraphics = Graphics.FromImage(image))
+                {
+                    ImageDraw(imageGraphics, graphicsView);
+                    image.Save(imageName, ImageFormat.Png);
+                    // for testing purposes
+                    MessageBox.Show("Saved to file: " + imageName);
+                }
+            }
+            else
+                return;
+        }
+
         private Text GetCurrentText()
         {
             return new Text("", new Font("Times New Roman", 20.0f), Color.Black, Color.White, new Point(0, 0), new Size(100, 100));
@@ -511,6 +563,36 @@ namespace TextThreadProgram
             mainPanel.Invalidate();
 
             Console.WriteLine(newRightClickText.Rotation);
+        }
+
+        //Following three methods are used for saving the current Graphics to and Image
+        private void ImageDraw(Graphics imageGraphics, Rectangle rect)
+        {
+            using (Brush brush = new SolidBrush(mainPanel.BackColor))
+            {
+                imageGraphics.FillRectangle(brush, rect);
+            }
+
+            ReDrawToImage(imageGraphics);
+        }
+
+        private void DrawTextToGraphic(Text text, Graphics imageGraphic)
+        {
+            using (StringFormat format = new StringFormat())
+            {
+                format.Trimming = StringTrimming.Word;
+                text.TextSize = new Size(((int)this.mainPanel.CreateGraphics().MeasureString(text.StringText, text.TextFont).Width) + 1,
+                                         ((int)this.mainPanel.CreateGraphics().MeasureString(text.StringText, text.TextFont).Height) + 1); //+ 1 needed or else last letter will be cut off
+                imageGraphic.RotateTransform(text.Rotation);
+                imageGraphic.FillRectangle(new SolidBrush(text.BgColor), new Rectangle(text.TextLocation, text.TextSize));
+                imageGraphic.DrawString(text.StringText, text.TextFont, new SolidBrush(text.TextColor), new Rectangle(text.TextLocation, text.TextSize), format);
+            }
+        }
+
+        private void ReDrawToImage(Graphics imageGraphic)
+        {
+            foreach (Text text in document)
+                DrawTextToGraphic(text, imageGraphic);
         }
     }
 }
