@@ -497,47 +497,43 @@ namespace TextThreadProgram
 
         private void saveAsImageToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            SaveFileDialog saveImageDialog = new SaveFileDialog();
+            saveImageDialog.Filter = "Png Image (.png)|*.png";
+            saveImageDialog.Title = "Save image as...";
 
-            // gets name for saving
-            string file = "image.png";
-            //string extention = "";
-            // getting the current graphics view size and saving it to a rectangle.
-            Rectangle graphicsView = new Rectangle(0, 0, 100, 100);
-
-            // Get current graphics object for display
-            using (Graphics displayGraphics = this.CreateGraphics())
-            // Create bitmap to draw into based on existing Graphics object
-            using (Image image = new Bitmap(graphicsView.Width, graphicsView.Height, displayGraphics))
-            // Wrap Graphics object around image to draw into
-            using (Graphics imageGraphics = Graphics.FromImage(image))
+            if (saveImageDialog.ShowDialog(this) == DialogResult.OK)
             {
-                // Save created image to a file
+                // gets name for saving
+                string imageName = saveImageDialog.FileName;
 
-                /*switch (extention)
+                Rectangle graphicsView = new Rectangle(0, 0, 100, 100);
+
+                // Get current graphics object for display
+                using (Graphics displayGraphics = this.g)
+                // Create bitmap to draw into based on existing Graphics object
+                using (Image image = new Bitmap(graphicsView.Width, graphicsView.Height, displayGraphics))
+                // Wrap Graphics object around image to draw into
+                using (Graphics imageGraphics = Graphics.FromImage(image))
                 {
-                    case "*.gif":
-                        image.Save(@"c:\"+ imageName+".gif", ImageFormat.Gif);
-                        break;
-                    case "*.jpeg":
-                        image.Save(@"c:\" + imageName + ".jpeg", ImageFormat.Jpeg);
-                        break;
-                    case "*.bmp":
-                        image.Save(@"c:\" + imageName + ".", ImageFormat.Bmp);
-                        break;
-                    case "*.tiff":
-                        image.Save(@"c:\" + imageName + ".tiff", ImageFormat.Tiff);
-                        break;
-                    case "*.wmf":
-                        image.Save(@"c:\" + imageName + ".wmf", ImageFormat.Wmf);
-                        break;
-                    default:*/
-                
-                        image.Save(file, ImageFormat.Png);
-                        MessageBox.Show("Saved to file: " + file);
-                        /*break;
-                }*/
-
+                    image.Save(imageName, ImageFormat.Png);
+                    // for testing purposes
+                    MessageBox.Show("Saved to file: " + imageName);
+                    
+                }
             }
+            else
+                return;
+        }
+
+        private void openImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openImageDialog = new OpenFileDialog();
+            openImageDialog.Filter = "Png Image (.png)|*.png";
+            openImageDialog.Title = "Save image as...";
+
+            if (openImageDialog.ShowDialog(this) != DialogResult.OK)
+                return;
+
         }
 
         private void OwnedFormClosed(object dialog, FormClosedEventArgs e)

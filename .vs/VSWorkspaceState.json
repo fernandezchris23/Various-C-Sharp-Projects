@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\TextThreadProgram"
+    "\\TextThreadProgram",
+    "\\TextThreadProgram\\TextThreadProgram"
   ],
-  "SelectedNode": "\\TextThreadProgram\\TextThreadProgram.sln",
+  "SelectedNode": "\\TextThreadProgram\\TextThreadProgram\\MainForm.cs",
   "PreviewInSolutionExplorer": false
 }
