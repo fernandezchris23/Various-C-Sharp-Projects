@@ -40,10 +40,10 @@
             // 
             // newColorBttn
             // 
-            this.newColorBttn.Location = new System.Drawing.Point(302, 155);
-            this.newColorBttn.MinimumSize = new System.Drawing.Size(116, 32);
+            this.newColorBttn.Location = new System.Drawing.Point(297, 155);
+            this.newColorBttn.MinimumSize = new System.Drawing.Size(126, 32);
             this.newColorBttn.Name = "newColorBttn";
-            this.newColorBttn.Size = new System.Drawing.Size(116, 32);
+            this.newColorBttn.Size = new System.Drawing.Size(126, 32);
             this.newColorBttn.TabIndex = 2;
             this.newColorBttn.Text = "New Color";
             this.newColorBttn.UseVisualStyleBackColor = true;
@@ -51,10 +51,10 @@
             // 
             // oldColorBttn
             // 
-            this.oldColorBttn.Location = new System.Drawing.Point(115, 155);
-            this.oldColorBttn.MinimumSize = new System.Drawing.Size(116, 32);
+            this.oldColorBttn.Location = new System.Drawing.Point(106, 155);
+            this.oldColorBttn.MinimumSize = new System.Drawing.Size(126, 32);
             this.oldColorBttn.Name = "oldColorBttn";
-            this.oldColorBttn.Size = new System.Drawing.Size(116, 32);
+            this.oldColorBttn.Size = new System.Drawing.Size(126, 32);
             this.oldColorBttn.TabIndex = 2;
             this.oldColorBttn.Text = "Color to change";
             this.oldColorBttn.UseVisualStyleBackColor = true;
@@ -62,26 +62,26 @@
             // 
             // oldColorLabelDisplay
             // 
-            this.oldColorLabelDisplay.Location = new System.Drawing.Point(115, 122);
-            this.oldColorLabelDisplay.MinimumSize = new System.Drawing.Size(116, 32);
+            this.oldColorLabelDisplay.Location = new System.Drawing.Point(106, 122);
+            this.oldColorLabelDisplay.MinimumSize = new System.Drawing.Size(126, 32);
             this.oldColorLabelDisplay.Name = "oldColorLabelDisplay";
-            this.oldColorLabelDisplay.Size = new System.Drawing.Size(116, 32);
+            this.oldColorLabelDisplay.Size = new System.Drawing.Size(126, 32);
             this.oldColorLabelDisplay.TabIndex = 0;
             // 
             // newColorLabelDisplay
             // 
-            this.newColorLabelDisplay.Location = new System.Drawing.Point(302, 122);
-            this.newColorLabelDisplay.MinimumSize = new System.Drawing.Size(116, 32);
+            this.newColorLabelDisplay.Location = new System.Drawing.Point(297, 122);
+            this.newColorLabelDisplay.MinimumSize = new System.Drawing.Size(126, 32);
             this.newColorLabelDisplay.Name = "newColorLabelDisplay";
-            this.newColorLabelDisplay.Size = new System.Drawing.Size(116, 32);
+            this.newColorLabelDisplay.Size = new System.Drawing.Size(126, 32);
             this.newColorLabelDisplay.TabIndex = 0;
             // 
             // colorApplyBttn
             // 
-            this.colorApplyBttn.Location = new System.Drawing.Point(208, 215);
-            this.colorApplyBttn.MinimumSize = new System.Drawing.Size(116, 32);
+            this.colorApplyBttn.Location = new System.Drawing.Point(203, 215);
+            this.colorApplyBttn.MinimumSize = new System.Drawing.Size(126, 32);
             this.colorApplyBttn.Name = "colorApplyBttn";
-            this.colorApplyBttn.Size = new System.Drawing.Size(116, 32);
+            this.colorApplyBttn.Size = new System.Drawing.Size(126, 32);
             this.colorApplyBttn.TabIndex = 3;
             this.colorApplyBttn.Text = "Apply Color";
             this.colorApplyBttn.UseVisualStyleBackColor = true;
@@ -90,10 +90,10 @@
             // cancelColorBttn
             // 
             this.cancelColorBttn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelColorBttn.Location = new System.Drawing.Point(330, 215);
-            this.cancelColorBttn.MinimumSize = new System.Drawing.Size(116, 32);
+            this.cancelColorBttn.Location = new System.Drawing.Point(335, 215);
+            this.cancelColorBttn.MinimumSize = new System.Drawing.Size(126, 32);
             this.cancelColorBttn.Name = "cancelColorBttn";
-            this.cancelColorBttn.Size = new System.Drawing.Size(116, 32);
+            this.cancelColorBttn.Size = new System.Drawing.Size(126, 32);
             this.cancelColorBttn.TabIndex = 3;
             this.cancelColorBttn.Text = "Cancel";
             this.cancelColorBttn.UseVisualStyleBackColor = true;
@@ -102,10 +102,10 @@
             // okayColorBttn
             // 
             this.okayColorBttn.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.okayColorBttn.Location = new System.Drawing.Point(86, 215);
-            this.okayColorBttn.MinimumSize = new System.Drawing.Size(116, 32);
+            this.okayColorBttn.Location = new System.Drawing.Point(71, 215);
+            this.okayColorBttn.MinimumSize = new System.Drawing.Size(126, 32);
             this.okayColorBttn.Name = "okayColorBttn";
-            this.okayColorBttn.Size = new System.Drawing.Size(116, 32);
+            this.okayColorBttn.Size = new System.Drawing.Size(126, 32);
             this.okayColorBttn.TabIndex = 3;
             this.okayColorBttn.Text = "Okay";
             this.okayColorBttn.UseVisualStyleBackColor = true;

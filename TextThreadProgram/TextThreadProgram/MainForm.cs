@@ -567,8 +567,7 @@ namespace TextThreadProgram
                     changeColorDialog.Show();
                     // make the main form the owner of this dialog
                     changeColorDialog.Owner = this;
-                    changeColorDialog.StartPosition = FormStartPosition.CenterParent;
-                    
+                    changeColorDialog.StartPosition = FormStartPosition.CenterParent;                    
                 }
                 else
                 {
