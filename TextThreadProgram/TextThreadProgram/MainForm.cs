@@ -506,15 +506,18 @@ namespace TextThreadProgram
                 // gets name for saving
                 string imageName = saveImageDialog.FileName;
 
-                Rectangle graphicsView = new Rectangle(0, 0, 100, 100);
+                Rectangle graphicsView = new Rectangle(0, 0, 200, 200);
+
 
                 // Get current graphics object for display
-                using (Graphics displayGraphics = this.g)
+                using (Graphics displayGraphics = g)
                 // Create bitmap to draw into based on existing Graphics object
                 using (Image image = new Bitmap(graphicsView.Width, graphicsView.Height, displayGraphics))
                 // Wrap Graphics object around image to draw into
                 using (Graphics imageGraphics = Graphics.FromImage(image))
                 {
+                    // if I don't fill rectangle it saves as transparent.
+                    //imageGraphics.FillRectangle(Brushes.Black, graphicsView);
                     image.Save(imageName, ImageFormat.Png);
                     // for testing purposes
                     MessageBox.Show("Saved to file: " + imageName);
@@ -527,14 +530,25 @@ namespace TextThreadProgram
 
         private void openImageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openImageDialog = new OpenFileDialog();
-            openImageDialog.Filter = "Png Image (.png)|*.png";
-            openImageDialog.Title = "Save image as...";
+            using (OpenFileDialog openImageDialog = new OpenFileDialog())
+            {
+                openImageDialog.Filter = "Png Image (.png)|*.png";
+                openImageDialog.Title = "Save image as...";
 
-            if (openImageDialog.ShowDialog(this) != DialogResult.OK)
-                return;
+                if (openImageDialog.ShowDialog(this) != DialogResult.OK)
+                    return;
 
+                PictureBox pb = new PictureBox();
+                Image loadImage = Image.FromFile(openImageDialog.FileName);
+                pb.Height = loadImage.Height;
+                pb.Width = loadImage.Width;
+                pb.Image = loadImage;
+                // add to main panel control
+                this.mainPanel.Controls.Add(pb);
+
+            }
         }
+
 
         private void OwnedFormClosed(object dialog, FormClosedEventArgs e)
         {
