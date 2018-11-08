@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,12 +45,33 @@
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.oathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gridViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.capsLockStatusStrip = new System.Windows.Forms.ToolStripStatusLabel();
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.gridViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.drawTabControl = new System.Windows.Forms.TabControl();
+            this.drawTabPage = new System.Windows.Forms.TabPage();
+            this.gridviewTabPage = new System.Windows.Forms.TabPage();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.stringTextDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.zOrderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rotationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textColorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bgColorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textLocationXDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textLocationYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textLocationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textFontDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textSizeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.documentBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.removeBtn = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.drawTabControl.SuspendLayout();
+            this.drawTabPage.SuspendLayout();
+            this.gridviewTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -190,6 +212,13 @@
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
+            // gridViewToolStripMenuItem
+            // 
+            this.gridViewToolStripMenuItem.Name = "gridViewToolStripMenuItem";
+            this.gridViewToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
+            this.gridViewToolStripMenuItem.Text = "GridView";
+            this.gridViewToolStripMenuItem.Click += new System.EventHandler(this.gridViewToolStripMenuItem_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -210,10 +239,11 @@
             // 
             // mainPanel
             // 
-            this.mainPanel.Location = new System.Drawing.Point(12, 31);
+            this.mainPanel.BackColor = System.Drawing.Color.Gray;
+            this.mainPanel.Location = new System.Drawing.Point(6, 5);
             this.mainPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(776, 391);
+            this.mainPanel.Size = new System.Drawing.Size(756, 352);
             this.mainPanel.TabIndex = 2;
             this.mainPanel.DragDrop += new System.Windows.Forms.DragEventHandler(this.mainPanel_DragDrop);
             this.mainPanel.DragEnter += new System.Windows.Forms.DragEventHandler(this.mainPanel_DragEnter);
@@ -223,19 +253,143 @@
             this.mainPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mainPanel_MouseMove);
             this.mainPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mainPanel_MouseUp);
             // 
-            // gridViewToolStripMenuItem
+            // drawTabControl
             // 
-            this.gridViewToolStripMenuItem.Name = "gridViewToolStripMenuItem";
-            this.gridViewToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
-            this.gridViewToolStripMenuItem.Text = "GridView";
-            this.gridViewToolStripMenuItem.Click += new System.EventHandler(this.gridViewToolStripMenuItem_Click);
+            this.drawTabControl.Controls.Add(this.drawTabPage);
+            this.drawTabControl.Controls.Add(this.gridviewTabPage);
+            this.drawTabControl.Location = new System.Drawing.Point(12, 31);
+            this.drawTabControl.Name = "drawTabControl";
+            this.drawTabControl.SelectedIndex = 0;
+            this.drawTabControl.Size = new System.Drawing.Size(776, 391);
+            this.drawTabControl.TabIndex = 3;
+            this.drawTabControl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
+            this.drawTabControl.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MainForm_KeyPress);
+            // 
+            // drawTabPage
+            // 
+            this.drawTabPage.Controls.Add(this.mainPanel);
+            this.drawTabPage.Location = new System.Drawing.Point(4, 25);
+            this.drawTabPage.Name = "drawTabPage";
+            this.drawTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.drawTabPage.Size = new System.Drawing.Size(768, 362);
+            this.drawTabPage.TabIndex = 0;
+            this.drawTabPage.Text = "Draw";
+            this.drawTabPage.UseVisualStyleBackColor = true;
+            // 
+            // gridviewTabPage
+            // 
+            this.gridviewTabPage.Controls.Add(this.removeBtn);
+            this.gridviewTabPage.Controls.Add(this.dataGridView);
+            this.gridviewTabPage.Location = new System.Drawing.Point(4, 25);
+            this.gridviewTabPage.Name = "gridviewTabPage";
+            this.gridviewTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.gridviewTabPage.Size = new System.Drawing.Size(768, 362);
+            this.gridviewTabPage.TabIndex = 1;
+            this.gridviewTabPage.Text = "Gridview";
+            this.gridviewTabPage.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView
+            // 
+            this.dataGridView.AutoGenerateColumns = false;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.stringTextDataGridViewTextBoxColumn,
+            this.zOrderDataGridViewTextBoxColumn,
+            this.rotationDataGridViewTextBoxColumn,
+            this.textColorDataGridViewTextBoxColumn,
+            this.bgColorDataGridViewTextBoxColumn,
+            this.textLocationXDataGridViewTextBoxColumn,
+            this.textLocationYDataGridViewTextBoxColumn,
+            this.textLocationDataGridViewTextBoxColumn,
+            this.textFontDataGridViewTextBoxColumn,
+            this.textSizeDataGridViewTextBoxColumn});
+            this.dataGridView.DataSource = this.documentBindingSource;
+            this.dataGridView.Location = new System.Drawing.Point(6, 6);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.RowTemplate.Height = 24;
+            this.dataGridView.Size = new System.Drawing.Size(756, 304);
+            this.dataGridView.TabIndex = 0;
+            // 
+            // stringTextDataGridViewTextBoxColumn
+            // 
+            this.stringTextDataGridViewTextBoxColumn.DataPropertyName = "StringText";
+            this.stringTextDataGridViewTextBoxColumn.HeaderText = "StringText";
+            this.stringTextDataGridViewTextBoxColumn.Name = "stringTextDataGridViewTextBoxColumn";
+            // 
+            // zOrderDataGridViewTextBoxColumn
+            // 
+            this.zOrderDataGridViewTextBoxColumn.DataPropertyName = "Z_Order";
+            this.zOrderDataGridViewTextBoxColumn.HeaderText = "Z_Order";
+            this.zOrderDataGridViewTextBoxColumn.Name = "zOrderDataGridViewTextBoxColumn";
+            // 
+            // rotationDataGridViewTextBoxColumn
+            // 
+            this.rotationDataGridViewTextBoxColumn.DataPropertyName = "Rotation";
+            this.rotationDataGridViewTextBoxColumn.HeaderText = "Rotation";
+            this.rotationDataGridViewTextBoxColumn.Name = "rotationDataGridViewTextBoxColumn";
+            // 
+            // textColorDataGridViewTextBoxColumn
+            // 
+            this.textColorDataGridViewTextBoxColumn.DataPropertyName = "TextColor";
+            this.textColorDataGridViewTextBoxColumn.HeaderText = "TextColor";
+            this.textColorDataGridViewTextBoxColumn.Name = "textColorDataGridViewTextBoxColumn";
+            // 
+            // bgColorDataGridViewTextBoxColumn
+            // 
+            this.bgColorDataGridViewTextBoxColumn.DataPropertyName = "BgColor";
+            this.bgColorDataGridViewTextBoxColumn.HeaderText = "BgColor";
+            this.bgColorDataGridViewTextBoxColumn.Name = "bgColorDataGridViewTextBoxColumn";
+            // 
+            // textLocationXDataGridViewTextBoxColumn
+            // 
+            this.textLocationXDataGridViewTextBoxColumn.DataPropertyName = "TextLocationX";
+            this.textLocationXDataGridViewTextBoxColumn.HeaderText = "TextLocationX";
+            this.textLocationXDataGridViewTextBoxColumn.Name = "textLocationXDataGridViewTextBoxColumn";
+            // 
+            // textLocationYDataGridViewTextBoxColumn
+            // 
+            this.textLocationYDataGridViewTextBoxColumn.DataPropertyName = "TextLocationY";
+            this.textLocationYDataGridViewTextBoxColumn.HeaderText = "TextLocationY";
+            this.textLocationYDataGridViewTextBoxColumn.Name = "textLocationYDataGridViewTextBoxColumn";
+            // 
+            // textLocationDataGridViewTextBoxColumn
+            // 
+            this.textLocationDataGridViewTextBoxColumn.DataPropertyName = "TextLocation";
+            this.textLocationDataGridViewTextBoxColumn.HeaderText = "TextLocation";
+            this.textLocationDataGridViewTextBoxColumn.Name = "textLocationDataGridViewTextBoxColumn";
+            // 
+            // textFontDataGridViewTextBoxColumn
+            // 
+            this.textFontDataGridViewTextBoxColumn.DataPropertyName = "TextFont";
+            this.textFontDataGridViewTextBoxColumn.HeaderText = "TextFont";
+            this.textFontDataGridViewTextBoxColumn.Name = "textFontDataGridViewTextBoxColumn";
+            // 
+            // textSizeDataGridViewTextBoxColumn
+            // 
+            this.textSizeDataGridViewTextBoxColumn.DataPropertyName = "TextSize";
+            this.textSizeDataGridViewTextBoxColumn.HeaderText = "TextSize";
+            this.textSizeDataGridViewTextBoxColumn.Name = "textSizeDataGridViewTextBoxColumn";
+            // 
+            // documentBindingSource
+            // 
+            this.documentBindingSource.DataSource = typeof(TextThreadProgram.Document);
+            // 
+            // removeBtn
+            // 
+            this.removeBtn.Location = new System.Drawing.Point(6, 333);
+            this.removeBtn.Name = "removeBtn";
+            this.removeBtn.Size = new System.Drawing.Size(75, 23);
+            this.removeBtn.TabIndex = 1;
+            this.removeBtn.Text = "Remove";
+            this.removeBtn.UseVisualStyleBackColor = true;
+            this.removeBtn.Click += new System.EventHandler(this.removeBtn_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.mainPanel);
+            this.Controls.Add(this.drawTabControl);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -249,6 +403,11 @@
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.drawTabControl.ResumeLayout(false);
+            this.drawTabPage.ResumeLayout(false);
+            this.gridviewTabPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -276,6 +435,22 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importTextFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gridViewToolStripMenuItem;
+        private System.Windows.Forms.TabControl drawTabControl;
+        private System.Windows.Forms.TabPage drawTabPage;
+        private System.Windows.Forms.TabPage gridviewTabPage;
+        private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stringTextDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn zOrderDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rotationDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn textColorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bgColorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn textLocationXDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn textLocationYDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn textLocationDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn textFontDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn textSizeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource documentBindingSource;
+        private System.Windows.Forms.Button removeBtn;
     }
 }
 

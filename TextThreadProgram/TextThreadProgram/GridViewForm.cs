@@ -20,5 +20,9 @@ namespace TextThreadProgram
         private void documentBindingSource_CurrentChanged(object sender, EventArgs e)
         {
         }
+
+        private void removeBtn_Click(object sender, EventArgs e)
+        {
+        }
     }
 }

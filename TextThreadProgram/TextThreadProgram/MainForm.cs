@@ -36,6 +36,7 @@ namespace TextThreadProgram
             InitializeComponent();
             fileFilter = "Files|*.ok";
             document = new Document();
+
             isTyping = false;
             isMoving = false;
             isSelected = false;
@@ -50,6 +51,7 @@ namespace TextThreadProgram
             filename = this.Text;
             fileName = "";
             this.mainPanel.AllowDrop = true;
+            this.dataGridView.DataSource = document;
         }
 
         public static MainForm CreateWindow(string fname)
@@ -162,6 +164,7 @@ namespace TextThreadProgram
 
         private void mainPanel_MouseMove(object sender, MouseEventArgs e)
         {
+            Console.WriteLine("Mouse moving");
             if (mouseIsDown && isSelected)
             {
                 isMoving = true;
@@ -501,6 +504,10 @@ namespace TextThreadProgram
             gForm.dataGridView1.DataSource = document;
             Console.WriteLine("Elements = " + document.Count);
             gForm.Show();
+        }
+
+        private void removeBtn_Click(object sender, EventArgs e)
+        {
         }
 
         private void OwnedFormClosed(object dialog, FormClosedEventArgs e)
