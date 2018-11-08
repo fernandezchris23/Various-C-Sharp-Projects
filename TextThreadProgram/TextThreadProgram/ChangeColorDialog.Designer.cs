@@ -101,6 +101,7 @@
             // 
             // okayColorBttn
             // 
+            this.okayColorBttn.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.okayColorBttn.Location = new System.Drawing.Point(86, 215);
             this.okayColorBttn.MinimumSize = new System.Drawing.Size(116, 32);
             this.okayColorBttn.Name = "okayColorBttn";
@@ -112,6 +113,7 @@
             // 
             // ChangeColorDialog
             // 
+            this.AcceptButton = this.okayColorBttn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
