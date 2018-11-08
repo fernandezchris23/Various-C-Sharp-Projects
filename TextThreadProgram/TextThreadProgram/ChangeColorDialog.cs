@@ -14,7 +14,7 @@ namespace TextThreadProgram
     public partial class ChangeColorDialog : BaseDialogForm
     {
         private PictureBox pb;
-        public event EventHandler<ColorEventArgs> color;
+        public event EventHandler<ColorEventArgs> colors;
 
         public ChangeColorDialog(PictureBox pictureBox)
         {
@@ -110,13 +110,13 @@ namespace TextThreadProgram
 
         private void okayColorBttn_Click(object sender, EventArgs e)
         {
-            color(this, new ColorEventArgs(newColorLabelDisplay.BackColor, newColorLabelDisplay.BackColor));
+            colors(this, new ColorEventArgs(oldColorLabelDisplay.BackColor, newColorLabelDisplay.BackColor));
             this.Close();
         }
 
         private void colorApplyBttn_Click(object sender, EventArgs e)
         {
-            color(this, new ColorEventArgs(newColorLabelDisplay.BackColor, newColorLabelDisplay.BackColor));
+            colors(this, new ColorEventArgs(oldColorLabelDisplay.BackColor, newColorLabelDisplay.BackColor));
         }
 
         private void cancelColorBttn_Click(object sender, EventArgs e)
@@ -124,6 +124,7 @@ namespace TextThreadProgram
             this.Close();
         }
     }
+
     public class ColorEventArgs : EventArgs
     {
         public Color oldColorPass { get; set; }
