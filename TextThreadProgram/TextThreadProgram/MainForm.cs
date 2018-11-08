@@ -19,6 +19,7 @@ namespace TextThreadProgram
         private string filename;
         private string fileName; //Used for filename with extension
         private string fileFilter;
+        private string imageToChangeFilename;
 
         private Document document;
         private Text currentText;
@@ -27,12 +28,15 @@ namespace TextThreadProgram
         private Text oldRightClickText;
         private Text newRightClickText;
         private Graphics g;
+        private Color oldColorFromDlg;
+        private Color newColorFromDlg;
+        private Bitmap imageColorChange;
 
         private bool isTyping;
         private bool isMoving;
         private bool isSelected;
         private bool mouseIsDown;
-        private bool isOath, isAbout, isSearch, isTextOptions;
+        private bool isOath, isAbout, isSearch, isTextOptions, isChangeColor;
 
         //Used to give Z-order values. Since we don't want any two text on the same z-order (or else we won't know who will overlap who) we want it to be unique
         private int numText;
@@ -50,6 +54,7 @@ namespace TextThreadProgram
             isAbout = false;
             isSearch = false;
             isTextOptions = false;
+            isChangeColor = false;
             currentText = GetCurrentText();
             DoubleBuffered = true;
             numText = 0;
@@ -507,6 +512,71 @@ namespace TextThreadProgram
         private void mainPanel_MouseHover(object sender, EventArgs e)
         {
             this.Cursor = GetCustomCursor();
+        }
+
+        private void changeColorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!isChangeColor)
+            {
+                using (OpenFileDialog openImageDialog = new OpenFileDialog())
+                { 
+                    openImageDialog.Filter = "Png Image (.png)|*.png";
+                    openImageDialog.Title = "Open Image To Change Colors For...";
+
+                    if (openImageDialog.ShowDialog(this) != DialogResult.OK)
+                        return;
+
+                    imageToChangeFilename = openImageDialog.FileName;
+
+                    using (Form form = new Form())
+                    using (Bitmap bmp = new Bitmap(imageToChangeFilename))
+                    {
+                        isChangeColor = true;
+                        imageColorChange = bmp;
+
+                        ChangeColorDialog changeColorDialog = new ChangeColorDialog(openImageDialog.FileName);
+                        changeColorDialog.colors += new EventHandler<ColorEventArgs>(colorDlg_Color);
+                        changeColorDialog.saveColors += new EventHandler(saveColorsEvent);
+                        changeColorDialog.FormClosed += new FormClosedEventHandler(OwnedFormClosed);
+
+                        // open modelessly
+                        changeColorDialog.Show();
+                        // make the main form the owner of this dialog
+                        changeColorDialog.Owner = this;
+                        changeColorDialog.StartPosition = FormStartPosition.CenterParent;
+                    }
+                }
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void colorDlg_Color(object sender, ColorEventArgs e)
+        {
+            oldColorFromDlg = e.oldColorPass;
+            newColorFromDlg = e.newColorPass;
+        }
+
+        private void saveColorsEvent(object sender, EventArgs e)
+        {
+            using (Bitmap bmp = imageColorChange)
+            using (Graphics imageG = Graphics.FromImage(bmp))
+            {
+                // Set the image attribute's color mappings
+                ColorMap[] colorMap = new ColorMap[1];
+                colorMap[0] = new ColorMap();
+                colorMap[0].OldColor = oldColorFromDlg;
+                colorMap[0].NewColor = newColorFromDlg;
+
+                ImageAttributes attr = new ImageAttributes();
+                attr.SetRemapTable(colorMap);
+
+                Rectangle rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
+                imageG.DrawImage(bmp, rect, 0, 0, rect.Width, rect.Height, GraphicsUnit.Pixel, attr);
+                bmp.Save(imageToChangeFilename, ImageFormat.Png);
+            }
         }
 
         private Text GetCurrentText()

@@ -178,22 +178,23 @@
             // openImageToolStripMenuItem
             // 
             this.openImageToolStripMenuItem.Name = "openImageToolStripMenuItem";
-            this.openImageToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openImageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openImageToolStripMenuItem.Text = "Open";
             this.openImageToolStripMenuItem.Click += new System.EventHandler(this.openImageToolStripMenuItem_Click);
             // 
             // saveImageToolStripMenuItem1
             // 
             this.saveImageToolStripMenuItem1.Name = "saveImageToolStripMenuItem1";
-            this.saveImageToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.saveImageToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.saveImageToolStripMenuItem1.Text = "Save";
             this.saveImageToolStripMenuItem1.Click += new System.EventHandler(this.saveImageToolStripMenuItem1_Click);
             // 
             // changeColorsToolStripMenuItem
             // 
             this.changeColorsToolStripMenuItem.Name = "changeColorsToolStripMenuItem";
-            this.changeColorsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.changeColorsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.changeColorsToolStripMenuItem.Text = "Change Colors";
+            this.changeColorsToolStripMenuItem.Click += new System.EventHandler(this.changeColorsToolStripMenuItem_Click);
             // 
             // gridViewToolStripMenuItem
             // 
