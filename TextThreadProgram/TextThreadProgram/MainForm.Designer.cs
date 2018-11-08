@@ -38,7 +38,8 @@
             this.closeAltF4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveAsImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveGraphicsViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeImageColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cutCtrlXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -135,7 +136,8 @@
             // 
             this.imageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openImageToolStripMenuItem,
-            this.saveAsImageToolStripMenuItem,
+            this.saveImageToolStripMenuItem,
+            this.saveGraphicsViewToolStripMenuItem,
             this.changeImageColorToolStripMenuItem});
             this.imageToolStripMenuItem.Name = "imageToolStripMenuItem";
             this.imageToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
@@ -148,12 +150,19 @@
             this.openImageToolStripMenuItem.Text = "Open";
             this.openImageToolStripMenuItem.Click += new System.EventHandler(this.openImageToolStripMenuItem_Click);
             // 
-            // saveAsImageToolStripMenuItem
+            // saveImageToolStripMenuItem
             // 
-            this.saveAsImageToolStripMenuItem.Name = "saveAsImageToolStripMenuItem";
-            this.saveAsImageToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.saveAsImageToolStripMenuItem.Text = "Save";
-            this.saveAsImageToolStripMenuItem.Click += new System.EventHandler(this.saveAsImageToolStripMenuItem_Click);
+            this.saveImageToolStripMenuItem.Name = "saveImageToolStripMenuItem";
+            this.saveImageToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.saveImageToolStripMenuItem.Text = "Save Image";
+            this.saveImageToolStripMenuItem.Click += new System.EventHandler(this.saveImageToolStripMenuItem_Click);
+            // 
+            // saveGraphicsViewToolStripMenuItem
+            // 
+            this.saveGraphicsViewToolStripMenuItem.Name = "saveGraphicsViewToolStripMenuItem";
+            this.saveGraphicsViewToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.saveGraphicsViewToolStripMenuItem.Text = "Save Graphics View";
+            this.saveGraphicsViewToolStripMenuItem.Click += new System.EventHandler(this.saveGraphicsViewToolStripMenuItem_Click);
             // 
             // changeImageColorToolStripMenuItem
             // 
@@ -303,9 +312,10 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importTextFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem imageToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveAsImageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveGraphicsViewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openImageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changeImageColorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveImageToolStripMenuItem;
     }
 }
 

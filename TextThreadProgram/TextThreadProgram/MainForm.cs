@@ -25,6 +25,7 @@ namespace TextThreadProgram
         private PictureBox pb;
         private Color oldColorFromDlg;
         private Color newColorFromDlg;
+        private Bitmap bmpColorChange;
         private bool isTyping;
         private bool isMoving;
         private bool isSelected;
@@ -499,7 +500,7 @@ namespace TextThreadProgram
             }
         }
 
-        private void saveAsImageToolStripMenuItem_Click(object sender, EventArgs e)
+        private void saveGraphicsViewToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveImageDialog = new SaveFileDialog();
             saveImageDialog.Filter = "Png Image (.png)|*.png";
@@ -538,14 +539,24 @@ namespace TextThreadProgram
 
             ReDrawToImage(imageGraphics);
         }
-        
-        private void DrawTextToGraphic(Text text, Graphics imageGraphics)
+
+        private void DrawTextToGraphic(Text text, Graphics imageGraphic)
         {
-            
+            using (StringFormat format = new StringFormat())
+            {
+                format.Trimming = StringTrimming.Word;
+                text.TextSize = new Size(((int)this.mainPanel.CreateGraphics().MeasureString(text.StringText, text.TextFont).Width) + 1,
+                                         ((int)this.mainPanel.CreateGraphics().MeasureString(text.StringText, text.TextFont).Height) + 1); //+ 1 needed or else last letter will be cut off
+                imageGraphic.RotateTransform(text.Rotation);
+                imageGraphic.FillRectangle(new SolidBrush(text.BgColor), new Rectangle(text.TextLocation, text.TextSize));
+                imageGraphic.DrawString(text.StringText, text.TextFont, new SolidBrush(text.TextColor), new Rectangle(text.TextLocation, text.TextSize), format);
+            }
         }
 
-        private void ReDrawToImage(Graphics imageGraphics)
+        private void ReDrawToImage(Graphics imageGraphic)
         {
+            foreach (Text text in document)
+                DrawTextToGraphic(text, imageGraphic);
         }
 
         private void openImageToolStripMenuItem_Click(object sender, EventArgs e)
@@ -611,6 +622,30 @@ namespace TextThreadProgram
             pb.Invalidate();
         }
 
+        private void saveImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveImageDialog = new SaveFileDialog();
+            saveImageDialog.Filter = "Png Image (.png)|*.png";
+            saveImageDialog.Title = "Save image as...";
+
+            if (saveImageDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                // gets name for saving
+                string imageName = saveImageDialog.FileName;
+
+                if (pb != null)
+                {
+                    Rectangle rect = new Rectangle(0, 0, pb.Size.Width, pb.Size.Height);
+                    Bitmap dumpBitmap = new Bitmap(pb.Size.Width, pb.Size.Height);
+                    pb.DrawToBitmap(dumpBitmap, rect);
+                    dumpBitmap.Save(imageName, ImageFormat.Png);
+                    // for testing purposes
+                    MessageBox.Show("Saved to file: " + imageName);
+                }
+            }
+            else
+                return;
+        }
 
         private void colorMap(object sender, PaintEventArgs e)
         {
