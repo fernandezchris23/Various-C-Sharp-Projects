@@ -2,11 +2,15 @@
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace TextThreadProgram
 {
     public partial class MainForm : Form
     {
+        [DllImport("user32.dll")]
+        static extern IntPtr LoadCursorFromFile(string lpFileName);
+
         public const string CAPS_ON = "Caps Lock: ON";
         public const string CAPS_OFF = "Caps Lock: OFF";
 
@@ -52,6 +56,19 @@ namespace TextThreadProgram
             fileName = "";
             this.mainPanel.AllowDrop = true;
             this.dataGridView.DataSource = document;
+            this.Cursor = GetCustomCursor();
+        }
+
+        private Cursor GetCustomCursor()
+        {
+            // Load colored cursor once for the lifetime of the application
+            String str = @"..\..\..\..\TextThreadProgram\TextThreadProgram\Resources\ccursor.cur";
+            Console.WriteLine(Path.GetFullPath(str));
+            if (!File.Exists(str))
+                throw new Exception("Cannot find file: " + Path.GetFullPath(str));
+
+            IntPtr cursor = LoadCursorFromFile(str);
+            return new Cursor(cursor);
         }
 
         public static MainForm CreateWindow(string fname)
