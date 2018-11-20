@@ -16,6 +16,8 @@ namespace ControlLibrary
         private int width;
         private int height;
 
+        public event EventHandler bttnClick;
+
         public BackButton()
         {
             width = 512;
@@ -32,6 +34,7 @@ namespace ControlLibrary
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
             this.BackColor = Color.Transparent;
+            bttnClick(this, EventArgs.Empty);
         }
 
         private void setEllipseRegion()

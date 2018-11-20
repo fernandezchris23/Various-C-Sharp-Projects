@@ -25,7 +25,6 @@ C:\Users\Mega Trainer\source\repos\1808-uha-repo2\FinalAssignmentTeam2\ControlLi
 C:\Users\cfern272\Source\Repos\1808-uha-repo2\FinalAssignmentTeam2\ControlLibrary\bin\Debug\ControlLibrary.dll.config
 C:\Users\cfern272\Source\Repos\1808-uha-repo2\FinalAssignmentTeam2\ControlLibrary\bin\Debug\ControlLibrary.dll
 C:\Users\cfern272\Source\Repos\1808-uha-repo2\FinalAssignmentTeam2\ControlLibrary\bin\Debug\ControlLibrary.pdb
-C:\Users\cfern272\Source\Repos\1808-uha-repo2\FinalAssignmentTeam2\ControlLibrary\obj\Debug\ControlLibrary.csprojAssemblyReference.cache
 C:\Users\cfern272\Source\Repos\1808-uha-repo2\FinalAssignmentTeam2\ControlLibrary\obj\Debug\ControlLibrary.BackButton.resources
 C:\Users\cfern272\Source\Repos\1808-uha-repo2\FinalAssignmentTeam2\ControlLibrary\obj\Debug\ControlLibrary.ForwardButton.resources
 C:\Users\cfern272\Source\Repos\1808-uha-repo2\FinalAssignmentTeam2\ControlLibrary\obj\Debug\ControlLibrary.HomeButton.resources

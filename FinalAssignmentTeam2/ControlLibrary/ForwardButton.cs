@@ -16,6 +16,8 @@ namespace ControlLibrary
         private int width;
         private int height;
 
+        public event EventHandler bttnClick;
+
         public ForwardButton()
         {
             width = 512;
@@ -40,11 +42,6 @@ namespace ControlLibrary
             this.BackColor = Color.DarkGray;
         }
 
-        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
-        {
-            this.BackColor = Color.Transparent;
-        }
-
         private void setEllipseRegion()
         {
             using (GraphicsPath path = new GraphicsPath())
@@ -52,6 +49,12 @@ namespace ControlLibrary
                 path.AddEllipse(new RectangleF(-1, -1, width + 1, height + 1));
                 this.Region = new Region(path);
             }
+        }
+
+        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
+        {
+            this.BackColor = Color.Transparent;
+            bttnClick(this, EventArgs.Empty);
         }
     }
 }

@@ -115,9 +115,10 @@
             this.webBrowser.Location = new System.Drawing.Point(0, 38);
             this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser.Name = "webBrowser";
+            this.webBrowser.ScriptErrorsSuppressed = true;
             this.webBrowser.Size = new System.Drawing.Size(800, 388);
             this.webBrowser.TabIndex = 4;
-            this.webBrowser.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.webBrowser_Navigated);
+            this.webBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser_DocumentCompleted);
             // 
             // statusStrip
             // 

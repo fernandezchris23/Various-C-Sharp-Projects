@@ -26,6 +26,7 @@ namespace FinalAssignmentTeam2
     {
         private Node first;
         private Node last;
+        private Node currentPosition;
 
         public DoubleLinkedList()
         {
@@ -34,6 +35,8 @@ namespace FinalAssignmentTeam2
 
             first.next = last;
             last.prev = first;
+
+            currentPosition = null;
         }
 
         public bool isEmpty()
@@ -59,21 +62,46 @@ namespace FinalAssignmentTeam2
             }
 
             last.prev = newNode; //Last should point to new node because it is at end of list
+
+            currentPosition = newNode; //Current position will be newest node created
         }
 
         //Removes next item in list and all who follow it except last (Must be uppercase for some accesibility reason)
-        public void RemoveNextCascading(Node current)
+        public void RemoveNextCascading()
         {
-            if(!isEmpty() && current.next != last)
+            if(!isEmpty() && currentPosition.next != last)
             {
-                current.next = last;
-                last.prev = current;
+                currentPosition.next = last;
+                last.prev = currentPosition;
             }
         }
 
-        public bool isLastListItem(Node current)
+        public bool isFirstListItem()
         {
-            return (current.next == last);
+            return (currentPosition.prev == first);
+        }
+
+        public bool isLastListItem()
+        {
+            return (currentPosition.next == last);
+        }
+
+        public string getPrevious()
+        {
+            string urlToReturn = currentPosition.prev.info; //Get the URL of the previous node to return
+
+            currentPosition = currentPosition.prev; //Move the current position back one
+
+            return urlToReturn; //Return the URL
+        }
+
+        public string getNext()
+        {
+            string urlToReturn = currentPosition.next.info; //Get the URL of the next node to return
+
+            currentPosition = currentPosition.next; //Move the current position forward one
+
+            return urlToReturn; //Return the URL
         }
     }
 }
