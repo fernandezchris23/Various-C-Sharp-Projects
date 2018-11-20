@@ -114,5 +114,14 @@ namespace FinalAssignmentTeam2
         }
 
         //*************************//
+
+        //******MENU ITEMS HANDLER SECTION******//
+
+        private void newWindowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateWindow();
+        }
+
+        //*************************//
     }
 }

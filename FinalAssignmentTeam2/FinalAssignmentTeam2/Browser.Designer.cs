@@ -141,7 +141,7 @@
             this.helpToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.contextMenuButton.Name = "contextMenuButton";
-            this.contextMenuButton.Size = new System.Drawing.Size(146, 170);
+            this.contextMenuButton.Size = new System.Drawing.Size(181, 192);
             // 
             // newTabToolStripMenuItem
             // 
@@ -152,8 +152,9 @@
             // newWindowToolStripMenuItem
             // 
             this.newWindowToolStripMenuItem.Name = "newWindowToolStripMenuItem";
-            this.newWindowToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.newWindowToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.newWindowToolStripMenuItem.Text = "New Window";
+            this.newWindowToolStripMenuItem.Click += new System.EventHandler(this.newWindowToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
