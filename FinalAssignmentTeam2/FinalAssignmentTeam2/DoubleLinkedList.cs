@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 //Used for implementing back and forward functionality
 
-namespace Gear_Browser
+namespace FinalAssignmentTeam2
 {
     class Node
     {

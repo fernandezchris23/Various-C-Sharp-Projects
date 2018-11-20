@@ -20,6 +20,14 @@ namespace FinalAssignmentTeam2
             homeButton.homeBttnClick += new EventHandler(homeNavigate);
         }
 
+        public static Browser CreateWindow()
+        {
+            Browser newForm = new Browser();
+            newForm.Show();
+            newForm.Activate();
+            return newForm;
+        }
+
         private void addrBarText_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
