@@ -21,12 +21,14 @@ namespace FinalAssignmentTeam2
             containerName = "";
         }
     }
+
     class SingleLinkedList
     {
         private SingleListNode first;
         private SingleListNode currentPosition;
 
         private int numNodes;
+        private bool isGettingNodes;
 
         public SingleLinkedList()
         {
@@ -34,6 +36,7 @@ namespace FinalAssignmentTeam2
             first.next = null;
 
             numNodes = 0;
+            isGettingNodes = false;
         }
 
         public bool isEmpty()
@@ -124,6 +127,31 @@ namespace FinalAssignmentTeam2
                     temp = temp.next;
                 }
             }
+        }
+
+        //Gets each node. This method will only be used in loops to get ALL nodes
+        public SingleListNode getNode()
+        {
+            SingleListNode temp = currentPosition;
+
+            if (!isGettingNodes)
+            {
+                isGettingNodes = true;
+                currentPosition = first.next;
+                temp = currentPosition;
+                currentPosition = currentPosition.next;
+            }
+            else if(isGettingNodes && currentPosition.next != null)
+            {
+                currentPosition = currentPosition.next;
+            }
+           else if (currentPosition.next == null)
+            {
+                isGettingNodes = false;
+                return null;
+            }
+
+            return temp;
         }
     }
 }

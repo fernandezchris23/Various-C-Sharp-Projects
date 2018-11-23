@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddFavoriteDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddFavoriteDialog.Designer.cs">
+      <DependentUpon>AddFavoriteDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Browser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,6 +63,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SingleLinkedList.cs" />
+    <EmbeddedResource Include="AddFavoriteDialog.resx">
+      <DependentUpon>AddFavoriteDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Browser.resx">
       <DependentUpon>Browser.cs</DependentUpon>
     </EmbeddedResource>

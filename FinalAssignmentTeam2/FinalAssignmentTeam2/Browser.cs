@@ -13,6 +13,10 @@ namespace FinalAssignmentTeam2
     public partial class Browser : Form
     {
         private DoubleLinkedList backForwardList;
+        private SingleLinkedList history;
+        private SingleLinkedList favorites;
+
+        private List<string> favoritesContainers;
 
         private bool isBackingOrForwarding; //Used to prevent hitting back or forward from clearing the rest of the list
 
@@ -25,6 +29,9 @@ namespace FinalAssignmentTeam2
 
             //List Creation
             backForwardList = new DoubleLinkedList();
+            history = new SingleLinkedList();
+            favorites = new SingleLinkedList();
+            favoritesContainers = new List<string>(); //Holds the names of all the containing folders in the favorites bar
 
             //Custom control events redirected
             menuButton.menuBttnClick += new EventHandler(menuOpen);
@@ -120,6 +127,24 @@ namespace FinalAssignmentTeam2
         private void newWindowToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CreateWindow();
+        }
+
+        //*************************//
+
+        //******FAVORITES TOOLBAR SECTION******//
+
+        private void addFavBttn_Click(object sender, EventArgs e)
+        {
+            AddFavoriteDialog favDlg = new AddFavoriteDialog(favoritesContainers);
+            favDlg.itemDoubleClick += new EventHandler<MyEventArgs>(favDlg_DoubleClick);
+
+            favDlg.StartPosition = FormStartPosition.CenterParent;
+            favDlg.ShowDialog();
+        }
+
+        private void favDlg_DoubleClick(object sender, MyEventArgs e)
+        {
+            //HERE WE WILL TAKE THE CHOSEN FOLDER AND ADD THE CURRENT URL TO IT VIA THE SINGLELINKEDLIST CLASS
         }
 
         //*************************//

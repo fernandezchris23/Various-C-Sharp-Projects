@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Browser));
             this.addrBar = new System.Windows.Forms.GroupBox();
             this.menuButton = new ControlLibrary.MenuButton();
             this.addrBarText = new System.Windows.Forms.TextBox();
@@ -47,8 +48,11 @@
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.favToolStrip = new System.Windows.Forms.ToolStrip();
+            this.addFavBttn = new System.Windows.Forms.ToolStripButton();
             this.addrBar.SuspendLayout();
             this.contextMenuButton.SuspendLayout();
+            this.favToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // addrBar
@@ -112,11 +116,11 @@
             this.webBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.webBrowser.Location = new System.Drawing.Point(0, 38);
+            this.webBrowser.Location = new System.Drawing.Point(0, 66);
             this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser.Name = "webBrowser";
             this.webBrowser.ScriptErrorsSuppressed = true;
-            this.webBrowser.Size = new System.Drawing.Size(800, 388);
+            this.webBrowser.Size = new System.Drawing.Size(800, 360);
             this.webBrowser.TabIndex = 4;
             this.webBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser_DocumentCompleted);
             // 
@@ -141,7 +145,7 @@
             this.helpToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.contextMenuButton.Name = "contextMenuButton";
-            this.contextMenuButton.Size = new System.Drawing.Size(181, 192);
+            this.contextMenuButton.Size = new System.Drawing.Size(146, 170);
             // 
             // newTabToolStripMenuItem
             // 
@@ -152,7 +156,7 @@
             // newWindowToolStripMenuItem
             // 
             this.newWindowToolStripMenuItem.Name = "newWindowToolStripMenuItem";
-            this.newWindowToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newWindowToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.newWindowToolStripMenuItem.Text = "New Window";
             this.newWindowToolStripMenuItem.Click += new System.EventHandler(this.newWindowToolStripMenuItem_Click);
             // 
@@ -196,11 +200,37 @@
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
+            // favToolStrip
+            // 
+            this.favToolStrip.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.favToolStrip.AutoSize = false;
+            this.favToolStrip.Dock = System.Windows.Forms.DockStyle.None;
+            this.favToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addFavBttn});
+            this.favToolStrip.Location = new System.Drawing.Point(3, 37);
+            this.favToolStrip.Name = "favToolStrip";
+            this.favToolStrip.Size = new System.Drawing.Size(797, 25);
+            this.favToolStrip.Stretch = true;
+            this.favToolStrip.TabIndex = 5;
+            this.favToolStrip.Text = "toolStrip1";
+            // 
+            // addFavBttn
+            // 
+            this.addFavBttn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.addFavBttn.Image = ((System.Drawing.Image)(resources.GetObject("addFavBttn.Image")));
+            this.addFavBttn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.addFavBttn.Name = "addFavBttn";
+            this.addFavBttn.Size = new System.Drawing.Size(23, 22);
+            this.addFavBttn.Text = "Add Favorite";
+            this.addFavBttn.Click += new System.EventHandler(this.addFavBttn_Click);
+            // 
             // Browser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.favToolStrip);
             this.Controls.Add(this.webBrowser);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.addrBar);
@@ -210,6 +240,8 @@
             this.addrBar.ResumeLayout(false);
             this.addrBar.PerformLayout();
             this.contextMenuButton.ResumeLayout(false);
+            this.favToolStrip.ResumeLayout(false);
+            this.favToolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -235,6 +267,8 @@
         private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStrip favToolStrip;
+        private System.Windows.Forms.ToolStripButton addFavBttn;
     }
 }
 
