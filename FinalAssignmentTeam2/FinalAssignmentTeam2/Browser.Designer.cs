@@ -50,6 +50,7 @@
             this.homeButton = new ControlLibrary.HomeButton();
             this.forwardButton = new ControlLibrary.ForwardButton();
             this.backButton = new ControlLibrary.BackButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.addrBar.SuspendLayout();
             this.contextMenuButton.SuspendLayout();
             this.favToolStrip.SuspendLayout();
@@ -174,7 +175,8 @@
             this.favToolStrip.AutoSize = false;
             this.favToolStrip.Dock = System.Windows.Forms.DockStyle.None;
             this.favToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addFavBttn});
+            this.addFavBttn,
+            this.toolStripSeparator3});
             this.favToolStrip.Location = new System.Drawing.Point(3, 37);
             this.favToolStrip.Name = "favToolStrip";
             this.favToolStrip.Size = new System.Drawing.Size(797, 25);
@@ -225,6 +227,11 @@
             this.backButton.Size = new System.Drawing.Size(25, 25);
             this.backButton.TabIndex = 0;
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
             // Browser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -269,6 +276,7 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStrip favToolStrip;
         private System.Windows.Forms.ToolStripButton addFavBttn;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }
 

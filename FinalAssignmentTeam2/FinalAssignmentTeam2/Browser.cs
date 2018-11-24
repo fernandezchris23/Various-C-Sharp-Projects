@@ -39,6 +39,7 @@ namespace FinalAssignmentTeam2
             backButton.bttnClick += new EventHandler(backBttnClick);
             forwardButton.bttnClick += new EventHandler(forwardBttnClick);
 
+            //Initializing Methods
             createFavoritesContextMenu();
         }
 
@@ -146,20 +147,34 @@ namespace FinalAssignmentTeam2
 
         private void favDlg_DoubleClick(object sender, MyEventArgs e)
         {
-            if(e.ListItemBeingPassed == "No Container")
+            string item = addrBarText.Text;
+            item = item.Replace("https", "");
+            item = item.Replace("://", "");
+            item = item.Replace("www.", "");
+
+            if (e.ListItemBeingPassed == "No Container")
             {
                 favorites.add(addrBarText.Text);
-                ToolStripButton newButton = new ToolStripButton(addrBarText.Text);
+                ToolStripButton newButton = new ToolStripButton(item);
                 newButton.Click += new EventHandler(favClicked);
+                newButton.AutoSize = false;
+                newButton.Width = 100;
+                newButton.TextAlign = ContentAlignment.MiddleLeft;
                 favToolStrip.Items.Add(newButton);
             }
             else
             {
                 favorites.addToContainer(addrBarText.Text, e.ListItemBeingPassed);
 
+                ToolStripDropDownButton temp = favToolStrip.Items[e.ListItemBeingPassed] as ToolStripDropDownButton;
+
+                temp.DropDownItems.Add(item, null, favClickedDropDownItem);
+
+                favToolStrip.Items.Remove(temp);
+                favToolStrip.Items.Insert(2, temp);
             }
         }
-
+        /* TO BE USED FOR SERIALIZATION LATER
         private void buildFavoritesBar()
         {
             SingleListNode temp = favorites.getNode();
@@ -167,7 +182,7 @@ namespace FinalAssignmentTeam2
             {
                 if(temp.isContainer)
                 {
-                    ToolStripDropDownButton newButton = new ToolStripDropDownButton(temp.containerName);
+                    ToolStripDropDownButton newButton = new ToolStripDropDownButton(temp.containerName, null, null, temp.containerName);
                     foreach(string item in temp.list)
                     {
                         newButton.DropDownItems.Add(item, null, favClicked);
@@ -177,16 +192,22 @@ namespace FinalAssignmentTeam2
                 else
                 {
                     ToolStripButton newButton = new ToolStripButton(temp.list.First(), null, null, temp.list.First());
-                    newButton.Click += new EventHandler(favClicked);
+                    newButton.Click += new EventHandler(favClickedDropDownItem);
                     favToolStrip.Items.Add(newButton);
                 }
                 temp = temp.next;
             }
-        }
+        }*/
 
         private void favClicked(object sender, EventArgs e)
         {
             ToolStripButton clickedItem = sender as ToolStripButton;
+            webBrowser.Navigate(clickedItem.Text);
+        }
+
+        private void favClickedDropDownItem(object sender, EventArgs e)
+        {
+            ToolStripDropDownItem clickedItem = sender as ToolStripDropDownItem;
             webBrowser.Navigate(clickedItem.Text);
         }
 
@@ -201,6 +222,13 @@ namespace FinalAssignmentTeam2
         private void createFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string contName = Microsoft.VisualBasic.Interaction.InputBox("Enter the name of the folder to be created:");
+
+            if(contName == "")
+            {
+                MessageBox.Show("Folder Name Cannot Be Empty!");
+                return;
+            }
+
             ToolStripDropDownButton newButton = new ToolStripDropDownButton(contName, null, null, contName);
             
             favToolStrip.Items.Add(newButton);
