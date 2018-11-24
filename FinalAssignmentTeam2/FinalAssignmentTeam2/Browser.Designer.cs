@@ -31,11 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Browser));
             this.addrBar = new System.Windows.Forms.GroupBox();
-            this.menuButton = new ControlLibrary.MenuButton();
             this.addrBarText = new System.Windows.Forms.TextBox();
-            this.homeButton = new ControlLibrary.HomeButton();
-            this.forwardButton = new ControlLibrary.ForwardButton();
-            this.backButton = new ControlLibrary.BackButton();
             this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.contextMenuButton = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -50,6 +46,10 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.favToolStrip = new System.Windows.Forms.ToolStrip();
             this.addFavBttn = new System.Windows.Forms.ToolStripButton();
+            this.menuButton = new ControlLibrary.MenuButton();
+            this.homeButton = new ControlLibrary.HomeButton();
+            this.forwardButton = new ControlLibrary.ForwardButton();
+            this.backButton = new ControlLibrary.BackButton();
             this.addrBar.SuspendLayout();
             this.contextMenuButton.SuspendLayout();
             this.favToolStrip.SuspendLayout();
@@ -69,15 +69,6 @@
             this.addrBar.TabIndex = 1;
             this.addrBar.TabStop = false;
             // 
-            // menuButton
-            // 
-            this.menuButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.menuButton.BackColor = System.Drawing.Color.Transparent;
-            this.menuButton.Location = new System.Drawing.Point(771, 9);
-            this.menuButton.Name = "menuButton";
-            this.menuButton.Size = new System.Drawing.Size(25, 25);
-            this.menuButton.TabIndex = 4;
-            // 
             // addrBarText
             // 
             this.addrBarText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -86,30 +77,6 @@
             this.addrBarText.Size = new System.Drawing.Size(664, 20);
             this.addrBarText.TabIndex = 3;
             this.addrBarText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.addrBarText_KeyDown);
-            // 
-            // homeButton
-            // 
-            this.homeButton.BackColor = System.Drawing.Color.Transparent;
-            this.homeButton.Location = new System.Drawing.Point(65, 6);
-            this.homeButton.Name = "homeButton";
-            this.homeButton.Size = new System.Drawing.Size(30, 30);
-            this.homeButton.TabIndex = 2;
-            // 
-            // forwardButton
-            // 
-            this.forwardButton.BackColor = System.Drawing.Color.Transparent;
-            this.forwardButton.Location = new System.Drawing.Point(35, 9);
-            this.forwardButton.Name = "forwardButton";
-            this.forwardButton.Size = new System.Drawing.Size(25, 25);
-            this.forwardButton.TabIndex = 1;
-            // 
-            // backButton
-            // 
-            this.backButton.BackColor = System.Drawing.Color.Transparent;
-            this.backButton.Location = new System.Drawing.Point(3, 9);
-            this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(25, 25);
-            this.backButton.TabIndex = 0;
             // 
             // webBrowser
             // 
@@ -224,6 +191,39 @@
             this.addFavBttn.Size = new System.Drawing.Size(23, 22);
             this.addFavBttn.Text = "Add Favorite";
             this.addFavBttn.Click += new System.EventHandler(this.addFavBttn_Click);
+            // 
+            // menuButton
+            // 
+            this.menuButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.menuButton.BackColor = System.Drawing.Color.Transparent;
+            this.menuButton.Location = new System.Drawing.Point(771, 9);
+            this.menuButton.Name = "menuButton";
+            this.menuButton.Size = new System.Drawing.Size(25, 25);
+            this.menuButton.TabIndex = 4;
+            // 
+            // homeButton
+            // 
+            this.homeButton.BackColor = System.Drawing.Color.Transparent;
+            this.homeButton.Location = new System.Drawing.Point(65, 6);
+            this.homeButton.Name = "homeButton";
+            this.homeButton.Size = new System.Drawing.Size(30, 30);
+            this.homeButton.TabIndex = 2;
+            // 
+            // forwardButton
+            // 
+            this.forwardButton.BackColor = System.Drawing.Color.Transparent;
+            this.forwardButton.Location = new System.Drawing.Point(35, 9);
+            this.forwardButton.Name = "forwardButton";
+            this.forwardButton.Size = new System.Drawing.Size(25, 25);
+            this.forwardButton.TabIndex = 1;
+            // 
+            // backButton
+            // 
+            this.backButton.BackColor = System.Drawing.Color.Transparent;
+            this.backButton.Location = new System.Drawing.Point(3, 9);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(25, 25);
+            this.backButton.TabIndex = 0;
             // 
             // Browser
             // 

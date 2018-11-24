@@ -26,3 +26,4 @@ C:\Users\cfern272\Source\Repos\1808-uha-repo2\FinalAssignmentTeam2\FinalAssignme
 C:\Users\cfern272\Source\Repos\1808-uha-repo2\FinalAssignmentTeam2\FinalAssignmentTeam2\obj\Debug\FinalAssignmentTeam2.csproj.CopyComplete
 C:\Users\cfern272\Source\Repos\1808-uha-repo2\FinalAssignmentTeam2\FinalAssignmentTeam2\obj\Debug\FinalAssignmentTeam2.exe
 C:\Users\cfern272\Source\Repos\1808-uha-repo2\FinalAssignmentTeam2\FinalAssignmentTeam2\obj\Debug\FinalAssignmentTeam2.pdb
+C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\FinalAssignmentTeam2\FinalAssignmentTeam2\obj\Debug\FinalAssignmentTeam2.AddFavoriteDialog.resources

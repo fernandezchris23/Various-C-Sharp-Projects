@@ -38,6 +38,8 @@ namespace FinalAssignmentTeam2
             homeButton.homeBttnClick += new EventHandler(homeNavigate);
             backButton.bttnClick += new EventHandler(backBttnClick);
             forwardButton.bttnClick += new EventHandler(forwardBttnClick);
+
+            createFavoritesContextMenu();
         }
 
         public static Browser CreateWindow()
@@ -144,7 +146,67 @@ namespace FinalAssignmentTeam2
 
         private void favDlg_DoubleClick(object sender, MyEventArgs e)
         {
-            //HERE WE WILL TAKE THE CHOSEN FOLDER AND ADD THE CURRENT URL TO IT VIA THE SINGLELINKEDLIST CLASS
+            if(e.ListItemBeingPassed == "No Container")
+            {
+                favorites.add(addrBarText.Text);
+                ToolStripButton newButton = new ToolStripButton(addrBarText.Text);
+                newButton.Click += new EventHandler(favClicked);
+                favToolStrip.Items.Add(newButton);
+            }
+            else
+            {
+                favorites.addToContainer(addrBarText.Text, e.ListItemBeingPassed);
+
+            }
+        }
+
+        private void buildFavoritesBar()
+        {
+            SingleListNode temp = favorites.getNode();
+            while (temp != null)
+            {
+                if(temp.isContainer)
+                {
+                    ToolStripDropDownButton newButton = new ToolStripDropDownButton(temp.containerName);
+                    foreach(string item in temp.list)
+                    {
+                        newButton.DropDownItems.Add(item, null, favClicked);
+                    }
+                    favToolStrip.Items.Add(newButton);
+                }
+                else
+                {
+                    ToolStripButton newButton = new ToolStripButton(temp.list.First(), null, null, temp.list.First());
+                    newButton.Click += new EventHandler(favClicked);
+                    favToolStrip.Items.Add(newButton);
+                }
+                temp = temp.next;
+            }
+        }
+
+        private void favClicked(object sender, EventArgs e)
+        {
+            ToolStripButton clickedItem = sender as ToolStripButton;
+            webBrowser.Navigate(clickedItem.Text);
+        }
+
+        private void createFavoritesContextMenu()
+        {
+            ContextMenu contextMenu = new ContextMenu();
+            contextMenu.MenuItems.Add("Create Folder", new EventHandler(createFolderToolStripMenuItem_Click));
+
+            favToolStrip.ContextMenu = contextMenu;
+        }
+
+        private void createFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string contName = Microsoft.VisualBasic.Interaction.InputBox("Enter the name of the folder to be created:");
+            ToolStripDropDownButton newButton = new ToolStripDropDownButton(contName, null, null, contName);
+            
+            favToolStrip.Items.Add(newButton);
+
+            favorites.createContainer(contName);
+            favoritesContainers.Add(contName);
         }
 
         //*************************//

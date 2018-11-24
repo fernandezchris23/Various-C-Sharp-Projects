@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace FinalAssignmentTeam2
 {
-    class SingleListNode
+    [Serializable()]
+    class SingleListNode : ISerializable
     {
         public SingleListNode next { get; set; }
         public List<string> list { get; set; } //Holds list of strings
@@ -20,9 +22,28 @@ namespace FinalAssignmentTeam2
             isContainer = false;
             containerName = "";
         }
+
+        //Used for importing data back into class
+        public SingleListNode(SerializationInfo info, StreamingContext context)
+        {
+            next = (SingleListNode)info.GetValue("Next", next.GetType());
+            list = (List<string>)info.GetValue("List", list.GetType());
+            isContainer = info.GetBoolean("IsContainer");
+            containerName = info.GetString("ContainerName");
+        }
+
+        //Used for exporting data to be serialized
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("Next", next, next.GetType());
+            info.AddValue("List", list, list.GetType());
+            info.AddValue("IsContainer", isContainer);
+            info.AddValue("ContainerName", containerName);
+        }
     }
 
-    class SingleLinkedList
+    [Serializable()]
+    class SingleLinkedList : ISerializable
     {
         private SingleListNode first;
         private SingleListNode currentPosition;
@@ -34,9 +55,30 @@ namespace FinalAssignmentTeam2
         {
             first = new SingleListNode();
             first.next = null;
+            currentPosition = first;
 
             numNodes = 0;
             isGettingNodes = false;
+        }
+
+        //Used for importing data back into class
+        public SingleLinkedList(SerializationInfo info, StreamingContext context)
+        {
+            SingleListNode temp;
+            for (int x = 0; x < info.MemberCount; ++x)
+            {
+                if (x == 0)
+                {
+                    first = (SingleListNode)info.GetValue("ListNode" + x, typeof(SingleListNode));
+                    currentPosition = first;
+                }
+                else
+                {
+                    temp = (SingleListNode)info.GetValue("ListNode" + x, typeof(SingleListNode));
+                    currentPosition.next = temp;
+                    currentPosition = temp;
+                }
+            }
         }
 
         public bool isEmpty()
@@ -49,15 +91,21 @@ namespace FinalAssignmentTeam2
             SingleListNode newNode = new SingleListNode();
 
             newNode.list.Add(item);
-            currentPosition.next = newNode;
             newNode.next = null;
-            currentPosition = currentPosition.next;
+            currentPosition.next = newNode;
+            currentPosition = newNode;
             numNodes++;
         }
 
-        private void addToContainer(string item)
+        public void addToContainer(string item, string containerName)
         {
-            currentPosition.list.Add(item);
+            SingleListNode temp = first.next;
+
+            while(temp.containerName != containerName)
+            {
+                temp = temp.next;
+            }
+            temp.list.Add(item);
         }
 
         public void createContainer(string name)
@@ -129,29 +177,24 @@ namespace FinalAssignmentTeam2
             }
         }
 
-        //Gets each node. This method will only be used in loops to get ALL nodes
+        //Gets first node in list so Browser can get through list
         public SingleListNode getNode()
         {
-            SingleListNode temp = currentPosition;
+            return first.next;
+        }
 
-            if (!isGettingNodes)
+        //Exports data to be serialized
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            int count = 0;
+            SingleListNode temp = first;
+            while(temp != null)
             {
-                isGettingNodes = true;
-                currentPosition = first.next;
-                temp = currentPosition;
-                currentPosition = currentPosition.next;
-            }
-            else if(isGettingNodes && currentPosition.next != null)
-            {
-                currentPosition = currentPosition.next;
-            }
-           else if (currentPosition.next == null)
-            {
-                isGettingNodes = false;
-                return null;
+                info.AddValue("ListNode" + count, temp);
+                ++count;
             }
 
-            return temp;
+            Console.WriteLine(count + " items added");
         }
     }
 }
