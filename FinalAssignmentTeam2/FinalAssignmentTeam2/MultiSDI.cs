@@ -11,6 +11,10 @@ namespace FinalAssignmentTeam2
 {
     class MultiSDI : WindowsFormsApplicationBase
     {
+        //All windows and tabs mustg have access to the same history/favorites
+        public SingleLinkedList history;
+        public SingleLinkedList favorites;
+
         private static MultiSDI appli;
         internal static MultiSDI Appli
         {
@@ -28,6 +32,8 @@ namespace FinalAssignmentTeam2
         {
             this.IsSingleInstance = true;
             this.ShutdownStyle = ShutdownMode.AfterAllFormsClose;
+            history = new SingleLinkedList();
+            favorites = new SingleLinkedList();
         }
 
         //Create first top level form

@@ -13,12 +13,12 @@ namespace FinalAssignmentTeam2
     public partial class Browser : Form
     {
         private DoubleLinkedList backForwardList;
-        private SingleLinkedList history;
-        private SingleLinkedList favorites;
 
         private List<string> favoritesContainers;
+        private List<string> historyDatesList;
 
         private bool isBackingOrForwarding; //Used to prevent hitting back or forward from clearing the rest of the list
+        private bool isAddingFav; //Used to prevent duplication when keeping all favorite bars synced
 
         public Browser()
         {
@@ -26,21 +26,27 @@ namespace FinalAssignmentTeam2
 
             //Variable Initialization
             isBackingOrForwarding = false;
+            isAddingFav = false;
 
             //List Creation
             backForwardList = new DoubleLinkedList();
-            history = new SingleLinkedList();
-            favorites = new SingleLinkedList();
             favoritesContainers = new List<string>(); //Holds the names of all the containing folders in the favorites bar
+            historyDatesList = new List<string>(); //Holds every date that history has created
 
             //Custom control events redirected
             menuButton.menuBttnClick += new EventHandler(menuOpen);
             homeButton.homeBttnClick += new EventHandler(homeNavigate);
             backButton.bttnClick += new EventHandler(backBttnClick);
             forwardButton.bttnClick += new EventHandler(forwardBttnClick);
+            MultiSDI.Appli.favorites.listChanged += new EventHandler(favoritesChanged);
+            MultiSDI.Appli.history.listChanged += new EventHandler(updateHistoryContainerNames);
 
             //Initializing Methods
             createFavoritesContextMenu();
+            getFavoritesContainerNames();
+            getHistoryContainerNames();
+            addToday();
+            buildFavoritesBar();
         }
 
         public static Browser CreateWindow()
@@ -84,6 +90,8 @@ namespace FinalAssignmentTeam2
                 backForwardList.add(addrBarText.Text);
             }
             isBackingOrForwarding = false; //If we were going back or forward, we aren't anymore
+
+            addToHistory(); //Adds URL to history
         }
 
         private void Browser_Load(object sender, EventArgs e)
@@ -132,20 +140,35 @@ namespace FinalAssignmentTeam2
             CreateWindow();
         }
 
+        private void historyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            History historyForm = new History(historyDatesList, MultiSDI.Appli.history);
+            historyForm.itemDoubleClick += new EventHandler<StringEventArgs>(openSelectedHistoryItem);
+            historyForm.clearHistoryOfDate += new EventHandler<StringEventArgs>(clearHistoryOfDate);
+            historyForm.clearHistory += new EventHandler(clearHistory);
+            historyForm.Show();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         //*************************//
 
         //******FAVORITES TOOLBAR SECTION******//
 
         private void addFavBttn_Click(object sender, EventArgs e)
         {
+            isAddingFav = true;
             AddFavoriteDialog favDlg = new AddFavoriteDialog(favoritesContainers);
-            favDlg.itemDoubleClick += new EventHandler<MyEventArgs>(favDlg_DoubleClick);
+            favDlg.itemDoubleClick += new EventHandler<StringEventArgs>(favDlg_DoubleClick);
 
             favDlg.StartPosition = FormStartPosition.CenterParent;
             favDlg.ShowDialog();
         }
 
-        private void favDlg_DoubleClick(object sender, MyEventArgs e)
+        private void favDlg_DoubleClick(object sender, StringEventArgs e)
         {
             string item = addrBarText.Text;
             item = item.Replace("https", "");
@@ -154,17 +177,23 @@ namespace FinalAssignmentTeam2
 
             if (e.ListItemBeingPassed == "No Container")
             {
-                favorites.add(addrBarText.Text);
-                ToolStripButton newButton = new ToolStripButton(item);
+                MultiSDI.Appli.favorites.add(addrBarText.Text);
+                ToolStripButton newButton = new ToolStripButton(item, null, null, item);
                 newButton.Click += new EventHandler(favClicked);
                 newButton.AutoSize = false;
                 newButton.Width = 100;
                 newButton.TextAlign = ContentAlignment.MiddleLeft;
+
+                if (favToolStrip.Items[item] != null)
+                {
+                    return;
+                }
+                
                 favToolStrip.Items.Add(newButton);
             }
             else
             {
-                favorites.addToContainer(addrBarText.Text, e.ListItemBeingPassed);
+                MultiSDI.Appli.favorites.addToContainer(addrBarText.Text, e.ListItemBeingPassed);
 
                 ToolStripDropDownButton temp = favToolStrip.Items[e.ListItemBeingPassed] as ToolStripDropDownButton;
 
@@ -174,30 +203,61 @@ namespace FinalAssignmentTeam2
                 favToolStrip.Items.Insert(2, temp);
             }
         }
-        /* TO BE USED FOR SERIALIZATION LATER
+        
         private void buildFavoritesBar()
         {
-            SingleListNode temp = favorites.getNode();
-            while (temp != null)
+            if(isAddingFav)
             {
-                if(temp.isContainer)
+                isAddingFav = false;
+                return;
+            }
+
+            SingleListNode tempNode = MultiSDI.Appli.favorites.getNode();
+            while (tempNode != null)
+            {
+                if (!tempNode.isContainer)
                 {
-                    ToolStripDropDownButton newButton = new ToolStripDropDownButton(temp.containerName, null, null, temp.containerName);
-                    foreach(string item in temp.list)
-                    {
-                        newButton.DropDownItems.Add(item, null, favClicked);
-                    }
-                    favToolStrip.Items.Add(newButton);
+                    string item = tempNode.list.First();
+                    item = item.Replace("https", "");
+                    item = item.Replace("://", "");
+                    item = item.Replace("www.", "");
+
+                    ToolStripButton oldButton = favToolStrip.Items[item] as ToolStripButton;
+                    ToolStripButton newButton = new ToolStripButton(item, null, null, item);
+                    newButton.Click += new EventHandler(favClicked);
+                    newButton.AutoSize = false;
+                    newButton.Width = 100;
+                    newButton.TextAlign = ContentAlignment.MiddleLeft;
+                    favToolStrip.Items.Remove(oldButton);
+                    favToolStrip.Items.Insert(2, newButton);
                 }
                 else
                 {
-                    ToolStripButton newButton = new ToolStripButton(temp.list.First(), null, null, temp.list.First());
-                    newButton.Click += new EventHandler(favClickedDropDownItem);
-                    favToolStrip.Items.Add(newButton);
+                    ToolStripDropDownButton oldButton = favToolStrip.Items[tempNode.containerName] as ToolStripDropDownButton;
+                    ToolStripDropDownButton newButton = new ToolStripDropDownButton(tempNode.containerName, null, null, tempNode.containerName);
+                    string temp;
+
+                    foreach(string item in tempNode.list)
+                    {
+                        temp = item;
+                        temp = temp.Replace("https", "");
+                        temp = temp.Replace("://", "");
+                        temp = temp.Replace("www.", "");
+
+                        newButton.DropDownItems.Add(temp, null, favClickedDropDownItem);
+                    }
+
+                    favToolStrip.Items.Remove(oldButton);
+                    favToolStrip.Items.Insert(2, newButton);
+
+                    if(!favoritesContainers.Contains(tempNode.containerName))
+                    {
+                        favoritesContainers.Add(tempNode.containerName);
+                    }
                 }
-                temp = temp.next;
+                tempNode = tempNode.next;
             }
-        }*/
+        }
 
         private void favClicked(object sender, EventArgs e)
         {
@@ -221,6 +281,8 @@ namespace FinalAssignmentTeam2
 
         private void createFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            isAddingFav = true;
+
             string contName = Microsoft.VisualBasic.Interaction.InputBox("Enter the name of the folder to be created:");
 
             if(contName == "")
@@ -233,8 +295,86 @@ namespace FinalAssignmentTeam2
             
             favToolStrip.Items.Add(newButton);
 
-            favorites.createContainer(contName);
+            MultiSDI.Appli.favorites.createContainer(contName);
             favoritesContainers.Add(contName);
+        }
+
+        private void getFavoritesContainerNames()
+        {
+            SingleListNode temp = MultiSDI.Appli.favorites.getNode();
+
+            favoritesContainers = MultiSDI.Appli.favorites.getContainerList();
+        }
+
+        private void favoritesChanged(object sender, EventArgs e)
+        {
+            buildFavoritesBar();
+        }
+
+        //*************************//
+
+        //******HISTORY SECTION******//
+
+        private void getHistoryContainerNames()
+        {
+            SingleListNode temp = MultiSDI.Appli.history.getNode();
+
+            historyDatesList = MultiSDI.Appli.history.getContainerList();
+        }
+
+        private void updateHistoryContainerNames(object sender, EventArgs e)
+        {
+            historyDatesList.Clear();
+            SingleListNode temp = MultiSDI.Appli.history.getNode();
+
+            historyDatesList = MultiSDI.Appli.history.getContainerList();
+        }
+
+        //Checks if today's date has already been added to the history and if not, adds it
+        private void addToday()
+        {
+            DateTime today = DateTime.UtcNow.Date;
+            bool isAdded = historyDatesList.Contains(today.ToString("MM/dd/yyyy"));
+            Console.WriteLine(isAdded);
+
+            if(!isAdded)
+            {
+                historyDatesList.Add(today.ToString("MM/dd/yyyy"));
+                MultiSDI.Appli.history.createContainer(today.ToString("MM/dd/yyyy"));
+            }
+        }
+
+        //Using month calender controls to simplify date changed event handling
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            addToday();
+        }
+
+        private void addToHistory()
+        {
+            DateTime today = DateTime.UtcNow.Date;
+
+            addToday();
+            MultiSDI.Appli.history.addToContainer(addrBarText.Text, today.ToString("MM/dd/yyyy"));
+        }
+
+        private void openSelectedHistoryItem(object sender, StringEventArgs e)
+        {
+            webBrowser.Navigate(e.ListItemBeingPassed);
+        }
+
+        private void clearHistory(object sender, EventArgs e)
+        {
+            MultiSDI.Appli.history.removeAll();
+            historyDatesList.RemoveRange(0, historyDatesList.Count);
+            MessageBox.Show("History has been Cleared!");
+        }
+
+        private void clearHistoryOfDate(object sender, StringEventArgs e)
+        {
+            MultiSDI.Appli.history.removeContainer(e.ListItemBeingPassed);
+            historyDatesList.Remove(e.ListItemBeingPassed);
+            MessageBox.Show("History of " + e.ListItemBeingPassed + " has been erased.");
         }
 
         //*************************//

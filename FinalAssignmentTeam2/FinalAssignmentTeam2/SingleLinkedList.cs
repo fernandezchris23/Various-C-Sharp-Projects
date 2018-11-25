@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace FinalAssignmentTeam2
 {
     [Serializable()]
-    class SingleListNode : ISerializable
+    public class SingleListNode : ISerializable
     {
         public SingleListNode next { get; set; }
         public List<string> list { get; set; } //Holds list of strings
@@ -43,13 +43,15 @@ namespace FinalAssignmentTeam2
     }
 
     [Serializable()]
-    class SingleLinkedList : ISerializable
+    public class SingleLinkedList : ISerializable
     {
         private SingleListNode first;
         private SingleListNode currentPosition;
 
         private int numNodes;
         private bool isGettingNodes;
+
+        public event EventHandler listChanged;
 
         public SingleLinkedList()
         {
@@ -95,6 +97,7 @@ namespace FinalAssignmentTeam2
             currentPosition.next = newNode;
             currentPosition = newNode;
             numNodes++;
+            listChanged(null, EventArgs.Empty);
         }
 
         public void addToContainer(string item, string containerName)
@@ -106,6 +109,7 @@ namespace FinalAssignmentTeam2
                 temp = temp.next;
             }
             temp.list.Add(item);
+            listChanged(null, EventArgs.Empty);
         }
 
         public void createContainer(string name)
@@ -118,6 +122,7 @@ namespace FinalAssignmentTeam2
             newNode.next = null;
             currentPosition = currentPosition.next;
             numNodes++;
+            listChanged(null, EventArgs.Empty);
         }
 
         public void removeContainer(string name)
@@ -137,11 +142,21 @@ namespace FinalAssignmentTeam2
                     temp = temp.next;
                 }
             }
+            numNodes--;
+            if(numNodes == 0)
+            {
+                currentPosition = first;
+            }
+            listChanged(null, EventArgs.Empty);
         }
 
         public void removeAll()
         {
             first.next = null;
+            numNodes = 0;
+            currentPosition = first;
+
+            listChanged(null, EventArgs.Empty);
         }
 
         public void removeItem(string contName, string itemName)
@@ -175,6 +190,7 @@ namespace FinalAssignmentTeam2
                     temp = temp.next;
                 }
             }
+            listChanged(null, EventArgs.Empty);
         }
 
         //Gets first node in list so Browser can get through list
@@ -195,6 +211,22 @@ namespace FinalAssignmentTeam2
             }
 
             Console.WriteLine(count + " items added");
+        }
+
+        public List<string> getContainerList()
+        {
+            SingleListNode temp = first.next;
+            List<string> containerNames = new List<string>();
+
+            while (temp != null)
+            {
+                if (temp.isContainer)
+                {
+                    containerNames.Add(temp.containerName);
+                }
+                temp = temp.next;
+            }
+            return containerNames;
         }
     }
 }

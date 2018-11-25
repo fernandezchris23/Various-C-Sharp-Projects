@@ -14,7 +14,7 @@ namespace FinalAssignmentTeam2
     {
         private List<string> containersInFavBar;
 
-        public event EventHandler<MyEventArgs> itemDoubleClick;
+        public event EventHandler<StringEventArgs> itemDoubleClick;
 
         public AddFavoriteDialog(List<string> list)
         {
@@ -35,18 +35,8 @@ namespace FinalAssignmentTeam2
 
         private void listOfContainers_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            itemDoubleClick(this, new MyEventArgs(listOfContainers.Text));
+            itemDoubleClick(this, new StringEventArgs(listOfContainers.Text));
             this.Close();
-        }
-    }
-
-    public class MyEventArgs : EventArgs
-    {
-        public string ListItemBeingPassed { get; set; }
-
-        public MyEventArgs(string value)
-        {
-            ListItemBeingPassed = value;
         }
     }
 }
