@@ -19,6 +19,7 @@ namespace FinalAssignmentTeam2
 
         private bool isBackingOrForwarding; //Used to prevent hitting back or forward from clearing the rest of the list
         private bool isAddingFav; //Used to prevent duplication when keeping all favorite bars synced
+        private bool isMouseHoverEventSet;
 
         public Browser()
         {
@@ -27,6 +28,7 @@ namespace FinalAssignmentTeam2
             //Variable Initialization
             isBackingOrForwarding = false;
             isAddingFav = false;
+            isMouseHoverEventSet = false;
 
             //List Creation
             backForwardList = new DoubleLinkedList();
@@ -92,11 +94,25 @@ namespace FinalAssignmentTeam2
             isBackingOrForwarding = false; //If we were going back or forward, we aren't anymore
 
             addToHistory(); //Adds URL to history
+
+            if(!isMouseHoverEventSet)
+            {
+                webBrowser.Document.MouseOver += new HtmlElementEventHandler(Browser_Mouse_Move);
+                isMouseHoverEventSet = true;
+            }
         }
 
         private void Browser_Load(object sender, EventArgs e)
         {
             webBrowser.Navigate(Properties.Settings.Default.HomePage);
+        }
+
+        //When the mouse moves, it checks what the mouse is hovering over and, if it is a link, it displays the URL on the status bar
+        private void Browser_Mouse_Move(object sender, HtmlElementEventArgs e)
+        {
+            string link = webBrowser.Document.GetElementFromPoint(e.ClientMousePosition).GetAttribute("href");
+
+            linkHoveringOvertoolStripLabel.Text = link;
         }
 
         //*************************//
