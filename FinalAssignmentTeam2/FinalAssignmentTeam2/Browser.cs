@@ -351,7 +351,6 @@ namespace FinalAssignmentTeam2
         {
             DateTime today = DateTime.UtcNow.Date;
             bool isAdded = historyDatesList.Contains(today.ToString("MM/dd/yyyy"));
-            Console.WriteLine(isAdded);
 
             if(!isAdded)
             {
