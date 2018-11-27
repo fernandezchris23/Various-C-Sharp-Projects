@@ -1,0 +1,6 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Assign3PartB/.vs/Assign3PartB/v15/Server/sqlite3
+/Assign3PartB/MainAndDialogForms/obj/Debug
