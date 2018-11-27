@@ -1,9 +1,17 @@
 {
   "ExpandedNodes": [
     "",
+    "\\abarn\\SDI Text Editor",
+    "\\FinalAssignmentTeam2",
+    "\\Multi-SDI Application\\ControlLibrary",
+    "\\Multi-SDI Application\\ControlLibrary\\bin",
+    "\\Multi-SDI Application\\ControlLibrary\\obj",
     "\\Multi-SDI Application\\Multi-SDI Application",
-    "\\TextThreadProgram",
-    "\\TextThreadProgram\\TextThreadProgram"
+    "\\Multi-SDI Application\\Multi-SDI Application\\bin",
+    "\\Multi-SDI Application\\Multi-SDI Application\\obj",
+    "\\Multi-SDI Application\\Multi-SDI Application\\Properties",
+    "\\Multi-SDI Application\\Multi-SDI Application\\Resources"
   ],
+  "SelectedNode": "\\FinalAssignmentTeam2\\FinalAssignmentTeam2.sln",
   "PreviewInSolutionExplorer": false
 }

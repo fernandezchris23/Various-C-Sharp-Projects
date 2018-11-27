@@ -63,9 +63,13 @@ namespace FinalAssignmentTeam2
         {
             if (e.KeyCode == Keys.Enter)
             {
-                webBrowser.Navigate(addrBarText.Text);
-                e.Handled = true;
-                e.SuppressKeyPress = true; //Shuts up the stupid 'ding' on enter
+                WebBrowser selectedWeb = webBrowserTabControl.SelectedTab.Controls[0] as WebBrowser;
+                if(selectedWeb != null)
+                {
+                    selectedWeb.Navigate(addrBarText.Text);
+                    e.Handled = true;
+                    e.SuppressKeyPress = true; //Shuts up the stupid 'ding' on enter
+                }
             }
         }
 
@@ -91,6 +95,7 @@ namespace FinalAssignmentTeam2
             }
             isBackingOrForwarding = false; //If we were going back or forward, we aren't anymore
 
+            webBrowserTabControl.SelectedTab.Text = webBrowser.DocumentTitle;
             addToHistory(); //Adds URL to history
         }
 
@@ -375,6 +380,25 @@ namespace FinalAssignmentTeam2
             MultiSDI.Appli.history.removeContainer(e.ListItemBeingPassed);
             historyDatesList.Remove(e.ListItemBeingPassed);
             MessageBox.Show("History of " + e.ListItemBeingPassed + " has been erased.");
+        }
+
+        WebBrowser webTab = null;
+        private void newTabToolStripLabel_Click(object sender, EventArgs e)
+        {
+            TabPage tab = new TabPage();
+            tab.Text = "New tab";
+            webBrowserTabControl.Controls.Add(tab);
+            webBrowserTabControl.SelectTab(webBrowserTabControl.TabCount - 1);
+            webTab = new WebBrowser();
+            webTab.Parent = tab;
+            webTab.Dock = DockStyle.Fill;
+            webTab.Navigate("https://www.google.com");
+            webTab.DocumentCompleted += WebTab_DocumentCompleted;
+        }
+
+        private void WebTab_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            webBrowserTabControl.SelectedTab.Text = webTab.DocumentTitle;
         }
 
         //*************************//
