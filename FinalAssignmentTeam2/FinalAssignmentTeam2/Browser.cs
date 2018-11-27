@@ -426,5 +426,31 @@ namespace FinalAssignmentTeam2
         }
 
         //*************************//
+
+        //******DRAG AND DROP SECTION******//
+
+        private void Browser_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(typeof(string)))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void Browser_DragDrop(object sender, DragEventArgs e)
+        {
+            string data = (string)e.Data.GetData(typeof(string));
+
+            if (data != null)
+            {
+                webBrowser.Navigate(data);
+            }
+        }
+
+        //*************************//
     }
 }
