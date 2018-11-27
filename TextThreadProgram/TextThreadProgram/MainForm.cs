@@ -27,12 +27,15 @@ namespace TextThreadProgram
         private Text oldRightClickText;
         private Text newRightClickText;
         private Graphics g;
+        private Color oldColorFromDlg;
+        private Color newColorFromDlg;
+        private PictureBox pb;
 
         private bool isTyping;
         private bool isMoving;
         private bool isSelected;
         private bool mouseIsDown;
-        private bool isOath, isAbout, isSearch, isTextOptions;
+        private bool isOath, isAbout, isSearch, isTextOptions, isChangeColor;
 
         //Used to give Z-order values. Since we don't want any two text on the same z-order (or else we won't know who will overlap who) we want it to be unique
         private int numText;
@@ -50,6 +53,7 @@ namespace TextThreadProgram
             isAbout = false;
             isSearch = false;
             isTextOptions = false;
+            isChangeColor = false;
             currentText = GetCurrentText();
             DoubleBuffered = true;
             numText = 0;
@@ -509,6 +513,118 @@ namespace TextThreadProgram
             this.Cursor = GetCustomCursor();
         }
 
+        private void saveChangedImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveChangedImage();
+        }
+
+        private void clearImageViewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.mainPanel.Controls.Remove(pb);
+        }
+
+        private void changeColorsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!isChangeColor)
+            {
+                using (OpenFileDialog openImageDialog = new OpenFileDialog())
+                {
+                    openImageDialog.Filter = "Png Image (.png)|*.png";
+                    openImageDialog.Title = "Open Image To Change Colors For...";
+
+                    if (openImageDialog.ShowDialog(this) != DialogResult.OK)
+                        return;
+
+                    using (Bitmap bmp = new Bitmap(openImageDialog.FileName))
+                    {
+                        pb = new PictureBox();
+                        Image loadImage = Image.FromFile(openImageDialog.FileName);
+                        pb.Height = loadImage.Height;
+                        pb.Width = loadImage.Width;
+                        pb.Image = loadImage;
+                        // add to main panel control
+                        this.mainPanel.Controls.Add(pb);
+
+                        isChangeColor = true;
+
+                        ChangeColorDialog changeColorDialog = new ChangeColorDialog(openImageDialog.FileName);
+                        changeColorDialog.colors += new EventHandler<ColorEventArgs>(colorDlg_Color);
+                        changeColorDialog.saveColors += new EventHandler(saveColorsEvent);
+                        changeColorDialog.FormClosed += new FormClosedEventHandler(OwnedFormClosed);
+                        changeColorDialog.StartPosition = FormStartPosition.CenterParent;
+
+                        // open modelessly
+                        changeColorDialog.Show();
+                        // make the main form the owner of this dialog
+                        changeColorDialog.Owner = this;
+                    }
+                }
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void saveChangedImage()
+        {
+            SaveFileDialog saveImageDialog = new SaveFileDialog();
+            saveImageDialog.Filter = "Png Image (.png)|*.png";
+            saveImageDialog.Title = "Save image as...";
+
+            if (saveImageDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                // gets name for saving
+                string imageName = saveImageDialog.FileName;
+
+                if (pb != null)
+                {
+                    Rectangle rect = new Rectangle(0, 0, pb.Width, pb.Height);
+                    Bitmap dumpBitmap = new Bitmap(pb.Width, pb.Height);
+                    pb.DrawToBitmap(dumpBitmap, rect);
+                    dumpBitmap.Save(imageName, ImageFormat.Png);
+                    // for testing purposes
+                    MessageBox.Show("Saved to file: " + imageName);
+                }
+            }
+            else
+                return;
+        }
+
+        private void colorDlg_Color(object sender, ColorEventArgs e)
+        {
+            oldColorFromDlg = e.oldColorPass;
+            newColorFromDlg = e.newColorPass;
+        }
+
+        private void saveColorsEvent(object sender, EventArgs e)
+        {
+            pb.Paint += new PaintEventHandler(colorMap);
+            pb.Invalidate();
+        }
+
+        private void colorMap(object sender, PaintEventArgs e)
+        {
+            if (pb != null)
+            {
+                Graphics g = e.Graphics;
+                using (Bitmap bmp = new Bitmap(pb.Image))
+                {
+                    // Set the image attribute's color mappings
+                    ColorMap[] colorMap = new ColorMap[1];
+                    colorMap[0] = new ColorMap();
+                    colorMap[0].OldColor = oldColorFromDlg;
+                    colorMap[0].NewColor = newColorFromDlg;
+
+                    ImageAttributes attr = new ImageAttributes();
+                    attr.SetRemapTable(colorMap);
+
+                    Rectangle rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
+                    g.DrawImage(bmp, rect, 0, 0, rect.Width, rect.Height, GraphicsUnit.Pixel, attr);
+                }
+            }
+        }
+
         private Text GetCurrentText()
         {
             return new Text("", new Font("Times New Roman", 20.0f), Color.Black, Color.White, new Point(0, 0), new Size(100, 100));
@@ -565,6 +681,10 @@ namespace TextThreadProgram
             else if(dialog is TextOptions)
             {
                 isTextOptions = false;
+            }
+            else if(dialog is ChangeColorDialog)
+            {
+                isChangeColor = false;
             }
         }
 
