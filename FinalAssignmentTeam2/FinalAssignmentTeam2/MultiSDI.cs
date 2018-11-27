@@ -14,6 +14,7 @@ namespace FinalAssignmentTeam2
         //All windows and tabs mustg have access to the same history/favorites
         public SingleLinkedList history;
         public SingleLinkedList favorites;
+        public SettingsProperties settingsProperties;
 
         private static MultiSDI appli;
         internal static MultiSDI Appli
@@ -34,6 +35,7 @@ namespace FinalAssignmentTeam2
             this.ShutdownStyle = ShutdownMode.AfterAllFormsClose;
             history = new SingleLinkedList();
             favorites = new SingleLinkedList();
+            settingsProperties = new SettingsProperties();
         }
 
         //Create first top level form

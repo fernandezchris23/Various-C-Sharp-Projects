@@ -19,7 +19,12 @@ namespace FinalAssignmentTeam2
 
         private bool isBackingOrForwarding; //Used to prevent hitting back or forward from clearing the rest of the list
         private bool isAddingFav; //Used to prevent duplication when keeping all favorite bars synced
-        private bool isMouseHoverEventSet;
+        private bool isMouseHoverEventSet; //Is the mouse hovering over something
+        private bool isNotifyOn; //Whether or not to display notifications
+
+        private string homePage;
+
+        private int numMinutesToNotify;
 
         public Browser()
         {
@@ -42,6 +47,7 @@ namespace FinalAssignmentTeam2
             forwardButton.bttnClick += new EventHandler(forwardBttnClick);
             MultiSDI.Appli.favorites.listChanged += new EventHandler(favoritesChanged);
             MultiSDI.Appli.history.listChanged += new EventHandler(updateHistoryContainerNames);
+            MultiSDI.Appli.settingsProperties.PropertyChanged += new PropertyChangedEventHandler(settingsChanged);
 
             //Initializing Methods
             createFavoritesContextMenu();
@@ -49,6 +55,7 @@ namespace FinalAssignmentTeam2
             getHistoryContainerNames();
             addToday();
             buildFavoritesBar();
+            initializeFromSettings();
         }
 
         public static Browser CreateWindow()
@@ -104,7 +111,7 @@ namespace FinalAssignmentTeam2
 
         private void Browser_Load(object sender, EventArgs e)
         {
-            webBrowser.Navigate(Properties.Settings.Default.HomePage);
+            webBrowser.Navigate(homePage);
         }
 
         //When the mouse moves, it checks what the mouse is hovering over and, if it is a link, it displays the URL on the status bar
@@ -121,7 +128,7 @@ namespace FinalAssignmentTeam2
 
         private void homeNavigate(object sender, EventArgs e)
         {
-            webBrowser.Navigate(Properties.Settings.Default.HomePage);
+            webBrowser.Navigate(homePage);
         }
 
         private void menuOpen(object sender, EventArgs e)
@@ -163,6 +170,14 @@ namespace FinalAssignmentTeam2
             historyForm.clearHistoryOfDate += new EventHandler<StringEventArgs>(clearHistoryOfDate);
             historyForm.clearHistory += new EventHandler(clearHistory);
             historyForm.Show();
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (SettingsForm settingsForm = new SettingsForm(MultiSDI.Appli.settingsProperties))
+            {
+                settingsForm.ShowDialog();
+            }
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -390,6 +405,24 @@ namespace FinalAssignmentTeam2
             MultiSDI.Appli.history.removeContainer(e.ListItemBeingPassed);
             historyDatesList.Remove(e.ListItemBeingPassed);
             MessageBox.Show("History of " + e.ListItemBeingPassed + " has been erased.");
+        }
+
+        //*************************//
+
+        //******SETTINGS SECTION******//
+
+        private void settingsChanged(object sender, PropertyChangedEventArgs e)
+        {
+            isNotifyOn = MultiSDI.Appli.settingsProperties.NotifyOff;
+            numMinutesToNotify = MultiSDI.Appli.settingsProperties.NumMinutesForNotify;
+            homePage = MultiSDI.Appli.settingsProperties.HomePage;
+        }
+
+        private void initializeFromSettings()
+        {
+            isNotifyOn = MultiSDI.Appli.settingsProperties.NotifyOff;
+            numMinutesToNotify = MultiSDI.Appli.settingsProperties.NumMinutesForNotify;
+            homePage = MultiSDI.Appli.settingsProperties.HomePage;
         }
 
         //*************************//

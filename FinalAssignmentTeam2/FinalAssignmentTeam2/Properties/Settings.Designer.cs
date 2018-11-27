@@ -46,17 +46,5 @@ namespace FinalAssignmentTeam2.Properties {
                 this["WindowLoc"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://www.google.com")]
-        public string HomePage {
-            get {
-                return ((string)(this["HomePage"]));
-            }
-            set {
-                this["HomePage"] = value;
-            }
-        }
     }
 }

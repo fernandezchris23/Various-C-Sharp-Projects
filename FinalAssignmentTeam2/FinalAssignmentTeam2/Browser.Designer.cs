@@ -38,6 +38,7 @@
             this.backButton = new ControlLibrary.BackButton();
             this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.linkHoveringOvertoolStripLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.contextMenuButton = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.newTabToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,7 +53,6 @@
             this.addFavBttn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.linkHoveringOvertoolStripLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.addrBar.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.contextMenuButton.SuspendLayout();
@@ -138,6 +138,12 @@
             this.statusStrip.TabIndex = 3;
             this.statusStrip.Text = "statusStrip1";
             // 
+            // linkHoveringOvertoolStripLabel
+            // 
+            this.linkHoveringOvertoolStripLabel.Name = "linkHoveringOvertoolStripLabel";
+            this.linkHoveringOvertoolStripLabel.Size = new System.Drawing.Size(10, 17);
+            this.linkHoveringOvertoolStripLabel.Text = " ";
+            // 
             // contextMenuButton
             // 
             this.contextMenuButton.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -151,60 +157,61 @@
             this.helpToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.contextMenuButton.Name = "contextMenuButton";
-            this.contextMenuButton.Size = new System.Drawing.Size(146, 170);
+            this.contextMenuButton.Size = new System.Drawing.Size(181, 192);
             // 
             // newTabToolStripMenuItem
             // 
             this.newTabToolStripMenuItem.Name = "newTabToolStripMenuItem";
-            this.newTabToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.newTabToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.newTabToolStripMenuItem.Text = "New Tab";
             // 
             // newWindowToolStripMenuItem
             // 
             this.newWindowToolStripMenuItem.Name = "newWindowToolStripMenuItem";
-            this.newWindowToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.newWindowToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.newWindowToolStripMenuItem.Text = "New Window";
             this.newWindowToolStripMenuItem.Click += new System.EventHandler(this.newWindowToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(142, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // historyToolStripMenuItem
             // 
             this.historyToolStripMenuItem.Name = "historyToolStripMenuItem";
-            this.historyToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.historyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.historyToolStripMenuItem.Text = "History";
             this.historyToolStripMenuItem.Click += new System.EventHandler(this.historyToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(142, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // printToolStripMenuItem
             // 
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.printToolStripMenuItem.Text = "Print";
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -246,12 +253,6 @@
             this.monthCalendar1.TabIndex = 6;
             this.monthCalendar1.Visible = false;
             this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
-            // 
-            // linkHoveringOvertoolStripLabel
-            // 
-            this.linkHoveringOvertoolStripLabel.Name = "linkHoveringOvertoolStripLabel";
-            this.linkHoveringOvertoolStripLabel.Size = new System.Drawing.Size(10, 17);
-            this.linkHoveringOvertoolStripLabel.Text = " ";
             // 
             // Browser
             // 
