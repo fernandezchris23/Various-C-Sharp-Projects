@@ -12,8 +12,6 @@ namespace FinalAssignmentTeam2
 {
     public partial class Browser : Form
     {
-        private DoubleLinkedList backForwardList;
-
         private List<string> favoritesContainers;
         private List<string> historyDatesList;
 
@@ -36,7 +34,6 @@ namespace FinalAssignmentTeam2
             isMouseHoverEventSet = false;
 
             //List Creation
-            backForwardList = new DoubleLinkedList();
             favoritesContainers = new List<string>(); //Holds the names of all the containing folders in the favorites bar
             historyDatesList = new List<string>(); //Holds every date that history has created
 
@@ -72,7 +69,7 @@ namespace FinalAssignmentTeam2
         {
             if (e.KeyCode == Keys.Enter)
             {
-                webBrowser.Navigate(addrBarText.Text);
+                ((TabComponent)tabControl.SelectedTab.Controls[0]).webBrowser1.Navigate(addrBarText.Text);
                 e.Handled = true;
                 e.SuppressKeyPress = true; //Shuts up the stupid 'ding' on enter
             }
@@ -87,16 +84,17 @@ namespace FinalAssignmentTeam2
             if (e.Url.AbsolutePath != (sender as WebBrowser).Url.AbsolutePath)
                 return;
 
-            addrBarText.Text = webBrowser.Url.ToString();
+            addrBarText.Text = ((TabComponent)tabControl.SelectedTab.Controls[0]).webBrowser1.Url.ToString();
 
-            if (!isBackingOrForwarding && !backForwardList.isEmpty() && !backForwardList.isLastListItem())
+            if (!isBackingOrForwarding && !((TabComponent)tabControl.SelectedTab.Controls[0]).backForwardList.isEmpty()
+                                       && !((TabComponent)tabControl.SelectedTab.Controls[0]).backForwardList.isLastListItem())
             {
-                backForwardList.RemoveNextCascading();
+                ((TabComponent)tabControl.SelectedTab.Controls[0]).backForwardList.RemoveNextCascading();
             }
 
             if (!isBackingOrForwarding)
             {
-                backForwardList.add(addrBarText.Text);
+                ((TabComponent)tabControl.SelectedTab.Controls[0]).backForwardList.add(addrBarText.Text);
             }
             isBackingOrForwarding = false; //If we were going back or forward, we aren't anymore
 
@@ -104,20 +102,26 @@ namespace FinalAssignmentTeam2
 
             if(!isMouseHoverEventSet)
             {
-                webBrowser.Document.MouseOver += new HtmlElementEventHandler(Browser_Mouse_Move);
+                ((TabComponent)tabControl.SelectedTab.Controls[0]).webBrowser1.Document.MouseOver += new HtmlElementEventHandler(Browser_Mouse_Move);
                 isMouseHoverEventSet = true;
+            }
+
+            if(((TabComponent)tabControl.SelectedTab.Controls[0]).webBrowser1 != null)
+            {
+                tabControl.SelectedTab.Text = ((TabComponent)tabControl.SelectedTab.Controls[0]).webBrowser1.DocumentTitle; //Used to set Tab title
             }
         }
 
         private void Browser_Load(object sender, EventArgs e)
         {
-            webBrowser.Navigate(homePage);
+            newTabToolStripLabel_Click(this, EventArgs.Empty);
+            ((TabComponent)tabControl.SelectedTab.Controls[0]).webBrowser1.Navigate(homePage);
         }
 
         //When the mouse moves, it checks what the mouse is hovering over and, if it is a link, it displays the URL on the status bar
         private void Browser_Mouse_Move(object sender, HtmlElementEventArgs e)
         {
-            string link = webBrowser.Document.GetElementFromPoint(e.ClientMousePosition).GetAttribute("href");
+            string link = ((TabComponent)tabControl.SelectedTab.Controls[0]).webBrowser1.Document.GetElementFromPoint(e.ClientMousePosition).GetAttribute("href");
 
             linkHoveringOvertoolStripLabel.Text = link;
         }
@@ -128,7 +132,7 @@ namespace FinalAssignmentTeam2
 
         private void homeNavigate(object sender, EventArgs e)
         {
-            webBrowser.Navigate(homePage);
+            ((TabComponent)tabControl.SelectedTab.Controls[0]).webBrowser1.Navigate(homePage);
         }
 
         private void menuOpen(object sender, EventArgs e)
@@ -138,19 +142,19 @@ namespace FinalAssignmentTeam2
 
         private void backBttnClick(object sender, EventArgs e)
         {
-            if (!backForwardList.isEmpty() && !backForwardList.isFirstListItem())
+            if (!((TabComponent)tabControl.SelectedTab.Controls[0]).backForwardList.isEmpty() && !((TabComponent)tabControl.SelectedTab.Controls[0]).backForwardList.isFirstListItem())
             {
                 isBackingOrForwarding = true;
-                webBrowser.Navigate(backForwardList.getPrevious());
+                ((TabComponent)tabControl.SelectedTab.Controls[0]).webBrowser1.Navigate(((TabComponent)tabControl.SelectedTab.Controls[0]).backForwardList.getPrevious());
             }
         }
 
         private void forwardBttnClick(object sender, EventArgs e)
         {
-            if (!backForwardList.isEmpty() && !backForwardList.isLastListItem())
+            if (!((TabComponent)tabControl.SelectedTab.Controls[0]).backForwardList.isEmpty() && !((TabComponent)tabControl.SelectedTab.Controls[0]).backForwardList.isLastListItem())
             {
                 isBackingOrForwarding = true;
-                webBrowser.Navigate(backForwardList.getNext());
+                ((TabComponent)tabControl.SelectedTab.Controls[0]).webBrowser1.Navigate(((TabComponent)tabControl.SelectedTab.Controls[0]).backForwardList.getNext());
             }
         }
 
@@ -293,13 +297,13 @@ namespace FinalAssignmentTeam2
         private void favClicked(object sender, EventArgs e)
         {
             ToolStripButton clickedItem = sender as ToolStripButton;
-            webBrowser.Navigate(clickedItem.Text);
+            ((TabComponent)tabControl.SelectedTab.Controls[0]).webBrowser1.Navigate(clickedItem.Text);
         }
 
         private void favClickedDropDownItem(object sender, EventArgs e)
         {
             ToolStripDropDownItem clickedItem = sender as ToolStripDropDownItem;
-            webBrowser.Navigate(clickedItem.Text);
+            ((TabComponent)tabControl.SelectedTab.Controls[0]).webBrowser1.Navigate(clickedItem.Text);
         }
 
         private void createFavoritesContextMenu()
@@ -390,7 +394,7 @@ namespace FinalAssignmentTeam2
 
         private void openSelectedHistoryItem(object sender, StringEventArgs e)
         {
-            webBrowser.Navigate(e.ListItemBeingPassed);
+            ((TabComponent)tabControl.SelectedTab.Controls[0]).webBrowser1.Navigate(e.ListItemBeingPassed);
         }
 
         private void clearHistory(object sender, EventArgs e)
@@ -447,8 +451,30 @@ namespace FinalAssignmentTeam2
 
             if (data != null)
             {
-                webBrowser.Navigate(data);
+                ((TabComponent)tabControl.SelectedTab.Controls[0]).webBrowser1.Navigate(data);
             }
+        }
+
+        //*************************//
+
+        //******TAB SYSTEM SECTION******//
+        private void newTabToolStripLabel_Click(object sender, EventArgs e)
+        {
+            TabPage tab = new TabPage();
+            tab.Text = "New Tab";
+            tabControl.Controls.Add(tab);
+            TabComponent webTab = new TabComponent();
+            tab.Controls.Add(webTab);
+            webTab.Parent = tab;
+            webTab.Dock = DockStyle.Fill;
+            webTab.webBrowser1.DocumentCompleted += webBrowser_DocumentCompleted;
+            webTab.webBrowser1.Navigate(homePage);
+        }
+
+        private void tabControl_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+;           addrBarText.Text = ((TabComponent)tabControl.SelectedTab.Controls[0]).webBrowser1.Url.ToString();
+            tabControl.SelectedTab.Text = ((TabComponent)tabControl.SelectedTab.Controls[0]).webBrowser1.DocumentTitle;
         }
 
         //*************************//

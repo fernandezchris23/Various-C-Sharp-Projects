@@ -36,7 +36,6 @@
             this.homeButton = new ControlLibrary.HomeButton();
             this.forwardButton = new ControlLibrary.ForwardButton();
             this.backButton = new ControlLibrary.BackButton();
-            this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.linkHoveringOvertoolStripLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.contextMenuButton = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -53,6 +52,7 @@
             this.addFavBttn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.tabControl = new System.Windows.Forms.TabControl();
             this.addrBar.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.contextMenuButton.SuspendLayout();
@@ -115,19 +115,6 @@
             this.backButton.Size = new System.Drawing.Size(25, 25);
             this.backButton.TabIndex = 0;
             // 
-            // webBrowser
-            // 
-            this.webBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.webBrowser.Location = new System.Drawing.Point(0, 66);
-            this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser.Name = "webBrowser";
-            this.webBrowser.ScriptErrorsSuppressed = true;
-            this.webBrowser.Size = new System.Drawing.Size(800, 360);
-            this.webBrowser.TabIndex = 4;
-            this.webBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser_DocumentCompleted);
-            // 
             // statusStrip
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -162,8 +149,9 @@
             // newTabToolStripMenuItem
             // 
             this.newTabToolStripMenuItem.Name = "newTabToolStripMenuItem";
-            this.newTabToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.newTabToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.newTabToolStripMenuItem.Text = "New Tab";
+            this.newTabToolStripMenuItem.Click += new System.EventHandler(this.newTabToolStripLabel_Click);
             // 
             // newWindowToolStripMenuItem
             // 
@@ -226,7 +214,7 @@
             this.toolStripSeparator3});
             this.favToolStrip.Location = new System.Drawing.Point(3, 37);
             this.favToolStrip.Name = "favToolStrip";
-            this.favToolStrip.Size = new System.Drawing.Size(797, 25);
+            this.favToolStrip.Size = new System.Drawing.Size(797, 27);
             this.favToolStrip.Stretch = true;
             this.favToolStrip.TabIndex = 5;
             this.favToolStrip.Text = "toolStrip1";
@@ -237,7 +225,7 @@
             this.addFavBttn.Image = ((System.Drawing.Image)(resources.GetObject("addFavBttn.Image")));
             this.addFavBttn.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.addFavBttn.Name = "addFavBttn";
-            this.addFavBttn.Size = new System.Drawing.Size(23, 22);
+            this.addFavBttn.Size = new System.Drawing.Size(23, 24);
             this.addFavBttn.Text = "Add Favorite";
             this.addFavBttn.Click += new System.EventHandler(this.addFavBttn_Click);
             // 
@@ -254,15 +242,27 @@
             this.monthCalendar1.Visible = false;
             this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
             // 
+            // tabControl
+            // 
+            this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl.Location = new System.Drawing.Point(0, 67);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(800, 359);
+            this.tabControl.TabIndex = 7;
+            this.tabControl.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl_Selecting);
+            // 
             // Browser
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.tabControl);
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.favToolStrip);
-            this.Controls.Add(this.webBrowser);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.addrBar);
             this.Name = "Browser";
@@ -290,7 +290,6 @@
         private ControlLibrary.HomeButton homeButton;
         private ControlLibrary.ForwardButton forwardButton;
         private ControlLibrary.BackButton backButton;
-        private System.Windows.Forms.WebBrowser webBrowser;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ContextMenuStrip contextMenuButton;
         private System.Windows.Forms.ToolStripMenuItem newTabToolStripMenuItem;
@@ -307,6 +306,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.ToolStripStatusLabel linkHoveringOvertoolStripLabel;
+        private System.Windows.Forms.TabControl tabControl;
     }
 }
 

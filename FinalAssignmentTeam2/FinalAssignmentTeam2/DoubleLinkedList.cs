@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FinalAssignmentTeam2
 {
-    class Node
+    public class Node
     {
         public string info { get; set; } //Holds url
         public Node next { get; set; }
@@ -22,7 +22,7 @@ namespace FinalAssignmentTeam2
         }
     }
 
-    class DoubleLinkedList
+    public class DoubleLinkedList
     {
         private Node first;
         private Node last;
