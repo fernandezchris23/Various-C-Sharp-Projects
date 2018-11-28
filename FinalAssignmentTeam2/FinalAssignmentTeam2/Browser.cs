@@ -75,6 +75,11 @@ namespace FinalAssignmentTeam2
             }
         }
 
+        private void addrBarText_Click(object sender, EventArgs e)
+        {
+            addrBarText.SelectAll();
+        }
+
         //Handles when the webpage navigating to is finished loading
         private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
@@ -173,7 +178,12 @@ namespace FinalAssignmentTeam2
             historyForm.itemDoubleClick += new EventHandler<StringEventArgs>(openSelectedHistoryItem);
             historyForm.clearHistoryOfDate += new EventHandler<StringEventArgs>(clearHistoryOfDate);
             historyForm.clearHistory += new EventHandler(clearHistory);
-            historyForm.Show();
+
+            TabPage tab = new TabPage();
+            tab.Text = "History";
+            tabControl.Controls.Add(tab);
+            tab.Controls.Add(historyForm);
+            historyForm.Dock = DockStyle.Fill;
         }
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -182,6 +192,32 @@ namespace FinalAssignmentTeam2
             {
                 settingsForm.ShowDialog();
             }
+        }
+
+        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetData(DataFormats.Text, addrBarText.Text);
+            addrBarText.Text = "";
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetData(DataFormats.Text, addrBarText.Text);
+        }
+
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            addrBarText.Text =  (string)Clipboard.GetData(DataFormats.Text);
+        }
+
+        private void closeTabToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(tabControl.TabPages.Count < 2)
+            {
+                this.Close();
+            }
+
+            tabControl.TabPages.Remove(tabControl.SelectedTab);
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -473,7 +509,12 @@ namespace FinalAssignmentTeam2
 
         private void tabControl_Selecting(object sender, TabControlCancelEventArgs e)
         {
-;           addrBarText.Text = ((TabComponent)tabControl.SelectedTab.Controls[0]).webBrowser1.Url.ToString();
+            if(tabControl.SelectedTab.Text == "History")
+            {
+                return;
+            }
+
+            addrBarText.Text = ((TabComponent)tabControl.SelectedTab.Controls[0]).webBrowser1.Url.ToString();
             tabControl.SelectedTab.Text = ((TabComponent)tabControl.SelectedTab.Controls[0]).webBrowser1.DocumentTitle;
         }
 

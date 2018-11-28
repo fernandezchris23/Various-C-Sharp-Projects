@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace FinalAssignmentTeam2
 {
-    public partial class History : Form
+    public partial class History : UserControl
     {
         private List<string> dateList;
 
