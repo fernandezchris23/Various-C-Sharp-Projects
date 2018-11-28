@@ -30,3 +30,21 @@ C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\FinalAssignmentTeam2\FinalAssi
 C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\FinalAssignmentTeam2\FinalAssignmentTeam2\obj\Debug\FinalAssignmentTeam2.History.resources
 C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\FinalAssignmentTeam2\FinalAssignmentTeam2\obj\Debug\FinalAssignmentTeam2.SettingsForm.resources
 C:\Users\Mega Trainer\Source\Repos\1808-uha-repo2\FinalAssignmentTeam2\FinalAssignmentTeam2\obj\Debug\FinalAssignmentTeam2.TabComponent.resources
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\FinalAssignmentTeam2\FinalAssignmentTeam2\bin\Debug\FinalAssignmentTeam2.exe.config
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\FinalAssignmentTeam2\FinalAssignmentTeam2\bin\Debug\FinalAssignmentTeam2.exe
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\FinalAssignmentTeam2\FinalAssignmentTeam2\bin\Debug\FinalAssignmentTeam2.pdb
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\FinalAssignmentTeam2\FinalAssignmentTeam2\bin\Debug\ControlLibrary.dll
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\FinalAssignmentTeam2\FinalAssignmentTeam2\bin\Debug\ControlLibrary.pdb
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\FinalAssignmentTeam2\FinalAssignmentTeam2\bin\Debug\ControlLibrary.dll.config
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\FinalAssignmentTeam2\FinalAssignmentTeam2\obj\Debug\FinalAssignmentTeam2.csprojAssemblyReference.cache
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\FinalAssignmentTeam2\FinalAssignmentTeam2\obj\Debug\FinalAssignmentTeam2.AddFavoriteDialog.resources
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\FinalAssignmentTeam2\FinalAssignmentTeam2\obj\Debug\FinalAssignmentTeam2.Browser.resources
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\FinalAssignmentTeam2\FinalAssignmentTeam2\obj\Debug\FinalAssignmentTeam2.History.resources
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\FinalAssignmentTeam2\FinalAssignmentTeam2\obj\Debug\FinalAssignmentTeam2.Properties.Resources.resources
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\FinalAssignmentTeam2\FinalAssignmentTeam2\obj\Debug\FinalAssignmentTeam2.SettingsForm.resources
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\FinalAssignmentTeam2\FinalAssignmentTeam2\obj\Debug\FinalAssignmentTeam2.TabComponent.resources
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\FinalAssignmentTeam2\FinalAssignmentTeam2\obj\Debug\FinalAssignmentTeam2.csproj.GenerateResource.cache
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\FinalAssignmentTeam2\FinalAssignmentTeam2\obj\Debug\FinalAssignmentTeam2.csproj.CoreCompileInputs.cache
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\FinalAssignmentTeam2\FinalAssignmentTeam2\obj\Debug\FinalAssignmentTeam2.csproj.CopyComplete
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\FinalAssignmentTeam2\FinalAssignmentTeam2\obj\Debug\FinalAssignmentTeam2.exe
+C:\Users\alvar\Source\Repos\FIU-Downey\1808-uha-repo2\FinalAssignmentTeam2\FinalAssignmentTeam2\obj\Debug\FinalAssignmentTeam2.pdb

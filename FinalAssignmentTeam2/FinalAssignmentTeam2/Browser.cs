@@ -174,16 +174,29 @@ namespace FinalAssignmentTeam2
 
         private void historyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            History historyForm = new History(historyDatesList, MultiSDI.Appli.history);
+            History historyForm = MakeHistoryForm(historyDatesList, MultiSDI.Appli.history);
+
+            TabPage tab = MakeTabPage("History");
+            tabControl.Controls.Add(tab);
+            tab.Controls.Add(historyForm);
+            historyForm.Dock = DockStyle.Fill;
+        }
+
+        private History MakeHistoryForm(List<string> dates, SingleLinkedList history)
+        {
+            History historyForm = new History(dates, history);
             historyForm.itemDoubleClick += new EventHandler<StringEventArgs>(openSelectedHistoryItem);
             historyForm.clearHistoryOfDate += new EventHandler<StringEventArgs>(clearHistoryOfDate);
             historyForm.clearHistory += new EventHandler(clearHistory);
 
+            return historyForm;
+        }
+
+        private TabPage MakeTabPage(string text)
+        {
             TabPage tab = new TabPage();
-            tab.Text = "History";
-            tabControl.Controls.Add(tab);
-            tab.Controls.Add(historyForm);
-            historyForm.Dock = DockStyle.Fill;
+            tab.Text = text;
+            return tab;
         }
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -383,7 +396,6 @@ namespace FinalAssignmentTeam2
         }
 
         //*************************//
-
         //******HISTORY SECTION******//
 
         private void getHistoryContainerNames()
@@ -448,9 +460,7 @@ namespace FinalAssignmentTeam2
         }
 
         //*************************//
-
         //******SETTINGS SECTION******//
-
         private void settingsChanged(object sender, PropertyChangedEventArgs e)
         {
             isNotifyOn = MultiSDI.Appli.settingsProperties.NotifyOff;
@@ -466,9 +476,7 @@ namespace FinalAssignmentTeam2
         }
 
         //*************************//
-
         //******DRAG AND DROP SECTION******//
-
         private void Browser_DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(typeof(string)))
@@ -496,9 +504,9 @@ namespace FinalAssignmentTeam2
         //******TAB SYSTEM SECTION******//
         private void newTabToolStripLabel_Click(object sender, EventArgs e)
         {
-            TabPage tab = new TabPage();
-            tab.Text = "New Tab";
+            TabPage tab = MakeTabPage("new tab");
             tabControl.Controls.Add(tab);
+
             TabComponent webTab = new TabComponent();
             tab.Controls.Add(webTab);
             webTab.Parent = tab;

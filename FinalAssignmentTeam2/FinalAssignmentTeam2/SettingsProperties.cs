@@ -11,6 +11,10 @@ namespace FinalAssignmentTeam2
     [Serializable()]
     public class SettingsProperties : ISerializable, INotifyPropertyChanged
     {
+        private string homePage;
+        private int numMinutesForNotify;
+        private bool notifyOff;
+
         public SettingsProperties()
         {
             HomePage = "https://www.google.com";
@@ -24,10 +28,6 @@ namespace FinalAssignmentTeam2
             NumMinutesForNotify = info.GetInt32("NumMinutesForNotify");
             NotifyOff = info.GetBoolean("NotifyOff");
         }
-
-        private string homePage;
-        private int numMinutesForNotify;
-        private bool notifyOff;
 
         public string HomePage
         {
