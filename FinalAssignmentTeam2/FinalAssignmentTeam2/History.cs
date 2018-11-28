@@ -13,6 +13,7 @@ namespace FinalAssignmentTeam2
     public partial class History : UserControl
     {
         private List<string> dateList;
+        private PrintStyler printStyler;
 
         public event EventHandler<StringEventArgs> itemDoubleClick;
         public event EventHandler<StringEventArgs> clearHistoryOfDate;
@@ -24,10 +25,13 @@ namespace FinalAssignmentTeam2
 
             dateList = dates;
 
-            listItemsInListBox(history);
+            ListItemsInListBox(history);
+
+            printStyler = new PrintStyler();
+            printStyler.Title = "History";
         }
 
-        private void listItemsInListBox(SingleLinkedList history)
+        private void ListItemsInListBox(SingleLinkedList history)
         {
             SingleListNode temp = history.getNode();
             
@@ -62,6 +66,16 @@ namespace FinalAssignmentTeam2
             {
                 MessageBox.Show("Please select a date from the list before clicking the button to remove that day's history.");
             }
+        }
+
+        private void printToolStrip_Click(object sender, EventArgs e)
+        {
+            printStyler.AddPrintItem("HISTORY\n");
+            foreach(string item in listOfItems.Items)
+            {
+                printStyler.AddPrintItem(item);
+            }
+            printStyler.PrintItems();
         }
     }
 }
