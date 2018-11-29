@@ -55,6 +55,7 @@
             this.backButton = new ControlLibrary.BackButton();
             this.addFavBttn = new System.Windows.Forms.ToolStripButton();
             this.toolStripStatusFactButton = new System.Windows.Forms.ToolStripSplitButton();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.addrBar.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.contextMenuButton.SuspendLayout();
@@ -283,6 +284,13 @@
             this.toolStripStatusFactButton.Text = "Cat Facts";
             this.toolStripStatusFactButton.ToolTipText = "Cat Facts";
             // 
+            // notifyIcon
+            // 
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "Browsing Kitty";
+            this.notifyIcon.Visible = true;
+            this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
+            // 
             // Browser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -337,6 +345,7 @@
         private System.Windows.Forms.ToolStripStatusLabel linkHoveringOvertoolStripLabel;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.ToolStripSplitButton toolStripStatusFactButton;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
     }
 }
 

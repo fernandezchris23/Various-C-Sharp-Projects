@@ -436,9 +436,7 @@ namespace FinalAssignmentTeam2
 
         //*************************//
 
-        //******CAT FACTS SECTION******//
-        //toolStripStatusFact
-        //helpProvider
+        #region CAT FACTS SECTION
         private void createCatFact()
         {
             statusStrip.ShowItemToolTips = true;
@@ -447,9 +445,15 @@ namespace FinalAssignmentTeam2
             toolStripStatusFactButton.ToolTipText = catFacts.CatFact();
 
         }
-        //*************************//
-        #region My region
+        #endregion
 
+        #region Notify Icon
+        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.Show();
+            this.Focus();
+            this.Activate();
+        }
         #endregion
     }
 }
