@@ -111,5 +111,23 @@
   <ItemGroup>
     <None Include="Resources\Button-Back.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backCatPaw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pictureBox1.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fowardCatPaw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fowardCatPaw1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\catHouse21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\catHouse2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

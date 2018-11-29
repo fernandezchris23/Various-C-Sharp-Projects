@@ -63,9 +63,39 @@ namespace ControlLibrary.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap backCatPaw {
+            get {
+                object obj = ResourceManager.GetObject("backCatPaw", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Button_Back {
             get {
                 object obj = ResourceManager.GetObject("Button-Back", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap catHouse2 {
+            get {
+                object obj = ResourceManager.GetObject("catHouse2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fowardCatPaw {
+            get {
+                object obj = ResourceManager.GetObject("fowardCatPaw", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
