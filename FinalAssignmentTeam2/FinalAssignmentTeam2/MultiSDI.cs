@@ -114,7 +114,6 @@ namespace FinalAssignmentTeam2
             if ((history = OpenHistory()) == null)
                 history = new SingleLinkedList();
 
-
             if ((favorites = OpenFavotires()) == null)
                 favorites = new SingleLinkedList();
         }
@@ -123,8 +122,6 @@ namespace FinalAssignmentTeam2
         {
             return (SettingsProperties)Serializer.Deserialize("settings");
         }
-
-
 
         public SingleLinkedList OpenHistory()
         {

@@ -58,16 +58,25 @@ namespace FinalAssignmentTeam2
                 Console.WriteLine(e.Message);
 
             }
+            catch (FileNotFoundException e)
+            {
+                obj = null;
+                Console.WriteLine(e.Message);
+            }
             catch (Exception e)
             {
                 obj = null;
+                Console.WriteLine(e.Message);
             }
 
             finally
             {
-                stream.Flush();
-                stream.Dispose();
-                stream.Close();
+                if(stream != null)
+                {
+                    stream.Flush();
+                    stream.Dispose();
+                    stream.Close();
+                }
             }
 
             return obj;

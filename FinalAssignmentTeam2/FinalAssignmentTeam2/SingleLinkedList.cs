@@ -38,10 +38,10 @@ namespace FinalAssignmentTeam2
             if(next != null)
             {
                 info.AddValue("Next", next, next.GetType());
-                info.AddValue("List", list, list.GetType());
-                info.AddValue("IsContainer", isContainer);
-                info.AddValue("ContainerName", containerName);
             }
+            info.AddValue("List", list, list.GetType());
+            info.AddValue("IsContainer", isContainer);
+            info.AddValue("ContainerName", containerName);
         }
     }
 
@@ -85,6 +85,8 @@ namespace FinalAssignmentTeam2
                 }
             }
         }
+
+        public int GetSize() { return this.numNodes; }
 
         public bool isEmpty()
         {
