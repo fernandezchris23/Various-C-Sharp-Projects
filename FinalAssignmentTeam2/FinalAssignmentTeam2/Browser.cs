@@ -17,6 +17,9 @@ namespace FinalAssignmentTeam2
         private List<string> favoritesContainers;
         private List<string> historyDatesList;
 
+        // thread that generates random number
+        private FactThread catFacts;
+
         private bool isBackingOrForwarding; //Used to prevent hitting back or forward from clearing the rest of the list
         private bool isAddingFav; //Used to prevent duplication when keeping all favorite bars synced
         private bool isMouseHoverEventSet; //Is the mouse hovering over something
@@ -56,6 +59,12 @@ namespace FinalAssignmentTeam2
             addToday();
             buildFavoritesBar();
             initializeFromSettings();
+
+            // Cat Fact Stuff!
+            catFacts = new FactThread();
+            createCatFact();
+
+
         }
 
         public static Browser CreateWindow()
@@ -426,5 +435,21 @@ namespace FinalAssignmentTeam2
         }
 
         //*************************//
+
+        //******CAT FACTS SECTION******//
+        //toolStripStatusFact
+        //helpProvider
+        private void createCatFact()
+        {
+            statusStrip.ShowItemToolTips = true;
+            toolStripStatusFactButton.ToolTipText = "";
+           
+            toolStripStatusFactButton.ToolTipText = catFacts.CatFact();
+
+        }
+        //*************************//
+        #region My region
+
+        #endregion
     }
 }

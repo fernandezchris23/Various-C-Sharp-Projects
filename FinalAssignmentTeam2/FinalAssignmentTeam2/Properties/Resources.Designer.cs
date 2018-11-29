@@ -63,6 +63,26 @@ namespace FinalAssignmentTeam2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap kitties {
+            get {
+                object obj = ResourceManager.GetObject("kitties", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap kitty {
+            get {
+                object obj = ResourceManager.GetObject("kitty", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap redHeartCatPaw {
             get {
                 object obj = ResourceManager.GetObject("redHeartCatPaw", resourceCulture);

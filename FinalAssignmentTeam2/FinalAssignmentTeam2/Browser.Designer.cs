@@ -45,9 +45,11 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.favToolStrip = new System.Windows.Forms.ToolStrip();
-            this.addFavBttn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.addFavBttn = new System.Windows.Forms.ToolStripButton();
+            this.toolStripStatusFactButton = new System.Windows.Forms.ToolStripSplitButton();
             this.menuButton = new ControlLibrary.MenuButton();
             this.homeButton = new ControlLibrary.HomeButton();
             this.forwardButton = new ControlLibrary.ForwardButton();
@@ -67,9 +69,9 @@
             this.addrBar.Controls.Add(this.backButton);
             this.addrBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.addrBar.Location = new System.Drawing.Point(0, 0);
-            this.addrBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addrBar.Margin = new System.Windows.Forms.Padding(4);
             this.addrBar.Name = "addrBar";
-            this.addrBar.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addrBar.Padding = new System.Windows.Forms.Padding(4);
             this.addrBar.Size = new System.Drawing.Size(1067, 47);
             this.addrBar.TabIndex = 1;
             this.addrBar.TabStop = false;
@@ -78,7 +80,7 @@
             // 
             this.addrBarText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.addrBarText.Location = new System.Drawing.Point(135, 14);
-            this.addrBarText.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addrBarText.Margin = new System.Windows.Forms.Padding(4);
             this.addrBarText.Name = "addrBarText";
             this.addrBarText.Size = new System.Drawing.Size(884, 22);
             this.addrBarText.TabIndex = 3;
@@ -90,11 +92,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.webBrowser.Location = new System.Drawing.Point(0, 81);
-            this.webBrowser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.webBrowser.Margin = new System.Windows.Forms.Padding(4);
             this.webBrowser.MinimumSize = new System.Drawing.Size(27, 25);
             this.webBrowser.Name = "webBrowser";
             this.webBrowser.ScriptErrorsSuppressed = true;
-            this.webBrowser.Size = new System.Drawing.Size(1067, 443);
+            this.webBrowser.Size = new System.Drawing.Size(1067, 531);
             this.webBrowser.TabIndex = 4;
             this.webBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser_DocumentCompleted);
             // 
@@ -102,18 +104,20 @@
             // 
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.linkHoveringOvertoolStripLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 529);
+            this.linkHoveringOvertoolStripLabel,
+            this.toolStripStatusFactButton});
+            this.statusStrip.Location = new System.Drawing.Point(0, 616);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip.Size = new System.Drawing.Size(1067, 25);
+            this.statusStrip.Size = new System.Drawing.Size(1067, 26);
             this.statusStrip.TabIndex = 3;
             this.statusStrip.Text = "statusStrip1";
             // 
             // linkHoveringOvertoolStripLabel
             // 
             this.linkHoveringOvertoolStripLabel.Name = "linkHoveringOvertoolStripLabel";
-            this.linkHoveringOvertoolStripLabel.Size = new System.Drawing.Size(13, 20);
+            this.linkHoveringOvertoolStripLabel.Size = new System.Drawing.Size(969, 21);
+            this.linkHoveringOvertoolStripLabel.Spring = true;
             this.linkHoveringOvertoolStripLabel.Text = " ";
             // 
             // contextMenuButton
@@ -205,6 +209,20 @@
             this.favToolStrip.TabIndex = 5;
             this.favToolStrip.Text = "toolStrip1";
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 31);
+            // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(397, 399);
+            this.monthCalendar1.Margin = new System.Windows.Forms.Padding(12, 11, 12, 11);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 6;
+            this.monthCalendar1.Visible = false;
+            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
+            // 
             // addFavBttn
             // 
             this.addFavBttn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -215,19 +233,17 @@
             this.addFavBttn.Text = "Add Favorite";
             this.addFavBttn.Click += new System.EventHandler(this.addFavBttn_Click);
             // 
-            // toolStripSeparator3
+            // toolStripStatusFactButton
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 31);
-            // 
-            // monthCalendar1
-            // 
-            this.monthCalendar1.Location = new System.Drawing.Point(383, 539);
-            this.monthCalendar1.Margin = new System.Windows.Forms.Padding(12, 11, 12, 11);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 6;
-            this.monthCalendar1.Visible = false;
-            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
+            this.toolStripStatusFactButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripStatusFactButton.Enabled = false;
+            this.toolStripStatusFactButton.Image = global::FinalAssignmentTeam2.Properties.Resources.kitty;
+            this.toolStripStatusFactButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripStatusFactButton.Name = "toolStripStatusFactButton";
+            this.toolStripStatusFactButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.toolStripStatusFactButton.Size = new System.Drawing.Size(39, 24);
+            this.toolStripStatusFactButton.Text = "Cat Facts";
+            this.toolStripStatusFactButton.ToolTipText = "Cat Facts";
             // 
             // menuButton
             // 
@@ -270,13 +286,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(1067, 642);
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.favToolStrip);
             this.Controls.Add(this.webBrowser);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.addrBar);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Browser";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Browser_Load);
@@ -317,6 +333,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.ToolStripStatusLabel linkHoveringOvertoolStripLabel;
+        private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.ToolStripSplitButton toolStripStatusFactButton;
     }
 }
 

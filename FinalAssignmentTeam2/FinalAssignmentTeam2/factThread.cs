@@ -9,7 +9,7 @@ namespace FinalAssignmentTeam2
     class FactThread
     {
         // Thread for random number generator
-        private static readonly ThreadLocal<Random> ranFactNumber = new ThreadLocal<Random>(() => new Random());
+        private static readonly ThreadLocal<Random> ranFactNumber = new ThreadLocal<Random>(() => new Random(Seed()));
 
         // Array list for the list of cat facts
         private readonly List<String> catFacts = new List<String>
@@ -51,15 +51,13 @@ namespace FinalAssignmentTeam2
 
         // The min is inclusive and max is exclusive
         // in a normal arraylist the min is 0 and max is arraylist size
-        public static int GetFactNumber(int min, int max)
+        private static int GetFactNumber(int min, int max)
         {
-            lock (ranFactNumber) // synchronize
-            {
                 return ranFactNumber.Value.Next(min, max);
-            }
         }
 
-        public string CatFact(List<String> factList)
+        // Using the generatored number to return the fact
+        public string CatFact()
         {
             // getting the randomly generated number for the list
             int factNumber = GetFactNumber(0, catFacts.Count + 1);
@@ -69,6 +67,12 @@ namespace FinalAssignmentTeam2
 
             return fact;
             
+        }
+
+        // Creates a seed number 
+        private static int Seed()
+        {
+            return Environment.TickCount * Thread.CurrentThread.ManagedThreadId;
         }
 
 
