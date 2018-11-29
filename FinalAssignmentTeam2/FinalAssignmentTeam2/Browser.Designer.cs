@@ -56,6 +56,7 @@
             this.addFavBttn = new System.Windows.Forms.ToolStripButton();
             this.toolStripStatusFactButton = new System.Windows.Forms.ToolStripSplitButton();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.notifyTimer = new System.Windows.Forms.Timer(this.components);
             this.addrBar.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.contextMenuButton.SuspendLayout();
@@ -291,6 +292,10 @@
             this.notifyIcon.Visible = true;
             this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
             // 
+            // notifyTimer
+            // 
+            this.notifyTimer.Tick += new System.EventHandler(this.notifyTimer_Tick);
+            // 
             // Browser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -305,6 +310,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Browser";
             this.Text = "Form";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Browser_FormClosing);
             this.Load += new System.EventHandler(this.Browser_Load);
             this.addrBar.ResumeLayout(false);
             this.addrBar.PerformLayout();
@@ -346,6 +352,7 @@
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.ToolStripSplitButton toolStripStatusFactButton;
         private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.Timer notifyTimer;
     }
 }
 

@@ -24,10 +24,12 @@ namespace FinalAssignmentTeam2
         private bool isAddingFav; //Used to prevent duplication when keeping all favorite bars synced
         private bool isMouseHoverEventSet; //Is the mouse hovering over something
         private bool isNotifyOn; //Whether or not to display notifications
+        
 
         private string homePage;
 
         private int numMinutesToNotify;
+        private int miliSecNotify; // convert to miliseconds for timer
 
         public Browser()
         {
@@ -63,6 +65,11 @@ namespace FinalAssignmentTeam2
             // Cat Fact Stuff!
             catFacts = new FactThread();
             createCatFact();
+            
+            // Notify Cat Facts
+            notifyTimer.Start(); // start the time for the notify                                 
+            miliSecNotify = numMinutesToNotify * 60000; // converts the minutes for notifications to milliseconds for interval           
+            notifyTimer.Interval = miliSecNotify; // Set it to go off based on given time from user
 
 
         }
@@ -440,20 +447,46 @@ namespace FinalAssignmentTeam2
         private void createCatFact()
         {
             statusStrip.ShowItemToolTips = true;
-            toolStripStatusFactButton.ToolTipText = "";
-           
             toolStripStatusFactButton.ToolTipText = catFacts.CatFact();
 
         }
         #endregion
 
         #region Notify Icon
+
         private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             this.Show();
             this.Focus();
             this.Activate();
+            
         }
+
+        private void factNotifications()
+        {
+            // if the nofity off is true then the notifications are on
+            if (isNotifyOn)
+            {
+                notifyIcon.BalloonTipText = catFacts.CatFact();
+                notifyIcon.ShowBalloonTip(3);
+            }
+            else // no notifications
+            {
+                MessageBox.Show("Test");
+            }
+        }
+        
+
+        private void notifyTimer_Tick(object sender, EventArgs e)
+        {
+            factNotifications();
+        }
+
         #endregion
+
+        private void Browser_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            notifyTimer.Stop();
+        }
     }
 }
