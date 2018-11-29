@@ -81,15 +81,11 @@ namespace FinalAssignmentTeam2
             return g;
         }
 
-        static Rectangle GetRealMarginBounds(PrintPageEventArgs e, bool preview)
+        private Rectangle GetRealMarginBounds(PrintPageEventArgs e, bool preview)
         {
             if (preview) return e.MarginBounds;
-            // Get printer's offsets
             float cx = e.PageSettings.HardMarginX;
             float cy = e.PageSettings.HardMarginY;
-            // Create the real margin bounds by scaling the offset
-            // by the printer resolution and then rescaling it
-            // back to 1/100 inch
             Rectangle marginBounds = e.MarginBounds;
             float dpiX = e.Graphics.DpiX;
             float dpiY = e.Graphics.DpiY;
