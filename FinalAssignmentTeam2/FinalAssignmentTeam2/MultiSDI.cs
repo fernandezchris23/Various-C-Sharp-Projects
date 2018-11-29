@@ -11,7 +11,7 @@ namespace FinalAssignmentTeam2
 {
     class MultiSDI : WindowsFormsApplicationBase
     {
-        //All windows and tabs mustg have access to the same history/favorites
+        //All windows and tabs must have access to the same history/favorites
         public SingleLinkedList history;
         public SingleLinkedList favorites;
         public SettingsProperties settingsProperties;
@@ -33,9 +33,7 @@ namespace FinalAssignmentTeam2
         {
             this.IsSingleInstance = true;
             this.ShutdownStyle = ShutdownMode.AfterAllFormsClose;
-            history = new SingleLinkedList();
-            favorites = new SingleLinkedList();
-            settingsProperties = new SettingsProperties();
+            GetSavedState();
         }
 
         //Create first top level form
@@ -70,9 +68,72 @@ namespace FinalAssignmentTeam2
             form.FormClosed -= form_FormClosed;
         }
 
+
         public void AddTopLevelForm(Form form)
         {
             form.FormClosed += form_FormClosed;
+        }
+
+        public bool SaveState()
+        {
+            if (SaveSettings() && SaveHistory() && SaveFavorites())
+                return true;
+
+            return false;
+        }
+
+        public bool SaveSettings()
+        {
+            if (Serializer.Serialize("settings", settingsProperties))
+                return true;
+
+            return false;
+        }
+
+        public bool SaveHistory()
+        {
+            if (Serializer.Serialize("history", history))
+                return true;
+
+            return false;
+        }
+
+        public bool SaveFavorites()
+        {
+            if (Serializer.Serialize("favorite", favorites))
+                return true;
+
+            return false;
+        }
+
+        public void GetSavedState()
+        {
+            if ((settingsProperties = OpenSettings()) == null)
+                settingsProperties = new SettingsProperties();
+
+            if ((history = OpenHistory()) == null)
+                history = new SingleLinkedList();
+
+
+            if ((favorites = OpenFavotires()) == null)
+                favorites = new SingleLinkedList();
+        }
+
+        public SettingsProperties OpenSettings()
+        {
+            return (SettingsProperties)Serializer.Deserialize("settings");
+        }
+
+
+
+        public SingleLinkedList OpenHistory()
+        {
+            return (SingleLinkedList)Serializer.Deserialize("history");
+        }
+
+        public SingleLinkedList OpenFavotires()
+        {
+            return (SingleLinkedList)Serializer.Deserialize("favorite");
         }
 
     }

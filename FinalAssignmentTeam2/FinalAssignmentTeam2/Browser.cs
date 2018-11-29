@@ -250,6 +250,7 @@ namespace FinalAssignmentTeam2
 
             favDlg.StartPosition = FormStartPosition.CenterParent;
             favDlg.ShowDialog();
+            MultiSDI.Appli.SaveFavorites();
         }
 
         private void favDlg_DoubleClick(object sender, StringEventArgs e)
@@ -438,6 +439,7 @@ namespace FinalAssignmentTeam2
 
             addToday();
             MultiSDI.Appli.history.addToContainer(addrBarText.Text, today.ToString("MM/dd/yyyy"));
+            MultiSDI.Appli.SaveHistory();
         }
 
         private void openSelectedHistoryItem(object sender, StringEventArgs e)
@@ -466,6 +468,8 @@ namespace FinalAssignmentTeam2
             isNotifyOn = MultiSDI.Appli.settingsProperties.NotifyOff;
             numMinutesToNotify = MultiSDI.Appli.settingsProperties.NumMinutesForNotify;
             homePage = MultiSDI.Appli.settingsProperties.HomePage;
+            MultiSDI.Appli.SaveSettings(); //Serialize
+            
         }
 
         private void initializeFromSettings()
@@ -524,6 +528,11 @@ namespace FinalAssignmentTeam2
 
             addrBarText.Text = ((TabComponent)tabControl.SelectedTab.Controls[0]).webBrowser1.Url.ToString();
             tabControl.SelectedTab.Text = ((TabComponent)tabControl.SelectedTab.Controls[0]).webBrowser1.DocumentTitle;
+        }
+
+        private void Browser_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MultiSDI.Appli.SaveState();  //Serialization
         }
 
         //*************************//

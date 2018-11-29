@@ -35,10 +35,13 @@ namespace FinalAssignmentTeam2
         //Used for exporting data to be serialized
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            info.AddValue("Next", next, next.GetType());
-            info.AddValue("List", list, list.GetType());
-            info.AddValue("IsContainer", isContainer);
-            info.AddValue("ContainerName", containerName);
+            if(next != null)
+            {
+                info.AddValue("Next", next, next.GetType());
+                info.AddValue("List", list, list.GetType());
+                info.AddValue("IsContainer", isContainer);
+                info.AddValue("ContainerName", containerName);
+            }
         }
     }
 
@@ -207,6 +210,7 @@ namespace FinalAssignmentTeam2
             while(temp != null)
             {
                 info.AddValue("ListNode" + count, temp);
+                temp = temp.next;
                 ++count;
             }
 
