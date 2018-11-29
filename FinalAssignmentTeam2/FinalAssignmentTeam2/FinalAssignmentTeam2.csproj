@@ -59,6 +59,7 @@
       <DependentUpon>Browser.cs</DependentUpon>
     </Compile>
     <Compile Include="DoubleLinkedList.cs" />
+    <Compile Include="FactThread.cs" />
     <Compile Include="History.cs">
       <SubType>Form</SubType>
     </Compile>

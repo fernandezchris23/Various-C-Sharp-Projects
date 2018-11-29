@@ -77,6 +77,7 @@
             this.okBttn.TabIndex = 18;
             this.okBttn.Text = "OK";
             this.okBttn.UseVisualStyleBackColor = true;
+            this.okBttn.Click += new System.EventHandler(this.okBttn_Click);
             // 
             // notifyLabel
             // 

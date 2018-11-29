@@ -15,6 +15,9 @@ namespace FinalAssignmentTeam2
         private List<string> favoritesContainers;
         private List<string> historyDatesList;
 
+        // thread that generates random number
+        private FactThread catFacts;
+
         private bool isBackingOrForwarding; //Used to prevent hitting back or forward from clearing the rest of the list
         private bool isAddingFav; //Used to prevent duplication when keeping all favorite bars synced
         private bool isMouseHoverEventSet; //Is the mouse hovering over something
@@ -23,6 +26,7 @@ namespace FinalAssignmentTeam2
         private string homePage;
 
         private int numMinutesToNotify;
+        private int miliSecNotify; // convert to miliseconds for timer
 
         public Browser()
         {
@@ -53,6 +57,16 @@ namespace FinalAssignmentTeam2
             addToday();
             buildFavoritesBar();
             initializeFromSettings();
+            
+            // Cat Fact Stuff!
+            catFacts = new FactThread();
+            createCatFact();
+
+            // Notify Cat Facts
+
+            miliSecNotify = MultiSDI.Appli.settingsProperties.NumMinutesForNotify * 60000; // converts the minutes to milliseconds for interval           
+            notifyTimer.Interval = miliSecNotify; // Set it to go off based on given time from user
+            notifyTimer.Start(); // start the time for the notify 
         }
 
         public static Browser CreateWindow()
@@ -134,6 +148,7 @@ namespace FinalAssignmentTeam2
         private void Browser_FormClosing(object sender, FormClosingEventArgs e)
         {
             MultiSDI.Appli.SaveState();  //Serialization
+            notifyTimer.Stop();
         }
 
         //*************************//
@@ -537,5 +552,43 @@ namespace FinalAssignmentTeam2
         }
 
         //*************************//
+
+        #region CAT FACTS SECTION
+        private void createCatFact()
+        {
+            statusStrip.ShowItemToolTips = true;
+            toolStripStatusFactButton.ToolTipText = catFacts.CatFact();
+        }
+        #endregion
+
+        #region Notify Icon
+
+        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.Show();
+            this.Focus();
+            this.Activate();
+        }
+
+        private void factNotifications()
+        {
+            // if the nofity off is true then the notifications are on
+            if (isNotifyOn)
+            {
+                notifyIcon.BalloonTipText = catFacts.CatFact();
+                notifyIcon.ShowBalloonTip(3);
+            }
+            else // no notifications
+            {
+                // do nothing
+            }
+        }
+        
+        private void notifyTimer_Tick(object sender, EventArgs e)
+        {
+            factNotifications();
+        }
+
+        #endregion
     }
 }

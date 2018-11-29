@@ -58,6 +58,9 @@
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.toolStripStatusFactButton = new System.Windows.Forms.ToolStripSplitButton();
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.notifyTimer = new System.Windows.Forms.Timer(this.components);
             this.addrBar.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.contextMenuButton.SuspendLayout();
@@ -129,7 +132,8 @@
             // statusStrip
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.linkHoveringOvertoolStripLabel});
+            this.linkHoveringOvertoolStripLabel,
+            this.toolStripStatusFactButton});
             this.statusStrip.Location = new System.Drawing.Point(0, 428);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(800, 22);
@@ -139,7 +143,8 @@
             // linkHoveringOvertoolStripLabel
             // 
             this.linkHoveringOvertoolStripLabel.Name = "linkHoveringOvertoolStripLabel";
-            this.linkHoveringOvertoolStripLabel.Size = new System.Drawing.Size(10, 17);
+            this.linkHoveringOvertoolStripLabel.Size = new System.Drawing.Size(749, 17);
+            this.linkHoveringOvertoolStripLabel.Spring = true;
             this.linkHoveringOvertoolStripLabel.Text = " ";
             // 
             // contextMenuButton
@@ -159,7 +164,7 @@
             this.closeTabToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.contextMenuButton.Name = "contextMenuButton";
-            this.contextMenuButton.Size = new System.Drawing.Size(181, 264);
+            this.contextMenuButton.Size = new System.Drawing.Size(146, 242);
             // 
             // newTabToolStripMenuItem
             // 
@@ -296,6 +301,30 @@
             this.tabControl.TabIndex = 7;
             this.tabControl.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl_Selecting);
             // 
+            // toolStripStatusFactButton
+            // 
+            this.toolStripStatusFactButton.AutoSize = false;
+            this.toolStripStatusFactButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripStatusFactButton.Enabled = false;
+            this.toolStripStatusFactButton.Image = ((System.Drawing.Image)(resources.GetObject("toolStripStatusFactButton.Image")));
+            this.toolStripStatusFactButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripStatusFactButton.Name = "toolStripStatusFactButton";
+            this.toolStripStatusFactButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.toolStripStatusFactButton.Size = new System.Drawing.Size(36, 20);
+            this.toolStripStatusFactButton.Text = "Cat Facts";
+            this.toolStripStatusFactButton.ToolTipText = "Cat Facts";
+            // 
+            // notifyIcon
+            // 
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "Browsing Kitty";
+            this.notifyIcon.Visible = true;
+            this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
+            // 
+            // notifyTimer
+            // 
+            this.notifyTimer.Tick += new System.EventHandler(this.notifyTimer_Tick);
+            // 
             // Browser
             // 
             this.AllowDrop = true;
@@ -307,6 +336,7 @@
             this.Controls.Add(this.favToolStrip);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.addrBar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Browser";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Browser_FormClosing);
@@ -355,6 +385,9 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem closeTabToolStripMenuItem;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.ToolStripSplitButton toolStripStatusFactButton;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.Timer notifyTimer;
     }
 }
 
