@@ -13,6 +13,7 @@ namespace FinalAssignmentTeam2
     public partial class SettingsForm : Form
     {
         SettingsProperties outProperties;
+        private PrintStyler printStyler;
 
         public SettingsForm(SettingsProperties passed)
         {
@@ -21,15 +22,10 @@ namespace FinalAssignmentTeam2
 
             homePageTextBox.Text = outProperties.HomePage;
             numMinutesNotifyNumericUpDown.Value = outProperties.NumMinutesForNotify;
-            if(outProperties.NotifyOff)
-            {
-                notifyCheckBox.Checked = true;
-            }
-            else
-            {
-                notifyCheckBox.Checked = false;
-            }
             initBindings();
+
+            printStyler = new PrintStyler();
+            printStyler.Title = "Settings";
         }
 
         private void initBindings()
@@ -42,6 +38,14 @@ namespace FinalAssignmentTeam2
         private void okBttn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void printToolStrip_Click(object sender, EventArgs e)
+        {
+            printStyler.AddPrintItem("Homepage: " + outProperties.HomePage);
+            printStyler.AddPrintItem("numMinutesForNotify: " + outProperties.NumMinutesForNotify);
+            printStyler.AddPrintItem("notifyOff: " + outProperties.NotifyOff);
+            printStyler.PrintItems();
         }
     }
 }

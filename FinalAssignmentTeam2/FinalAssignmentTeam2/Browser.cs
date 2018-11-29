@@ -131,6 +131,11 @@ namespace FinalAssignmentTeam2
             linkHoveringOvertoolStripLabel.Text = link;
         }
 
+        private void Browser_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MultiSDI.Appli.SaveState();  //Serialization
+        }
+
         //*************************//
 
         //******CUSTOM CONTROL HANDLERS SECTION******//
@@ -174,13 +179,9 @@ namespace FinalAssignmentTeam2
 
         private void historyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            History historyForm = new History(historyDatesList, MultiSDI.Appli.history);
-            historyForm.itemDoubleClick += new EventHandler<StringEventArgs>(openSelectedHistoryItem);
-            historyForm.clearHistoryOfDate += new EventHandler<StringEventArgs>(clearHistoryOfDate);
-            historyForm.clearHistory += new EventHandler(clearHistory);
+            History historyForm = MakeHistoryForm(historyDatesList, MultiSDI.Appli.history);
 
-            TabPage tab = new TabPage();
-            tab.Text = "History";
+            TabPage tab = MakeTabPage("History");
             tabControl.Controls.Add(tab);
             tab.Controls.Add(historyForm);
             historyForm.Dock = DockStyle.Fill;
@@ -447,6 +448,16 @@ namespace FinalAssignmentTeam2
             MessageBox.Show("History of " + e.ListItemBeingPassed + " has been erased.");
         }
 
+        private History MakeHistoryForm(List<string> dates, SingleLinkedList history)
+        {
+            History historyForm = new History(dates, history);
+            historyForm.itemDoubleClick += new EventHandler<StringEventArgs>(openSelectedHistoryItem);
+            historyForm.clearHistoryOfDate += new EventHandler<StringEventArgs>(clearHistoryOfDate);
+            historyForm.clearHistory += new EventHandler(clearHistory);
+
+            return historyForm;
+        }
+
         //*************************//
 
         //******SETTINGS SECTION******//
@@ -496,9 +507,9 @@ namespace FinalAssignmentTeam2
         //******TAB SYSTEM SECTION******//
         private void newTabToolStripLabel_Click(object sender, EventArgs e)
         {
-            TabPage tab = new TabPage();
-            tab.Text = "New Tab";
+            TabPage tab = MakeTabPage("New Tab");
             tabControl.Controls.Add(tab);
+
             TabComponent webTab = new TabComponent();
             tab.Controls.Add(webTab);
             webTab.Parent = tab;
@@ -516,6 +527,13 @@ namespace FinalAssignmentTeam2
 
             addrBarText.Text = ((TabComponent)tabControl.SelectedTab.Controls[0]).webBrowser1.Url.ToString();
             tabControl.SelectedTab.Text = ((TabComponent)tabControl.SelectedTab.Controls[0]).webBrowser1.DocumentTitle;
+        }
+
+        private TabPage MakeTabPage(string text)
+        {
+            TabPage tab = new TabPage();
+            tab.Text = text;
+            return tab;
         }
 
         //*************************//

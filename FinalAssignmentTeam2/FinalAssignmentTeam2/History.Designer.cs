@@ -33,6 +33,9 @@
             this.clearHistoryBttn = new System.Windows.Forms.Button();
             this.clearDayBttn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.printToolStrip = new System.Windows.Forms.ToolStripLabel();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // listOfItems
@@ -43,9 +46,9 @@
             this.listOfItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listOfItems.FormattingEnabled = true;
             this.listOfItems.ItemHeight = 16;
-            this.listOfItems.Location = new System.Drawing.Point(232, 40);
+            this.listOfItems.Location = new System.Drawing.Point(232, 53);
             this.listOfItems.Name = "listOfItems";
-            this.listOfItems.Size = new System.Drawing.Size(368, 452);
+            this.listOfItems.Size = new System.Drawing.Size(368, 468);
             this.listOfItems.TabIndex = 0;
             this.listOfItems.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listOfItems_MouseDoubleClick);
             // 
@@ -53,7 +56,7 @@
             // 
             this.histLabel.AutoSize = true;
             this.histLabel.Font = new System.Drawing.Font("Imprint MT Shadow", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.histLabel.Location = new System.Drawing.Point(32, 12);
+            this.histLabel.Location = new System.Drawing.Point(32, 25);
             this.histLabel.Name = "histLabel";
             this.histLabel.Size = new System.Drawing.Size(102, 32);
             this.histLabel.TabIndex = 1;
@@ -61,7 +64,7 @@
             // 
             // clearHistoryBttn
             // 
-            this.clearHistoryBttn.Location = new System.Drawing.Point(37, 78);
+            this.clearHistoryBttn.Location = new System.Drawing.Point(37, 91);
             this.clearHistoryBttn.Name = "clearHistoryBttn";
             this.clearHistoryBttn.Size = new System.Drawing.Size(115, 23);
             this.clearHistoryBttn.TabIndex = 2;
@@ -71,7 +74,7 @@
             // 
             // clearDayBttn
             // 
-            this.clearDayBttn.Location = new System.Drawing.Point(38, 124);
+            this.clearDayBttn.Location = new System.Drawing.Point(38, 137);
             this.clearDayBttn.Name = "clearDayBttn";
             this.clearDayBttn.Size = new System.Drawing.Size(114, 34);
             this.clearDayBttn.TabIndex = 3;
@@ -84,7 +87,7 @@
             this.label1.AutoSize = true;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(32, 196);
+            this.label1.Location = new System.Drawing.Point(32, 209);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(2);
             this.label1.Size = new System.Drawing.Size(138, 46);
@@ -92,18 +95,38 @@
             this.label1.Text = "Double-click URL\r\nto open it";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.printToolStrip});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(614, 25);
+            this.toolStrip1.TabIndex = 6;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // printToolStrip
+            // 
+            this.printToolStrip.Name = "printToolStrip";
+            this.printToolStrip.Size = new System.Drawing.Size(32, 22);
+            this.printToolStrip.Text = "Print";
+            this.printToolStrip.Click += new System.EventHandler(this.printToolStrip_Click);
+            // 
             // History
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(614, 512);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.clearDayBttn);
             this.Controls.Add(this.clearHistoryBttn);
             this.Controls.Add(this.histLabel);
             this.Controls.Add(this.listOfItems);
             this.Name = "History";
-            this.Text = "History";
+            this.Size = new System.Drawing.Size(614, 537);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -116,5 +139,7 @@
         private System.Windows.Forms.Button clearHistoryBttn;
         private System.Windows.Forms.Button clearDayBttn;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripLabel printToolStrip;
     }
 }

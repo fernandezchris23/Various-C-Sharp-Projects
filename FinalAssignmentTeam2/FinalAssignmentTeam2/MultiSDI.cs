@@ -75,5 +75,64 @@ namespace FinalAssignmentTeam2
             form.FormClosed += form_FormClosed;
         }
 
+        public bool SaveState()
+        {
+            if (SaveSettings() && SaveHistory() && SaveFavorites())
+                return true;
+
+            return false;
+        }
+
+        public bool SaveSettings()
+        {
+            if (Serializer.Serialize("settings", settingsProperties))
+                return true;
+
+            return false;
+        }
+
+        public bool SaveHistory()
+        {
+            if (Serializer.Serialize("history", history))
+                return true;
+
+            return false;
+        }
+
+        public bool SaveFavorites()
+        {
+            if (Serializer.Serialize("favorite", favorites))
+                return true;
+
+            return false;
+        }
+
+        public void GetSavedState()
+        {
+            if ((settingsProperties = OpenSettings()) == null)
+                settingsProperties = new SettingsProperties();
+
+            if ((history = OpenHistory()) == null)
+                history = new SingleLinkedList();
+
+            if ((favorites = OpenFavotires()) == null)
+                favorites = new SingleLinkedList();
+        }
+
+        public SettingsProperties OpenSettings()
+        {
+            return (SettingsProperties)Serializer.Deserialize("settings");
+        }
+
+        public SingleLinkedList OpenHistory()
+        {
+            return (SingleLinkedList)Serializer.Deserialize("history");
+        }
+
+        public SingleLinkedList OpenFavotires()
+        {
+            return (SingleLinkedList)Serializer.Deserialize("favorite");
+        }
+
     }
 }
