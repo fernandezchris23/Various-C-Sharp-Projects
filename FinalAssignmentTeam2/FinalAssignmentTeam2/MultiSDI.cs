@@ -33,9 +33,7 @@ namespace FinalAssignmentTeam2
         {
             this.IsSingleInstance = true;
             this.ShutdownStyle = ShutdownMode.AfterAllFormsClose;
-            history = new SingleLinkedList();
-            favorites = new SingleLinkedList();
-            settingsProperties = new SettingsProperties();
+            GetSavedState();
         }
 
         //Create first top level form
