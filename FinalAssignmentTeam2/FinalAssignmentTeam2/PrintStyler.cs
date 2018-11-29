@@ -68,14 +68,33 @@ namespace FinalAssignmentTeam2
 
         private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
         {
-            Graphics g = PrintSetup(e.Graphics);
+            Graphics g = PrintSetup(e.Graphics, GetRealMarginBounds(e, true));
         }
 
-        private Graphics PrintSetup(Graphics g)
+        private Graphics PrintSetup(Graphics g, Rectangle rec)
         {
-            g.DrawString(Title, new Font("Lucida Console", 12), Brushes.Black, 0, 0);
-            g.DrawString(SetPrintString(), new Font("Lucida Console", 25), Brushes.Black, 0, 50);
+            DateTime today = DateTime.UtcNow.Date;
+            g.DrawString(Title, new Font("Lucida Console", 9), Brushes.Gray, rec);
+            g.DrawString(SetPrintString(), new Font("Lucida Console", 13), Brushes.Black, rec.X, rec.Y + 20);
+            g.DrawString(today.ToString("MM/dd/yyyy"), new Font("Lucida Console", 9), Brushes.Gray, rec.X, rec.Bottom);
+
             return g;
+        }
+
+        static Rectangle GetRealMarginBounds(PrintPageEventArgs e, bool preview)
+        {
+            if (preview) return e.MarginBounds;
+            // Get printer's offsets
+            float cx = e.PageSettings.HardMarginX;
+            float cy = e.PageSettings.HardMarginY;
+            // Create the real margin bounds by scaling the offset
+            // by the printer resolution and then rescaling it
+            // back to 1/100 inch
+            Rectangle marginBounds = e.MarginBounds;
+            float dpiX = e.Graphics.DpiX;
+            float dpiY = e.Graphics.DpiY;
+            marginBounds.Offset((int)(-cx * 100 / dpiX), (int)(-cy * 100 / dpiY));
+            return marginBounds;
         }
     }
 }
