@@ -310,7 +310,6 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Browser";
             this.Text = "Form";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Browser_FormClosing);
             this.Load += new System.EventHandler(this.Browser_Load);
             this.addrBar.ResumeLayout(false);
             this.addrBar.PerformLayout();
