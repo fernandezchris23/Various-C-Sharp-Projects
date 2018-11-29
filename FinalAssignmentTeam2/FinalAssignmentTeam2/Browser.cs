@@ -64,7 +64,7 @@ namespace FinalAssignmentTeam2
 
             // Notify Cat Facts
 
-            miliSecNotify = MultiSDI.Appli.settingsProperties.NumMinutesForNotify * 60000; // converts the minutes to milliseconds for interval           
+            miliSecNotify = MultiSDI.Appli.settingsProperties.NumMinutesForNotify * 10000; // converts the minutes to milliseconds for interval           
             notifyTimer.Interval = miliSecNotify; // Set it to go off based on given time from user
             notifyTimer.Start(); // start the time for the notify 
         }
