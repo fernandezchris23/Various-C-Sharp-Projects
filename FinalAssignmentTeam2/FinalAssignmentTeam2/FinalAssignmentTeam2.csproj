@@ -123,10 +123,22 @@
     <None Include="Resources\redHeartCatPaw.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\kitty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\%24this.Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kittyIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\kitties.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\kitty.png" />
+    <None Include="Resources\kitty__icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kitties__icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

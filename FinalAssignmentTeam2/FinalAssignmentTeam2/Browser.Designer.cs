@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Browser));
             this.addrBar = new System.Windows.Forms.GroupBox();
             this.addrBarText = new System.Windows.Forms.TextBox();
             this.webBrowser = new System.Windows.Forms.WebBrowser();
@@ -48,12 +49,12 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.addFavBttn = new System.Windows.Forms.ToolStripButton();
-            this.toolStripStatusFactButton = new System.Windows.Forms.ToolStripSplitButton();
             this.menuButton = new ControlLibrary.MenuButton();
             this.homeButton = new ControlLibrary.HomeButton();
             this.forwardButton = new ControlLibrary.ForwardButton();
             this.backButton = new ControlLibrary.BackButton();
+            this.addFavBttn = new System.Windows.Forms.ToolStripButton();
+            this.toolStripStatusFactButton = new System.Windows.Forms.ToolStripSplitButton();
             this.addrBar.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.contextMenuButton.SuspendLayout();
@@ -116,7 +117,7 @@
             // linkHoveringOvertoolStripLabel
             // 
             this.linkHoveringOvertoolStripLabel.Name = "linkHoveringOvertoolStripLabel";
-            this.linkHoveringOvertoolStripLabel.Size = new System.Drawing.Size(969, 21);
+            this.linkHoveringOvertoolStripLabel.Size = new System.Drawing.Size(1008, 21);
             this.linkHoveringOvertoolStripLabel.Spring = true;
             this.linkHoveringOvertoolStripLabel.Text = " ";
             // 
@@ -223,28 +224,6 @@
             this.monthCalendar1.Visible = false;
             this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
             // 
-            // addFavBttn
-            // 
-            this.addFavBttn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.addFavBttn.Image = global::FinalAssignmentTeam2.Properties.Resources.redHeartCatPaw;
-            this.addFavBttn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.addFavBttn.Name = "addFavBttn";
-            this.addFavBttn.Size = new System.Drawing.Size(24, 28);
-            this.addFavBttn.Text = "Add Favorite";
-            this.addFavBttn.Click += new System.EventHandler(this.addFavBttn_Click);
-            // 
-            // toolStripStatusFactButton
-            // 
-            this.toolStripStatusFactButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripStatusFactButton.Enabled = false;
-            this.toolStripStatusFactButton.Image = global::FinalAssignmentTeam2.Properties.Resources.kitty;
-            this.toolStripStatusFactButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripStatusFactButton.Name = "toolStripStatusFactButton";
-            this.toolStripStatusFactButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStripStatusFactButton.Size = new System.Drawing.Size(39, 24);
-            this.toolStripStatusFactButton.Text = "Cat Facts";
-            this.toolStripStatusFactButton.ToolTipText = "Cat Facts";
-            // 
             // menuButton
             // 
             this.menuButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -282,6 +261,28 @@
             this.backButton.Size = new System.Drawing.Size(33, 31);
             this.backButton.TabIndex = 0;
             // 
+            // addFavBttn
+            // 
+            this.addFavBttn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.addFavBttn.Image = global::FinalAssignmentTeam2.Properties.Resources.redHeartCatPaw;
+            this.addFavBttn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.addFavBttn.Name = "addFavBttn";
+            this.addFavBttn.Size = new System.Drawing.Size(24, 28);
+            this.addFavBttn.Text = "Add Favorite";
+            this.addFavBttn.Click += new System.EventHandler(this.addFavBttn_Click);
+            // 
+            // toolStripStatusFactButton
+            // 
+            this.toolStripStatusFactButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripStatusFactButton.Enabled = false;
+            this.toolStripStatusFactButton.Image = global::FinalAssignmentTeam2.Properties.Resources.kitty;
+            this.toolStripStatusFactButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripStatusFactButton.Name = "toolStripStatusFactButton";
+            this.toolStripStatusFactButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.toolStripStatusFactButton.Size = new System.Drawing.Size(39, 24);
+            this.toolStripStatusFactButton.Text = "Cat Facts";
+            this.toolStripStatusFactButton.ToolTipText = "Cat Facts";
+            // 
             // Browser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -292,9 +293,10 @@
             this.Controls.Add(this.webBrowser);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.addrBar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Browser";
-            this.Text = "Form1";
+            this.Text = "Form";
             this.Load += new System.EventHandler(this.Browser_Load);
             this.addrBar.ResumeLayout(false);
             this.addrBar.PerformLayout();
