@@ -67,11 +67,10 @@ namespace FinalAssignmentTeam2
             createCatFact();
             
             // Notify Cat Facts
-            notifyTimer.Start(); // start the time for the notify                                 
-            miliSecNotify = numMinutesToNotify * 60000; // converts the minutes for notifications to milliseconds for interval           
+                                
+            miliSecNotify = MultiSDI.Appli.settingsProperties.NumMinutesForNotify * 60000; // converts the minutes to milliseconds for interval           
             notifyTimer.Interval = miliSecNotify; // Set it to go off based on given time from user
-
-
+            notifyTimer.Start(); // start the time for the notify 
         }
 
         public static Browser CreateWindow()
@@ -472,7 +471,7 @@ namespace FinalAssignmentTeam2
             }
             else // no notifications
             {
-                MessageBox.Show("Test");
+                // do nothing
             }
         }
         
